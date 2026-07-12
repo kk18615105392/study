@@ -404,8 +404,8 @@
             "count": 1
           },
           "28": {
-            "correct": false,
-            "count": 1
+            "correct": true,
+            "count": 2
           },
           "29": {
             "correct": true,
@@ -441,7 +441,7 @@
           },
           "37": {
             "correct": false,
-            "count": 1
+            "count": 2
           },
           "38": {
             "correct": true,
@@ -524,8 +524,8 @@
             "count": 1
           },
           "58": {
-            "correct": false,
-            "count": 1
+            "correct": true,
+            "count": 2
           },
           "59": {
             "correct": true,
@@ -644,8 +644,8 @@
             "count": 1
           },
           "88": {
-            "correct": false,
-            "count": 1
+            "correct": true,
+            "count": 2
           },
           "89": {
             "correct": true,
@@ -725,7 +725,7 @@
           },
           "108": {
             "correct": false,
-            "count": 1
+            "count": 2
           },
           "109": {
             "correct": false,
@@ -798,7 +798,6 @@
           30,
           105,
           40,
-          58,
           56,
           65,
           37,
@@ -813,10 +812,8 @@
           17,
           113,
           41,
-          88,
           93,
           20,
-          28,
           35,
           36,
           63,
@@ -865,8 +862,19 @@
         "favorites": []
       },
       "theory": {
-        "answers": {},
-        "mistakes": [],
+        "answers": {
+          "556": {
+            "correct": false,
+            "count": 1
+          },
+          "558": {
+            "correct": true,
+            "count": 1
+          }
+        },
+        "mistakes": [
+          556
+        ],
         "favorites": []
       },
       "guidebook": {
@@ -1050,6 +1058,14 @@
           "1213": {
             "correct": true,
             "count": 1
+          },
+          "1951": {
+            "correct": true,
+            "count": 1
+          },
+          "1954": {
+            "correct": true,
+            "count": 1
           }
         },
         "mistakes": [
@@ -1081,9 +1097,10 @@
       },
       "checkInDays": [
         "2026-07-10",
-        "2026-07-11"
+        "2026-07-11",
+        "2026-07-12"
       ],
-      "streak": 2,
+      "streak": 3,
       "quant": {
         "answers": {
           "3003": {
@@ -1127,9 +1144,31 @@
           3208
         ],
         "favorites": []
+      },
+      "pdfProgress": {
+        "logic": 2,
+        "verbal": 1,
+        "quant": 3
+      },
+      "pdfNotes": {
+        "logic": "",
+        "verbal": "",
+        "quant": ""
+      },
+      "pdfChecklist": {
+        "logic": {},
+        "verbal": {},
+        "quant": {}
+      },
+      "pdfMasteredPages": {
+        "logic": {},
+        "verbal": {},
+        "quant": {}
       }
     },
-    "createdAt": "2026-07-10T02:10:26.463Z"
+    "createdAt": "2026-07-10T02:10:26.463Z",
+    "lastActiveAt": "2026-07-12T03:21:47.643Z",
+    "pdfMistakesEnabled": true
   },
   "GaoxingZ": {
     "password": "zgx0320zbh",
