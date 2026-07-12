@@ -32,8 +32,6 @@ let allUsers = {};
 let IS_LOCAL_SERVER = false;
 
 async function detectServerMode() {
-  const host = window.location.hostname;
-  if (host !== 'localhost' && host !== '127.0.0.1') return false;
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), 2000);
   try {
