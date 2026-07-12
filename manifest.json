@@ -1,0 +1,18 @@
+{
+  "name": "京通 - 北京市情刷题宝典",
+  "short_name": "北京市情刷题",
+  "description": "基于北京市情PDF文档的高效刷题与错题复盘备考小程序",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#0f0f12",
+  "theme_color": "#c0392b",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "https://img.icons8.com/color/512/china.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

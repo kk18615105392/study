@@ -1,0 +1,23 @@
+PDF Check Report
+================
+
+File: 判断推理.pdf
+  Total Pages (pypdf): 38
+  Extracted text length from page 1: 0
+  Images on page 1: 0
+  Total Pages (pdfplumber): 38
+  Extracted text length (pdfplumber): 0
+
+File: 言语理解.pdf
+  Total Pages (pypdf): 61
+  Extracted text length from page 1: 0
+  Images on page 1: 0
+  Total Pages (pdfplumber): 61
+  Extracted text length (pdfplumber): 0
+
+File: 资料分析.pdf
+  Total Pages (pypdf): 46
+  Extracted text length from page 1: 0
+  Images on page 1: 0
+  Total Pages (pdfplumber): 46
+  Extracted text length (pdfplumber): 0

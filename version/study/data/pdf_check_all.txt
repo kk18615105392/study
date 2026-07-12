@@ -1,0 +1,22 @@
+PDF Check All Pages Report
+==========================
+
+File: 判断推理.pdf
+  Total Pages: 38
+  Pages with text: 1 / 38
+  First 3 pages with text:
+    Page 10: length=57, sample: A推B的否定：A且-B，A且-B的否定：-（A且- B）=-A或B。也就是A推B=-A或B，代⼊选项B，完全正确！
+
+File: 言语理解.pdf
+  Total Pages: 61
+  Pages with text: 14 / 61
+  First 3 pages with text:
+    Page 3: length=66, sample: A项“捉襟⻅肘”指拉⼀拉衣襟，就露出臂肘，形容衣服破烂，比喻顾此失彼，穷于应付，能体现出因证据缺乏等导致理论在某些⽅⾯存在不⾜之处
+    Page 4: length=226, sample: 互通有⽆”指拿出⾃⼰多余的东⻄给对⽅，与之进⾏交换，以得到⾃⼰所缺少的东⻄，符合⽂意，礼尚往来”指礼节上应该有来有往，现也指以同样的态度或做法回答对⽅。强调⼈际交往中的礼节应对，与“经济联系”搭配不当
+    Page 5: length=233, sample: “常备不懈”指时刻准备且毫不松懈却之不恭”指对别⼈的邀请、赠与等，如果拒绝接受，就显得不恭敬，与⽂段语境⽆关弃如敝履，说的是对没有价值的东⻄毫不可惜的丢掉；⽂段说甲⻣⽤药，是有价值的，⽽束之⾼阁是放着
+
+File: 资料分析.pdf
+  Total Pages: 46
+  Pages with text: 1 / 46
+  First 3 pages with text:
+    Page 22: length=12, sample: 13023567128

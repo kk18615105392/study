@@ -1,0 +1,13 @@
+{
+  "name": "beijing-quiz-server",
+  "version": "1.0.0",
+  "description": "京通备考刷题宝典 - 本地服务器",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
