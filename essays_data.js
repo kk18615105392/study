@@ -826,7 +826,15 @@ if (typeof SUBJECT_DATA !== 'undefined') {
   SUBJECT_DATA.essays = {
     name: "申论大作文",
     icon: "📖",
-    categories: [],
+    categories: [
+      { id: "writing", name: "申论写作" },
+      { id: "reading", name: "材料阅读" }
+    ],
+    facts: [
+      { title: "文章立意确定原则", cat: "writing", content: "必须紧扣材料主旨，不能偏离政治立场。立意应当深刻、具体，结合当下国家政策大背景，展现解决社会问题的思维能力。" },
+      { title: "分析论证三步走", cat: "writing", content: "论点句（鲜明亮出观点） + 论证句（引用政策、事实或进行理论说服） + 结论句（联系实际，总结并进行宏观升华）。" },
+      { title: "申论阅读原则", cat: "reading", content: "带着问题读材料，提炼核心词汇。关注首尾句、关联词和观点句，标记政策导向与群众诉求，为申论大作文论点积累素材。" }
+    ],
     questions: []
   };
 }

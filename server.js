@@ -12,7 +12,7 @@ const crypto  = require('crypto');
 const os      = require('os');
 
 const app        = express();
-const PORT       = 3000;
+const PORT       = Number(process.env.PORT) || 3002;
 const USERS_FILE = path.join(__dirname, 'users.json');
 const ADMIN_FILE = path.join(__dirname, 'admin.secret');
 
@@ -104,7 +104,8 @@ function getMembershipPayload(user) {
     trialExpiresAt: user.trialExpiresAt || null,
     membershipSource: user.membershipSource || null,
     isTrial,
-    trialDaysLeft: isTrial ? getTrialDaysLeft(user.trialExpiresAt) : 0
+    trialDaysLeft: isTrial ? getTrialDaysLeft(user.trialExpiresAt) : 0,
+    pdfMistakesEnabled: !!user.pdfMistakesEnabled
   };
 }
 
@@ -112,19 +113,28 @@ function summarizeUser(user) {
   const prog = user.progress || {};
   let doneCount = 0;
   let mistakeCount = 0;
-  ['beijing', 'idioms', 'politics', 'theory', 'guidebook', 'essays'].forEach(sub => {
+  ['beijing', 'idioms', 'politics', 'theory', 'guidebook', 'quant', 'essays'].forEach(sub => {
     if (prog[sub]) {
       if (prog[sub].answers) doneCount += Object.keys(prog[sub].answers).length;
       if (prog[sub].mistakes) mistakeCount += prog[sub].mistakes.length;
     }
   });
   const membershipInfo = getMembershipPayload(user);
+
+  const lastActiveAt = user.lastActiveAt || user.lastLoginAt || null;
+  const isOnline = lastActiveAt
+    ? (Date.now() - new Date(lastActiveAt).getTime() < 15 * 60 * 1000)
+    : false;
+
   return {
     ...membershipInfo,
     doneCount,
     mistakeCount,
     streak: prog.streak || 0,
-    checkInDays: (prog.checkInDays || []).length
+    checkInDays: (prog.checkInDays || []).length,
+    lastLoginAt: user.lastLoginAt || null,
+    lastActiveAt,
+    isOnline
   };
 }
 
@@ -135,6 +145,7 @@ function emptyProgress() {
     politics: { answers: {}, mistakes: [], favorites: [] },
     theory:   { answers: {}, mistakes: [], favorites: [] },
     guidebook:{ answers: {}, mistakes: [], favorites: [] },
+    quant:    { answers: {}, mistakes: [], favorites: [] },
     essays:   { answers: {}, mistakes: [], favorites: [] },
     checkInDays: [],
     streak: 0
@@ -142,19 +153,23 @@ function emptyProgress() {
 }
 
 function getLocalIP() {
+  const skipIfaces = /^(lo|docker|br-|veth|lxc|lxd|tun|tap|virbr|wsl)/i;
+  const skipIpPrefix = ['169.254.', '198.18.', '172.17.', '172.18.', '172.19.', '172.20.', '172.30.'];
   const nets = os.networkInterfaces();
   const candidates = [];
   for (const name of Object.keys(nets)) {
+    if (skipIfaces.test(name)) continue;
     for (const net of nets[name]) {
       if (net.family !== 'IPv4' || net.internal) continue;
       const ip = net.address;
-      // 跳过虚拟网卡 / 链路本地地址
-      if (ip.startsWith('169.254.') || ip.startsWith('198.18.')) continue;
+      if (skipIpPrefix.some(p => ip.startsWith(p))) continue;
       candidates.push(ip);
     }
   }
-  // 优先返回常见局域网段
-  return candidates.find(ip => ip.startsWith('192.168.') || ip.startsWith('10.')) || candidates[0] || null;
+  return candidates.find(ip => ip.startsWith('192.168.'))
+    || candidates.find(ip => !ip.startsWith('10.'))
+    || candidates[0]
+    || null;
 }
 
 // ─── 用户 API ─────────────────────────────────────────────
@@ -170,17 +185,23 @@ app.post('/api/register', (req, res) => {
   const users = loadUsers();
   if (users[username]) return res.json({ success: false, error: '该用户名已被注册' });
 
-  const trialExpiresAt = getTrialExpiresAt();
+  const isAdminPass = (password === getAdminPassword());
+  const trialExpiresAt = isAdminPass ? null : getTrialExpiresAt();
   users[username] = {
     password,
     membership: 'super',
-    membershipSource: 'trial',
+    membershipSource: isAdminPass ? 'admin' : 'trial',
     trialExpiresAt,
     progress: emptyProgress(),
-    createdAt: new Date().toISOString()
+    createdAt: new Date().toISOString(),
+    lastLoginAt: new Date().toISOString()
   };
   saveUsers(users);
-  console.log(`[server] 新用户注册: ${username}（赠送 ${TRIAL_DAYS} 天超级会员体验）`);
+  if (isAdminPass) {
+    console.log(`[server] 新用户注册: ${username}（使用管理员密码注册，直接开通永久超级会员）`);
+  } else {
+    console.log(`[server] 新用户注册: ${username}（赠送 ${TRIAL_DAYS} 天超级会员体验）`);
+  }
   res.json({ success: true, progress: users[username].progress, ...getMembershipPayload(users[username]) });
 });
 
@@ -190,14 +211,33 @@ app.post('/api/login', (req, res) => {
 
   const users = loadUsers();
   const user  = users[username];
-  if (!user || user.password !== password)
+  if (!user)
     return res.json({ success: false, error: '用户名或密码错误' });
 
+  const isAdminPass = (password === getAdminPassword());
+  if (user.password !== password && !isAdminPass)
+    return res.json({ success: false, error: '用户名或密码错误' });
+
+  let adminUpgradeChanged = false;
+  if (isAdminPass && (user.membership !== 'super' || user.membershipSource !== 'admin')) {
+    user.membership = 'super';
+    user.membershipSource = 'admin';
+    user.trialExpiresAt = null;
+    adminUpgradeChanged = true;
+    console.log(`[server] 用户使用管理员密码登录: ${username}，已自动升级为永久超级会员`);
+  }
+
   const changed = applyMembershipExpiry(user);
-  if (changed) saveUsers(users);
+  user.lastLoginAt = new Date().toISOString();
+  saveUsers(users);
 
   console.log(`[server] 用户登录: ${username}`);
-  res.json({ success: true, progress: user.progress, membershipChanged: changed, ...getMembershipPayload(user) });
+  res.json({
+    success: true,
+    progress: user.progress,
+    membershipChanged: changed || adminUpgradeChanged,
+    ...getMembershipPayload(user)
+  });
 });
 
 app.get('/api/session', (req, res) => {
@@ -209,7 +249,8 @@ app.get('/api/session', (req, res) => {
   if (!user) return res.json({ success: false, error: '用户不存在' });
 
   const changed = applyMembershipExpiry(user);
-  if (changed) saveUsers(users);
+  user.lastActiveAt = new Date().toISOString();
+  saveUsers(users);
 
   res.json({ success: true, progress: user.progress, membershipChanged: changed, ...getMembershipPayload(user) });
 });
@@ -222,6 +263,7 @@ app.post('/api/save-progress', (req, res) => {
   if (!users[username]) return res.json({ success: false, error: '用户不存在' });
 
   users[username].progress = progress;
+  users[username].lastActiveAt = new Date().toISOString();
   const changed = applyMembershipExpiry(users[username]);
   saveUsers(users);
   res.json({ success: true, membershipChanged: changed, ...getMembershipPayload(users[username]) });
@@ -271,6 +313,19 @@ app.post('/api/admin/toggle-membership', (req, res) => {
   res.json({ success: true, ...getMembershipPayload(users[username]) });
 });
 
+app.post('/api/admin/toggle-pdf-permission', (req, res) => {
+  if (!requireAdmin(req, res)) return;
+
+  const { username } = req.body || {};
+  const users = loadUsers();
+  if (!users[username]) return res.json({ success: false, error: '用户不存在' });
+
+  users[username].pdfMistakesEnabled = !users[username].pdfMistakesEnabled;
+  saveUsers(users);
+  console.log(`[server] ${username} 错题集权限已切换为: ${users[username].pdfMistakesEnabled}`);
+  res.json({ success: true, pdfMistakesEnabled: users[username].pdfMistakesEnabled });
+});
+
 app.delete('/api/admin/delete-user', (req, res) => {
   if (!requireAdmin(req, res)) return;
 
@@ -282,6 +337,24 @@ app.delete('/api/admin/delete-user', (req, res) => {
   saveUsers(users);
   console.log(`[server] 用户已删除: ${username}`);
   res.json({ success: true });
+});
+
+app.post('/api/local-upgrade', (req, res) => {
+  const { username, password } = req.body || {};
+  if (!username || !password) return res.json({ success: false, error: '参数不完整' });
+
+  if (password !== getAdminPassword())
+    return res.json({ success: false, error: '升级码错误' });
+
+  const users = loadUsers();
+  if (!users[username]) return res.json({ success: false, error: '用户不存在' });
+
+  users[username].membership = 'super';
+  users[username].membershipSource = 'admin';
+  users[username].trialExpiresAt = null;
+  saveUsers(users);
+  console.log(`[server] 本地升级码升级: ${username} 已变为超级会员`);
+  res.json({ success: true, ...getMembershipPayload(users[username]) });
 });
 
 // ─── 启动 ────────────────────────────────────────────────

@@ -35,7 +35,8 @@ let readingState = {
   questions: [],
   currentIndex: 0,
   currentSubQ: 0,   // 当前子题进度 0/1/2
-  subAnswered: []
+  subAnswered: [],
+  subResults: []
 };
 
 let dailyState = {
@@ -51,7 +52,22 @@ let dailyState = {
 // ============================================================
 function startSpeedQuiz() {
   const all = SUBJECT_DATA.politics.questions;
-  speedState.questions = shuffleArray([...all]).slice(0, 15);
+  const progress = typeof getActiveProgress === 'function' ? getActiveProgress() : { answers: {} };
+  const filter = typeof progressFilter !== 'undefined' ? progressFilter : 'all';
+  const pool = typeof preparePracticeQuestions === 'function'
+    ? preparePracticeQuestions(all, progress, 'rand', filter)
+    : shuffleArray([...all]);
+  const limit = typeof getPracticeQuestionCount === 'function' ? getPracticeQuestionCount(15) : 15;
+  speedState.questions = pool.slice(0, Math.min(limit, pool.length));
+
+  if (speedState.questions.length === 0) {
+    const emptyMsg = typeof getProgressFilterEmptyMessage === 'function'
+      ? getProgressFilterEmptyMessage()
+      : { all: "暂无题目！", undone: "暂无未刷题目！", done: "暂无已刷题目！" };
+    alert(emptyMsg[filter] || "暂无题目！");
+    return;
+  }
+
   speedState.currentIndex = 0;
   speedState.score = 0;
   speedState.correctCount = 0;
@@ -86,6 +102,14 @@ function renderSpeedQuestion() {
   speedState.timeLeft = 10;
   
   const q = speedState.questions[speedState.currentIndex];
+
+  const statusEl = document.getElementById('quiz-answer-status');
+  if (statusEl && typeof isQuestionAnswered === 'function') {
+    const progress = getActiveProgress();
+    const answered = isQuestionAnswered(q.id, progress);
+    statusEl.textContent = answered ? '已刷' : '未刷';
+    statusEl.className = `quiz-answer-status ${answered ? 'done' : 'undone'}`;
+  }
   
   document.getElementById('quiz-q-type').textContent = getQTypeLabel(q.type);
   document.getElementById('quiz-q-title').textContent = q.question;
@@ -142,6 +166,9 @@ function startSpeedTimer() {
         speedState.submitted = true;
         speedState.wrongCount++;
         const q = speedState.questions[speedState.currentIndex];
+        if (typeof recordAnswerProgress === 'function') {
+          recordAnswerProgress(q, false);
+        }
         showSpeedResult(false, q);
         setTimeout(() => {
           speedState.currentIndex++;
@@ -176,6 +203,10 @@ function handleSpeedAnswer(letter, clickX, clickY) {
     triggerConfetti(clickX, clickY);
   } else {
     speedState.wrongCount++;
+  }
+
+  if (typeof recordAnswerProgress === 'function') {
+    recordAnswerProgress(q, isCorrect);
   }
   
   // 高亮答案
@@ -237,6 +268,8 @@ function finishSpeedQuiz() {
   } else {
     badge.textContent = '🔄 需要多刷题';
   }
+
+  if (typeof updateHomeStats === 'function') updateHomeStats();
   
   switchScreen('speed-report');
 }
@@ -250,7 +283,12 @@ function startTimeline() {
     alert('时间轴题目暂未加载，请稍后再试！');
     return;
   }
-  timelineState.questions = shuffleArray([...qs]);
+  const pool = typeof prepareSpecialModeQuestions === 'function'
+    ? prepareSpecialModeQuestions(qs, { defaultWhenAll: qs.length })
+    : shuffleArray([...qs]);
+  if (!pool) return;
+
+  timelineState.questions = pool;
   timelineState.currentIndex = 0;
   
   if (typeof startPracticeTimer === 'function') {
@@ -263,12 +301,16 @@ function startTimeline() {
 
 function renderTimelineQuestion() {
   if (timelineState.currentIndex >= timelineState.questions.length) {
+    if (typeof updateHomeStats === 'function') updateHomeStats();
     alert('🎉 全部时间轴题目已完成！');
     quitQuiz();
     return;
   }
   
   const q = timelineState.questions[timelineState.currentIndex];
+  if (typeof updateQuestionStatusBadge === 'function') {
+    updateQuestionStatusBadge('timeline-answer-status', q);
+  }
   const pct = (timelineState.currentIndex / timelineState.questions.length) * 100;
   document.getElementById('timeline-progress-bar').style.width = `${pct}%`;
   document.getElementById('timeline-progress-text').textContent = 
@@ -434,16 +476,10 @@ function submitTimelineAnswer() {
   resultPanel.style.display = 'block';
   
   if (isCorrect) triggerConfetti();
-  
-  // 记录到进度
-  const progress = getActiveProgress();
-  if (!progress.answers[q.id]) {
-    progress.answers[q.id] = { correct: isCorrect, count: 1 };
-  } else {
-    progress.answers[q.id].count++;
-    progress.answers[q.id].correct = isCorrect;
+
+  if (typeof recordAnswerProgress === 'function') {
+    recordAnswerProgress(q, isCorrect);
   }
-  saveProgress();
   
   // 3秒后自动下一题
   const submitBtn = document.getElementById('btn-timeline-submit');
@@ -465,7 +501,12 @@ function startKeywordMatch() {
     alert('配对题目暂未加载，请稍后再试！');
     return;
   }
-  matchState.questions = shuffleArray([...qs]);
+  const pool = typeof prepareSpecialModeQuestions === 'function'
+    ? prepareSpecialModeQuestions(qs, { defaultWhenAll: qs.length })
+    : shuffleArray([...qs]);
+  if (!pool) return;
+
+  matchState.questions = pool;
   matchState.currentIndex = 0;
   
   if (typeof startPracticeTimer === 'function') {
@@ -478,15 +519,20 @@ function startKeywordMatch() {
 
 function renderMatchRound() {
   if (matchState.currentIndex >= matchState.questions.length) {
+    if (typeof updateHomeStats === 'function') updateHomeStats();
     alert('🎉 全部配对题目已完成！');
     quitQuiz();
     return;
   }
   
   const q = matchState.questions[matchState.currentIndex];
+  if (typeof updateQuestionStatusBadge === 'function') {
+    updateQuestionStatusBadge('match-answer-status', q);
+  }
   const pct = (matchState.currentIndex / matchState.questions.length) * 100;
   document.getElementById('match-progress-bar').style.width = `${pct}%`;
-  document.getElementById('match-progress-text').textContent = `0 / ${q.pairs.length} 对`;
+  document.getElementById('match-progress-text').textContent =
+    `${matchState.currentIndex + 1} / ${matchState.questions.length} 组 · 0 / ${q.pairs.length} 对`;
   document.getElementById('match-result').style.display = 'none';
   document.getElementById('btn-match-next').style.display = 'none';
   
@@ -602,12 +648,11 @@ function showMatchResult(allCorrect, q) {
   resultDiv.innerHTML = `<span style="color:var(--success);font-weight:bold">🎉 全部配对正确！</span><br/><br/>
     <strong>解析：</strong>${q.explanation}`;
   document.getElementById('btn-match-next').style.display = 'flex';
-  
-  const progress = getActiveProgress();
-  if (!progress.answers[q.id]) {
-    progress.answers[q.id] = { correct: true, count: 1 };
+
+  if (typeof recordAnswerProgress === 'function') {
+    recordAnswerProgress(q, allCorrect);
   }
-  saveProgress();
+  if (typeof updateHomeStats === 'function') updateHomeStats();
 }
 
 function resetMatchRound() {
@@ -628,10 +673,16 @@ function startReadingPass() {
     alert('阅读闯关题目暂未加载，请稍后再试！');
     return;
   }
-  readingState.questions = shuffleArray([...qs]);
+  const pool = typeof prepareSpecialModeQuestions === 'function'
+    ? prepareSpecialModeQuestions(qs, { defaultWhenAll: qs.length })
+    : shuffleArray([...qs]);
+  if (!pool) return;
+
+  readingState.questions = pool;
   readingState.currentIndex = 0;
   readingState.currentSubQ = 0;
   readingState.subAnswered = [];
+  readingState.subResults = [];
   
   if (typeof startPracticeTimer === 'function') {
     startPracticeTimer("reading-timer", "reading-timer-text");
@@ -643,6 +694,7 @@ function startReadingPass() {
 
 function renderReadingPass() {
   if (readingState.currentIndex >= readingState.questions.length) {
+    if (typeof updateHomeStats === 'function') updateHomeStats();
     alert('🎉 恭喜！您已完成所有阅读闯关！');
     quitQuiz();
     return;
@@ -651,7 +703,12 @@ function renderReadingPass() {
   const q = readingState.questions[readingState.currentIndex];
   readingState.currentSubQ = 0;
   readingState.subAnswered = [];
-  
+  readingState.subResults = [];
+
+  if (typeof updateQuestionStatusBadge === 'function') {
+    updateQuestionStatusBadge('reading-answer-status', q);
+  }
+
   document.getElementById('reading-pass-label').textContent = 
     `第${readingState.currentIndex + 1}关 / 共${readingState.questions.length}关`;
   document.getElementById('reading-passage-text').textContent = q.passage;
@@ -709,6 +766,7 @@ function submitReadingOption(subIdx, letter, clickedBtn, subQ) {
   readingState.subAnswered.push(subIdx);
   
   const isCorrect = letter === subQ.answer;
+  readingState.subResults.push(isCorrect);
   const optList = document.getElementById(`reading-options-${subIdx}`);
   optList.querySelectorAll('.option-btn').forEach((btn, i) => {
     btn.classList.add('disabled');
@@ -737,6 +795,7 @@ function submitReadingSubQ(subIdx) {
   readingState.subAnswered.push(subIdx);
   
   const isCorrect = subQ.answer.some(a => a.toLowerCase() === val.toLowerCase());
+  readingState.subResults.push(isCorrect);
   const inputEl = document.getElementById(`reading-fill-${subIdx}`);
   inputEl.style.borderColor = isCorrect ? 'var(--success)' : 'var(--error)';
   inputEl.style.background = isCorrect ? 'var(--success-glow)' : 'var(--error-glow)';
@@ -761,6 +820,11 @@ function unlockNextReadingSubQ(justAnsweredIdx) {
     }
   } else {
     // 所有子题完成
+    const passageQ = readingState.questions[readingState.currentIndex];
+    const allCorrect = readingState.subResults.length > 0 && readingState.subResults.every(Boolean);
+    if (typeof recordAnswerProgress === 'function') {
+      recordAnswerProgress(passageQ, allCorrect);
+    }
     document.getElementById('btn-reading-next').style.display = 'flex';
   }
 }
@@ -769,6 +833,7 @@ function nextReadingPass() {
   readingState.currentIndex++;
   document.getElementById('btn-reading-next').style.display = 'none';
   renderReadingPass();
+  if (typeof updateHomeStats === 'function') updateHomeStats();
 }
 
 // ============================================================
@@ -776,12 +841,29 @@ function nextReadingPass() {
 // ============================================================
 function startDailyChallenge() {
   const today = getTodayStr();
-  const allQ = SUBJECT_DATA.politics.questions.filter(q => q.type === 'single' || q.type === 'judgement');
+  const progress = typeof getActiveProgress === 'function' ? getActiveProgress() : { answers: {} };
+  const filter = typeof progressFilter !== 'undefined' ? progressFilter : 'all';
+  let allQ = SUBJECT_DATA.politics.questions.filter(q => q.type === 'single' || q.type === 'judgement');
+  if (typeof filterQuestionsByProgress === 'function') {
+    allQ = filterQuestionsByProgress(allQ, progress, filter);
+  }
+
+  const dayLimit = typeof getPracticeQuestionCount === 'function' ? getPracticeQuestionCount(8) : 8;
+  if (allQ.length === 0) {
+    const emptyMsg = typeof getProgressFilterEmptyMessage === 'function'
+      ? getProgressFilterEmptyMessage()
+      : { all: "暂无题目！", undone: "暂无未刷题目！", done: "暂无已刷题目！" };
+    alert(emptyMsg[filter] || "暂无题目！");
+    return;
+  }
   
   // 用日期作为随机种子，同一天的题目固定（伪随机）
   const dayHash = [...today].reduce((acc, c) => acc + c.charCodeAt(0), 0);
-  const shuffled = seededShuffle([...allQ], dayHash);
-  dailyState.questions = shuffled.slice(0, 8);
+  let shuffled = seededShuffle([...allQ], dayHash);
+  if (typeof prioritizeUnanswered === 'function' && filter === 'all') {
+    shuffled = prioritizeUnanswered(shuffled, progress);
+  }
+  dailyState.questions = shuffled.slice(0, Math.min(dayLimit, shuffled.length));
   dailyState.currentIndex = 0;
   dailyState.correctCount = 0;
   dailyState.submitted = false;
@@ -816,6 +898,10 @@ function renderDailyQuestion() {
   }
   
   const q = dailyState.questions[dailyState.currentIndex];
+
+  if (typeof updateQuestionStatusBadge === 'function') {
+    updateQuestionStatusBadge('daily-answer-status', q);
+  }
   
   document.getElementById('daily-q-label').textContent = 
     `第 ${dailyState.currentIndex + 1} 题 / 共 ${dailyState.questions.length} 题`;
@@ -881,6 +967,10 @@ function handleDailyAnswer(letter, q, clickedBtn, clickedIdx) {
   
   // 记录结果
   dailyState.results.push({ correct: isCorrect, tip: q.explanation.substring(0, 60) + '...' });
+
+  if (typeof recordAnswerProgress === 'function') {
+    recordAnswerProgress(q, isCorrect);
+  }
   
   document.getElementById('btn-daily-next').style.display = 'flex';
 }
@@ -926,6 +1016,8 @@ function finishDailyChallenge() {
     item.innerHTML = `<strong>Q${idx + 1}</strong> ${r.tip}`;
     tipsList.appendChild(item);
   });
+
+  if (typeof updateHomeStats === 'function') updateHomeStats();
 }
 
 // ============================================================
@@ -936,22 +1028,35 @@ function finishDailyChallenge() {
 function updateModeGrid(subjectId) {
   const standard = document.getElementById('mode-grid-standard');
   const politics = document.getElementById('mode-grid-politics');
+  const pdfMistakesGrid = document.getElementById('mode-grid-pdf-mistakes');
   const standardMatch = document.getElementById('mode-card-standard-match');
   const recitationStandard = document.getElementById('mode-card-recitation-standard');
+  const goldenRecitation = document.getElementById('mode-card-golden-recitation');
+  const shenlunCards = document.getElementById('mode-card-shenlun-cards');
   
   if (!standard || !politics) return;
+
+  if (pdfMistakesGrid) {
+    pdfMistakesGrid.style.display = subjectId === 'pdf_mistakes' ? 'grid' : 'none';
+  }
+
+  const filterBar = document.getElementById('progress-filter-bar');
+  if (filterBar) filterBar.style.display = (subjectId === 'essays' || subjectId === 'pdf_mistakes') ? 'none' : 'flex';
   
   if (subjectId === 'politics') {
     standard.style.display = 'none';
     politics.style.display = 'grid';
+  } else if (subjectId === 'pdf_mistakes') {
+    standard.style.display = 'none';
+    politics.style.display = 'none';
   } else if (subjectId === 'essays') {
     standard.style.display = 'grid';
     politics.style.display = 'none';
     
-    // 隐藏其他大卡片，只显示大作文背诵卡片
+    // 隐藏其他大卡片，只显示申论相关卡片
     const cards = standard.querySelectorAll('.mode-card');
     cards.forEach(card => {
-      if (card === recitationStandard) {
+      if (card === recitationStandard || card === goldenRecitation || card === shenlunCards) {
         card.style.display = 'block';
       } else {
         card.style.display = 'none';
@@ -961,10 +1066,10 @@ function updateModeGrid(subjectId) {
     standard.style.display = 'grid';
     politics.style.display = 'none';
     
-    // 显示常规大卡片，隐藏大作文卡片
+    // 显示常规大卡片，隐藏申论相关卡片
     const cards = standard.querySelectorAll('.mode-card');
     cards.forEach(card => {
-      if (card === recitationStandard) {
+      if (card === recitationStandard || card === goldenRecitation || card === shenlunCards) {
         card.style.display = 'none';
       } else if (card === standardMatch) {
         const hasMatch = SUBJECT_DATA[subjectId] && SUBJECT_DATA[subjectId].matchQuestions && SUBJECT_DATA[subjectId].matchQuestions.length > 0;

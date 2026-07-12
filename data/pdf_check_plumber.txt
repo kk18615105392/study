@@ -1,0 +1,95 @@
+pdfplumber detailed check
+=========================
+
+File: 判断推理.pdf
+  Total Pages: 38
+    Page 1: text length = 0
+    Page 2: text length = 0
+    Page 3: text length = 0
+    Page 4: text length = 0
+    Page 5: text length = 0
+    Page 6: text length = 0
+    Page 7: text length = 0
+    Page 8: text length = 0
+    Page 9: text length = 0
+    Page 10: text length = 58
+      Sample: A推B的否定：A且-B，A且-B的否定：-（A且- B）=-A或
+B。也就是A推B=-A或B，代⼊选项B，完全正确！
+    Page 11: text length = 0
+    Page 12: text length = 0
+    Page 13: text length = 0
+    Page 14: text length = 0
+    Page 15: text length = 0
+
+File: 言语理解.pdf
+  Total Pages: 61
+    Page 1: text length = 0
+    Page 2: text length = 0
+    Page 3: text length = 66
+      Sample: A项“捉襟⻅肘”指拉⼀拉衣襟，就露出臂肘，形容衣服破烂，比喻顾此失彼，穷于应付，能体现
+出因证据缺乏等导致理论在某些⽅⾯存在不⾜之处
+    Page 4: text length = 232
+      Sample: 互通有⽆”指拿出⾃⼰多余的东⻄给对⽅，与之进⾏交换，以得到⾃⼰所缺少的东⻄，
+符合⽂意，
+礼尚往来”指礼节上应该有来有往，现也指以同样的态度或做法回答对⽅。强调⼈际交
+往中的礼节应对，与“经济联系”搭
+    Page 5: text length = 241
+      Sample: “常备不懈”指时刻准备且毫不松懈
+却之不恭”指对别⼈的邀请、赠与等，如果拒绝接受，就显得不恭敬，与⽂段语境⽆关
+弃如敝履，说的是对没有价值的东⻄毫不可惜的丢掉；⽂段说甲⻣⽤药，是有价值的，⽽束之⾼
+阁
+    Page 6: text length = 239
+      Sample: 待价⽽沽”原⽐喻等待时机出来做官，后多⽐喻等待有好的待遇、条件才肯答应任
+职或做事，符合⽂意，当选。
+“择善⽽从”指采纳正确的意⻅或选择好的⽅法加以实⾏，与⽂意不符，排除
+⼀步到位”指⼀次就达到预定的
+    Page 7: text length = 134
+      Sample: “鳞次栉⽐”指像⻥鳞和梳⼦的⻮⼀样，⼀个挨着⼀个地排列着，多形容房屋等密集，
+千姿百态”形容姿态多种多样，各不相同
+左⽀右绌：财⼒或能⼒不⾜，穷于应付，顾此失彼
+林林总总”形容杂乱众多，强调事物数量多
+    Page 8: text length = 386
+      Sample: B项：“试⾦⽯”指检验事物、⽅法或⼈的可靠标准，⽂段强调的是“反映经济活⼒”，⽽⾮“检验经济活
+⼒”，与⽂意不符，排除。
+C项：“放⼤镜”是⼀种⽤来观察物体微⼩细节的光学器件，侧重强调放⼤作⽤，与⽂意
+    Page 9: text length = 217
+      Sample: “避难趋易”指避开困难的⽽拣容易的做，侧重于逃避困难的事情，去做容易的事情，强调的是对困
+难和容易的选择
+⼴泛是指在同⼀层次没有深⼊。
+⼤相径庭”⽐喻彼此相差很远，⼤不相同
+“截然相反”指事物之间界限
+    Page 10: text length = 304
+      Sample: 境界”指事物所达到的程度或表现的情况，精神境界，指的是精神达到的⾼度
+搭配“定律”，且根据“艺术史”可知，此定律存在时间之久，“颠扑不破”意思是⽆论怎样震动摔打都破不
+了，⽐喻⾔论、学说等牢固可靠，经
+    Page 11: text length = 0
+    Page 12: text length = 134
+      Sample: 兹事体⼤”指＇这件事的体制规模⾮常⼤，也指这件事关系重⼤，⼀般直接搭配某个事件本身，⽽⾮某
+事件产⽣的“影响”，排除
+管窥”指通过⽵管⼦的孔看天，置于此处可表达从观察到的部分推测全
+貌之意，与⽂段中“
+    Page 13: text length = 210
+      Sample: 增强意愿，破解难题，固定搭配直接秒了
+经久不息形容欢呼声、掌声。
+⻓盛不衰”指⻓时间保持旺盛的势头，符合⽂意，且与“写物抒情⽅式”搭配恰当
+⿊箱⼦ 只知道结果中间发⽣了什么我是不知道的，缺乏⼀定的解释
+    Page 14: text length = 0
+    Page 15: text length = 0
+
+File: 资料分析.pdf
+  Total Pages: 46
+    Page 1: text length = 0
+    Page 2: text length = 0
+    Page 3: text length = 0
+    Page 4: text length = 0
+    Page 5: text length = 0
+    Page 6: text length = 0
+    Page 7: text length = 0
+    Page 8: text length = 0
+    Page 9: text length = 0
+    Page 10: text length = 0
+    Page 11: text length = 0
+    Page 12: text length = 0
+    Page 13: text length = 0
+    Page 14: text length = 0
+    Page 15: text length = 0

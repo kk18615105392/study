@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>京通 - 多科目备考刷题宝典</title>
-  <link rel="stylesheet" href="app.css?v=17">
+  <link rel="stylesheet" href="app.css?v=19">
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#c0392b">
 </head>
@@ -65,12 +65,20 @@
               <option value="politics">时政·月度热点</option>
               <option value="theory">政治·理论背诵</option>
               <option value="guidebook">小黑排坑手册</option>
+              <option value="quant">资料·速算技巧</option>
               <option value="essays">📖 申论大作文</option>
+              <option value="pdf_mistakes">❌ 我的错题集</option>
             </select>
           </div>
           <button class="theme-toggle" id="btn-theme-toggle" title="切换主题">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
           </button>
+        </div>
+
+        <!-- 每日金句 -->
+        <div class="daily-motivation" id="daily-motivation">
+          <div class="daily-motivation-badge">每日金句</div>
+          <p class="daily-motivation-text" id="daily-motivation-text">加载中…</p>
         </div>
 
         <!-- 用户信息与会员状态 -->
@@ -95,7 +103,11 @@
           <div class="stats-grid">
             <div class="stat-item">
               <div class="stat-val" id="home-stat-done">0</div>
-              <div class="stat-lbl">已刷题</div>
+              <div class="stat-lbl">已刷</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-val" id="home-stat-undone">0</div>
+              <div class="stat-lbl">未刷</div>
             </div>
             <div class="stat-item">
               <div class="stat-val" id="home-stat-rate">0%</div>
@@ -106,6 +118,7 @@
               <div class="stat-lbl">错题本</div>
             </div>
           </div>
+          <div class="home-filter-hint" id="home-filter-hint">优先推荐未刷题</div>
         </div>
 
         <!-- 刷题模式选择 -->
@@ -127,6 +140,15 @@
           </div>
         </div>
 
+        <div class="practice-limit-selector-bar" id="progress-filter-bar">
+          <span class="limit-label">📋 刷题范围：</span>
+          <div class="limit-options" id="progress-filter-options">
+            <button class="filter-btn active" data-filter="all">全部(优先未刷)</button>
+            <button class="filter-btn" data-filter="undone">仅未刷</button>
+            <button class="filter-btn" data-filter="done">仅已刷</button>
+          </div>
+        </div>
+
         <!-- 通用模式（北京市情/成语） -->
         <div class="mode-grid" id="mode-grid-standard">
           <div class="mode-card m-seq" onclick="startPractice('seq')">
@@ -144,6 +166,16 @@
             <div class="mode-name">章节练习</div>
             <div class="mode-desc">专项章节突破</div>
           </div>
+          <div class="mode-card m-bank" onclick="switchScreen('question-bank')">
+            <div class="mode-icon">📋</div>
+            <div class="mode-name">题库进度</div>
+            <div class="mode-desc">查看已刷/未刷题目</div>
+          </div>
+          <div class="mode-card m-undone" onclick="startUndonePractice()">
+            <div class="mode-icon">🎯</div>
+            <div class="mode-name">攻克未刷</div>
+            <div class="mode-desc">优先刷没做过的题</div>
+          </div>
           <div class="mode-card m-exam" onclick="startPractice('exam')">
             <div class="mode-icon">⏱️</div>
             <div class="mode-name">模拟考试</div>
@@ -158,6 +190,16 @@
             <div class="mode-icon">📖</div>
             <div class="mode-name">开始范文背诵</div>
             <div class="mode-desc">进入10篇精品大作文特训</div>
+          </div>
+          <div class="mode-card m-recitation" id="mode-card-golden-recitation" onclick="startGoldenRecitation()" style="display:none; grid-column: span 2;">
+            <div class="mode-icon">✨</div>
+            <div class="mode-name">金句专项背诵</div>
+            <div class="mode-desc">抽取范文中的高频金句集中记忆</div>
+          </div>
+          <div class="mode-card m-recitation" id="mode-card-shenlun-cards" onclick="startShenlunCards()" style="display:none; grid-column: span 2;">
+            <div class="mode-icon">📝</div>
+            <div class="mode-name">申论精简笔记</div>
+            <div class="mode-desc">翻转卡片记忆公文/热点/议论文要点</div>
           </div>
         </div>
 
@@ -188,36 +230,115 @@
             <div class="mode-name">每日打榜</div>
             <div class="mode-desc">8题精选 获取今日评级</div>
           </div>
+          <div class="mode-card m-politics-reading" id="mode-card-politics-notes" onclick="startPoliticsNotes()">
+            <div class="mode-icon">🗞️</div>
+            <div class="mode-name">时政精读</div>
+            <div class="mode-desc">按月刷新闻要点与配套题目</div>
+          </div>
           <div class="mode-card m-rand" onclick="startPractice('rand')">
             <div class="mode-icon">🎲</div>
             <div class="mode-name">随机练习</div>
             <div class="mode-desc">随机刷全库题目</div>
           </div>
+          <div class="mode-card m-bank" onclick="switchScreen('question-bank')">
+            <div class="mode-icon">📋</div>
+            <div class="mode-name">题库进度</div>
+            <div class="mode-desc">查看已刷/未刷题目</div>
+          </div>
+          <div class="mode-card m-undone" onclick="startUndonePractice()">
+            <div class="mode-icon">🎯</div>
+            <div class="mode-name">攻克未刷</div>
+            <div class="mode-desc">优先刷没做过的题</div>
+          </div>
+        </div>
+
+        <!-- 我的错题专属模式（基于三个 PDF） -->
+        <div class="mode-grid" id="mode-grid-pdf-mistakes" style="display:none; grid-template-columns: 1fr;">
+          <!-- 模块总概况 -->
+          <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--border-radius-sm); padding: 16px; margin-bottom: 4px; grid-column: 1;">
+            <div style="font-weight: 800; font-size: 13px; margin-bottom: 8px; color: var(--text-main);">📋 行测错题本总览</div>
+            <div style="font-size: 11px; color: var(--text-muted); line-height: 1.6;">
+              本模块收录了行测备考中的核心手写错题与高频考点。通过多看手写笔迹、随时抽签复盘，强化错题记忆。
+            </div>
+          </div>
+          
+          <!-- 判断推理卡片 -->
+          <div class="mode-card" onclick="openPdfFromHome('logic')" style="display: flex; flex-direction: column; align-items: stretch; justify-content: space-between; padding: 14px; text-align: left; height: auto; grid-column: 1; border: 1px solid var(--border-color); border-radius: var(--border-radius-sm); cursor: pointer; transition: all 0.2s; background: var(--bg-card);">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <span style="font-size: 20px; background: rgba(155, 89, 182, 0.1); padding: 6px; border-radius: 8px;">🧩</span>
+                <div>
+                  <div style="font-weight: 700; font-size: 13px; color: var(--text-main);">判断推理错题集</div>
+                  <div style="font-size: 10px; color: var(--text-muted);">共 38 页手写重点错题与公式</div>
+                </div>
+              </div>
+              <span style="font-size: 11px; font-weight: 700; color: #9b59b6;" id="home-pdf-prog-logic">第 1 页</span>
+            </div>
+            <div style="background: var(--border-color); height: 4px; border-radius: 2px; overflow: hidden; margin-top: 4px;">
+              <div id="home-pdf-bar-logic" style="background: #9b59b6; height: 100%; width: 0%;"></div>
+            </div>
+          </div>
+
+          <!-- 言语理解卡片 -->
+          <div class="mode-card" onclick="openPdfFromHome('verbal')" style="display: flex; flex-direction: column; align-items: stretch; justify-content: space-between; padding: 14px; text-align: left; height: auto; grid-column: 1; border: 1px solid var(--border-color); border-radius: var(--border-radius-sm); cursor: pointer; transition: all 0.2s; background: var(--bg-card);">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <span style="font-size: 20px; background: rgba(41, 128, 185, 0.1); padding: 6px; border-radius: 8px;">💬</span>
+                <div>
+                  <div style="font-weight: 700; font-size: 13px; color: var(--text-main);">言语理解错题集</div>
+                  <div style="font-size: 10px; color: var(--text-muted);">共 61 页近义成语辨析与语境</div>
+                </div>
+              </div>
+              <span style="font-size: 11px; font-weight: 700; color: #2980b9;" id="home-pdf-prog-verbal">第 1 页</span>
+            </div>
+            <div style="background: var(--border-color); height: 4px; border-radius: 2px; overflow: hidden; margin-top: 4px;">
+              <div id="home-pdf-bar-verbal" style="background: #2980b9; height: 100%; width: 0%;"></div>
+            </div>
+          </div>
+
+          <!-- 资料分析卡片 -->
+          <div class="mode-card" onclick="openPdfFromHome('quant')" style="display: flex; flex-direction: column; align-items: stretch; justify-content: space-between; padding: 14px; text-align: left; height: auto; grid-column: 1; border: 1px solid var(--border-color); border-radius: var(--border-radius-sm); cursor: pointer; transition: all 0.2s; background: var(--bg-card);">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <span style="font-size: 20px; background: rgba(230, 81, 0, 0.1); padding: 6px; border-radius: 8px;">📈</span>
+                <div>
+                  <div style="font-weight: 700; font-size: 13px; color: var(--text-main);">资料分析错题集</div>
+                  <div style="font-size: 10px; color: var(--text-muted);">共 46 页公式推导与速算口诀</div>
+                </div>
+              </div>
+              <span style="font-size: 11px; font-weight: 700; color: #e67e22;" id="home-pdf-prog-quant">第 1 页</span>
+            </div>
+            <div style="background: var(--border-color); height: 4px; border-radius: 2px; overflow: hidden; margin-top: 4px;">
+              <div id="home-pdf-bar-quant" style="background: #e67e22; height: 100%; width: 0%;"></div>
+            </div>
+          </div>
         </div>
 
         <!-- 知识小卡片（翻转背诵） -->
-        <h2 class="section-title">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3M12 17h.01"/></svg>
-          考点速记卡
-        </h2>
-        <div class="card-slider-wrapper">
-          <div class="flashcard" onclick="this.classList.toggle('flipped')">
-            <div class="flashcard-inner">
-              <div class="card-front">
-                <div class="card-title">💡 考点卡片 (点击翻转)</div>
-                <p id="card-front-text">加载中...</p>
-                <div class="card-flip-hint">点击翻面查看答案</div>
-              </div>
-              <div class="card-back">
-                <div class="card-title">🔑 核心考点解析</div>
-                <p id="card-back-text">加载中...</p>
-                <div class="card-flip-hint">点击可翻回正面</div>
+        <div id="home-flashcard-section">
+          <h2 class="section-title">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3M12 17h.01"/></svg>
+            考点速记卡
+          </h2>
+          <div class="card-slider-wrapper">
+            <div class="flashcard" onclick="this.classList.toggle('flipped')">
+              <div class="flashcard-inner">
+                <div class="card-front">
+                  <div class="card-title">💡 考点卡片 (点击翻转)</div>
+                  <p id="card-front-text">加载中...</p>
+                  <div class="card-flip-hint">点击翻面查看答案</div>
+                </div>
+                <div class="card-back">
+                  <div class="card-title">🔑 核心考点解析</div>
+                  <p id="card-back-text">加载中...</p>
+                  <div class="card-flip-hint">点击可翻回正面</div>
+                </div>
               </div>
             </div>
-          </div>
-          <div style="display: flex; gap: 10px; margin-top: 8px;">
-            <button class="btn-secondary" style="height: 36px; font-size: 12px;" onclick="prevFlashcard(event)">上一张</button>
-            <button class="btn-primary" style="height: 36px; font-size: 12px;" onclick="nextFlashcard(event)">换一张</button>
+            <div style="display: flex; gap: 10px; margin-top: 8px;">
+              <button class="btn-secondary" style="height: 36px; font-size: 12px;" onclick="prevFlashcard(event)">上一张</button>
+              <button class="btn-primary" style="height: 36px; font-size: 12px;" onclick="nextFlashcard(event)">换一张</button>
+            </div>
           </div>
         </div>
 
@@ -240,11 +361,31 @@
         </div>
       </div>
 
+      <!-- ================= 1.2 题库进度子页面 ================= -->
+      <div id="screen-question-bank" class="screen">
+        <div class="app-header">
+          <div class="app-logo">
+            <button class="btn-icon" onclick="goBackToHome()" style="margin-right: 8px;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            </button>
+            <div class="app-title-text serif-font">题库进度</div>
+          </div>
+        </div>
+        <div class="question-bank-summary" id="question-bank-summary">加载中…</div>
+        <div class="mistakes-tab-bar">
+          <div class="mistakes-tab active" id="tab-bank-all" onclick="switchQuestionBankTab('all')">全部</div>
+          <div class="mistakes-tab" id="tab-bank-undone" onclick="switchQuestionBankTab('undone')">未刷</div>
+          <div class="mistakes-tab" id="tab-bank-done" onclick="switchQuestionBankTab('done')">已刷</div>
+        </div>
+        <div class="question-bank-list" id="question-bank-list"></div>
+      </div>
+
       <!-- ================= 2. 答题页面 (Quiz Screen) ================= -->
       <div id="screen-quiz" class="screen">
         <!-- 答题顶栏 -->
         <div class="quiz-header">
           <span class="quiz-cat-badge" id="quiz-badge-category">历史沿革</span>
+          <span class="quiz-answer-status undone" id="quiz-answer-status">未刷</span>
           <div class="quiz-actions">
             <button class="btn-icon" id="btn-quiz-favorite" onclick="toggleFavoriteCurrent()" title="收藏此题">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
@@ -273,7 +414,9 @@
         </div>
 
         <!-- 核心题目卡片 -->
-        <div class="q-card">
+        <div class="quiz-swipe-hint" id="quiz-swipe-hint" aria-hidden="true">👉 右滑下一题 · 左滑上一题</div>
+        <div class="quiz-content-wrap" id="quiz-content-wrap">
+        <div class="q-card" id="quiz-q-card">
           <span class="q-type-label" id="quiz-q-type">单选题</span>
           <div class="q-title" id="quiz-q-title">题目加载中...</div>
           
@@ -296,6 +439,7 @@
             </div>
             <div class="exp-content" id="quiz-explanation-content">解析加载中...</div>
           </div>
+        </div>
         </div>
 
         <!-- 答题页底操作栏 -->
@@ -337,6 +481,35 @@
         </div>
       </div>
 
+      <!-- ================= 2.2 练习组完成页 ================= -->
+      <div id="screen-practice-complete" class="screen">
+        <div class="app-header">
+          <h2 class="serif-font">本组练习完成</h2>
+        </div>
+        <div class="report-card practice-complete-card">
+          <div class="practice-complete-icon">🎉</div>
+          <div class="report-title serif-font" id="practice-complete-title">干得漂亮！</div>
+          <div class="report-eval" id="practice-complete-eval">本组题目已全部刷完</div>
+          <div class="report-grid">
+            <div class="report-item">
+              <div>本组题量</div>
+              <div class="report-val" id="practice-complete-total">5</div>
+            </div>
+            <div class="report-item">
+              <div>正确 / 正确率</div>
+              <div class="report-val" id="practice-complete-accuracy">4 · 80%</div>
+            </div>
+          </div>
+          <div class="practice-complete-settings" id="practice-complete-settings">
+            当前设置：每次 5 题 · 随机测试
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <button class="btn-primary" onclick="continueLastPractice()">继续刷题</button>
+          <button class="btn-secondary" onclick="exitPracticeToHome()">返回主页</button>
+        </div>
+      </div>
+
       <!-- ================= 特色模式A：极速抢答结算页 ================= -->
       <div id="screen-speed-report" class="screen">
         <div class="app-header">
@@ -371,6 +544,7 @@
       <div id="screen-timeline" class="screen">
         <div class="quiz-header">
           <span class="quiz-cat-badge" style="background: var(--politics-accent);">🗺️ 时间轴排序</span>
+          <span class="quiz-answer-status undone" id="timeline-answer-status">未刷</span>
           <button class="btn-icon" onclick="quitQuiz()">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
           </button>
@@ -402,6 +576,7 @@
       <div id="screen-match" class="screen">
         <div class="quiz-header">
           <span class="quiz-cat-badge" style="background: var(--politics-accent);">🧩 关键词配对</span>
+          <span class="quiz-answer-status undone" id="match-answer-status">未刷</span>
           <button class="btn-icon" onclick="quitQuiz()">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
           </button>
@@ -433,6 +608,7 @@
       <div id="screen-reading" class="screen">
         <div class="quiz-header">
           <span class="quiz-cat-badge" style="background: var(--politics-accent);">📰 阅读闯关</span>
+          <span class="quiz-answer-status undone" id="reading-answer-status">未刷</span>
           <div class="quiz-actions">
             <button class="btn-icon" onclick="quitQuiz()">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
@@ -473,7 +649,10 @@
         <div id="daily-quiz-area">
           <div class="quiz-info-row" style="margin-top: 10px; margin-bottom: 10px;">
             <div class="quiz-timer" id="daily-timer" style="display:none;">⏱️ <span id="daily-timer-text">00:00</span></div>
-            <div class="daily-q-label" id="daily-q-label" style="font-size: 11px; color: var(--text-muted);">第 1 题 / 共 8 题</div>
+            <div style="display:flex; align-items:center; gap:8px;">
+              <span class="quiz-answer-status undone" id="daily-answer-status">未刷</span>
+              <div class="daily-q-label" id="daily-q-label" style="font-size: 11px; color: var(--text-muted);">第 1 题 / 共 8 题</div>
+            </div>
           </div>
           <div class="daily-dots" id="daily-dots" style="margin-bottom: 15px;">
             <!-- 8个点，JS渲染 -->
@@ -554,6 +733,104 @@
         </div>
       </div>
 
+      <!-- ================= 2.3 申论金句背诵屏幕 ================= -->
+      <div id="screen-golden-recitation" class="screen">
+        <div class="quiz-header">
+          <span class="quiz-cat-badge" style="background: var(--politics-accent);">✨ 申论金句特训</span>
+          <button class="btn-icon" onclick="quitQuiz()">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          </button>
+        </div>
+
+        <div class="quiz-info-row" style="margin-top: 10px; margin-bottom: 15px; justify-content: space-between;">
+          <div style="font-size: 11px; color: var(--text-muted);">从全部范文中抽取高频金句</div>
+          <div style="font-size: 11px; color: var(--primary); font-weight: 700;" id="golden-recitation-progress">0 / 0</div>
+        </div>
+
+        <!-- 显隐控制栏 -->
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; margin-bottom: 16px;">
+          <button class="limit-btn active" id="golden-mode-mask" onclick="setGoldenMode('mask')" style="font-size: 11px; padding: 8px 4px;">🔒 全部遮蔽</button>
+          <button class="limit-btn" id="golden-mode-reveal" onclick="setGoldenMode('reveal')" style="font-size: 11px; padding: 8px 4px;">🔑 全部展示</button>
+        </div>
+
+        <!-- 金句列表 -->
+        <div class="q-card" id="golden-recitation-container" style="margin-top:0px; padding: 16px; max-height: calc(100vh - 240px); overflow-y: auto;">
+          <!-- 动态渲染金句卡片 -->
+        </div>
+      </div>
+
+      <!-- ================= 2.4 申论精简笔记翻转卡 ================= -->
+      <div id="screen-shenlun-cards" class="screen">
+        <div class="quiz-header">
+          <span class="quiz-cat-badge" style="background: var(--politics-accent);">📝 申论精简笔记</span>
+          <button class="btn-icon" onclick="quitQuiz()">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          </button>
+        </div>
+
+        <div class="quiz-info-row" style="margin-top: 10px; margin-bottom: 12px; justify-content: space-between;">
+          <div style="font-size: 11px; color: var(--text-muted);">点击卡片翻转查看详细要点</div>
+          <div style="font-size: 11px; color: var(--primary); font-weight: 700;" id="shenlun-cards-progress">0 / 0</div>
+        </div>
+
+        <!-- 分类筛选 -->
+        <div id="shenlun-cards-filter" style="display: flex; gap: 6px; overflow-x: auto; margin-bottom: 12px; padding-bottom: 4px;">
+          <!-- 动态渲染分类按钮 -->
+        </div>
+
+        <!-- 翻转卡片容器 -->
+        <div class="q-card" style="padding: 16px; display: flex; flex-direction: column; align-items: center;">
+          <div id="shenlun-flip-card" class="shenlun-flip-card" onclick="flipShenlunCard()" style="width: 100%; min-height: 320px; perspective: 1000px; cursor: pointer;">
+            <div id="shenlun-flip-card-inner" style="position: relative; width: 100%; min-height: 320px; transition: transform 0.5s; transform-style: preserve-3d;">
+              <!-- 正面 -->
+              <div id="shenlun-card-front" style="position: absolute; width: 100%; min-height: 320px; backface-visibility: hidden; border-radius: var(--border-radius-md); background: var(--bg-card); border: 1px solid var(--border-color); box-shadow: var(--shadow-sm); display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 24px; box-sizing: border-box;">
+                <div id="shenlun-card-category" style="font-size: 10px; font-weight: 800; color: var(--primary); background: rgba(192,57,43,0.1); padding: 3px 10px; border-radius: 10px; margin-bottom: 16px;">分类</div>
+                <div id="shenlun-card-name" class="serif-font" style="font-size: 22px; font-weight: 800; color: var(--text-main); text-align: center; line-height: 1.4;">名称</div>
+                <div style="font-size: 11px; color: var(--text-muted); margin-top: 24px;">👆 点击翻转</div>
+              </div>
+
+              <!-- 背面 -->
+              <div id="shenlun-card-back" style="position: absolute; width: 100%; min-height: 320px; backface-visibility: hidden; transform: rotateY(180deg); border-radius: var(--border-radius-md); background: var(--bg-card); border: 1px solid var(--border-color); box-shadow: var(--shadow-sm); display: flex; flex-direction: column; padding: 16px; box-sizing: border-box; overflow-y: auto; max-height: 60vh;">
+                <div id="shenlun-card-back-content" style="font-size: 13px; line-height: 1.7; color: var(--text-main);">
+                  <!-- 动态渲染背面内容 -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 导航按钮 -->
+          <div style="display: flex; justify-content: space-between; width: 100%; margin-top: 16px; gap: 10px;">
+            <button class="limit-btn" onclick="prevShenlunCard()" style="flex: 1; padding: 10px; font-size: 12px; font-weight: 700;">⬅️ 上一张</button>
+            <button class="limit-btn" onclick="nextShenlunCard()" style="flex: 1; padding: 10px; font-size: 12px; font-weight: 700;">下一张 ➡️</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= 2.5 时政精读屏幕 ================= -->
+      <div id="screen-politics-notes" class="screen">
+        <div class="quiz-header">
+          <span class="quiz-cat-badge" style="background: var(--politics-accent);">🗞️ 时政精读</span>
+          <button class="btn-icon" onclick="quitQuiz()">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          </button>
+        </div>
+
+        <div class="quiz-info-row" style="margin-top: 10px; margin-bottom: 12px; justify-content: space-between;">
+          <div style="font-size: 11px; color: var(--text-muted);">按月浏览新闻要点与配套题目</div>
+          <div style="font-size: 11px; color: var(--primary); font-weight: 700;" id="politics-notes-progress">0 / 0</div>
+        </div>
+
+        <!-- 月份筛选 -->
+        <div id="politics-notes-month-filter" style="display: flex; gap: 6px; overflow-x: auto; margin-bottom: 12px; padding-bottom: 4px;">
+          <!-- 动态渲染月份按钮 -->
+        </div>
+
+        <!-- 新闻列表 -->
+        <div class="q-card" id="politics-notes-list" style="padding: 12px; max-height: calc(100vh - 210px); overflow-y: auto;">
+          <!-- 动态渲染新闻条目 -->
+        </div>
+      </div>
+
       <!-- ================= 0.1 后台管理屏幕 ================= -->
       <div id="screen-admin" class="screen">
         <div class="quiz-header">
@@ -564,7 +841,7 @@
         </div>
         
         <div style="font-size: 11px; color: var(--text-muted); margin-bottom: 16px;" id="admin-panel-hint">
-          管理系统已注册用户、查看进度并修改普通/超级会员权限。
+          管理系统已注册用户、查看刷题量/登录时间/在线状态并修改会员权限。
         </div>
         
         <div class="q-card" style="padding: 16px; overflow-y: auto; max-height: calc(100vh - 160px);">
@@ -574,9 +851,11 @@
               <tr style="border-bottom: 2px solid var(--border-color); color: var(--text-muted);">
                 <th style="padding: 8px 4px;">用户名</th>
                 <th style="padding: 8px 4px;">会员</th>
-                <th style="padding: 8px 4px;">刷题</th>
+                <th style="padding: 8px 4px;">刷题量</th>
                 <th style="padding: 8px 4px;">错题</th>
                 <th style="padding: 8px 4px;">签到</th>
+                <th style="padding: 8px 4px;">最近登录</th>
+                <th style="padding: 8px 4px;">状态</th>
                 <th style="padding: 8px 4px; text-align: right;">操作</th>
               </tr>
             </thead>
@@ -668,6 +947,77 @@
         </div>
       </div>
 
+      <!-- ================= 6. 错题集 (PDF Mistake Collections) ================= -->
+      <div id="screen-pdf-mistakes" class="screen">
+        <div class="app-header">
+          <h2 class="serif-font">经典行测错题集</h2>
+        </div>
+        
+        <!-- 学科选择按钮 -->
+        <div class="pdf-subject-bar" style="display: flex; gap: 8px; margin-bottom: 12px;">
+          <button class="pdf-tab active" onclick="switchPdfSubject('logic')" id="pdf-tab-logic" style="flex: 1; padding: 10px; border-radius: var(--border-radius-sm); border: 1px solid var(--border-color); background: var(--bg-card); color: var(--text-main); font-weight: 700; cursor: pointer; transition: all 0.2s; font-size: 11px;">🧩 判断推理</button>
+          <button class="pdf-tab" onclick="switchPdfSubject('verbal')" id="pdf-tab-verbal" style="flex: 1; padding: 10px; border-radius: var(--border-radius-sm); border: 1px solid var(--border-color); background: var(--bg-card); color: var(--text-main); font-weight: 700; cursor: pointer; transition: all 0.2s; font-size: 11px;">💬 言语理解</button>
+          <button class="pdf-tab" onclick="switchPdfSubject('quant')" id="pdf-tab-quant" style="flex: 1; padding: 10px; border-radius: var(--border-radius-sm); border: 1px solid var(--border-color); background: var(--bg-card); color: var(--text-main); font-weight: 700; cursor: pointer; transition: all 0.2s; font-size: 11px;">📈 资料分析</button>
+        </div>
+
+        <!-- 经典 PDF 页面图片展示窗口 -->
+        <div class="pdf-viewer-container" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--border-radius-sm); overflow: hidden; min-height: 280px; position: relative; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; margin-bottom: 12px;">
+          <div style="background: var(--bg-input); border-bottom: 1px solid var(--border-color); padding: 6px 12px; display: flex; justify-content: space-between; align-items: center; font-size: 11px;">
+            <span style="color: var(--text-muted); display: flex; align-items: center; gap: 4px;">📖 错题原件高清复盘</span>
+            <button onclick="openPdfZoomModal()" class="btn-secondary" style="padding: 2px 6px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); font-size: 10px; font-weight: bold; color: var(--primary); cursor: pointer;">🔍 放大当前图片</button>
+          </div>
+          <!-- 图片显示容器，支持溢出滚动 -->
+          <div style="width: 100%; height: 320px; overflow: auto; display: flex; justify-content: center; align-items: flex-start; padding: 10px; background: #f0f3f6; box-sizing: border-box;" id="pdf-image-container">
+            <img id="pdf-page-img" src="" style="max-width: 100%; height: auto; border-radius: 4px; box-shadow: 0 4px 10px rgba(0,0,0,0.15); transition: all 0.2s;" alt="加载中...">
+          </div>
+        </div>
+
+        <!-- 学习统计面板 -->
+        <div class="pdf-progress-panel" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--border-radius-sm); padding: 14px; margin-bottom: 68px; box-shadow: var(--shadow-sm);">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+            <span style="font-weight: 700; font-size: 13px; color: var(--text-main);" id="pdf-subject-title">判断推理错题合集</span>
+            <span style="font-size: 11px; color: var(--primary); font-weight: bold;" id="pdf-progress-label">当前进度: 第 1 / 38 页</span>
+          </div>
+          
+          <!-- 进度条与控制器 -->
+          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+            <input type="range" id="pdf-page-slider" min="1" max="38" value="1" oninput="handlePdfSliderChange(this.value)" style="flex: 1; accent-color: var(--primary); cursor: pointer;">
+            <div style="display: flex; align-items: center; gap: 4px;">
+              <button onclick="changePdfPage(-1)" style="width: 24px; height: 24px; border: 1px solid var(--border-color); border-radius: 4px; background: var(--bg-input); color: var(--text-main); cursor: pointer; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 12px;">-</button>
+              <input type="number" id="pdf-page-input" min="1" max="38" value="1" onchange="handlePdfInputChange(this.value)" style="width: 44px; height: 24px; border: 1px solid var(--border-color); border-radius: 4px; background: var(--bg-input); color: var(--text-main); text-align: center; font-size: 11px;">
+              <button onclick="changePdfPage(1)" style="width: 24px; height: 24px; border: 1px solid var(--border-color); border-radius: 4px; background: var(--bg-input); color: var(--text-main); cursor: pointer; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 12px;">+</button>
+            </div>
+          </div>
+
+          <!-- 快捷复盘工具 -->
+          <div style="display: flex; gap: 8px; margin-bottom: 12px;">
+            <button onclick="triggerRandomPdfReview()" style="flex: 1; padding: 6px 12px; font-size: 11px; font-weight: 700; border-radius: 4px; border: 1px solid var(--primary); background: transparent; color: var(--primary); cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 4px; transition: all 0.2s;">
+              🎲 随机抽题复盘
+            </button>
+            <button onclick="markCurrentPageAsReview()" style="flex: 1; padding: 6px 12px; font-size: 11px; font-weight: 700; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-input); color: var(--text-main); cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 4px;" id="btn-page-review-status">
+              📌 标记当前页已掌握
+            </button>
+          </div>
+
+          <!-- 学习大纲/检查清单 -->
+          <div style="margin-bottom: 12px;">
+            <div style="font-weight: 700; font-size: 11px; color: var(--text-muted); margin-bottom: 6px; display: flex; justify-content: space-between;">
+              <span>📌 核心板块复习清单</span>
+              <span id="pdf-checklist-count" style="color: var(--primary);">已完成: 0 / 4</span>
+            </div>
+            <div id="pdf-checklist-container" style="display: flex; flex-direction: column; gap: 6px;">
+              <!-- 动态清单 -->
+            </div>
+          </div>
+
+          <!-- 笔记栏 -->
+          <div>
+            <div style="font-weight: 700; font-size: 11px; color: var(--text-muted); margin-bottom: 6px;">📝 本科目复习笔记（自动保存）</div>
+            <textarea id="pdf-notes-area" oninput="handlePdfNotesChange(this.value)" placeholder="在这里输入错题总结、口诀公式、或者需要着重复习的页码..." style="width: 100%; height: 60px; border: 1px solid var(--border-color); border-radius: var(--border-radius-sm); background: var(--bg-input); color: var(--text-main); padding: 8px; font-size: 11px; resize: none; outline: none; transition: border-color 0.2s;" onfocus="this.style.borderColor='var(--primary)'" onblur="this.style.borderColor='var(--border-color)'"></textarea>
+          </div>
+        </div>
+      </div>
+
       <!-- ================= 底部固定导航栏 ================= -->
       <nav class="bottom-nav">
         <div class="nav-item active" id="nav-home" onclick="switchScreen('home')">
@@ -677,6 +1027,10 @@
         <div class="nav-item" id="nav-mistakes" onclick="switchScreen('mistakes')">
           <svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
           <span>错题本</span>
+        </div>
+        <div class="nav-item" id="nav-pdf-mistakes" onclick="switchScreen('pdf-mistakes')">
+          <svg viewBox="0 0 24 24"><path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H8V4h12v12z"/></svg>
+          <span>错题集</span>
         </div>
         <div class="nav-item" id="nav-search" onclick="switchScreen('search')">
           <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
@@ -691,13 +1045,14 @@
     </div>
   </div>
 
-  <script src="questions.js?v=15"></script>
+  <script src="questions.js?v=16"></script>
   <script src="politics_questions_data.js?v=15"></script>
   <script src="theory_questions_data.js?v=15"></script>
   <script src="guidebook_questions_data.js?v=15"></script>
+  <script src="quant_data.js?v=1"></script>
   <script src="essays_data.js?v=15"></script>
-  <script src="politics_modes.js?v=15"></script>
-  <script src="app.js?v=18"></script>
+  <script src="politics_modes.js?v=17"></script>
+  <script src="app.js?v=24"></script>
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
@@ -705,8 +1060,12 @@
           .then(reg => console.log('ServiceWorker registered', reg))
           .catch(err => console.log('ServiceWorker registration failed', err));
       });
-    }
   </script>
+
+  <!-- 全屏图片放大遮罩层 -->
+  <div id="pdf-zoom-modal" onclick="closePdfZoomModal()" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.95); z-index: 99999; justify-content: center; align-items: center; cursor: zoom-out;">
+    <img id="pdf-zoom-img" src="" style="max-width: 95%; max-height: 95%; border-radius: 4px; box-shadow: 0 4px 30px rgba(0,0,0,0.8);" alt="高清错题">
+  </div>
 
 </body>
 </html>
