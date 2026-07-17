@@ -61,12 +61,15 @@
             <div class="logo-icon" id="header-logo-icon">京</div>
             <select id="subject-selector" class="serif-font subject-select">
               <option value="beijing">北京·城市市情</option>
+              <option value="logic_600">🧩 花生600题·逻辑判断</option>
+              <option value="passage_600">📖 花生600题·片段阅读</option>
               <option value="idioms">成语·言语700词</option>
               <option value="politics">时政·月度热点</option>
               <option value="theory">政治·理论背诵</option>
               <option value="guidebook">小黑排坑手册</option>
               <option value="quant">资料·速算技巧</option>
               <option value="essays">📖 申论大作文</option>
+              <option value="pdf_mistakes">❌ 我的错题集</option>
             </select>
           </div>
           <button class="theme-toggle" id="btn-theme-toggle" title="切换主题">
@@ -251,29 +254,93 @@
           </div>
         </div>
 
-        <!-- 知识小卡片（翻转背诵） -->
-        <h2 class="section-title">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3M12 17h.01"/></svg>
-          考点速记卡
-        </h2>
-        <div class="card-slider-wrapper">
-          <div class="flashcard" onclick="this.classList.toggle('flipped')">
-            <div class="flashcard-inner">
-              <div class="card-front">
-                <div class="card-title">💡 考点卡片 (点击翻转)</div>
-                <p id="card-front-text">加载中...</p>
-                <div class="card-flip-hint">点击翻面查看答案</div>
-              </div>
-              <div class="card-back">
-                <div class="card-title">🔑 核心考点解析</div>
-                <p id="card-back-text">加载中...</p>
-                <div class="card-flip-hint">点击可翻回正面</div>
-              </div>
+        <!-- 我的错题专属模式（基于三个 PDF） -->
+        <div class="mode-grid" id="mode-grid-pdf-mistakes" style="display:none; grid-template-columns: 1fr;">
+          <!-- 模块总概况 -->
+          <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--border-radius-sm); padding: 16px; margin-bottom: 4px; grid-column: 1;">
+            <div style="font-weight: 800; font-size: 13px; margin-bottom: 8px; color: var(--text-main);">📋 行测错题本总览</div>
+            <div style="font-size: 11px; color: var(--text-muted); line-height: 1.6;">
+              本模块收录了行测备考中的核心手写错题与高频考点。通过多看手写笔迹、随时抽签复盘，强化错题记忆。
             </div>
           </div>
-          <div style="display: flex; gap: 10px; margin-top: 8px;">
-            <button class="btn-secondary" style="height: 36px; font-size: 12px;" onclick="prevFlashcard(event)">上一张</button>
-            <button class="btn-primary" style="height: 36px; font-size: 12px;" onclick="nextFlashcard(event)">换一张</button>
+          
+          <!-- 判断推理卡片 -->
+          <div class="mode-card" onclick="openPdfFromHome('logic')" style="display: flex; flex-direction: column; align-items: stretch; justify-content: space-between; padding: 14px; text-align: left; height: auto; grid-column: 1; border: 1px solid var(--border-color); border-radius: var(--border-radius-sm); cursor: pointer; transition: all 0.2s; background: var(--bg-card);">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <span style="font-size: 20px; background: rgba(155, 89, 182, 0.1); padding: 6px; border-radius: 8px;">🧩</span>
+                <div>
+                  <div style="font-weight: 700; font-size: 13px; color: var(--text-main);">判断推理错题集</div>
+                  <div style="font-size: 10px; color: var(--text-muted);">共 38 页手写重点错题与公式</div>
+                </div>
+              </div>
+              <span style="font-size: 11px; font-weight: 700; color: #9b59b6;" id="home-pdf-prog-logic">第 1 页</span>
+            </div>
+            <div style="background: var(--border-color); height: 4px; border-radius: 2px; overflow: hidden; margin-top: 4px;">
+              <div id="home-pdf-bar-logic" style="background: #9b59b6; height: 100%; width: 0%;"></div>
+            </div>
+          </div>
+
+          <!-- 言语理解卡片 -->
+          <div class="mode-card" onclick="openPdfFromHome('verbal')" style="display: flex; flex-direction: column; align-items: stretch; justify-content: space-between; padding: 14px; text-align: left; height: auto; grid-column: 1; border: 1px solid var(--border-color); border-radius: var(--border-radius-sm); cursor: pointer; transition: all 0.2s; background: var(--bg-card);">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <span style="font-size: 20px; background: rgba(41, 128, 185, 0.1); padding: 6px; border-radius: 8px;">💬</span>
+                <div>
+                  <div style="font-weight: 700; font-size: 13px; color: var(--text-main);">言语理解错题集</div>
+                  <div style="font-size: 10px; color: var(--text-muted);">共 61 页近义成语辨析与语境</div>
+                </div>
+              </div>
+              <span style="font-size: 11px; font-weight: 700; color: #2980b9;" id="home-pdf-prog-verbal">第 1 页</span>
+            </div>
+            <div style="background: var(--border-color); height: 4px; border-radius: 2px; overflow: hidden; margin-top: 4px;">
+              <div id="home-pdf-bar-verbal" style="background: #2980b9; height: 100%; width: 0%;"></div>
+            </div>
+          </div>
+
+          <!-- 资料分析卡片 -->
+          <div class="mode-card" onclick="openPdfFromHome('quant')" style="display: flex; flex-direction: column; align-items: stretch; justify-content: space-between; padding: 14px; text-align: left; height: auto; grid-column: 1; border: 1px solid var(--border-color); border-radius: var(--border-radius-sm); cursor: pointer; transition: all 0.2s; background: var(--bg-card);">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <span style="font-size: 20px; background: rgba(230, 81, 0, 0.1); padding: 6px; border-radius: 8px;">📈</span>
+                <div>
+                  <div style="font-weight: 700; font-size: 13px; color: var(--text-main);">资料分析错题集</div>
+                  <div style="font-size: 10px; color: var(--text-muted);">共 46 页公式推导与速算口诀</div>
+                </div>
+              </div>
+              <span style="font-size: 11px; font-weight: 700; color: #e67e22;" id="home-pdf-prog-quant">第 1 页</span>
+            </div>
+            <div style="background: var(--border-color); height: 4px; border-radius: 2px; overflow: hidden; margin-top: 4px;">
+              <div id="home-pdf-bar-quant" style="background: #e67e22; height: 100%; width: 0%;"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 知识小卡片（翻转背诵） -->
+        <div id="home-flashcard-section">
+          <h2 class="section-title">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3M12 17h.01"/></svg>
+            考点速记卡
+          </h2>
+          <div class="card-slider-wrapper">
+            <div class="flashcard" onclick="this.classList.toggle('flipped')">
+              <div class="flashcard-inner">
+                <div class="card-front">
+                  <div class="card-title">💡 考点卡片 (点击翻转)</div>
+                  <p id="card-front-text">加载中...</p>
+                  <div class="card-flip-hint">点击翻面查看答案</div>
+                </div>
+                <div class="card-back">
+                  <div class="card-title">🔑 核心考点解析</div>
+                  <p id="card-back-text">加载中...</p>
+                  <div class="card-flip-hint">点击可翻回正面</div>
+                </div>
+              </div>
+            </div>
+            <div style="display: flex; gap: 10px; margin-top: 8px;">
+              <button class="btn-secondary" style="height: 36px; font-size: 12px;" onclick="prevFlashcard(event)">上一张</button>
+              <button class="btn-primary" style="height: 36px; font-size: 12px;" onclick="nextFlashcard(event)">换一张</button>
+            </div>
           </div>
         </div>
 
@@ -882,6 +949,77 @@
         </div>
       </div>
 
+      <!-- ================= 6. 错题集 (PDF Mistake Collections) ================= -->
+      <div id="screen-pdf-mistakes" class="screen">
+        <div class="app-header">
+          <h2 class="serif-font">经典行测错题集</h2>
+        </div>
+        
+        <!-- 学科选择按钮 -->
+        <div class="pdf-subject-bar" style="display: flex; gap: 8px; margin-bottom: 12px;">
+          <button class="pdf-tab active" onclick="switchPdfSubject('logic')" id="pdf-tab-logic" style="flex: 1; padding: 10px; border-radius: var(--border-radius-sm); border: 1px solid var(--border-color); background: var(--bg-card); color: var(--text-main); font-weight: 700; cursor: pointer; transition: all 0.2s; font-size: 11px;">🧩 判断推理</button>
+          <button class="pdf-tab" onclick="switchPdfSubject('verbal')" id="pdf-tab-verbal" style="flex: 1; padding: 10px; border-radius: var(--border-radius-sm); border: 1px solid var(--border-color); background: var(--bg-card); color: var(--text-main); font-weight: 700; cursor: pointer; transition: all 0.2s; font-size: 11px;">💬 言语理解</button>
+          <button class="pdf-tab" onclick="switchPdfSubject('quant')" id="pdf-tab-quant" style="flex: 1; padding: 10px; border-radius: var(--border-radius-sm); border: 1px solid var(--border-color); background: var(--bg-card); color: var(--text-main); font-weight: 700; cursor: pointer; transition: all 0.2s; font-size: 11px;">📈 资料分析</button>
+        </div>
+
+        <!-- 经典 PDF 页面图片展示窗口 -->
+        <div class="pdf-viewer-container" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--border-radius-sm); overflow: hidden; min-height: 280px; position: relative; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; margin-bottom: 12px;">
+          <div style="background: var(--bg-input); border-bottom: 1px solid var(--border-color); padding: 6px 12px; display: flex; justify-content: space-between; align-items: center; font-size: 11px;">
+            <span style="color: var(--text-muted); display: flex; align-items: center; gap: 4px;">📖 错题原件高清复盘</span>
+            <button onclick="openPdfZoomModal()" class="btn-secondary" style="padding: 2px 6px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-card); font-size: 10px; font-weight: bold; color: var(--primary); cursor: pointer;">🔍 放大当前图片</button>
+          </div>
+          <!-- 图片显示容器，支持溢出滚动 -->
+          <div style="width: 100%; height: 320px; overflow: auto; display: flex; justify-content: center; align-items: flex-start; padding: 10px; background: #f0f3f6; box-sizing: border-box;" id="pdf-image-container">
+            <img id="pdf-page-img" src="" style="max-width: 100%; height: auto; border-radius: 4px; box-shadow: 0 4px 10px rgba(0,0,0,0.15); transition: all 0.2s;" alt="加载中...">
+          </div>
+        </div>
+
+        <!-- 学习统计面板 -->
+        <div class="pdf-progress-panel" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--border-radius-sm); padding: 14px; margin-bottom: 68px; box-shadow: var(--shadow-sm);">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+            <span style="font-weight: 700; font-size: 13px; color: var(--text-main);" id="pdf-subject-title">判断推理错题合集</span>
+            <span style="font-size: 11px; color: var(--primary); font-weight: bold;" id="pdf-progress-label">当前进度: 第 1 / 38 页</span>
+          </div>
+          
+          <!-- 进度条与控制器 -->
+          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+            <input type="range" id="pdf-page-slider" min="1" max="38" value="1" oninput="handlePdfSliderChange(this.value)" style="flex: 1; accent-color: var(--primary); cursor: pointer;">
+            <div style="display: flex; align-items: center; gap: 4px;">
+              <button onclick="changePdfPage(-1)" style="width: 24px; height: 24px; border: 1px solid var(--border-color); border-radius: 4px; background: var(--bg-input); color: var(--text-main); cursor: pointer; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 12px;">-</button>
+              <input type="number" id="pdf-page-input" min="1" max="38" value="1" onchange="handlePdfInputChange(this.value)" style="width: 44px; height: 24px; border: 1px solid var(--border-color); border-radius: 4px; background: var(--bg-input); color: var(--text-main); text-align: center; font-size: 11px;">
+              <button onclick="changePdfPage(1)" style="width: 24px; height: 24px; border: 1px solid var(--border-color); border-radius: 4px; background: var(--bg-input); color: var(--text-main); cursor: pointer; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 12px;">+</button>
+            </div>
+          </div>
+
+          <!-- 快捷复盘工具 -->
+          <div style="display: flex; gap: 8px; margin-bottom: 12px;">
+            <button onclick="triggerRandomPdfReview()" style="flex: 1; padding: 6px 12px; font-size: 11px; font-weight: 700; border-radius: 4px; border: 1px solid var(--primary); background: transparent; color: var(--primary); cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 4px; transition: all 0.2s;">
+              🎲 随机抽题复盘
+            </button>
+            <button onclick="markCurrentPageAsReview()" style="flex: 1; padding: 6px 12px; font-size: 11px; font-weight: 700; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-input); color: var(--text-main); cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 4px;" id="btn-page-review-status">
+              📌 标记当前页已掌握
+            </button>
+          </div>
+
+          <!-- 学习大纲/检查清单 -->
+          <div style="margin-bottom: 12px;">
+            <div style="font-weight: 700; font-size: 11px; color: var(--text-muted); margin-bottom: 6px; display: flex; justify-content: space-between;">
+              <span>📌 核心板块复习清单</span>
+              <span id="pdf-checklist-count" style="color: var(--primary);">已完成: 0 / 4</span>
+            </div>
+            <div id="pdf-checklist-container" style="display: flex; flex-direction: column; gap: 6px;">
+              <!-- 动态清单 -->
+            </div>
+          </div>
+
+          <!-- 笔记栏 -->
+          <div>
+            <div style="font-weight: 700; font-size: 11px; color: var(--text-muted); margin-bottom: 6px;">📝 本科目复习笔记（自动保存）</div>
+            <textarea id="pdf-notes-area" oninput="handlePdfNotesChange(this.value)" placeholder="在这里输入错题总结、口诀公式、或者需要着重复习的页码..." style="width: 100%; height: 60px; border: 1px solid var(--border-color); border-radius: var(--border-radius-sm); background: var(--bg-input); color: var(--text-main); padding: 8px; font-size: 11px; resize: none; outline: none; transition: border-color 0.2s;" onfocus="this.style.borderColor='var(--primary)'" onblur="this.style.borderColor='var(--border-color)'"></textarea>
+          </div>
+        </div>
+      </div>
+
       <!-- ================= 底部固定导航栏 ================= -->
       <nav class="bottom-nav">
         <div class="nav-item active" id="nav-home" onclick="switchScreen('home')">
@@ -891,6 +1029,10 @@
         <div class="nav-item" id="nav-mistakes" onclick="switchScreen('mistakes')">
           <svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
           <span>错题本</span>
+        </div>
+        <div class="nav-item" id="nav-pdf-mistakes" onclick="switchScreen('pdf-mistakes')">
+          <svg viewBox="0 0 24 24"><path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H8V4h12v12z"/></svg>
+          <span>错题集</span>
         </div>
         <div class="nav-item" id="nav-search" onclick="switchScreen('search')">
           <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
@@ -906,6 +1048,8 @@
   </div>
 
   <script src="questions.js?v=16"></script>
+  <script src="logic_600_data.js?v=1"></script>
+  <script src="passage_600_data.js?v=1"></script>
   <script src="politics_questions_data.js?v=15"></script>
   <script src="theory_questions_data.js?v=15"></script>
   <script src="guidebook_questions_data.js?v=15"></script>
@@ -920,8 +1064,12 @@
           .then(reg => console.log('ServiceWorker registered', reg))
           .catch(err => console.log('ServiceWorker registration failed', err));
       });
-    }
   </script>
+
+  <!-- 全屏图片放大遮罩层 -->
+  <div id="pdf-zoom-modal" onclick="closePdfZoomModal()" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.95); z-index: 99999; justify-content: center; align-items: center; cursor: zoom-out;">
+    <img id="pdf-zoom-img" src="" style="max-width: 95%; max-height: 95%; border-radius: 4px; box-shadow: 0 4px 30px rgba(0,0,0,0.8);" alt="高清错题">
+  </div>
 
 </body>
 </html>

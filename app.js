@@ -5,6 +5,16 @@ let userProgress = {
     mistakes: [],    // 错题ID列表
     favorites: []    // 收藏题ID列表
   },
+  logic_600: {
+    answers: {},
+    mistakes: [],
+    favorites: []
+  },
+  passage_600: {
+    answers: {},
+    mistakes: [],
+    favorites: []
+  },
   idioms: {
     answers: {},
     mistakes: [],
@@ -534,6 +544,12 @@ function selectSubject(subjectId) {
     if (subjectId === "beijing") {
       viewport.style.setProperty("--primary", "#c0392b");
       viewport.style.setProperty("--primary-glow", "rgba(192, 57, 43, 0.15)");
+    } else if (subjectId === "logic_600") {
+      viewport.style.setProperty("--primary", "#d35400");
+      viewport.style.setProperty("--primary-glow", "rgba(211, 84, 0, 0.15)");
+    } else if (subjectId === "passage_600") {
+      viewport.style.setProperty("--primary", "#8e44ad");
+      viewport.style.setProperty("--primary-glow", "rgba(142, 68, 173, 0.15)");
     } else if (subjectId === "idioms") {
       viewport.style.setProperty("--primary", "#2e7d32");
       viewport.style.setProperty("--primary-glow", "rgba(46, 125, 50, 0.15)");

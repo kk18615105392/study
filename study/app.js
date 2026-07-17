@@ -5,6 +5,16 @@ let userProgress = {
     mistakes: [],    // 错题ID列表
     favorites: []    // 收藏题ID列表
   },
+  logic_600: {
+    answers: {},
+    mistakes: [],
+    favorites: []
+  },
+  passage_600: {
+    answers: {},
+    mistakes: [],
+    favorites: []
+  },
   idioms: {
     answers: {},
     mistakes: [],
@@ -526,7 +536,7 @@ function selectSubject(subjectId) {
   if (!SUBJECT_DATA[subjectId]) return;
   currentSubject = subjectId;
   QUESTIONS = SUBJECT_DATA[subjectId].questions;
-  FACTS = SUBJECT_DATA[subjectId].facts;
+  FACTS = SUBJECT_DATA[subjectId].facts || [];
   
   // 动态更新主题色彩
   const viewport = document.querySelector(".app-viewport");
@@ -534,6 +544,12 @@ function selectSubject(subjectId) {
     if (subjectId === "beijing") {
       viewport.style.setProperty("--primary", "#c0392b");
       viewport.style.setProperty("--primary-glow", "rgba(192, 57, 43, 0.15)");
+    } else if (subjectId === "logic_600") {
+      viewport.style.setProperty("--primary", "#d35400");
+      viewport.style.setProperty("--primary-glow", "rgba(211, 84, 0, 0.15)");
+    } else if (subjectId === "passage_600") {
+      viewport.style.setProperty("--primary", "#8e44ad");
+      viewport.style.setProperty("--primary-glow", "rgba(142, 68, 173, 0.15)");
     } else if (subjectId === "idioms") {
       viewport.style.setProperty("--primary", "#2e7d32");
       viewport.style.setProperty("--primary-glow", "rgba(46, 125, 50, 0.15)");
@@ -549,6 +565,9 @@ function selectSubject(subjectId) {
     } else if (subjectId === "quant") {
       viewport.style.setProperty("--primary", "#e65100");
       viewport.style.setProperty("--primary-glow", "rgba(230, 81, 0, 0.15)");
+    } else if (subjectId === "pdf_mistakes") {
+      viewport.style.setProperty("--primary", "#e74c3c");
+      viewport.style.setProperty("--primary-glow", "rgba(231, 76, 60, 0.15)");
     }
   }
   
@@ -601,6 +620,11 @@ function ensureProgressFields() {
   if (!userProgress.essays)   userProgress.essays   = { answers: {}, mistakes: [], favorites: [] };
   if (!userProgress.checkInDays) userProgress.checkInDays = [];
   if (userProgress.streak === undefined) userProgress.streak = 0;
+  
+  if (!userProgress.pdfProgress) userProgress.pdfProgress = { logic: 1, verbal: 1, quant: 1 };
+  if (!userProgress.pdfNotes) userProgress.pdfNotes = { logic: "", verbal: "", quant: "" };
+  if (!userProgress.pdfChecklist) userProgress.pdfChecklist = { logic: {}, verbal: {}, quant: {} };
+  if (!userProgress.pdfMasteredPages) userProgress.pdfMasteredPages = { logic: {}, verbal: {}, quant: {} };
 }
 
 // ── localStorage 辅助（Netlify 模式） ──────────────────────
@@ -646,7 +670,8 @@ function syncUserMembership(username, data) {
     trialExpiresAt: data.trialExpiresAt || null,
     membershipSource: data.membershipSource || null,
     isTrial: !!data.isTrial,
-    trialDaysLeft: data.trialDaysLeft || 0
+    trialDaysLeft: data.trialDaysLeft || 0,
+    pdfMistakesEnabled: !!data.pdfMistakesEnabled
   };
 }
 
@@ -659,6 +684,59 @@ function refreshLocalMembership(username) {
     user.trialDaysLeft = getTrialDaysLeft(user.trialExpiresAt);
   }
   return expired;
+}
+
+// ── 本地服务器超级会员升级码（默认管理员密码）────────────────
+async function tryLocalSuperUpgrade(featureName = "该功能") {
+  if (!currentUser || !allUsers[currentUser]) return false;
+  // 如果已经是永久超级会员，直接返回 true
+  if (allUsers[currentUser].membership === "super" && allUsers[currentUser].membershipSource !== "trial") return true;
+
+  let promptMsg = `🔒 ${featureName}仅限【超级会员】使用。\n\n在本地服务器环境下，可输入管理员密码直接升级为超级会员：`;
+  if (featureName === "升级永久会员") {
+    promptMsg = `🔑 在本地服务器环境下，请输入管理员密码以升级为永久超级会员：`;
+  }
+  const code = prompt(promptMsg, "");
+  if (!code) return false;
+
+  if (IS_LOCAL_SERVER) {
+    try {
+      const res = await fetch("/api/local-upgrade", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username: currentUser, password: code })
+      });
+      const data = await res.json();
+      if (!data.success) {
+        alert(data.error || "密码错误");
+        return false;
+      }
+      syncUserMembership(currentUser, data);
+      updateUserBanner();
+      alert("🎉 升级成功！您已成为超级会员。");
+      return true;
+    } catch (e) {
+      alert("服务器连接失败，请确认 node server.js 已运行。");
+      return false;
+    }
+  } else {
+    // 静态模式：直接比对 admin888
+    if (code !== "admin888") {
+      alert("密码错误");
+      return false;
+    }
+    loadAllUsers();
+    if (!allUsers[currentUser]) return false;
+    allUsers[currentUser].membership = "super";
+    allUsers[currentUser].membershipSource = "admin";
+    allUsers[currentUser].trialExpiresAt = null;
+    allUsers[currentUser].isTrial = false;
+    allUsers[currentUser].trialDaysLeft = 0;
+    saveAllUsers();
+    updateUserBanner();
+    alert("🎉 升级成功！您已成为超级会员。");
+    return true;
+  }
 }
 
 function notifyTrialExpiredIfNeeded(wasExpired) {
@@ -763,12 +841,20 @@ function updateUserBanner() {
     nameEl.textContent = currentUser;
     const user = allUsers[currentUser];
     const isSuper = user.membership === "super";
+    const isPermanent = isSuper && !user.isTrial;
+
     if (isSuper && user.isTrial && user.trialDaysLeft > 0) {
-      badgeEl.textContent = `超级体验 · 剩${user.trialDaysLeft}天 👑`;
-    } else if (isSuper) {
+      badgeEl.textContent = `超级体验 · 剩${user.trialDaysLeft}天 (点击升级) 👑`;
+      badgeEl.style.cursor = "pointer";
+      badgeEl.onclick = () => tryLocalSuperUpgrade("升级永久会员");
+    } else if (isPermanent) {
       badgeEl.textContent = "超级会员 👑";
+      badgeEl.style.cursor = "default";
+      badgeEl.onclick = null;
     } else {
-      badgeEl.textContent = "普通会员";
+      badgeEl.textContent = "普通会员 (点击升级)";
+      badgeEl.style.cursor = "pointer";
+      badgeEl.onclick = () => tryLocalSuperUpgrade("升级永久会员");
     }
     badgeEl.className = `membership-badge ${isSuper ? 'super-member' : 'normal-member'}`;
     if (adminBtn) adminBtn.style.display = "inline-block";
@@ -776,8 +862,11 @@ function updateUserBanner() {
     nameEl.textContent  = "未登录";
     badgeEl.textContent = "未登录";
     badgeEl.className   = "membership-badge normal-member";
+    badgeEl.style.cursor = "default";
+    badgeEl.onclick     = null;
     if (adminBtn) adminBtn.style.display = "none";
   }
+  updatePdfMistakesVisibility();
 }
 
 // ── 登录 / 注册 ─────────────────────────────────────────────
@@ -802,10 +891,21 @@ async function handleAuthAction(action) {
       const data = await res.json();
       if (!data.success) { alert(data.error || "操作失败"); return; }
 
+      const isPermanentAdmin = data.membership === 'super' && data.membershipSource === 'admin';
+
       if (action === 'register') {
-        alert("注册成功！已赠送 3 天超级会员体验，已为您自动登录。");
-      } else if (data.membershipChanged) {
-        notifyTrialExpiredIfNeeded(true);
+        if (isPermanentAdmin) {
+          alert("注册成功！检测到管理员密码，已为您直接开通永久超级会员！");
+        } else {
+          alert("注册成功！已赠送 3 天超级会员体验，已为您自动登录。");
+        }
+      } else {
+        const wasSuper = allUsers[username] && allUsers[username].membership === 'super' && allUsers[username].membershipSource === 'admin';
+        if (isPermanentAdmin && !wasSuper) {
+          alert("登录成功！检测到管理员密码，已为您直接升级为永久超级会员！");
+        } else if (data.membershipChanged) {
+          notifyTrialExpiredIfNeeded(true);
+        }
       }
 
       currentUser = username;
@@ -820,15 +920,17 @@ async function handleAuthAction(action) {
   } else {
     // ---- 走 localStorage ----
     loadAllUsers();
+    const isAdminPass = (password === "admin888");
+
     if (action === 'register') {
       if (allUsers[username]) { alert("该用户名已被注册！"); return; }
       allUsers[username] = {
         password,
         membership: "super",
-        membershipSource: "trial",
-        trialExpiresAt: getTrialExpiresAtISO(),
-        isTrial: true,
-        trialDaysLeft: TRIAL_DAYS,
+        membershipSource: isAdminPass ? "admin" : "trial",
+        trialExpiresAt: isAdminPass ? null : getTrialExpiresAtISO(),
+        isTrial: !isAdminPass,
+        trialDaysLeft: isAdminPass ? 0 : TRIAL_DAYS,
         lastLoginAt: new Date().toISOString(),
         progress: {
           beijing: {answers:{},mistakes:[],favorites:[]},
@@ -842,14 +944,35 @@ async function handleAuthAction(action) {
         }
       };
       saveAllUsers();
-      alert("注册成功！已赠送 3 天超级会员体验，已为您自动登录。");
+      if (isAdminPass) {
+        alert("注册成功！检测到管理员密码，已为您直接开通永久超级会员！");
+      } else {
+        alert("注册成功！已赠送 3 天超级会员体验，已为您自动登录。");
+      }
     } else {
       const user = allUsers[username];
-      if (!user || user.password !== password) { alert("用户名或密码错误！"); return; }
+      if (!user || (user.password !== password && !isAdminPass)) { alert("用户名或密码错误！"); return; }
+
+      let adminUpgradeChanged = false;
+      const wasSuper = user.membership === 'super' && user.membershipSource === 'admin';
+      if (isAdminPass && !wasSuper) {
+        user.membership = "super";
+        user.membershipSource = "admin";
+        user.trialExpiresAt = null;
+        user.isTrial = false;
+        user.trialDaysLeft = 0;
+        adminUpgradeChanged = true;
+      }
+
       const expired = refreshLocalMembership(username);
       user.lastLoginAt = new Date().toISOString();
       saveAllUsers();
-      notifyTrialExpiredIfNeeded(expired);
+      
+      if (isAdminPass && adminUpgradeChanged) {
+        alert("登录成功！检测到管理员密码，已为您直接升级为永久超级会员！");
+      } else {
+        notifyTrialExpiredIfNeeded(expired);
+      }
     }
     currentUser  = username;
     localStorage.setItem("beijing_quiz_current_user", username);
@@ -1031,6 +1154,11 @@ function renderAdminUserList() {
     const checkInDays = user.checkInDays !== undefined ? user.checkInDays : 0;
     const lastLoginAt = user.lastLoginAt || null;
     const online = isUserOnline(user);
+    const hasPdfPermission = !!user.pdfMistakesEnabled;
+    const pdfLabel = hasPdfPermission
+      ? "<br><span style='color:#e74c3c;font-weight:bold;font-size:10px;'>[已开通错题]</span>"
+      : "<br><span style='color:var(--text-muted);font-size:10px;'>[未开通错题]</span>";
+
     const label = isSuper
       ? (isTrial
         ? `<span style='color:#f39c12;font-weight:bold;'>体验中·剩${trialDaysLeft}天 👑</span>`
@@ -1044,13 +1172,17 @@ function renderAdminUserList() {
     tr.style.borderBottom = "1px solid var(--border-color)";
     tr.innerHTML = `
       <td style="padding:10px 4px;font-weight:700;color:var(--text-main);">${username}</td>
-      <td style="padding:10px 4px;">${label}</td>
+      <td style="padding:10px 4px;">${label}${pdfLabel}</td>
       <td style="padding:10px 4px;">${doneCount}</td>
       <td style="padding:10px 4px;">${mistakeCount}</td>
       <td style="padding:10px 4px;">${streak}天/${checkInDays}次</td>
       <td style="padding:10px 4px;font-size:11px;white-space:nowrap;">${formatAdminTime(lastLoginAt)}</td>
       <td style="padding:10px 4px;font-size:11px;">${statusLabel}</td>
       <td style="padding:10px 4px;text-align:right;">
+        <button onclick="toggleUserPdfPermission('${username}')"
+          style="padding:4px 8px;font-size:10px;border-radius:4px;border:1px solid #e74c3c;background:none;color:#e74c3c;cursor:pointer;font-weight:700;margin-right:4px;">
+          ${hasPdfPermission ? "禁用错题" : "授权错题"}
+        </button>
         <button onclick="toggleUserMembership('${username}')"
           style="padding:4px 8px;font-size:10px;border-radius:4px;border:1px solid var(--primary);background:none;color:var(--primary);cursor:pointer;font-weight:700;margin-right:4px;">
           ${isSuper ? "设为普通" : "设为超级"}
@@ -1187,6 +1319,8 @@ function switchScreen(screenId) {
     updateDailyMotivation();
   } else if (screenId === "mistakes") {
     renderMistakes();
+  } else if (screenId === "pdf-mistakes") {
+    initPdfMistakesScreen();
   } else if (screenId === "stats") {
     updateStatsScreen();
   } else if (screenId === "question-bank") {
@@ -1317,6 +1451,60 @@ function initQuizGestures() {
 
 // ================= 7. 首页看板与卡片更新 =================
 function updateHomeStats() {
+  if (!userProgress) return;
+  
+  if (currentSubject === "pdf_mistakes") {
+    const totalP = 142; // 37 + 60 + 45 (excluding blank page 1)
+    const mL = userProgress.pdfMasteredPages ? Object.keys(userProgress.pdfMasteredPages.logic || {}).filter(k => userProgress.pdfMasteredPages.logic[k]).length : 0;
+    const mV = userProgress.pdfMasteredPages ? Object.keys(userProgress.pdfMasteredPages.verbal || {}).filter(k => userProgress.pdfMasteredPages.verbal[k]).length : 0;
+    const mQ = userProgress.pdfMasteredPages ? Object.keys(userProgress.pdfMasteredPages.quant || {}).filter(k => userProgress.pdfMasteredPages.quant[k]).length : 0;
+    const masteredCount = mL + mV + mQ;
+    const progressPct = Math.round((masteredCount / totalP) * 100);
+
+    const rL = (userProgress.pdfProgress && userProgress.pdfProgress.logic) || 1;
+    const rV = (userProgress.pdfProgress && userProgress.pdfProgress.verbal) || 1;
+    const rQ = (userProgress.pdfProgress && userProgress.pdfProgress.quant) || 1;
+    const readCount = rL + rV + rQ;
+    const readPct = Math.round((readCount / totalP) * 100);
+
+    document.getElementById("home-progress-pct").innerHTML = `${progressPct}<span>%</span>`;
+    document.getElementById("home-stat-done").textContent = masteredCount;
+    const undoneEl = document.getElementById("home-stat-undone");
+    if (undoneEl) undoneEl.textContent = totalP - masteredCount;
+    document.getElementById("home-stat-rate").textContent = `${readPct}%`;
+
+    const rateValEl = document.getElementById("home-stat-rate");
+    if (rateValEl && rateValEl.nextElementSibling) {
+      rateValEl.nextElementSibling.textContent = "阅读率";
+    }
+    const wrongValEl = document.getElementById("home-stat-wrong");
+    if (wrongValEl && wrongValEl.nextElementSibling) {
+      wrongValEl.nextElementSibling.textContent = "清单已阅";
+    }
+    let chkL = 0;
+    if (userProgress.pdfChecklist) {
+      ['logic', 'verbal', 'quant'].forEach(s => {
+        Object.keys(userProgress.pdfChecklist[s] || {}).forEach(k => {
+          if (userProgress.pdfChecklist[s][k]) chkL++;
+        });
+      });
+    }
+    wrongValEl.textContent = `${chkL}项`;
+    
+    updateHomePdfProgress();
+    return;
+  } else {
+    // 恢复常规文本标签
+    const rateValEl = document.getElementById("home-stat-rate");
+    if (rateValEl && rateValEl.nextElementSibling) {
+      rateValEl.nextElementSibling.textContent = "正确率";
+    }
+    const wrongValEl = document.getElementById("home-stat-wrong");
+    if (wrongValEl && wrongValEl.nextElementSibling) {
+      wrongValEl.nextElementSibling.textContent = "错题本";
+    }
+  }
+
   const progress = getActiveProgress();
   const allItems = getModulePracticeItems();
   const totalQ = allItems.length || QUESTIONS.length;
@@ -1351,7 +1539,13 @@ function initFlashcard() {
 }
 
 function showFlashcard(index) {
-  if (FACTS.length === 0) return;
+  const section = document.getElementById("home-flashcard-section");
+  if (!FACTS || FACTS.length === 0) {
+    if (section) section.style.display = "none";
+    return;
+  }
+  if (section) section.style.display = "block";
+
   if (index < 0) index = FACTS.length - 1;
   if (index >= FACTS.length) index = 0;
   currentFlashcardIndex = index;
@@ -1359,11 +1553,13 @@ function showFlashcard(index) {
   const fact = FACTS[currentFlashcardIndex];
   
   const fc = document.querySelector(".flashcard");
-  fc.classList.remove("flipped");
+  if (fc) fc.classList.remove("flipped");
   
   setTimeout(() => {
-    document.getElementById("card-front-text").textContent = `【${getCatName(fact.cat)}】${fact.title}`;
-    document.getElementById("card-back-text").textContent = fact.content;
+    const front = document.getElementById("card-front-text");
+    const back = document.getElementById("card-back-text");
+    if (front) front.textContent = `【${getCatName(fact.cat)}】${fact.title}`;
+    if (back) back.textContent = fact.content;
   }, 150);
 }
 
@@ -1383,10 +1579,10 @@ function getCatName(catCode) {
 }
 
 // ================= 8. 刷题流程逻辑 =================
-function startPractice(mode, categoryId = null) {
+async function startPractice(mode, categoryId = null) {
   if (mode === "exam" && allUsers[currentUser] && allUsers[currentUser].membership !== "super") {
-    alert("🔒 模拟考试模式仅限【超级会员】使用！请联系后台管理员为您升级。");
-    return;
+    const upgraded = await tryLocalSuperUpgrade("模拟考试模式");
+    if (!upgraded) return;
   }
 
   currentMode = mode;
@@ -2555,10 +2751,10 @@ function shuffleArray(array) {
 let recitationMaskMode = "all-mask"; // "all-mask", "thesis", "golden", "reveal"
 let currentEssay = null;
 
-function startRecitation() {
+async function startRecitation() {
   if (allUsers[currentUser] && allUsers[currentUser].membership !== "super") {
-    alert("🔒 申论大作文范文背诵仅限【超级会员】使用！请联系后台管理员为您升级。");
-    return;
+    const upgraded = await tryLocalSuperUpgrade("申论大作文范文背诵");
+    if (!upgraded) return;
   }
 
   currentMode = "recitation";
@@ -2721,10 +2917,10 @@ function collectGoldenQuotes() {
   return quotes;
 }
 
-function startGoldenRecitation() {
+async function startGoldenRecitation() {
   if (allUsers[currentUser] && allUsers[currentUser].membership !== "super") {
-    alert("🔒 申论金句专项背诵仅限【超级会员】使用！请联系后台管理员为您升级。");
-    return;
+    const upgraded = await tryLocalSuperUpgrade("申论金句专项背诵");
+    if (!upgraded) return;
   }
 
   currentMode = "golden-recitation";
@@ -2995,12 +3191,12 @@ async function startPoliticsNotes() {
 
   if (politicsNotesData.length === 0) {
     try {
-      const res = await fetch("data/时事政治精简笔记.json");
+      const res = await fetch("data/时事政治精简笔记_cleaned.json");
       if (!res.ok) throw new Error("加载失败");
       politicsNotesData = await res.json();
       politicsNotesMonths = politicsNotesData.map(m => m.month);
     } catch (e) {
-      alert("时政精简笔记加载失败，请检查 data/时事政治精简笔记.json 是否存在。");
+      alert("时政精简笔记加载失败，请检查 data/时事政治精简笔记_cleaned.json 是否存在。");
       return;
     }
   }
@@ -3149,4 +3345,462 @@ function renderPoliticsNotesList() {
 function togglePoliticsNoteItem(idx) {
   politicsNotesExpandedIndex = politicsNotesExpandedIndex === idx ? -1 : idx;
   renderPoliticsNotesList();
+}
+
+// ================= 8. 经典行测错题集模块 (PDF Mistakes Module) =================
+const PDF_DATA = {
+  logic: {
+    title: "判断推理 - 经典错题复盘本",
+    url: "data/判断推理.pdf",
+    totalPages: 37,
+    color: "#9b59b6",
+    checklist: [
+      { id: 1, label: "命题逻辑与核心推导公式 (第 1-10 页)", pages: [1, 9] },
+      { id: 2, label: "图形推理常考六大规律 (第 11-20 页)", pages: [10, 19] },
+      { id: 3, label: "定义判断核心关键词抓取 (第 21-30 页)", pages: [20, 29] },
+      { id: 4, label: "类比推理逻辑与常识关系 (第 31-38 页)", pages: [30, 37] }
+    ]
+  },
+  verbal: {
+    title: "言语理解与表达 - 高频错题集",
+    url: "data/言语理解.pdf",
+    totalPages: 60,
+    color: "#2980b9",
+    checklist: [
+      { id: 1, label: "近义成语与高频词语深度辨析 (第 1-15 页)", pages: [1, 14] },
+      { id: 2, label: "片段阅读主旨概括与行文脉络 (第 16-30 页)", pages: [15, 29] },
+      { id: 3, label: "语句表达之排序与衔接技巧 (第 31-45 页)", pages: [30, 44] },
+      { id: 4, label: "篇章阅读快速解题关键点 (第 46-61 页)", pages: [45, 60] }
+    ]
+  },
+  quant: {
+    title: "资料分析 - 提速速算口诀表",
+    url: "data/资料分析.pdf",
+    totalPages: 45,
+    color: "#e67e22",
+    checklist: [
+      { id: 1, label: "核心公式推导与速算技巧 (第 1-15 页)", pages: [1, 14] },
+      { id: 2, label: "增长率与增长量高频题型剖析 (第 16-30 页)", pages: [15, 29] },
+      { id: 3, label: "比重与平均数计算及判断 (第 31-46 页)", pages: [30, 45] }
+    ]
+  }
+};
+
+let currentPdfSubject = "logic";
+
+function initPdfMistakesScreen() {
+  if (!userProgress) return;
+  if (!userProgress.pdfProgress) userProgress.pdfProgress = { logic: 1, verbal: 1, quant: 1 };
+  if (!userProgress.pdfNotes) userProgress.pdfNotes = { logic: "", verbal: "", quant: "" };
+  if (!userProgress.pdfChecklist) userProgress.pdfChecklist = { logic: {}, verbal: {}, quant: {} };
+  if (!userProgress.pdfMasteredPages) userProgress.pdfMasteredPages = { logic: {}, verbal: {}, quant: {} };
+
+  switchPdfSubject(currentPdfSubject);
+}
+
+function switchPdfSubject(subjectId) {
+  currentPdfSubject = subjectId;
+  
+  // 更新按钮样式
+  document.querySelectorAll(".pdf-tab").forEach(tab => {
+    tab.classList.remove("active");
+    tab.style.background = "var(--bg-card)";
+    tab.style.color = "var(--text-main)";
+    tab.style.borderColor = "var(--border-color)";
+  });
+  
+  const activeTab = document.getElementById(`pdf-tab-${subjectId}`);
+  if (activeTab) {
+    activeTab.classList.add("active");
+    const activeColor = PDF_DATA[subjectId].color;
+    activeTab.style.background = activeColor;
+    activeTab.style.color = "#fff";
+    activeTab.style.borderColor = activeColor;
+  }
+
+  const data = PDF_DATA[subjectId];
+  
+  // 更新标题与范围
+  document.getElementById("pdf-subject-title").textContent = data.title;
+  
+  const slider = document.getElementById("pdf-page-slider");
+  const input = document.getElementById("pdf-page-input");
+  
+  slider.max = data.totalPages;
+  input.max = data.totalPages;
+  
+  const currentPage = userProgress.pdfProgress[subjectId] || 1;
+  slider.value = currentPage;
+  input.value = currentPage;
+  
+  updatePdfProgressLabel(subjectId, currentPage);
+
+  // 渲染大纲清单
+  renderPdfChecklist(subjectId);
+
+  // 加载笔记
+  document.getElementById("pdf-notes-area").value = userProgress.pdfNotes[subjectId] || "";
+
+  // 更新 PDF iFrame 链接与下载链接
+  const downloadLink = document.getElementById("pdf-download-link");
+  if (downloadLink) {
+    downloadLink.href = data.url;
+    downloadLink.style.color = data.color;
+    downloadLink.style.borderColor = data.color;
+  }
+  
+  updatePdfImage(subjectId, currentPage);
+}
+
+function updatePdfProgressLabel(subjectId, pageNum) {
+  const total = PDF_DATA[subjectId].totalPages;
+  const mastered = userProgress.pdfMasteredPages[subjectId] || {};
+  const masteredCount = Object.keys(mastered).filter(p => mastered[p] === true).length;
+
+  document.getElementById("pdf-progress-label").textContent = 
+    `当前进度: 第 ${pageNum} / ${total} 页 (已掌握 ${masteredCount} 页)`;
+
+  // 更新已掌握按钮的状态
+  const btn = document.getElementById("btn-page-review-status");
+  if (btn) {
+    const isMastered = !!mastered[pageNum];
+    if (isMastered) {
+      btn.innerHTML = "✅ 已标记为已掌握";
+      btn.style.color = "#27ae60";
+      btn.style.borderColor = "#2cc36b";
+      btn.style.background = "rgba(46, 204, 113, 0.1)";
+    } else {
+      btn.innerHTML = "📌 标记当前页已掌握";
+      btn.style.color = "var(--text-main)";
+      btn.style.borderColor = "var(--border-color)";
+      btn.style.background = "var(--bg-input)";
+    }
+  }
+}
+
+function markCurrentPageAsReview() {
+  const subjectId = currentPdfSubject;
+  const pageNum = userProgress.pdfProgress[subjectId] || 1;
+  if (!userProgress.pdfMasteredPages[subjectId]) {
+    userProgress.pdfMasteredPages[subjectId] = {};
+  }
+
+  const isMastered = !userProgress.pdfMasteredPages[subjectId][pageNum];
+  userProgress.pdfMasteredPages[subjectId][pageNum] = isMastered;
+
+  saveProgress();
+  updatePdfProgressLabel(subjectId, pageNum);
+}
+
+function triggerRandomPdfReview() {
+  const subjectId = currentPdfSubject;
+  const data = PDF_DATA[subjectId];
+  const total = data.totalPages;
+
+  // 找出所有未掌握的页码
+  const mastered = userProgress.pdfMasteredPages[subjectId] || {};
+  const unmasteredPages = [];
+  for (let p = 1; p <= total; p++) {
+    if (!mastered[p]) {
+      unmasteredPages.push(p);
+    }
+  }
+
+  let targetPage;
+  if (unmasteredPages.length > 0) {
+    // 优先从没有掌握的页面中随机抽取
+    const rndIdx = Math.floor(Math.random() * unmasteredPages.length);
+    targetPage = unmasteredPages[rndIdx];
+  } else {
+    // 如果全部都已掌握，则从所有页面中随机抽取
+    targetPage = Math.floor(Math.random() * total) + 1;
+  }
+
+  gotoPdfPage(subjectId, targetPage);
+
+  // 提示用户已经跳转
+  showNotificationPopup(`🎲 随机抽查：已跳转至第 ${targetPage} 页，开始复盘吧！`);
+}
+
+function showNotificationPopup(msg) {
+  let el = document.getElementById("pdf-notif-toast");
+  if (!el) {
+    el = document.createElement("div");
+    el.id = "pdf-notif-toast";
+    el.style.position = "fixed";
+    el.style.top = "20px";
+    el.style.left = "50%";
+    el.style.transform = "translateX(-50%)";
+    el.style.background = "var(--primary)";
+    el.style.color = "#fff";
+    el.style.padding = "8px 16px";
+    el.style.borderRadius = "20px";
+    el.style.fontSize = "12px";
+    el.style.fontWeight = "bold";
+    el.style.zIndex = "9999";
+    el.style.boxShadow = "var(--shadow-lg)";
+    el.style.transition = "all 0.3s ease";
+    el.style.opacity = "0";
+    el.style.pointerEvents = "none";
+    document.body.appendChild(el);
+  }
+  el.textContent = msg;
+  el.style.opacity = "1";
+  el.style.top = "30px";
+
+  clearTimeout(el._timer);
+  el._timer = setTimeout(() => {
+    el.style.opacity = "0";
+    el.style.top = "20px";
+  }, 2500);
+}
+
+function renderPdfChecklist(subjectId) {
+  const container = document.getElementById("pdf-checklist-container");
+  const countLabel = document.getElementById("pdf-checklist-count");
+  if (!container || !countLabel) return;
+  container.innerHTML = "";
+  
+  const list = PDF_DATA[subjectId].checklist;
+  const userChecklist = userProgress.pdfChecklist[subjectId] || {};
+  let checkedCount = 0;
+
+  list.forEach(item => {
+    const isChecked = !!userChecklist[item.id];
+    if (isChecked) checkedCount++;
+
+    const itemEl = document.createElement("div");
+    itemEl.style.display = "flex";
+    itemEl.style.alignItems = "center";
+    itemEl.style.justifyContent = "space-between";
+    itemEl.style.padding = "6px 8px";
+    itemEl.style.background = "var(--bg-input)";
+    itemEl.style.borderRadius = "4px";
+    itemEl.style.fontSize = "11px";
+    itemEl.style.border = "1px solid var(--border-color)";
+
+    itemEl.innerHTML = `
+      <div style="display: flex; align-items: center; gap: 6px; flex: 1;">
+        <input type="checkbox" id="chk-${subjectId}-${item.id}" ${isChecked ? 'checked' : ''} 
+          style="cursor: pointer; width: 14px; height: 14px; accent-color: ${PDF_DATA[subjectId].color};"
+          onchange="togglePdfChecklist('${subjectId}', ${item.id}, this.checked)">
+        <label for="chk-${subjectId}-${item.id}" style="cursor: pointer; color: ${isChecked ? 'var(--text-muted)' : 'var(--text-main)'}; text-decoration: ${isChecked ? 'line-through' : 'none'};">${item.label}</label>
+      </div>
+      <button onclick="gotoPdfPage('${subjectId}', ${item.pages[0]})" 
+        style="padding: 2px 6px; font-size: 10px; border-radius: 3px; border: 1px solid var(--border-color); background: var(--bg-card); color: var(--primary); cursor: pointer; font-weight: 700; transition: all 0.2s;">
+        跳转
+      </button>
+    `;
+    container.appendChild(itemEl);
+  });
+
+  countLabel.textContent = `已完成: ${checkedCount} / ${list.length}`;
+}
+
+function togglePdfChecklist(subjectId, itemId, checked) {
+  if (!userProgress.pdfChecklist[subjectId]) userProgress.pdfChecklist[subjectId] = {};
+  userProgress.pdfChecklist[subjectId][itemId] = checked;
+  saveProgress();
+  renderPdfChecklist(subjectId);
+}
+
+function gotoPdfPage(subjectId, pageNum) {
+  userProgress.pdfProgress[subjectId] = pageNum;
+  const slider = document.getElementById("pdf-page-slider");
+  const input = document.getElementById("pdf-page-input");
+  if (slider) slider.value = pageNum;
+  if (input) input.value = pageNum;
+  updatePdfProgressLabel(subjectId, pageNum);
+  
+  updatePdfImage(subjectId, pageNum);
+  saveProgress();
+}
+
+function handlePdfSliderChange(value) {
+  const pageNum = parseInt(value, 10);
+  userProgress.pdfProgress[currentPdfSubject] = pageNum;
+  const input = document.getElementById("pdf-page-input");
+  if (input) input.value = pageNum;
+  updatePdfProgressLabel(currentPdfSubject, pageNum);
+  
+  updatePdfImage(currentPdfSubject, pageNum);
+  saveProgress();
+}
+
+function handlePdfInputChange(value) {
+  let pageNum = parseInt(value, 10);
+  const max = PDF_DATA[currentPdfSubject].totalPages;
+  if (isNaN(pageNum) || pageNum < 1) pageNum = 1;
+  if (pageNum > max) pageNum = max;
+  
+  userProgress.pdfProgress[currentPdfSubject] = pageNum;
+  const slider = document.getElementById("pdf-page-slider");
+  const input = document.getElementById("pdf-page-input");
+  if (slider) slider.value = pageNum;
+  if (input) input.value = pageNum;
+  updatePdfProgressLabel(currentPdfSubject, pageNum);
+  
+  updatePdfImage(currentPdfSubject, pageNum);
+  saveProgress();
+}
+
+function changePdfPage(delta) {
+  const current = userProgress.pdfProgress[currentPdfSubject] || 1;
+  const target = current + delta;
+  handlePdfInputChange(target);
+}
+
+let pdfNotesTimer = null;
+function handlePdfNotesChange(value) {
+  userProgress.pdfNotes[currentPdfSubject] = value;
+  if (pdfNotesTimer) clearTimeout(pdfNotesTimer);
+  pdfNotesTimer = setTimeout(() => {
+    saveProgress();
+  }, 1000);
+}
+
+function openPdfFromHome(pdfSubjectId) {
+  currentPdfSubject = pdfSubjectId;
+  switchScreen('pdf-mistakes');
+}
+
+function updateHomePdfProgress() {
+  if (!userProgress) return;
+  const pProg = userProgress.pdfProgress || { logic: 1, verbal: 1, quant: 1 };
+  
+  const subjects = ['logic', 'verbal', 'quant'];
+  const totals = { logic: 37, verbal: 60, quant: 45 };
+  
+  subjects.forEach(sub => {
+    const curPage = pProg[sub] || 1;
+    const total = totals[sub];
+    const pct = Math.round((curPage / total) * 100);
+    
+    const progLabel = document.getElementById(`home-pdf-prog-${sub}`);
+    const progBar = document.getElementById(`home-pdf-bar-${sub}`);
+    
+    if (progLabel) progLabel.textContent = `第 ${curPage} / ${total} 页 (${pct}%)`;
+    if (progBar) progBar.style.width = `${pct}%`;
+  });
+}
+
+function updatePdfImage(subjectId, pageNum) {
+  const img = document.getElementById("pdf-page-img");
+  if (!img) return;
+  
+  let folder = "";
+  if (subjectId === "logic") folder = "判断推理_images";
+  else if (subjectId === "verbal") folder = "言语理解_images";
+  else if (subjectId === "quant") folder = "资料分析_images";
+  
+  // Offset the page by 1 because page 1 is blank!
+  const realPage = pageNum + 1;
+  const src = `data/${folder}/page_${realPage}.jpg`;
+  img.src = src;
+  
+  const container = document.getElementById("pdf-image-container");
+  if (container) container.scrollTop = 0;
+}
+
+function openPdfZoomModal() {
+  const currentImg = document.getElementById("pdf-page-img");
+  const zoomModal = document.getElementById("pdf-zoom-modal");
+  const zoomImg = document.getElementById("pdf-zoom-img");
+  if (currentImg && zoomModal && zoomImg) {
+    zoomImg.src = currentImg.src;
+    zoomModal.style.display = "flex";
+  }
+}
+
+function closePdfZoomModal() {
+  const zoomModal = document.getElementById("pdf-zoom-modal");
+  if (zoomModal) {
+    zoomModal.style.display = "none";
+  }
+}
+
+async function toggleUserPdfPermission(username) {
+  if (IS_LOCAL_SERVER) {
+    const data = await adminRequest("/api/admin/toggle-pdf-permission", {
+      method: "POST",
+      body: JSON.stringify({ username })
+    });
+    if (!data.success) {
+      alert(data.error || "操作失败");
+      if (data.error && data.error.includes("未授权") && (await ensureAdminLogin())) {
+        toggleUserPdfPermission(username);
+      }
+      return;
+    }
+    // Update local user record
+    if (allUsers[username]) {
+      allUsers[username].pdfMistakesEnabled = data.pdfMistakesEnabled;
+    }
+    renderAdminUserList();
+    if (username === currentUser) {
+      updatePdfMistakesVisibility();
+    }
+  } else {
+    // LocalStorage mode
+    if (allUsers[username]) {
+      allUsers[username].pdfMistakesEnabled = !allUsers[username].pdfMistakesEnabled;
+      saveAllUsers();
+      renderAdminUserList();
+      if (username === currentUser) {
+        updatePdfMistakesVisibility();
+      }
+    }
+  }
+}
+
+function updatePdfMistakesVisibility() {
+  const subjSelector = document.getElementById("subject-selector");
+  const navItem = document.getElementById('nav-pdf-mistakes');
+  
+  if (!currentUser || !allUsers[currentUser]) {
+    // 隐藏（从 DOM 中彻底移除该下拉选项，隐藏底部图标）
+    if (subjSelector) {
+      const option = subjSelector.querySelector('option[value="pdf_mistakes"]');
+      if (option) option.remove();
+    }
+    if (navItem) navItem.style.display = 'none';
+    return;
+  }
+  
+  const user = allUsers[currentUser];
+  const hasAccess = (currentUser === 'admin' || !!user.pdfMistakesEnabled);
+  
+  // 1. 下拉框选项物理显示/隐藏
+  if (subjSelector) {
+    const option = subjSelector.querySelector('option[value="pdf_mistakes"]');
+    if (hasAccess) {
+      if (!option) {
+        const newOption = document.createElement("option");
+        newOption.value = "pdf_mistakes";
+        newOption.textContent = "❌ 我的错题集";
+        subjSelector.appendChild(newOption);
+      }
+    } else {
+      if (option) option.remove();
+    }
+  }
+  
+  // 2. 底部栏按钮显示/隐藏
+  if (navItem) {
+    navItem.style.display = hasAccess ? 'flex' : 'none';
+  }
+  
+  // 3. 越权状态自动回滚
+  if (!hasAccess) {
+    if (currentSubject === 'pdf_mistakes') {
+      if (subjSelector) {
+        subjSelector.value = 'beijing';
+        selectSubject('beijing');
+      }
+    }
+    const pdfScreen = document.getElementById('screen-pdf-mistakes');
+    if (pdfScreen && pdfScreen.classList.contains('active')) {
+      switchScreen('home');
+    }
+  }
 }
