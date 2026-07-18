@@ -66,6 +66,7 @@
               <option value="idioms">成语·言语700词</option>
               <option value="politics">时政·月度热点</option>
               <option value="theory">政治·理论背诵</option>
+              <option value="theory_drill">📕 理论讲练·挖空</option>
               <option value="guidebook">小黑排坑手册</option>
               <option value="quant">资料·速算技巧</option>
               <option value="essays">📖 申论大作文</option>
@@ -208,6 +209,40 @@
             <div class="mode-icon">✍️</div>
             <div class="mode-name">分项真题精刷</div>
             <div class="mode-desc">单一/综合/公文/作文 · 材料作答对要点</div>
+          </div>
+        </div>
+
+        <!-- 理论讲练·挖空专属模式 -->
+        <div class="mode-grid" id="mode-grid-theory-drill" style="display:none;">
+          <div class="mode-card m-seq" onclick="startTheoryDrill('all','seq')">
+            <div class="mode-icon">📚</div>
+            <div class="mode-name">讲练混合</div>
+            <div class="mode-desc">挖空+传真+母题按知识点穿插</div>
+          </div>
+          <div class="mode-card m-cat" onclick="startTheoryDrill('cloze','seq')">
+            <div class="mode-icon">✏️</div>
+            <div class="mode-name">黑体挖空</div>
+            <div class="mode-desc">只练讲义黑体核心表述</div>
+          </div>
+          <div class="mode-card m-rand" onclick="startTheoryDrill('mcq','seq')">
+            <div class="mode-icon">🎯</div>
+            <div class="mode-name">传真+母题</div>
+            <div class="mode-desc">考场传真与母题特训选择题</div>
+          </div>
+          <div class="mode-card m-exam" onclick="startTheoryDrill('all','rand')">
+            <div class="mode-icon">🎲</div>
+            <div class="mode-name">随机抽练</div>
+            <div class="mode-desc">打乱顺序检验记忆</div>
+          </div>
+          <div class="mode-card m-bank" onclick="showTheoryDrillCategoryPicker()">
+            <div class="mode-icon">🗂️</div>
+            <div class="mode-name">按章节练</div>
+            <div class="mode-desc">习思想/马原/文史/科技/法律</div>
+          </div>
+          <div class="mode-card m-undone" onclick="startTheoryDrill('all','undone')">
+            <div class="mode-icon">🔥</div>
+            <div class="mode-name">攻克未刷</div>
+            <div class="mode-desc">优先刷没做过的题</div>
           </div>
         </div>
 
@@ -1150,13 +1185,15 @@
   <script src="passage_600_data.js?v=1"></script>
   <script src="politics_questions_data.js?v=15"></script>
   <script src="theory_questions_data.js?v=15"></script>
+  <script src="theory_drill_data.js?v=1"></script>
   <script src="guidebook_questions_data.js?v=15"></script>
   <script src="quant_data.js?v=1"></script>
   <script src="essays_data.js?v=15"></script>
   <script src="shenlun_practice_data.js?v=1"></script>
-  <script src="politics_modes.js?v=18"></script>
-  <script src="app.js?v=25"></script>
+  <script src="politics_modes.js?v=19"></script>
+  <script src="app.js?v=26"></script>
   <script src="shenlun_practice.js?v=1"></script>
+  <script src="theory_drill.js?v=1"></script>
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {

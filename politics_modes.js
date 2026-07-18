@@ -1030,6 +1030,7 @@ function updateModeGrid(subjectId) {
   const politics = document.getElementById('mode-grid-politics');
   const pdfMistakesGrid = document.getElementById('mode-grid-pdf-mistakes');
   const shenlunPracticeGrid = document.getElementById('mode-grid-shenlun-practice');
+  const theoryDrillGrid = document.getElementById('mode-grid-theory-drill');
   const standardMatch = document.getElementById('mode-card-standard-match');
   const recitationStandard = document.getElementById('mode-card-recitation-standard');
   const goldenRecitation = document.getElementById('mode-card-golden-recitation');
@@ -1044,10 +1045,13 @@ function updateModeGrid(subjectId) {
   if (shenlunPracticeGrid) {
     shenlunPracticeGrid.style.display = subjectId === 'shenlun_practice' ? 'grid' : 'none';
   }
+  if (theoryDrillGrid) {
+    theoryDrillGrid.style.display = subjectId === 'theory_drill' ? 'grid' : 'none';
+  }
 
   const filterBar = document.getElementById('progress-filter-bar');
   if (filterBar) {
-    filterBar.style.display = (subjectId === 'essays' || subjectId === 'pdf_mistakes' || subjectId === 'shenlun_practice')
+    filterBar.style.display = (subjectId === 'essays' || subjectId === 'pdf_mistakes' || subjectId === 'shenlun_practice' || subjectId === 'theory_drill')
       ? 'none'
       : 'flex';
   }
@@ -1055,7 +1059,7 @@ function updateModeGrid(subjectId) {
   if (subjectId === 'politics') {
     standard.style.display = 'none';
     politics.style.display = 'grid';
-  } else if (subjectId === 'pdf_mistakes' || subjectId === 'shenlun_practice') {
+  } else if (subjectId === 'pdf_mistakes' || subjectId === 'shenlun_practice' || subjectId === 'theory_drill') {
     standard.style.display = 'none';
     politics.style.display = 'none';
   } else if (subjectId === 'essays') {

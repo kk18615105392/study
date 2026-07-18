@@ -1,4 +1,4 @@
-const CACHE_NAME = 'beijing-quiz-v20';
+const CACHE_NAME = 'beijing-quiz-v21';
 const ASSETS = [
   './',
   './index.html',
@@ -8,6 +8,8 @@ const ASSETS = [
   './politics_modes.js',
   './politics_questions_data.js',
   './theory_questions_data.js',
+  './theory_drill_data.js',
+  './theory_drill.js',
   './guidebook_questions_data.js',
   './quant_data.js',
   './essays_data.js',

@@ -148,6 +148,7 @@ function emptyProgress() {
     quant:    { answers: {}, mistakes: [], favorites: [] },
     essays:   { answers: {}, mistakes: [], favorites: [] },
     shenlun_practice: { answers: {}, mistakes: [], favorites: [] },
+    theory_drill: { answers: {}, mistakes: [], favorites: [] },
     checkInDays: [],
     streak: 0
   };

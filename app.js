@@ -571,6 +571,9 @@ function selectSubject(subjectId) {
     } else if (subjectId === "shenlun_practice") {
       viewport.style.setProperty("--primary", "#6d4c41");
       viewport.style.setProperty("--primary-glow", "rgba(109, 76, 65, 0.15)");
+    } else if (subjectId === "theory_drill") {
+      viewport.style.setProperty("--primary", "#1a5276");
+      viewport.style.setProperty("--primary-glow", "rgba(26, 82, 118, 0.15)");
     } else if (subjectId === "essays") {
       viewport.style.setProperty("--primary", "#8a1f1b");
       viewport.style.setProperty("--primary-glow", "rgba(138, 31, 27, 0.15)");
@@ -625,6 +628,7 @@ function ensureProgressFields() {
   if (!userProgress.quant)    userProgress.quant    = { answers: {}, mistakes: [], favorites: [] };
   if (!userProgress.essays)   userProgress.essays   = { answers: {}, mistakes: [], favorites: [] };
   if (!userProgress.shenlun_practice) userProgress.shenlun_practice = { answers: {}, mistakes: [], favorites: [] };
+  if (!userProgress.theory_drill) userProgress.theory_drill = { answers: {}, mistakes: [], favorites: [] };
   if (!userProgress.checkInDays) userProgress.checkInDays = [];
   if (userProgress.streak === undefined) userProgress.streak = 0;
   
@@ -948,6 +952,7 @@ async function handleAuthAction(action) {
           quant:   {answers:{},mistakes:[],favorites:[]},
           essays:  {answers:{},mistakes:[],favorites:[]},
           shenlun_practice: {answers:{},mistakes:[],favorites:[]},
+          theory_drill: {answers:{},mistakes:[],favorites:[]},
           checkInDays:[getTodayStr()], streak:1
         }
       };
@@ -1152,7 +1157,7 @@ function renderAdminUserList() {
     const trialDaysLeft = user.trialDaysLeft || 0;
     const doneCount = user.doneCount !== undefined ? user.doneCount : (() => {
       let c = 0;
-      if (user.progress) ['beijing','idioms','politics','theory','guidebook','quant','essays','shenlun_practice'].forEach(s => {
+      if (user.progress) ['beijing','idioms','politics','theory','theory_drill','guidebook','quant','essays','shenlun_practice'].forEach(s => {
         if (user.progress[s] && user.progress[s].answers) c += Object.keys(user.progress[s].answers).length;
       });
       return c;
@@ -2594,12 +2599,13 @@ function exportData() {
     theory: "政治·理论",
     guidebook: "小黑排坑手册",
     quant: "资料·速算",
-    shenlun_practice: "申论分项刷题"
+    shenlun_practice: "申论分项刷题",
+    theory_drill: "理论讲练·挖空"
   };
 
   // 统计各科目进度
   let statsRows = "";
-  const subjects = ["beijing", "idioms", "politics", "theory", "guidebook", "quant", "shenlun_practice"];
+  const subjects = ["beijing", "idioms", "politics", "theory", "theory_drill", "guidebook", "quant", "shenlun_practice"];
   subjects.forEach(sub => {
     const prog = userProgress[sub] || {};
     const answers = prog.answers || {};
