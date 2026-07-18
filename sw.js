@@ -1,4 +1,4 @@
-const CACHE_NAME = 'beijing-quiz-v21';
+const CACHE_NAME = 'beijing-quiz-v23';
 const ASSETS = [
   './',
   './index.html',

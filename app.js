@@ -122,7 +122,13 @@ const DAILY_MOTIVATIONS = [
   "治国必先治党，治党务必从严。——习近平"
 ];
 
-let quizSwipeState = { startX: 0, startY: 0, tracking: false };
+let quizSwipeState = {
+  startX: 0,
+  startY: 0,
+  tracking: false,
+  locked: null, // 'h' | 'v' | null
+  pointerId: null,
+};
 
 function startPracticeTimer(timerElId = "quiz-timer", textElId = "quiz-timer-text") {
   stopPracticeTimer();
@@ -1353,49 +1359,202 @@ function updateDailyMotivation() {
   el.textContent = DAILY_MOTIVATIONS[getDailyMotivationIndex()];
 }
 
-function hideQuizSwipeHint() {
-  const hint = document.getElementById("quiz-swipe-hint");
+function hideQuizSwipeHint(id = "quiz-swipe-hint") {
+  const hint = document.getElementById(id);
   if (hint) hint.classList.remove("visible");
 }
 
-function showQuizSwipeHint() {
-  const hint = document.getElementById("quiz-swipe-hint");
+function showQuizSwipeHint(id = "quiz-swipe-hint", ms = 3500) {
+  const hint = document.getElementById(id);
   if (!hint) return;
   hint.classList.add("visible");
-  clearTimeout(showQuizSwipeHint._timer);
-  showQuizSwipeHint._timer = setTimeout(() => hint.classList.remove("visible"), 4000);
+  clearTimeout(showQuizSwipeHint._timers?.[id]);
+  if (!showQuizSwipeHint._timers) showQuizSwipeHint._timers = {};
+  showQuizSwipeHint._timers[id] = setTimeout(() => hint.classList.remove("visible"), ms);
 }
 
-function animateQuizTransition(direction) {
-  const wrap = document.getElementById("quiz-content-wrap");
+function animateQuizTransition(direction, wrapId = "quiz-content-wrap") {
+  const wrap = document.getElementById(wrapId);
   if (!wrap) return;
-  wrap.classList.remove("quiz-slide-next", "quiz-slide-prev");
+  wrap.classList.remove("quiz-slide-next", "quiz-slide-prev", "quiz-dragging");
+  wrap.style.transform = "";
+  wrap.style.opacity = "";
   void wrap.offsetWidth;
   wrap.classList.add(direction === "prev" ? "quiz-slide-prev" : "quiz-slide-next");
 }
 
-function canQuizSwipeNext() {
-  if (!document.getElementById("screen-quiz")?.classList.contains("active")) return false;
-  if (!currentQuestions.length) return false;
-  const q = currentQuestions[currentIndex];
-  if (!q) return false;
-  if (!hasSubmitted) {
-    if (q.type === "multiple" || q.type === "fill") return false;
-    return false;
-  }
-  return true;
+/** 是否点在输入控件上（避免与打字/选区冲突） */
+function isSwipeFromEditable(target) {
+  if (!target || !target.closest) return false;
+  return !!target.closest("input, textarea, select, [contenteditable='true']");
 }
 
-function canQuizSwipePrev() {
-  if (currentMode === "exam") return false;
-  if (currentIndex <= 0) return false;
+/**
+ * 通用左右滑切题（触控 + 鼠标拖拽）
+ * 约定：左滑 = 下一题，右滑 = 上一题
+ */
+function bindHorizontalSwipe(screenEl, options) {
+  if (!screenEl || screenEl._swipeBound) return;
+  screenEl._swipeBound = true;
+
+  const {
+    getWrap,
+    canNext,
+    canPrev,
+    onNext,
+    onPrev,
+    shouldIgnore,
+    minSwipe = 56,
+  } = options;
+
+  const state = {
+    startX: 0,
+    startY: 0,
+    tracking: false,
+    locked: null,
+    pointerId: null,
+    ignored: false,
+  };
+
+  function resetDragVisual() {
+    const wrap = getWrap && getWrap();
+    if (!wrap) return;
+    wrap.classList.remove("quiz-dragging");
+    wrap.style.transform = "";
+    wrap.style.opacity = "";
+  }
+
+  function onPointerDown(e) {
+    if (e.pointerType === "mouse" && e.button !== 0) return;
+    // 点在选项/按钮上：绝不拦截，保证答题点击正常
+    if (e.target.closest?.(".option-btn, button, .btn-submit, .btn-primary, .btn-secondary, a, label")) {
+      state.ignored = true;
+      state.tracking = false;
+      return;
+    }
+    if (typeof shouldIgnore === "function" && shouldIgnore(e)) {
+      state.ignored = true;
+      state.tracking = false;
+      return;
+    }
+    if (isSwipeFromEditable(e.target)) {
+      state.ignored = true;
+      state.tracking = false;
+      return;
+    }
+    state.ignored = false;
+    state.tracking = true;
+    state.locked = null;
+    state.pointerId = e.pointerId;
+    state.startX = e.clientX;
+    state.startY = e.clientY;
+    // 注意：不要 setPointerCapture，否则会吞掉选项的 click
+  }
+
+  function onPointerMove(e) {
+    if (!state.tracking || state.ignored) return;
+    if (state.pointerId != null && e.pointerId !== state.pointerId) return;
+    const dx = e.clientX - state.startX;
+    const dy = e.clientY - state.startY;
+
+    if (!state.locked) {
+      if (Math.abs(dx) < 14 && Math.abs(dy) < 14) return;
+      state.locked = Math.abs(dx) > Math.abs(dy) * 1.2 ? "h" : "v";
+      if (state.locked === "v") {
+        state.tracking = false;
+        resetDragVisual();
+        return;
+      }
+    }
+    if (state.locked !== "h") return;
+
+    if (e.cancelable) e.preventDefault();
+    const wrap = getWrap && getWrap();
+    if (wrap) {
+      const resist = 0.35;
+      const shift = dx * resist;
+      wrap.classList.add("quiz-dragging");
+      wrap.style.transform = `translateX(${shift}px)`;
+      wrap.style.opacity = String(Math.max(0.55, 1 - Math.abs(shift) / 420));
+    }
+  }
+
+  function onPointerUp(e) {
+    if (state.ignored) {
+      state.ignored = false;
+      resetDragVisual();
+      return;
+    }
+    if (!state.tracking) {
+      resetDragVisual();
+      return;
+    }
+    if (state.pointerId != null && e.pointerId !== state.pointerId) return;
+    const dx = e.clientX - state.startX;
+    const dy = e.clientY - state.startY;
+    const wasH = state.locked === "h";
+    state.tracking = false;
+    state.locked = null;
+    state.pointerId = null;
+    resetDragVisual();
+
+    if (!wasH) return;
+    if (Math.abs(dx) < minSwipe || Math.abs(dx) < Math.abs(dy) * 1.1) return;
+
+    // 左滑 dx<0 → 下一题；右滑 dx>0 → 上一题
+    if (dx < 0 && canNext()) onNext();
+    else if (dx > 0 && canPrev()) onPrev();
+  }
+
+  function onPointerCancel() {
+    state.tracking = false;
+    state.locked = null;
+    state.pointerId = null;
+    state.ignored = false;
+    resetDragVisual();
+  }
+
+  screenEl.addEventListener("pointerdown", onPointerDown, { passive: true });
+  screenEl.addEventListener("pointermove", onPointerMove, { passive: false });
+  screenEl.addEventListener("pointerup", onPointerUp, { passive: true });
+  screenEl.addEventListener("pointercancel", onPointerCancel, { passive: true });
+}
+
+function isQuizScreenActive() {
+  return !!document.getElementById("screen-quiz")?.classList.contains("active");
+}
+
+function canQuizSwipeNext() {
+  if (!isQuizScreenActive()) return false;
+  if (!currentQuestions.length) return false;
+  if (currentIndex < currentQuestions.length - 1) return true;
+  // 最后一题：已作答则可滑入完成页
   return hasSubmitted;
 }
 
-function tryQuizSwipePrev() {
+function canQuizSwipePrev() {
+  if (!isQuizScreenActive()) return false;
+  if (currentMode === "exam") return false;
+  return currentIndex > 0;
+}
+
+/** 滑动切题：不强制提交填空/多选，便于来回浏览 */
+function quizSwipeToNext() {
+  if (!canQuizSwipeNext()) return;
+  if (currentIndex >= currentQuestions.length - 1) {
+    quizNextQuestion();
+    return;
+  }
+  animateQuizTransition("next");
+  currentIndex += 1;
+  renderQuestion();
+}
+
+function quizSwipeToPrev() {
   if (!canQuizSwipePrev()) return;
   animateQuizTransition("prev");
-  quizPrevQuestion();
+  currentIndex -= 1;
+  renderQuestion();
 }
 
 function initQuizGestures() {
@@ -1403,51 +1562,32 @@ function initQuizGestures() {
   const expPanel = document.getElementById("quiz-explanation");
   if (!screen) return;
 
-  screen.addEventListener("touchstart", (e) => {
-    if (e.touches.length !== 1) return;
-    quizSwipeState.startX = e.touches[0].clientX;
-    quizSwipeState.startY = e.touches[0].clientY;
-    quizSwipeState.tracking = true;
-  }, { passive: true });
-
-  screen.addEventListener("touchmove", (e) => {
-    if (!quizSwipeState.tracking || e.touches.length !== 1) return;
-    const dx = e.touches[0].clientX - quizSwipeState.startX;
-    const dy = e.touches[0].clientY - quizSwipeState.startY;
-    if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 12) {
-      e.preventDefault();
-    }
-  }, { passive: false });
-
-  screen.addEventListener("touchend", (e) => {
-    if (!quizSwipeState.tracking) return;
-    quizSwipeState.tracking = false;
-    const touch = e.changedTouches[0];
-    const dx = touch.clientX - quizSwipeState.startX;
-    const dy = touch.clientY - quizSwipeState.startY;
-    const minSwipe = 55;
-    if (Math.abs(dx) < minSwipe || Math.abs(dx) < Math.abs(dy) * 1.2) return;
-    if (dx > 0 && canQuizSwipeNext()) {
-      quizNextQuestion();
-    } else if (dx < 0 && canQuizSwipePrev()) {
-      tryQuizSwipePrev();
-    }
-  }, { passive: true });
+  bindHorizontalSwipe(screen, {
+    getWrap: () => document.getElementById("quiz-content-wrap"),
+    canNext: canQuizSwipeNext,
+    canPrev: canQuizSwipePrev,
+    onNext: quizSwipeToNext,
+    onPrev: quizSwipeToPrev,
+    shouldIgnore: (e) => !!e.target.closest?.(".quiz-footer, .quiz-header, .btn-icon"),
+  });
 
   if (expPanel) {
     expPanel.addEventListener("click", () => {
-      if (hasSubmitted && canQuizSwipeNext()) quizNextQuestion();
+      if (hasSubmitted && canQuizSwipeNext()) quizSwipeToNext();
     });
   }
 
   document.addEventListener("keydown", (e) => {
-    if (!document.getElementById("screen-quiz")?.classList.contains("active")) return;
+    if (!isQuizScreenActive()) return;
+    const tag = (e.target && e.target.tagName) || "";
+    if (tag === "INPUT" || tag === "TEXTAREA") return;
+    // 键盘：右箭头下一题，左箭头上一题（与滑动手势方向独立，更符合桌面习惯）
     if (e.key === "ArrowRight" && canQuizSwipeNext()) {
       e.preventDefault();
-      quizNextQuestion();
+      quizSwipeToNext();
     } else if (e.key === "ArrowLeft" && canQuizSwipePrev()) {
       e.preventDefault();
-      tryQuizSwipePrev();
+      quizSwipeToPrev();
     }
   });
 
@@ -1456,7 +1596,7 @@ function initQuizGestures() {
     fillInput.addEventListener("keydown", (e) => {
       if (e.key === "Enter") {
         if (!hasSubmitted) submitFillAnswer();
-        else if (canQuizSwipeNext()) quizNextQuestion();
+        else if (canQuizSwipeNext()) quizSwipeToNext();
       }
     });
   }
@@ -1691,7 +1831,9 @@ function renderQuestion() {
   const expPanel = document.getElementById("quiz-explanation");
   expPanel.classList.remove("active", "tappable");
   hideQuizSwipeHint();
-  
+  // 前几题提示可左右滑切题
+  if (currentIndex < 3) showQuizSwipeHint("quiz-swipe-hint", 2800);
+
   const fillContainer = document.getElementById("quiz-fill-container");
   const optionsList = document.getElementById("quiz-options-list");
   const fillInput = document.getElementById("quiz-fill-input");
@@ -1891,6 +2033,7 @@ function quizNextQuestion() {
 
 function quizPrevQuestion() {
   if (currentIndex > 0) {
+    animateQuizTransition("prev");
     currentIndex--;
     renderQuestion();
   }

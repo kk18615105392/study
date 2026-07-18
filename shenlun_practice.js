@@ -176,6 +176,10 @@ function renderShenlunPracticeQuestion() {
   const prevBtn = document.getElementById("btn-shenlun-prev");
   if (prevBtn) prevBtn.style.display = shenlunPracticeIndex > 0 ? "block" : "none";
 
+  if (typeof showQuizSwipeHint === "function" && shenlunPracticeIndex < 3) {
+    showQuizSwipeHint("shenlun-swipe-hint", 2800);
+  }
+
   // 滚动到顶部
   const screen = document.getElementById("screen-shenlun-practice");
   if (screen) screen.scrollTop = 0;
@@ -278,6 +282,10 @@ function shenlunNextQuestion() {
     finishShenlunPractice();
     return;
   }
+  persistShenlunDraft();
+  if (typeof animateQuizTransition === "function") {
+    animateQuizTransition("next", "shenlun-scroll-body");
+  }
   shenlunPracticeIndex += 1;
   renderShenlunPracticeQuestion();
 }
@@ -285,8 +293,56 @@ function shenlunNextQuestion() {
 function shenlunPrevQuestion() {
   if (shenlunPracticeIndex <= 0) return;
   persistShenlunDraft();
+  if (typeof animateQuizTransition === "function") {
+    animateQuizTransition("prev", "shenlun-scroll-body");
+  }
   shenlunPracticeIndex -= 1;
   renderShenlunPracticeQuestion();
+}
+
+function canShenlunSwipeNext() {
+  const screen = document.getElementById("screen-shenlun-practice");
+  if (!screen || !screen.classList.contains("active")) return false;
+  return shenlunPracticeIndex < shenlunPracticeList.length - 1;
+}
+
+function canShenlunSwipePrev() {
+  const screen = document.getElementById("screen-shenlun-practice");
+  if (!screen || !screen.classList.contains("active")) return false;
+  return shenlunPracticeIndex > 0;
+}
+
+function initShenlunSwipeGestures() {
+  const screen = document.getElementById("screen-shenlun-practice");
+  if (!screen || typeof bindHorizontalSwipe !== "function") return;
+  bindHorizontalSwipe(screen, {
+    getWrap: () => document.getElementById("shenlun-scroll-body"),
+    canNext: canShenlunSwipeNext,
+    canPrev: canShenlunSwipePrev,
+    onNext: () => shenlunNextQuestion(),
+    onPrev: () => shenlunPrevQuestion(),
+    shouldIgnore: (e) => !!e.target.closest?.(".quiz-footer, .quiz-header, .btn-icon, #shenlun-rate-bar"),
+  });
+
+  document.addEventListener("keydown", (e) => {
+    const screenEl = document.getElementById("screen-shenlun-practice");
+    if (!screenEl || !screenEl.classList.contains("active")) return;
+    const tag = (e.target && e.target.tagName) || "";
+    if (tag === "INPUT" || tag === "TEXTAREA") return;
+    if (e.key === "ArrowRight" && canShenlunSwipeNext()) {
+      e.preventDefault();
+      shenlunNextQuestion();
+    } else if (e.key === "ArrowLeft" && canShenlunSwipePrev()) {
+      e.preventDefault();
+      shenlunPrevQuestion();
+    }
+  });
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initShenlunSwipeGestures);
+} else {
+  initShenlunSwipeGestures();
 }
 
 function toggleShenlunFavorite() {

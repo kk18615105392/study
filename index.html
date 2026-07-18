@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>京通 - 多科目备考刷题宝典</title>
-  <link rel="stylesheet" href="app.css?v=20">
+  <link rel="stylesheet" href="app.css?v=22">
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#c0392b">
 </head>
@@ -491,7 +491,7 @@
         </div>
 
         <!-- 核心题目卡片 -->
-        <div class="quiz-swipe-hint" id="quiz-swipe-hint" aria-hidden="true">👉 右滑下一题 · 左滑上一题</div>
+        <div class="quiz-swipe-hint" id="quiz-swipe-hint" aria-hidden="true">👈 左滑下一题 · 右滑上一题</div>
         <div class="quiz-content-wrap" id="quiz-content-wrap">
         <div class="q-card" id="quiz-q-card">
           <span class="q-type-label" id="quiz-q-type">单选题</span>
@@ -791,7 +791,8 @@
           <div class="progress-bar" id="shenlun-progress-bar" style="width:0%"></div>
         </div>
 
-        <div id="shenlun-scroll-body" style="max-height: calc(100vh - 260px); overflow-y: auto; padding-bottom: 8px;">
+        <div class="quiz-swipe-hint" id="shenlun-swipe-hint" aria-hidden="true">👈 左滑下一题 · 右滑上一题</div>
+        <div id="shenlun-scroll-body" class="quiz-content-wrap" style="max-height: calc(100vh - 260px); overflow-y: auto; padding-bottom: 8px;">
           <div class="q-card" style="margin-top:0; padding: 16px;">
             <div id="shenlun-q-source" style="font-size: 11px; color: var(--text-muted); margin-bottom: 4px;"></div>
             <div id="shenlun-q-meta" style="font-size: 11px; color: var(--primary); font-weight: 700; margin-bottom: 10px;"></div>
@@ -1191,8 +1192,8 @@
   <script src="essays_data.js?v=15"></script>
   <script src="shenlun_practice_data.js?v=1"></script>
   <script src="politics_modes.js?v=19"></script>
-  <script src="app.js?v=26"></script>
-  <script src="shenlun_practice.js?v=1"></script>
+  <script src="app.js?v=28"></script>
+  <script src="shenlun_practice.js?v=2"></script>
   <script src="theory_drill.js?v=1"></script>
   <script>
     if ('serviceWorker' in navigator) {
