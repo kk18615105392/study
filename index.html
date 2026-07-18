@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>京通 - 多科目备考刷题宝典</title>
-  <link rel="stylesheet" href="app.css?v=19">
+  <link rel="stylesheet" href="app.css?v=20">
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#c0392b">
 </head>
@@ -69,6 +69,7 @@
               <option value="guidebook">小黑排坑手册</option>
               <option value="quant">资料·速算技巧</option>
               <option value="essays">📖 申论大作文</option>
+              <option value="shenlun_practice">✍️ 申论·分项刷题</option>
               <option value="pdf_mistakes">❌ 我的错题集</option>
             </select>
           </div>
@@ -202,6 +203,45 @@
             <div class="mode-icon">📝</div>
             <div class="mode-name">申论精简笔记</div>
             <div class="mode-desc">翻转卡片记忆公文/热点/议论文要点</div>
+          </div>
+          <div class="mode-card m-recitation" id="mode-card-shenlun-practice" onclick="startShenlunPractice('seq')" style="display:none; grid-column: span 2;">
+            <div class="mode-icon">✍️</div>
+            <div class="mode-name">分项真题精刷</div>
+            <div class="mode-desc">单一/综合/公文/作文 · 材料作答对要点</div>
+          </div>
+        </div>
+
+        <!-- 申论分项刷题专属模式 -->
+        <div class="mode-grid" id="mode-grid-shenlun-practice" style="display:none;">
+          <div class="mode-card m-seq" onclick="startShenlunPractice('seq')">
+            <div class="mode-icon">📚</div>
+            <div class="mode-name">顺序精刷</div>
+            <div class="mode-desc">按题库顺序逐题精练</div>
+          </div>
+          <div class="mode-card m-rand" onclick="startShenlunPractice('rand')">
+            <div class="mode-icon">🎲</div>
+            <div class="mode-name">随机抽练</div>
+            <div class="mode-desc">打乱顺序检验真实水平</div>
+          </div>
+          <div class="mode-card m-cat" onclick="showShenlunCategoryPicker()">
+            <div class="mode-icon">🗂️</div>
+            <div class="mode-name">按题型练</div>
+            <div class="mode-desc">单一/综合/公文/作文</div>
+          </div>
+          <div class="mode-card m-bank" onclick="switchScreen('question-bank')">
+            <div class="mode-icon">📋</div>
+            <div class="mode-name">题库进度</div>
+            <div class="mode-desc">查看已练/未练题目</div>
+          </div>
+          <div class="mode-card m-undone" onclick="startShenlunPractice('undone')">
+            <div class="mode-icon">🎯</div>
+            <div class="mode-name">攻克未练</div>
+            <div class="mode-desc">优先刷没做过的题</div>
+          </div>
+          <div class="mode-card m-exam" onclick="startShenlunPractice('redo')">
+            <div class="mode-icon">🔥</div>
+            <div class="mode-name">再练错题</div>
+            <div class="mode-desc">复盘标记为需再练的题</div>
           </div>
         </div>
 
@@ -694,6 +734,63 @@
         </div>
       </div>
 
+      <!-- ================= 2.15 申论分项刷题练习屏 ================= -->
+      <div id="screen-shenlun-practice" class="screen">
+        <div class="quiz-header">
+          <span class="quiz-cat-badge" id="shenlun-badge-category" style="background: var(--politics-accent);">申论</span>
+          <div style="display:flex; gap:8px; align-items:center;">
+            <button class="btn-icon" id="btn-shenlun-favorite" onclick="toggleShenlunFavorite()" title="收藏">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            </button>
+            <button class="btn-icon" onclick="quitShenlunPractice()">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="quiz-info-row" style="margin-top: 8px; margin-bottom: 10px; justify-content: space-between;">
+          <div class="quiz-timer" id="shenlun-timer">⏱️ <span id="shenlun-timer-text">00:00</span></div>
+          <div style="font-size: 11px; color: var(--primary); font-weight: 700;" id="shenlun-progress-text">1 / 1</div>
+        </div>
+        <div class="progress-container" style="margin-bottom: 12px; height: 6px; background: var(--border-color); border-radius: 3px; overflow: hidden;">
+          <div class="progress-bar" id="shenlun-progress-bar" style="width:0%"></div>
+        </div>
+
+        <div id="shenlun-scroll-body" style="max-height: calc(100vh - 260px); overflow-y: auto; padding-bottom: 8px;">
+          <div class="q-card" style="margin-top:0; padding: 16px;">
+            <div id="shenlun-q-source" style="font-size: 11px; color: var(--text-muted); margin-bottom: 4px;"></div>
+            <div id="shenlun-q-meta" style="font-size: 11px; color: var(--primary); font-weight: 700; margin-bottom: 10px;"></div>
+            <div id="shenlun-q-stem" class="serif-font" style="font-size: 14px; line-height: 1.75; font-weight: 700; color: var(--text-main); margin-bottom: 10px;"></div>
+            <div id="shenlun-q-requirements" style="font-size: 12px; line-height: 1.6; color: var(--text-muted); background: rgba(192,57,43,0.06); padding: 10px 12px; border-radius: 8px; margin-bottom: 12px;"></div>
+            <div style="font-size: 11px; font-weight: 800; color: var(--text-muted); margin-bottom: 6px;">📄 给定资料</div>
+            <div id="shenlun-q-materials" class="serif-font shenlun-materials" style="font-size: 13px; line-height: 1.85; color: var(--text-main); text-align: justify; max-height: 280px; overflow-y: auto; padding: 12px; background: var(--bg-input); border-radius: 8px; border: 1px solid var(--border-color);"></div>
+          </div>
+
+          <div class="q-card" style="padding: 14px;">
+            <div style="font-size: 11px; font-weight: 800; color: var(--text-muted); margin-bottom: 6px;">✍️ 我的作答（草稿自动保存）</div>
+            <textarea id="shenlun-user-answer" placeholder="先根据材料作答，写完再点「查看参考答案」对照要点…" style="width:100%; min-height: 140px; border: 1px solid var(--border-color); border-radius: 8px; background: var(--bg-input); color: var(--text-main); padding: 10px; font-size: 13px; line-height: 1.7; resize: vertical; outline: none; font-family: inherit;"></textarea>
+            <div id="shenlun-q-tips" style="margin-top: 8px; font-size: 11px; color: var(--text-muted); line-height: 1.5;"></div>
+          </div>
+
+          <div id="shenlun-answer-panel" class="q-card" style="display:none; padding: 14px; border: 1px solid rgba(39,174,96,0.35);">
+            <div style="font-size: 12px; font-weight: 800; color: #27ae60; margin-bottom: 8px;">✅ 参考答案</div>
+            <div id="shenlun-answer-note" style="display:none; font-size: 11px; color: #e67e22; margin-bottom: 8px; line-height: 1.5;"></div>
+            <div id="shenlun-answer-content" class="serif-font" style="font-size: 13px; line-height: 1.8; color: var(--text-main); text-align: justify; margin-bottom: 10px;"></div>
+            <div id="shenlun-keypoints" style="font-size: 12px; line-height: 1.7; color: var(--text-main);"></div>
+          </div>
+        </div>
+
+        <div class="quiz-footer" style="flex-wrap: wrap; gap: 8px;">
+          <button class="btn-secondary" id="btn-shenlun-prev" onclick="shenlunPrevQuestion()" style="display:none;">上一题</button>
+          <button class="btn-primary" id="btn-shenlun-reveal" onclick="revealShenlunAnswer()" style="flex:1;">查看参考答案</button>
+          <div id="shenlun-rate-bar" style="display:none; width:100%; gap:6px;">
+            <button class="btn-secondary" style="flex:1; font-size:11px;" onclick="rateShenlunPractice('hard')">😅 很难再练</button>
+            <button class="btn-secondary" style="flex:1; font-size:11px;" onclick="rateShenlunPractice('review')">📝 还需再练</button>
+            <button class="btn-primary" style="flex:1; font-size:11px;" onclick="rateShenlunPractice('mastered')">✅ 已掌握</button>
+          </div>
+        </div>
+      </div>
+
       <!-- ================= 2.2 申论范文背诵屏幕 ================= -->
       <div id="screen-recitation" class="screen">
         <div class="quiz-header">
@@ -1056,8 +1153,10 @@
   <script src="guidebook_questions_data.js?v=15"></script>
   <script src="quant_data.js?v=1"></script>
   <script src="essays_data.js?v=15"></script>
-  <script src="politics_modes.js?v=17"></script>
-  <script src="app.js?v=24"></script>
+  <script src="shenlun_practice_data.js?v=1"></script>
+  <script src="politics_modes.js?v=18"></script>
+  <script src="app.js?v=25"></script>
+  <script src="shenlun_practice.js?v=1"></script>
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
@@ -1065,6 +1164,7 @@
           .then(reg => console.log('ServiceWorker registered', reg))
           .catch(err => console.log('ServiceWorker registration failed', err));
       });
+    }
   </script>
 
   <!-- 全屏图片放大遮罩层 -->

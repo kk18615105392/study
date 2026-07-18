@@ -2097,4 +2097,21 @@ h1, h2, h3, .serif-font {
   100% { filter: brightness(1); }
 }
 
+/* ================= 申论分项刷题 ================= */
+#shenlun-rate-bar {
+  display: flex;
+  width: 100%;
+}
+.shenlun-materials {
+  white-space: normal;
+  word-break: break-word;
+}
+#screen-shenlun-practice .quiz-footer {
+  align-items: stretch;
+}
+#btn-shenlun-favorite.active-favorite svg {
+  fill: var(--primary);
+  stroke: var(--primary);
+}
+
 

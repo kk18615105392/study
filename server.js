@@ -147,6 +147,7 @@ function emptyProgress() {
     guidebook:{ answers: {}, mistakes: [], favorites: [] },
     quant:    { answers: {}, mistakes: [], favorites: [] },
     essays:   { answers: {}, mistakes: [], favorites: [] },
+    shenlun_practice: { answers: {}, mistakes: [], favorites: [] },
     checkInDays: [],
     streak: 0
   };

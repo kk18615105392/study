@@ -1029,34 +1029,43 @@ function updateModeGrid(subjectId) {
   const standard = document.getElementById('mode-grid-standard');
   const politics = document.getElementById('mode-grid-politics');
   const pdfMistakesGrid = document.getElementById('mode-grid-pdf-mistakes');
+  const shenlunPracticeGrid = document.getElementById('mode-grid-shenlun-practice');
   const standardMatch = document.getElementById('mode-card-standard-match');
   const recitationStandard = document.getElementById('mode-card-recitation-standard');
   const goldenRecitation = document.getElementById('mode-card-golden-recitation');
   const shenlunCards = document.getElementById('mode-card-shenlun-cards');
-  
+  const shenlunPracticeCard = document.getElementById('mode-card-shenlun-practice');
+
   if (!standard || !politics) return;
 
   if (pdfMistakesGrid) {
     pdfMistakesGrid.style.display = subjectId === 'pdf_mistakes' ? 'grid' : 'none';
   }
+  if (shenlunPracticeGrid) {
+    shenlunPracticeGrid.style.display = subjectId === 'shenlun_practice' ? 'grid' : 'none';
+  }
 
   const filterBar = document.getElementById('progress-filter-bar');
-  if (filterBar) filterBar.style.display = (subjectId === 'essays' || subjectId === 'pdf_mistakes') ? 'none' : 'flex';
-  
+  if (filterBar) {
+    filterBar.style.display = (subjectId === 'essays' || subjectId === 'pdf_mistakes' || subjectId === 'shenlun_practice')
+      ? 'none'
+      : 'flex';
+  }
+
   if (subjectId === 'politics') {
     standard.style.display = 'none';
     politics.style.display = 'grid';
-  } else if (subjectId === 'pdf_mistakes') {
+  } else if (subjectId === 'pdf_mistakes' || subjectId === 'shenlun_practice') {
     standard.style.display = 'none';
     politics.style.display = 'none';
   } else if (subjectId === 'essays') {
     standard.style.display = 'grid';
     politics.style.display = 'none';
-    
+
     // 隐藏其他大卡片，只显示申论相关卡片
     const cards = standard.querySelectorAll('.mode-card');
     cards.forEach(card => {
-      if (card === recitationStandard || card === goldenRecitation || card === shenlunCards) {
+      if (card === recitationStandard || card === goldenRecitation || card === shenlunCards || card === shenlunPracticeCard) {
         card.style.display = 'block';
       } else {
         card.style.display = 'none';
@@ -1065,11 +1074,11 @@ function updateModeGrid(subjectId) {
   } else {
     standard.style.display = 'grid';
     politics.style.display = 'none';
-    
+
     // 显示常规大卡片，隐藏申论相关卡片
     const cards = standard.querySelectorAll('.mode-card');
     cards.forEach(card => {
-      if (card === recitationStandard || card === goldenRecitation || card === shenlunCards) {
+      if (card === recitationStandard || card === goldenRecitation || card === shenlunCards || card === shenlunPracticeCard) {
         card.style.display = 'none';
       } else if (card === standardMatch) {
         const hasMatch = SUBJECT_DATA[subjectId] && SUBJECT_DATA[subjectId].matchQuestions && SUBJECT_DATA[subjectId].matchQuestions.length > 0;

@@ -568,6 +568,12 @@ function selectSubject(subjectId) {
     } else if (subjectId === "pdf_mistakes") {
       viewport.style.setProperty("--primary", "#e74c3c");
       viewport.style.setProperty("--primary-glow", "rgba(231, 76, 60, 0.15)");
+    } else if (subjectId === "shenlun_practice") {
+      viewport.style.setProperty("--primary", "#6d4c41");
+      viewport.style.setProperty("--primary-glow", "rgba(109, 76, 65, 0.15)");
+    } else if (subjectId === "essays") {
+      viewport.style.setProperty("--primary", "#8a1f1b");
+      viewport.style.setProperty("--primary-glow", "rgba(138, 31, 27, 0.15)");
     }
   }
   
@@ -618,6 +624,7 @@ function ensureProgressFields() {
   if (!userProgress.guidebook)userProgress.guidebook= { answers: {}, mistakes: [], favorites: [] };
   if (!userProgress.quant)    userProgress.quant    = { answers: {}, mistakes: [], favorites: [] };
   if (!userProgress.essays)   userProgress.essays   = { answers: {}, mistakes: [], favorites: [] };
+  if (!userProgress.shenlun_practice) userProgress.shenlun_practice = { answers: {}, mistakes: [], favorites: [] };
   if (!userProgress.checkInDays) userProgress.checkInDays = [];
   if (userProgress.streak === undefined) userProgress.streak = 0;
   
@@ -940,6 +947,7 @@ async function handleAuthAction(action) {
           guidebook:{answers:{},mistakes:[],favorites:[]},
           quant:   {answers:{},mistakes:[],favorites:[]},
           essays:  {answers:{},mistakes:[],favorites:[]},
+          shenlun_practice: {answers:{},mistakes:[],favorites:[]},
           checkInDays:[getTodayStr()], streak:1
         }
       };
@@ -1144,7 +1152,7 @@ function renderAdminUserList() {
     const trialDaysLeft = user.trialDaysLeft || 0;
     const doneCount = user.doneCount !== undefined ? user.doneCount : (() => {
       let c = 0;
-      if (user.progress) ['beijing','idioms','politics','theory','guidebook','quant','essays'].forEach(s => {
+      if (user.progress) ['beijing','idioms','politics','theory','guidebook','quant','essays','shenlun_practice'].forEach(s => {
         if (user.progress[s] && user.progress[s].answers) c += Object.keys(user.progress[s].answers).length;
       });
       return c;
@@ -1726,6 +1734,7 @@ function getQTypeLabel(type) {
     case "match": return "关键词配对";
     case "timeline": return "时间轴排序";
     case "passage": return "阅读闯关";
+    case "essay": return "申论主观题";
     default: return "答题";
   }
 }
@@ -1826,6 +1835,9 @@ function formatCorrectAnswer(q) {
     return q.answer.join("、");
   } else if (q.type === "judgement") {
     return q.answer === "A" ? "正确" : "错误";
+  } else if (q.type === "essay") {
+    const text = String(q.answer || "");
+    return text.length > 80 ? text.slice(0, 80) + "…" : text;
   }
   return q.answer;
 }
@@ -2111,14 +2123,16 @@ function renderQuestionBank() {
     const ansLog = progress.answers[q.id];
     const card = document.createElement("div");
     card.className = `bank-card ${answered ? "bank-done" : "bank-undone"}`;
+    const qIdAttr = JSON.stringify(q.id);
+    const qText = (q.question || q.title || q.passage || "配对/排序题").slice(0, 120);
     card.innerHTML = `
       <div class="bank-card-header">
         <span class="bank-status ${answered ? "done" : "undone"}">${answered ? "已刷" : "未刷"}</span>
         <span class="bank-tag">${q.categoryName || q.title || "专项"} · ${getQTypeLabel(q.type)}</span>
       </div>
-      <div class="bank-q">${q.question || q.title || q.passage || "配对/排序题"}</div>
-      <div class="bank-meta">${answered ? `作答 ${ansLog.count} 次${ansLog.correct ? " · 答对过" : " · 曾答错"}` : "尚未作答，优先推荐"}</div>
-      <button class="btn-action btn-redo" onclick="startQuestionFromBank(${q.id})">开始刷这题</button>
+      <div class="bank-q">${qText}${(q.question || "").length > 120 ? "…" : ""}</div>
+      <div class="bank-meta">${answered ? `作答 ${ansLog.count || 1} 次${ansLog.correct ? " · 已掌握" : " · 需再练"}` : "尚未作答，优先推荐"}</div>
+      <button class="btn-action btn-redo" onclick='startQuestionFromBank(${qIdAttr})'>开始刷这题</button>
     `;
     container.appendChild(card);
   });
@@ -2161,6 +2175,18 @@ function startQuestionFromBank(qId) {
     if (typeof startPracticeTimer === "function") startPracticeTimer("reading-timer", "reading-timer-text");
     switchScreen("reading");
     renderReadingPass();
+    return;
+  }
+
+  if (q.type === "essay" || currentSubject === "shenlun_practice") {
+    if (typeof startShenlunPractice === "function") {
+      shenlunPracticeList = [q];
+      shenlunPracticeIndex = 0;
+      shenlunPracticeMode = "single";
+      if (typeof startPracticeTimer === "function") startPracticeTimer("shenlun-timer", "shenlun-timer-text");
+      switchScreen("shenlun-practice");
+      renderShenlunPracticeQuestion();
+    }
     return;
   }
 
@@ -2218,18 +2244,20 @@ function renderMistakes() {
     const ansLog = progress.answers[q.id];
     const logText = ansLog ? `作答 ${ansLog.count} 次` : "未作答";
     
+    const qIdAttr = JSON.stringify(q.id);
+    const qPreview = String(q.question || "").slice(0, 100);
     card.innerHTML = `
       <div class="mistake-card-header">
-        <span class="mistake-tag">${q.categoryName} · ${getQTypeLabel(q.type)}</span>
+        <span class="mistake-tag">${q.categoryName || ""} · ${getQTypeLabel(q.type)}</span>
         <span style="font-size:11px; color:var(--text-muted);">${logText}</span>
       </div>
-      <div class="mistake-q">${q.question}</div>
+      <div class="mistake-q">${qPreview}${String(q.question || "").length > 100 ? "…" : ""}</div>
       <div class="mistake-ans-panel">
-        正确答案：<span>${formatCorrectAnswer(q)}</span>
+        ${q.type === "essay" ? "参考要点" : "正确答案"}：<span>${formatCorrectAnswer(q)}</span>
       </div>
       <div class="mistake-actions">
-        <button class="btn-action" onclick="removeQuestionState('${currentMistakeTab}', ${q.id})">${currentMistakeTab === "all" ? "已记牢" : "取消收藏"}</button>
-        <button class="btn-action btn-redo" onclick="redoSingleQuestion(${q.id})">重新挑战</button>
+        <button class="btn-action" onclick='removeQuestionState(${JSON.stringify(currentMistakeTab)}, ${qIdAttr})'>${currentMistakeTab === "all" ? "已记牢" : "取消收藏"}</button>
+        <button class="btn-action btn-redo" onclick='redoSingleQuestion(${qIdAttr})'>重新挑战</button>
       </div>
     `;
     container.appendChild(card);
@@ -2250,6 +2278,19 @@ function removeQuestionState(tab, qId) {
 function redoSingleQuestion(qId) {
   const q = QUESTIONS.find(item => item.id === qId);
   if (!q) return;
+
+  if (q.type === "essay" || currentSubject === "shenlun_practice") {
+    if (typeof startShenlunPractice === "function") {
+      shenlunPracticeList = [q];
+      shenlunPracticeIndex = 0;
+      shenlunPracticeMode = "redo-single";
+      if (typeof startPracticeTimer === "function") startPracticeTimer("shenlun-timer", "shenlun-timer-text");
+      switchScreen("shenlun-practice");
+      renderShenlunPracticeQuestion();
+    }
+    return;
+  }
+
   lastPracticeSetup = { mode: "redo-single", categoryId: null, singleQId: qId };
   currentQuestions = [q];
   currentMode = "redo-single";
@@ -2262,6 +2303,10 @@ function redoSingleQuestion(qId) {
 }
 
 function startQuickRedo() {
+  if (currentSubject === "shenlun_practice" && typeof startShenlunPractice === "function") {
+    startShenlunPractice("redo");
+    return;
+  }
   startPractice("redo");
 }
 
@@ -2548,12 +2593,13 @@ function exportData() {
     politics: "时政·月度热点",
     theory: "政治·理论",
     guidebook: "小黑排坑手册",
-    quant: "资料·速算"
+    quant: "资料·速算",
+    shenlun_practice: "申论分项刷题"
   };
 
   // 统计各科目进度
   let statsRows = "";
-  const subjects = ["beijing", "idioms", "politics", "theory", "guidebook", "quant"];
+  const subjects = ["beijing", "idioms", "politics", "theory", "guidebook", "quant", "shenlun_practice"];
   subjects.forEach(sub => {
     const prog = userProgress[sub] || {};
     const answers = prog.answers || {};
