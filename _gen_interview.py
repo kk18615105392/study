@@ -11,7 +11,10 @@ categories = [
     {"id": "resume_robot", "name": "深挖·巡检机器人"},
     {"id": "resume_mini", "name": "深挖·小程序端侧AI"},
     {"id": "resume_llm", "name": "深挖·大模型RAG/Agent"},
+    {"id": "agent", "name": "深挖·Agent智能体"},
     {"id": "java_basic", "name": "基础·Java"},
+    {"id": "java_adv", "name": "进阶·Java"},
+    {"id": "python", "name": "基础·Python"},
     {"id": "concurrent", "name": "基础·并发多线程"},
     {"id": "redis", "name": "基础·Redis"},
     {"id": "mysql", "name": "基础·MySQL"},
@@ -19,6 +22,7 @@ categories = [
     {"id": "mq", "name": "基础·MQ与中间件"},
     {"id": "network", "name": "基础·网络与OS"},
     {"id": "ai_basic", "name": "基础·AI/算法"},
+    {"id": "algo", "name": "经典·算法题"},
 ]
 
 def exp(simple, more=""):
@@ -42,6 +46,14 @@ facts = [
      "content": "照片缩小→排成模型爱吃的格式→手机本地认病害→画框。认不了就用颜色规则凑合。大模型从网上下，不塞爆小程序。"},
     {"title": "RAG（开卷考试）", "cat": "resume_llm",
      "content": "大模型像爱编故事的同学。RAG=先翻资料再答题：切书→变成向量→找出相关段落→再回答。不会就说不知道。"},
+    {"title": "Agent（会动手的助手）", "cat": "agent",
+     "content": "不只聊天：想步骤→调用工具→看结果→再继续。多Agent像分工小组。失败要回传错误，不能瞎编。"},
+    {"title": "Python小抄", "cat": "python",
+     "content": "list可变tuple常不可变；GIL让CPU多线程未必快；生成器省内存；装饰器加杯套；虚拟环境隔离依赖。"},
+    {"title": "Java进阶小抄", "cat": "java_adv",
+     "content": "volatile不管i++；线程池要有界；CHM细粒度；分代GC；ThreadLocal用完remove；先看GC日志再调参。"},
+    {"title": "算法DP一句话", "cat": "algo",
+     "content": "大问题拆成会重复的小问题，把小答案记下来。先想清「状态记什么、怎么转移」，再写代码。背包/LIS/区间DP常考。"},
 ]
 
 questions = []
@@ -1159,6 +1171,9 @@ S(NW, N_NW, "反向代理「卸载TLS」指？",
   "B",
   "大门统一验证件开锁，里面房间可以简单通行，证书集中管理。",
   "不是把安全扔掉，是放在门口统一做。")
+
+from _interview_extra_topics import add_extra_topics
+add_extra_topics(S, J, M)
 
 assert len(questions) == qid - 8001
 

@@ -2610,13 +2610,13 @@ function renderRadarChart() {
   } else if (currentSubject === "interview") {
     categories = [
       { key: "resume_backend", name: "简历后端" },
-      { key: "resume_momenta", name: "Momenta" },
-      { key: "resume_robot", name: "机器人" },
-      { key: "java_basic", name: "Java" },
+      { key: "agent", name: "Agent" },
+      { key: "python", name: "Python" },
+      { key: "java_adv", name: "Java进阶" },
+      { key: "algo", name: "算法DP" },
       { key: "redis", name: "Redis" },
-      { key: "mysql", name: "MySQL" },
-      { key: "spring", name: "Spring" },
-      { key: "concurrent", name: "并发" }
+      { key: "concurrent", name: "并发" },
+      { key: "spring", name: "Spring" }
     ];
   } else {
     categories = [
