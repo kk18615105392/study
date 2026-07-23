@@ -30,6 +30,11 @@ let userProgress = {
     mistakes: [],
     favorites: []
   },
+  interview: {
+    answers: {},
+    mistakes: [],
+    favorites: []
+  },
   quant: {
     answers: {},
     mistakes: [],
@@ -571,6 +576,9 @@ function selectSubject(subjectId) {
     } else if (subjectId === "quant") {
       viewport.style.setProperty("--primary", "#e65100");
       viewport.style.setProperty("--primary-glow", "rgba(230, 81, 0, 0.15)");
+    } else if (subjectId === "interview") {
+      viewport.style.setProperty("--primary", "#0d9488");
+      viewport.style.setProperty("--primary-glow", "rgba(13, 148, 136, 0.15)");
     } else if (subjectId === "pdf_mistakes") {
       viewport.style.setProperty("--primary", "#e74c3c");
       viewport.style.setProperty("--primary-glow", "rgba(231, 76, 60, 0.15)");
@@ -635,6 +643,7 @@ function ensureProgressFields() {
   if (!userProgress.essays)   userProgress.essays   = { answers: {}, mistakes: [], favorites: [] };
   if (!userProgress.shenlun_practice) userProgress.shenlun_practice = { answers: {}, mistakes: [], favorites: [] };
   if (!userProgress.theory_drill) userProgress.theory_drill = { answers: {}, mistakes: [], favorites: [] };
+  if (!userProgress.interview)userProgress.interview= { answers: {}, mistakes: [], favorites: [] };
   if (!userProgress.checkInDays) userProgress.checkInDays = [];
   if (userProgress.streak === undefined) userProgress.streak = 0;
   
@@ -959,6 +968,7 @@ async function handleAuthAction(action) {
           essays:  {answers:{},mistakes:[],favorites:[]},
           shenlun_practice: {answers:{},mistakes:[],favorites:[]},
           theory_drill: {answers:{},mistakes:[],favorites:[]},
+          interview:{answers:{},mistakes:[],favorites:[]},
           checkInDays:[getTodayStr()], streak:1
         }
       };
@@ -1163,7 +1173,7 @@ function renderAdminUserList() {
     const trialDaysLeft = user.trialDaysLeft || 0;
     const doneCount = user.doneCount !== undefined ? user.doneCount : (() => {
       let c = 0;
-      if (user.progress) ['beijing','idioms','politics','theory','theory_drill','guidebook','quant','essays','shenlun_practice'].forEach(s => {
+      if (user.progress) ['beijing','idioms','politics','theory','theory_drill','guidebook','quant','essays','shenlun_practice','interview'].forEach(s => {
         if (user.progress[s] && user.progress[s].answers) c += Object.keys(user.progress[s].answers).length;
       });
       return c;
@@ -2597,6 +2607,17 @@ function renderRadarChart() {
       { key: "fraction_cmp", name: "分数比大小" },
       { key: "assume_alloc", name: "假设分配" }
     ];
+  } else if (currentSubject === "interview") {
+    categories = [
+      { key: "resume_backend", name: "简历后端" },
+      { key: "resume_momenta", name: "Momenta" },
+      { key: "resume_robot", name: "机器人" },
+      { key: "java_basic", name: "Java" },
+      { key: "redis", name: "Redis" },
+      { key: "mysql", name: "MySQL" },
+      { key: "spring", name: "Spring" },
+      { key: "concurrent", name: "并发" }
+    ];
   } else {
     categories = [
       { key: "group1", name: "第一组" },
@@ -2743,12 +2764,13 @@ function exportData() {
     guidebook: "小黑排坑手册",
     quant: "资料·速算",
     shenlun_practice: "申论分项刷题",
-    theory_drill: "理论讲练·挖空"
+    theory_drill: "理论讲练·挖空",
+    interview: "技术面试·后端/AI"
   };
 
   // 统计各科目进度
   let statsRows = "";
-  const subjects = ["beijing", "idioms", "politics", "theory", "theory_drill", "guidebook", "quant", "shenlun_practice"];
+  const subjects = ["beijing", "idioms", "politics", "theory", "theory_drill", "guidebook", "quant", "shenlun_practice", "interview"];
   subjects.forEach(sub => {
     const prog = userProgress[sub] || {};
     const answers = prog.answers || {};
@@ -2923,6 +2945,7 @@ function resetAllData() {
       theory: { answers: {}, mistakes: [], favorites: [] },
       guidebook: { answers: {}, mistakes: [], favorites: [] },
       quant: { answers: {}, mistakes: [], favorites: [] },
+      interview: { answers: {}, mistakes: [], favorites: [] },
       checkInDays: [getTodayStr()],
       streak: 1
     };

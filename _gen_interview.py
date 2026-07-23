@@ -1,0 +1,620 @@
+# -*- coding: utf-8 -*-
+"""Generate interview_questions_data.js for study app."""
+from pathlib import Path
+import json
+
+OUT = Path(__file__).resolve().parent / "interview_questions_data.js"
+
+categories = [
+    {"id": "resume_backend", "name": "简历·后端高并发"},
+    {"id": "resume_momenta", "name": "简历·Momenta实习"},
+    {"id": "resume_robot", "name": "简历·巡检机器人"},
+    {"id": "resume_mini", "name": "简历·小程序端侧AI"},
+    {"id": "resume_llm", "name": "简历·大模型应用"},
+    {"id": "java_basic", "name": "基础·Java"},
+    {"id": "concurrent", "name": "基础·并发多线程"},
+    {"id": "redis", "name": "基础·Redis"},
+    {"id": "mysql", "name": "基础·MySQL"},
+    {"id": "spring", "name": "基础·Spring/Boot"},
+    {"id": "mq", "name": "基础·MQ与中间件"},
+    {"id": "network", "name": "基础·网络与操作系统"},
+    {"id": "ai_basic", "name": "基础·AI/算法入门"},
+]
+
+facts = [
+    # === 简历口述卡（完整问答）===
+    {"title": "缓存穿透/击穿/雪崩 + 短链做法", "cat": "resume_backend",
+     "content": "穿透：查不存在数据打穿DB→空值缓存/布隆。击穿：热点Key过期瞬间打DB→互斥锁重建。雪崩：大量Key同时失效→TTL随机+限流+高可用。短链：多层缓存→空值防穿透→短码粒度锁防击穿→Sentinel限流。"},
+    {"title": "先更新DB再删缓存", "cat": "resume_backend",
+     "content": "避免双写并发把旧值写回缓存。删缓存后读miss回源。失败：本地重试→MQ异步删（幂等）。可选延迟双删覆盖主从延迟。最终一致，适合大模型上下文。"},
+    {"title": "基因法分片", "cat": "resume_backend",
+     "content": "把分片基因（如gid低N bit）编码进短码。按短码/按gid都能路由到同一分表，避免扫全表。性能约提升近两倍。"},
+    {"title": "Redis号段+AtomicLong发号", "cat": "resume_backend",
+     "content": "实例向Redis申请号段，本地AtomicLong自增；越界校验；号段不重叠保证唯一；吞吐随实例近似线性扩展；再Base62+嵌入基因生成短码。"},
+    {"title": "synchronized多实例不够", "cat": "resume_backend",
+     "content": "仅JVM内互斥。多机用Redis分布式锁SET NX EX + token/Lua删；或Redisson看门狗。锁粒度到shortCode。"},
+    {"title": "RocketMQ落点", "cat": "resume_backend",
+     "content": "删缓存失败异步重试：发消息→消费者幂等删Key。也可异步统计/告警。重复消费要幂等。"},
+    {"title": "Sentinel+短链入口", "cat": "resume_backend",
+     "content": "跳转接口QPS/线程数限流；慢调用/异常比例熔断快速失败；与击穿锁重建叠加：限流挡洪峰，锁挡热点。"},
+    {"title": "Momenta批量MD5+并发workflow", "cat": "resume_momenta",
+     "content": "唯一键+幂等创建防重复；事务落库+重试防丢失；IO密集线程池+有界队列+拒绝策略；限制并发保护下游；监控积压。"},
+    {"title": "upsert与门面", "cat": "resume_momenta",
+     "content": "存在则更新否则插入；依赖唯一索引；冲突重试。ORMMethodService门面统一多表访问，提升一致性可维护性。"},
+    {"title": "多数据源事务", "cat": "resume_momenta",
+     "content": "@Transactional默认单库。跨库用最终一致+补偿，慎用分布式事务。防连错库、主从延迟、时区字符集问题。"},
+    {"title": "巡检方案对比", "cat": "resume_robot",
+     "content": "OpenCV巡线依赖铺线；YOLO分割需数据算力；视觉SLAM便宜但纹理/光照敏感；激光SLAM更稳成本高。无轨温棚做对比选型，视觉SLAM可用性约25%→70%。"},
+    {"title": "Hybrid A* + TEB", "cat": "resume_robot",
+     "content": "A*网格最优无运动学；RRT*采样；Hybrid A*含朝向转弯半径；TEB局部时空优化。作物安全距离落costmap膨胀层。10m行间误差<15cm。"},
+    {"title": "ROS Navigation组成", "cat": "resume_robot",
+     "content": "定位+costmap+全局规划+局部规划+控制器；move_base/Nav2串联。"},
+    {"title": "端侧YOLO流程", "cat": "resume_mini",
+     "content": "resize 320→NCHW→InferenceSession(ONNX/YOLOv8)→解码→NMS→回填。Session失败回退Canvas+HSV规则引擎。"},
+    {"title": "小程序包体积策略", "cat": "resume_mini",
+     "content": "主包2MB/总20MB。轻量模型主包，大模型CDN下载缓存。版本校验与完整性。"},
+    {"title": "RAG五步", "cat": "resume_llm",
+     "content": "切分→Embedding→向量检索→Rerank→拼Prompt生成。农业：手册/病虫害/用药知识降幻觉。"},
+    {"title": "Tool Calling vs Multi-Agent", "cat": "resume_llm",
+     "content": "Tool Calling：选工具→执行→观察→再答。Multi-Agent：多角色分工协同。普通聊天只生成文本。"},
+    # === 基础知识卡片 ===
+    {"title": "Java集合框架速记", "cat": "java_basic",
+     "content": "List有序可重复；Set不可重复；Map键值对。ArrayList数组扩容；LinkedList链表；HashMap数组+链表/红黑树，默认负载0.75；ConcurrentHashMap分段/CAS+synchronized。"},
+    {"title": "equals与hashCode", "cat": "java_basic",
+     "content": "重写equals必须重写hashCode。相等对象hash必等；hash等不一定相等。HashMap用hash定位桶、equals比内容。"},
+    {"title": "JVM内存分区", "cat": "java_basic",
+     "content": "堆存对象；方法区/元空间存类信息；栈帧存局部变量与操作数栈；PC程序计数器；本地方法栈。"},
+    {"title": "GC常见算法", "cat": "java_basic",
+     "content": "标记清除、标记整理、复制算法。分代：新生代Minor GC，老年代Major/Full GC。G1分区回收，适合大堆低停顿。"},
+    {"title": "线程池七大参数", "cat": "concurrent",
+     "content": "core、max、keepAlive、单位、workQueue、threadFactory、RejectedExecutionHandler。流程：核心→队列→最大→拒绝。"},
+    {"title": "synchronized vs ReentrantLock", "cat": "concurrent",
+     "content": "synchronized JVM内置可重入；Lock可中断、超时、公平、多条件。简单同步用synchronized，复杂控制用Lock。"},
+    {"title": "volatile作用", "cat": "concurrent",
+     "content": "可见性+禁止指令重排，不保证原子性。i++仍需锁或Atomic。"},
+    {"title": "Redis五大数据类型", "cat": "redis",
+     "content": "String、Hash、List、Set、ZSet。另有Bitmap、HyperLogLog、Stream、Geo。"},
+    {"title": "RDB vs AOF", "cat": "redis",
+     "content": "RDB快照恢复快可能丢数据；AOF记写命令更安全文件更大。可混用。"},
+    {"title": "缓存三大问题", "cat": "redis",
+     "content": "穿透空值/布隆；击穿互斥锁/逻辑过期；雪崩TTL随机+高可用+限流。"},
+    {"title": "MySQL索引本质", "cat": "mysql",
+     "content": "InnoDB聚簇索引B+树，叶子存整行。二级索引叶子存主键。最左前缀、覆盖索引、避免索引失效（函数、隐式转换、前导模糊）。"},
+    {"title": "事务隔离级别", "cat": "mysql",
+     "content": "读未提交/读已提交/可重复读(默认)/串行化。脏读、不可重复读、幻读。InnoDB RR下MVCC+间隙锁缓解幻读。"},
+    {"title": "Spring IoC与AOP", "cat": "spring",
+     "content": "IoC容器管Bean生命周期与依赖注入。AOP横切：事务、日志、权限；代理JDK/CGLIB。"},
+    {"title": "事务失效常见原因", "cat": "spring",
+     "content": "非public、同类自调用、异常被吞/非Runtime未rollbackFor、传播行为配置错误、未走代理。"},
+    {"title": "为什么用消息队列", "cat": "mq",
+     "content": "解耦、异步、削峰。代价：复杂度、一致性、重复消费、顺序、积压。"},
+    {"title": "HTTP vs HTTPS", "cat": "network",
+     "content": "HTTPS=HTTP+TLS，证书与密钥协商加密。三次握手：SYN→SYN+ACK→ACK。"},
+    {"title": "进程与线程", "cat": "network",
+     "content": "进程资源分配单位；线程CPU调度单位，共享进程内存。切换线程比进程轻。"},
+    {"title": "YOLO与NMS", "cat": "ai_basic",
+     "content": "YOLO一阶段检测。NMS非极大值抑制去重叠框。ONNX跨框架部署格式。NCHW通道在前。"},
+    {"title": "SLAM一句话", "cat": "ai_basic",
+     "content": "同步定位与建图：边走边建地图并估计自身位姿。视觉用相机，激光用LiDAR。"},
+]
+
+def q(qid, typ, cat, cname, question, options, answer, explanation):
+    return {
+        "id": qid,
+        "type": typ,
+        "category": cat,
+        "categoryName": cname,
+        "question": question,
+        "options": options,
+        "answer": answer,
+        "explanation": explanation,
+    }
+
+questions = []
+qid = 8001
+
+def add(*args, **kwargs):
+    global qid
+    questions.append(q(qid, *args, **kwargs) if False else None)
+
+# helper
+def S(cat, cname, question, options, answer, explanation):
+    global qid
+    questions.append(q(qid, "single", cat, cname, question, options, answer, explanation))
+    qid += 1
+
+def J(cat, cname, question, answer, explanation):
+    """answer A=正确 B=错误"""
+    global qid
+    questions.append(q(qid, "judgement", cat, cname, question, ["正确", "错误"], answer, explanation))
+    qid += 1
+
+def M(cat, cname, question, options, answer, explanation):
+    global qid
+    questions.append(q(qid, "multiple", cat, cname, question, options, answer, explanation))
+    qid += 1
+
+RB, RM, RR, RMI, RL = "resume_backend", "resume_momenta", "resume_robot", "resume_mini", "resume_llm"
+JB, CC, RD, MY, SP, MQ, NW, AI = "java_basic", "concurrent", "redis", "mysql", "spring", "mq", "network", "ai_basic"
+
+# ========== 简历·后端 ==========
+S(RB, "简历·后端高并发", "缓存穿透通常指下列哪一种现象？",
+  ["热点Key过期瞬间大量请求打到数据库", "查询根本不存在的数据，缓存与DB都没有，请求打穿到DB", "大量Key在同一时刻过期导致DB压力骤增", "Redis主从同步延迟导致读到旧数据"],
+  "B", "穿透=查不存在数据打穿DB。击穿=热点过期；雪崩=大量同时过期。")
+
+S(RB, "简历·后端高并发", "治理缓存击穿，下列做法最贴切的是？",
+  ["给所有Key设置相同TTL", "对不存在的Key缓存空值", "热点Key过期时用互斥锁只让一个线程回源重建", "关闭Redis持久化"],
+  "C", "击穿用互斥锁/逻辑过期。空值治穿透；TTL随机治雪崩。")
+
+S(RB, "简历·后端高并发", "「先更新数据库再删除缓存」相比「先更新缓存再更新数据库」，主要优势是？",
+  ["绝对强一致、无任何脏窗", "避免DB失败时缓存已是新值的不一致，读时miss回源更稳妥", "完全不需要考虑并发", "可以不再使用Redis"],
+  "B", "删缓存策略更常见；短暂可能旧缓存或打DB，追求最终一致。")
+
+J(RB, "简历·后端高并发", "延迟双删的目的之一是覆盖主从延迟或并发读回填把旧值再次写入缓存的时间窗口。",
+  "A", "正确。更新DB→删缓存→短暂等待→再删一次。")
+
+S(RB, "简历·后端高并发", "短链接「基因法分片」要解决的核心痛点是？",
+  ["短码太长不好记", "仅按短码哈希分表后，按gid查询会扫全部分表", "Redis不能存短链", "MySQL不支持索引"],
+  "B", "基因嵌入短码，使短码与gid共享路由信息，双向精准定位分表。")
+
+S(RB, "简历·后端高并发", "Redis号段模式 + 本地AtomicLong发号，性能高的主要原因是？",
+  ["每次发号都访问Redis保证最新", "发号主路径在内存自增，Redis只在申请号段时访问", "使用了String类型比Hash快", "关闭了AOF"],
+  "B", "批量取号段后本地自增，减少网络往返；号段不重叠保证唯一。")
+
+J(RB, "简历·后端高并发", "多实例部署场景下，仅使用JVM的synchronized就足以防止热点短链缓存击穿。",
+  "B", "错误。synchronized不能跨JVM，需Redis分布式锁等。")
+
+S(RB, "简历·后端高并发", "Redis分布式锁较稳妥的加锁方式是？",
+  ["SET key 1", "GET后若空再SET", "SET key token NX EX seconds，解锁用Lua校验token再删", "DEL key后SET"],
+  "C", "NX防并发，EX防死锁，token防误删他人锁。")
+
+S(RB, "简历·后端高并发", "关于大Key，下列说法错误的是？",
+  ["可能导致网络传输慢、阻塞其他命令", "可用拆分、渐进删除等方式治理", "短链场景应尽量用短码→URL的小Value", "大Key越多，Redis单线程性能越好"],
+  "D", "大Key损害性能与稳定性。")
+
+S(RB, "简历·后端高并发", "Sentinel用在短链跳转入口，主要作用是？",
+  ["替代Redis存储短链", "限流熔断保护下游Redis/DB，异常时快速失败", "自动生成短码基因位", "做分库分表路由"],
+  "B", "限流挡洪峰，熔断防雪崩放大。")
+
+S(RB, "简历·后端高并发", "删缓存失败后的分布式重试，较合理的落地是？",
+  ["无限同步重试阻塞请求", "本地重试失败后投递MQ/延迟队列，消费者幂等删除", "直接忽略失败", "重启整个应用"],
+  "B", "异步解耦+幂等删除+监控失败率。")
+
+S(RB, "简历·后端高并发", "短链生成后还要Base62，主要是为了？",
+  ["加密防破解", "把数字ID编码为更短的可读字符短码", "替代分片基因", "代替MD5"],
+  "B", "压缩长度便于分享；再嵌入基因位。")
+
+# ========== Momenta ==========
+S(RM, "简历·Momenta实习", "批量创建workflow时，保证「不重复」最关键的工程手段是？",
+  ["只靠线程睡眠错峰", "业务唯一键/指纹 + 幂等接口 + DB唯一约束", "关掉事务加快速度", "只用HashMap内存去重"],
+  "B", "幂等与唯一约束是分布式防重基础。")
+
+S(RM, "简历·Momenta实习", "IO密集型批量任务线程池，更合理的做法是？",
+  ["核心线程=1且无界队列无监控", "有界队列、合理并发度、拒绝策略与积压监控", "最大线程设为Integer.MAX_VALUE", "拒绝策略一律DiscardOldest且不告警"],
+  "B", "控制并发保护下游，可观测可降级。")
+
+S(RM, "简历·Momenta实习", "upsert在MySQL中常见实现是？",
+  ["DELETE后INSERT无条件", "INSERT ... ON DUPLICATE KEY UPDATE", "只能先SELECT再决定", "TRUNCATE后INSERT"],
+  "B", "依赖唯一索引；并发冲突可重试。")
+
+J(RM, "简历·Momenta实习", "Spring的@Transactional可以天然保证跨多个独立数据源的强一致事务。",
+  "B", "错误。默认绑定单DataSource；跨库需最终一致或分布式事务。")
+
+S(RM, "简历·Momenta实习", "Monitor监控子系统「卡住任务」较实用的发现方式是？",
+  ["只看CPU是否100%", "状态为运行中且updated_at超时/心跳超时则告警", "等用户投诉", "每天重启服务"],
+  "B", "超时阈值+告警降噪。")
+
+S(RM, "简历·Momenta实习", "门面（Facade）模式在数据访问层的价值主要是？",
+  ["一定提升QPS十倍", "收口多表upsert/查询，减少重复代码，便于统一维护", "替代数据库索引", "消灭所有SQL"],
+  "B", "一致性与可维护性。")
+
+S(RM, "简历·Momenta实习", "任务状态流转保障一致性，常用做法是？",
+  ["前端随意改状态写库", "DB条件更新/乐观锁version，非法跳转拒绝", "只用内存变量存状态", "取消所有校验加快提交"],
+  "B", "状态机+条件更新。")
+
+# ========== 机器人 ==========
+S(RR, "简历·巡检机器人", "无轨温室环境中，OpenCV巡线方案的主要局限是？",
+  ["算力要求极高无法嵌入式", "通常依赖铺设引导线或稳定视觉标记，无轨难直接用", "完全不能识别颜色", "只能在夜间工作"],
+  "B", "实现简单但依赖引导条件。")
+
+S(RR, "简历·巡检机器人", "Hybrid A* 相对普通 A* 的关键差异是？",
+  ["完全随机采样", "搜索状态考虑朝向等运动学约束，轨迹更可执行", "不能用于机器人", "一定比Dijkstra慢且无优点"],
+  "B", "面向车辆/差速等可执行轨迹。")
+
+S(RR, "简历·巡检机器人", "TEB局部规划器的特点是？",
+  ["只做一次全局最短路", "Timed Elastic Band，优化时空轨迹，利于避障与速度平滑", "只能用于无人机", "替代SLAM定位"],
+  "B", "局部跟随常用。")
+
+S(RR, "简历·巡检机器人", "作物安全距离在ROS Navigation中通常落在？",
+  ["仅改电机PWM", "costmap膨胀层（inflation）或局部规划障碍权重", "只改摄像头焦距", "关掉定位模块"],
+  "B", "膨胀安全半径，避免贴苗。")
+
+M(RR, "简历·巡检机器人", "ROS Navigation大致包含哪些模块？",
+  ["定位/位姿估计", "代价地图costmap", "全局与局部规划器", "仅数据库中间件"],
+  ["A", "B", "C"], "定位+地图/costmap+全局/局部规划+控制输出。")
+
+J(RR, "简历·巡检机器人", "视觉SLAM在温棚中可能因重复纹理、光照变化而跟踪不稳定，需要针对性优化与方案对比。",
+  "A", "正确。简历中定位可用性约25%→70%即此类优化结果口径。")
+
+S(RR, "简历·巡检机器人", "路径跟踪误差<15cm 更合理的表述是？",
+  ["绝对GPS海拔误差", "实际轨迹相对规划路径的横向/跟踪偏差实测结果", "相机分辨率", "电池电压波动"],
+  "B", "面试要能说明测量方法（卷尺/轨迹对比/RMSE）。")
+
+# ========== 小程序 ==========
+S(RMI, "简历·小程序端侧AI", "端侧推理流水线正确顺序是？",
+  ["NMS→推理→resize→NCHW", "resize到320→NCHW→InferenceSession推理→解码→NMS→回填", "先导出CSV再推理", "只上传云端无法本地"],
+  "B", "预处理→推理→后处理。")
+
+S(RMI, "简历·小程序端侧AI", "NMS（非极大值抑制）的作用是？",
+  ["提升图像分辨率", "去除重叠检测框，保留高分框", "压缩模型到2MB", "生成短链基因"],
+  "B", "检测后处理标配。")
+
+S(RMI, "简历·小程序端侧AI", "双推理引擎降级触发条件通常是？",
+  ["用户点击分享", "基础库过低或InferenceSession创建失败", "JSON导出成功", "CDN下载完成"],
+  "B", "回退Canvas+HSV规则引擎，保证低端机可用。")
+
+S(RMI, "简历·小程序端侧AI", "突破小程序主包2MB限制的常见策略是？",
+  ["把所有模型打进主包", "轻量模型主包，大模型CDN远程下载并缓存", "禁用所有图片", "改用仅服务端且无法离线"],
+  "B", "注意版本与完整性校验。")
+
+J(RMI, "简历·小程序端侧AI", "NCHW表示张量布局中通道维在前（Batch, Channel, H, W）。",
+  "A", "正确。需与NHWC区分。")
+
+# ========== 大模型 ==========
+S(RL, "简历·大模型应用", "RAG流程中，将检索结果拼入提示词再生成，对应哪一步？",
+  ["仅Embedding", "检索增强后的生成（Generation）", "只做分库分表", "只做限流"],
+  "B", "切分→向量化→检索→(Rerank)→拼Prompt生成。")
+
+S(RL, "简历·大模型应用", "Prompt/上下文使用Redis缓存的主要收益是？",
+  ["永久强一致事务", "降低重复提示与会话读写延迟、辅助动态管理Context", "替代向量数据库", "训练更大基座模型"],
+  "B", "工程降本降时延；配合删缓存策略保最终一致。")
+
+S(RL, "简历·大模型应用", "Tool Calling与普通多轮聊天的本质区别是？",
+  ["字数更多", "模型可选择并调用工具，根据执行结果再回答，形成闭环", "不能使用中文", "必须离线"],
+  "B", "能办事而不只生成文本。")
+
+J(RL, "简历·大模型应用", "Multi-Agent是指多个角色智能体分工协同完成复合任务（如识别、检索、规划）。",
+  "A", "正确。")
+
+S(RL, "简历·大模型应用", "关于LLM微调，较稳妥的面试表述是？",
+  ["我从零预训练了千亿模型", "了解SFT/LoRA等思路，强调数据质量与业务落地（RAG/端侧）", "微调等于RAG", "不需要数据"],
+  "B", "简历为了解级，避免夸大训练规模。")
+
+# ========== Java基础 ==========
+S(JB, "基础·Java", "HashMap在JDK8中，链表过长会树化为？",
+  ["AVL树", "红黑树", "B+树", "堆"],
+  "B", "红黑树降低最坏查询复杂度。")
+
+S(JB, "基础·Java", "下列关于String的说法正确的是？",
+  ["String可变，StringBuilder不可变", "String不可变；频繁拼接宜用StringBuilder", "String与StringBuilder完全无区别", "String不能入常量池"],
+  "B", "不可变保证安全与共享；拼接用Builder。")
+
+S(JB, "基础·Java", "重写equals时通常还必须重写？",
+  ["toString即可", "hashCode", "finalize", "clone"],
+  "B", "相等对象hash必须相等，否则HashMap等异常。")
+
+S(JB, "基础·Java", "Java中用于表示「接口默认方法」出现在哪个版本里程碑附近？",
+  ["Java 1.4", "Java 8", "Java 5仅有", "与版本无关"],
+  "B", "Java 8引入default/static接口方法、Lambda、Stream等。")
+
+S(JB, "基础·Java", "下列属于堆内存主要存放内容的是？",
+  ["局部变量中的基本类型槽位", "对象实例", "程序计数器指令地址", "CPU寄存器"],
+  "B", "对象在堆；局部基本类型在栈帧。")
+
+S(JB, "基础·Java", "ArrayList随机访问快的原因是？",
+  ["底层链表", "底层动态数组，支持下标O(1)访问", "使用红黑树", "全部数据在栈上"],
+  "B", "数组连续存储。")
+
+J(JB, "基础·Java", "ConcurrentHashMap允许在并发下完全不需要任何同步机制即可任意复合操作（如先get再put）的线程安全。",
+  "B", "错误。单操作线程安全，复合操作仍需额外同步。")
+
+S(JB, "基础·Java", "异常体系中，Error与非检查异常通常是？",
+  ["都必须在方法签名throws", "Error与RuntimeException通常不强制捕获", "所有Exception都不用管", "Error是业务可恢复异常首选"],
+  "B", "检查异常需处理；Runtime/Error不强制。")
+
+S(JB, "基础·Java", "下列关于包装类型缓存的说法，较正确的是？",
+  ["所有Integer都缓存", "Integer常缓存-128~127，超出可能new新对象", "int与Integer比较永远用==即可", "包装类型没有缓存"],
+  "B", "注意自动拆装箱与缓存范围。")
+
+# ========== 并发 ==========
+S(CC, "基础·并发多线程", "线程池执行任务的大致顺序是？",
+  ["先拒绝再入队再创建核心线程", "核心线程→任务队列→最大线程→拒绝策略", "先最大线程再核心", "只入无界队列永远不拒绝"],
+  "B", "标准ThreadPoolExecutor流程。")
+
+S(CC, "基础·并发多线程", "CallerRunsPolicy拒绝策略的含义是？",
+  ["丢弃最老任务", "抛异常", "由提交任务的调用线程直接运行该任务", "静默丢弃新任务"],
+  "C", "降速反馈到调用方。")
+
+S(CC, "基础·并发多线程", "volatile能保证？",
+  ["i++的原子性", "可见性与有序性（禁止部分重排），不保证复合操作原子性", "代替所有锁", "一定比synchronized快且更安全"],
+  "B", "原子性仍需锁/Atomic。")
+
+S(CC, "基础·并发多线程", "CAS的含义更接近？",
+  ["先加锁再改", "Compare And Swap：期望值匹配则更新，否则失败重试", "先删缓存再写库", "两阶段提交"],
+  "B", "乐观并发基础。")
+
+S(CC, "基础·并发多线程", "下列关于死锁的必要条件，哪项不包含？",
+  ["互斥", "占有且等待", "不可剥夺", "CPU必须满载"],
+  "D", "还有循环等待；CPU满载不是死锁必要条件。")
+
+J(CC, "基础·并发多线程", "使用Executors.newCachedThreadPool时，若任务暴增可能创建大量线程导致OOM，生产更推荐自建有界线程池。",
+  "A", "正确。阿里规范也建议不用Executors直接创建。")
+
+S(CC, "基础·并发多线程", "ThreadLocal的典型用途是？",
+  ["跨进程共享全局变量", "每个线程独享变量副本，如存用户上下文", "替代数据库", "实现分布式锁"],
+  "B", "注意使用后remove防泄漏。")
+
+# ========== Redis ==========
+S(RD, "基础·Redis", "ZSet底层常用结构组合是？",
+  ["只有数组", "压缩列表/跳表等（按版本与配置）实现有序集合", "只有HashMap", "B+树聚簇索引"],
+  "B", "按score排序，支持范围。")
+
+S(RD, "基础·Redis", "缓存雪崩的治理不包括？",
+  ["过期时间加随机抖动", "Redis集群高可用", "入口限流降级", "让所有Key永久不过期且从不淘汰，作为唯一方案"],
+  "D", "可对核心Key永不过期但不是唯一万能方案；需综合治理。")
+
+S(RD, "基础·Redis", "管道Pipeline的主要收益是？",
+  ["把多个命令网络往返合并，降低RTT开销", "自动保证事务ACID", "替代持久化", "自动分片"],
+  "A", "减少往返。")
+
+S(RD, "基础·Redis", "Redis单线程模型（执行命令）带来的直观好处是？",
+  ["一定比多线程慢且无优点", "避免命令执行时的数据竞争，简化并发模型", "不能用多核IO", "无法做持久化"],
+  "B", "现代版本有I/O线程等优化，但命令执行仍偏单线程。")
+
+S(RD, "基础·Redis", "分布式锁解锁时为什么要用Lua校验token？",
+  ["Lua更快而已", "防止锁过期后误删其他客户端持有的锁", "为了写入AOF", "代替NX"],
+  "B", "原子校验+删除。")
+
+J(RD, "基础·Redis", "布隆过滤器判断「一定不存在」可靠，判断「可能存在」则可能有误判。",
+  "A", "正确。有假阳性无假阴性（标准布隆）。")
+
+S(RD, "基础·Redis", "热点Key问题常用手段不包括？",
+  ["本地缓存", "打散Key/读写分离与多副本", "互斥重建", "把热点Key值改成更大的大Key"],
+  "D", "大Key更糟。")
+
+# ========== MySQL ==========
+S(MY, "基础·MySQL", "InnoDB主键索引（聚簇）叶子节点存放？",
+  ["只存主键值", "整行记录", "只存二级索引指针", "只存表名"],
+  "B", "聚簇索引组织表。")
+
+S(MY, "基础·MySQL", "最左前缀原则指？",
+  ["只能建单列索引", "联合索引从最左列开始连续匹配才能更好用上索引", "ORDER BY必须用主键", "LIKE '%a'一定走索引"],
+  "B", "（a,b,c）可用a、ab、abc。")
+
+S(MY, "基础·MySQL", "MVCC主要解决哪类问题？",
+  ["磁盘坏道", "并发读写下的一致性视图（与隔离级别相关）", "彻底消灭死锁", "自动分库"],
+  "B", "多版本并发控制。")
+
+S(MY, "基础·MySQL", "下列可能导致索引失效的是？",
+  ["对索引列使用函数/隐式类型转换", "覆盖索引查询", "主键等值查询", "联合索引最左匹配"],
+  "A", "函数、隐式转换、前模糊等易失效。")
+
+S(MY, "基础·MySQL", "可重复读（RR）默认下，幻读主要通过什么缓解？",
+  ["只靠应用层重试", "间隙锁/Next-Key Lock等（与MVCC配合）", "关闭事务", "改用MyISAM"],
+  "B", "InnoDB RR特性。")
+
+S(MY, "基础·MySQL", "EXPLAIN中type=ALL通常表示？",
+  ["使用了唯一索引", "全表扫描，性能往往较差", "覆盖索引", "系统表"],
+  "B", "关注优化。")
+
+J(MY, "基础·MySQL", "事务ACID中，I（Isolation）隔离性用于控制并发事务相互影响程度。",
+  "A", "正确。")
+
+S(MY, "基础·MySQL", "分库分表后，跨分片JOIN通常？",
+  ["和单库一样无代价", "变复杂，常需避免或应用层聚合/宽表", "一定更快", "由主键自动完成"],
+  "B", "分片带来查询限制。")
+
+# ========== Spring ==========
+S(SP, "基础·Spring/Boot", "IoC的核心思想是？",
+  ["对象自己new所有依赖", "控制反转：容器创建并注入依赖", "只能用XML不能注解", "替代JVM"],
+  "B", "依赖注入是实现方式。")
+
+S(SP, "基础·Spring/Boot", "@Transactional在同类内部自调用可能失效，原因是？",
+  ["注解拼写必须大写", "未走Spring代理，事务切面不生效", "MySQL不支持事务", "只能用编程式事务"],
+  "B", "自调用绕过代理。")
+
+S(SP, "基础·Spring/Boot", "Spring Boot相对传统Spring的显著特点是？",
+  ["不能用自动配置", "约定优于配置、起步依赖与自动配置加速搭建", "不再需要容器", "禁止使用Maven"],
+  "B", "快速构建生产级应用。")
+
+S(SP, "基础·Spring/Boot", "Bean默认作用域是？",
+  ["prototype", "singleton", "request", "session"],
+  "B", "单例默认。")
+
+J(SP, "基础·Spring/Boot", "AOP常用于事务、日志、权限等横切逻辑，基于代理实现。",
+  "A", "正确。")
+
+S(SP, "基础·Spring/Boot", "MyBatis中#{}与${}的区别，正确的是？",
+  ["完全一样", "#{}预编译防注入；${}字符串拼接有注入风险", "${}更安全", "只能用${}"],
+  "B", "优先#{}。")
+
+# ========== MQ ==========
+S(MQ, "基础·MQ与中间件", "引入消息队列的典型收益不包括？",
+  ["解耦", "异步", "削峰", "自动获得分布式强一致事务"],
+  "D", "MQ带来最终一致与复杂度，不自动等于强一致。")
+
+S(MQ, "基础·MQ与中间件", "消息重复消费时，消费者侧关键能力是？",
+  ["忽略一切重复", "幂等处理（唯一键/状态判断）", "关闭ACK", "同步变异步即可"],
+  "B", "至少一次投递常见，要幂等。")
+
+S(MQ, "基础·MQ与中间件", "RocketMQ中，Topic的作用更接近？",
+  ["单条消息内容", "消息主题分类，生产者发送、消费者订阅的目标", "消费者线程池大小", "Redis数据类型"],
+  "B", "还可配合Tag过滤。")
+
+S(MQ, "基础·MQ与中间件", "ShardingSphere基因法分片属于？",
+  ["仅前端路由", "分库分表路由策略的一种工程实践", "GC算法", "HTTP状态码"],
+  "B", "把分片信息编码进业务键。")
+
+J(MQ, "基础·MQ与中间件", "顺序消息适用于对全局所有业务都强制单线程串行的场景，因此任何系统都应打开全局顺序。",
+  "B", "错误。顺序有性能代价，应按业务分区有序而非盲目全局。")
+
+S(MQ, "基础·MQ与中间件", "流量削峰场景下，MQ的作用是？",
+  ["让瞬时流量直接打爆DB", "缓冲请求，平滑消费保护后端", "删除所有缓存", "替代限流"],
+  "B", "可与限流配合。")
+
+# ========== 网络OS ==========
+S(NW, "基础·网络与操作系统", "TCP三次握手的目的是？",
+  ["加密数据", "确认双方收发能力，建立可靠连接", "分配HTTP状态码", "压缩报文"],
+  "B", "SYN→SYN+ACK→ACK。")
+
+S(NW, "基础·网络与操作系统", "HTTPS相对HTTP主要增加了？",
+  ["更短的URL", "TLS加密与证书认证", "只能用UDP", "取消状态码"],
+  "B", "防窃听篡改，校验证书。")
+
+S(NW, "基础·网络与操作系统", "进程与线程的区别，正确的是？",
+  ["线程是资源分配的基本单位", "进程是资源分配单位，线程是调度单位且共享进程地址空间", "二者完全等同", "线程间一定不能通信"],
+  "B", "线程更轻量。")
+
+S(NW, "基础·网络与操作系统", "HTTP状态码404表示？",
+  ["成功", "未授权", "资源未找到", "网关超时"],
+  "C", "常见客户端错误。")
+
+S(NW, "基础·网络与操作系统", "下列属于应用层协议的是？",
+  ["TCP", "IP", "HTTP", "以太网帧"],
+  "C", "HTTP在应用层。")
+
+J(NW, "基础·网络与操作系统", "RESTful API通常以资源为中心，使用HTTP方法表达操作语义（GET查、POST建、PUT/PATCH改、DELETE删）。",
+  "A", "正确。")
+
+S(NW, "基础·网络与操作系统", "正向代理与反向代理：Nginx常作？",
+  ["只能正向代理用户上网", "常作反向代理，对外暴露服务、负载均衡与卸载TLS等", "不能缓存静态资源", "替代DNS根服务器"],
+  "B", "反向代理对客户端隐藏后端。")
+
+# ========== AI基础 ==========
+S(AI, "基础·AI/算法入门", "YOLO一类算法通常被称为？",
+  ["二阶段检测器的唯一实现", "一阶段目标检测，速度较快利于端侧", "仅用于语音识别", "数据库索引算法"],
+  "B", "适合实时场景。")
+
+S(AI, "基础·AI/算法入门", "ONNX的主要作用是？",
+  ["仅苹果设备格式", "模型中间交换格式，便于跨框架部署推理", "替代JPEG", "短链编码算法"],
+  "B", "训练框架→部署运行时。")
+
+S(AI, "基础·AI/算法入门", "A*算法的核心思想是？",
+  ["纯随机走", "启发式搜索：f=g+h，在可采纳启发下可最优", "只能用于排序", "梯度下降"],
+  "B", "g实际代价，h启发估计。")
+
+S(AI, "基础·AI/算法入门", "Embedding在RAG中的作用是？",
+  ["把文本映射为向量以便相似度检索", "压缩图片为JPEG", "生成短链", "做TCP握手"],
+  "A", "语义向量检索基础。")
+
+J(AI, "基础·AI/算法入门", "幻觉（Hallucination）指大模型生成看似合理但事实错误的内容，RAG可通过检索真实知识缓解。",
+  "A", "正确。")
+
+S(AI, "基础·AI/算法入门", "LoRA微调的直观特点是？",
+  ["必须更新全部千亿参数", "低秩适配，以较少可训练参数适配下游任务", "等于提示词工程", "只能用于CV不能用于LLM"],
+  "B", "参数高效微调常见方案。")
+
+S(AI, "基础·AI/算法入门", "OpenCV在巡检项目中更常用于？",
+  ["分库分表", "传统视觉处理如巡线、图像预处理等", "RocketMQ消费", "JWT签发"],
+  "B", "经典视觉库。")
+
+# more foundation fillers for volume
+S(JB, "基础·Java", "下列关于泛型的说法正确的是？",
+  ["泛型在运行期保留完整类型信息无擦除", "存在类型擦除，主要在编译期提供类型安全", "泛型可使用基本类型int作为类型参数（无包装）", "泛型与集合无关"],
+  "B", "类型擦除是Java泛型特征。")
+
+S(JB, "基础·Java", "fail-fast与fail-safe：ArrayList迭代中结构性修改通常？",
+  ["一定成功", "可能抛ConcurrentModificationException（fail-fast）", "自动加分布式锁", "转为CopyOnWrite"],
+  "B", "并发下可用并发集合。")
+
+S(CC, "基础·并发多线程", "CountDownLatch的典型用途是？",
+  ["让一个或多个线程等待其他线程完成", "替代数据库事务", "实现HTTP缓存", "生成UUID"],
+  "A", "倒数门闩。")
+
+S(CC, "基础·并发多线程", "ReentrantLock中fair=true表示？",
+  ["非公平锁吞吐通常更高", "公平锁按等待时间大致有序获锁，可能降低吞吐", "公平锁一定不会死锁", "与公平无关"],
+  "B", "公平有开销。")
+
+S(RD, "基础·Redis", "缓存与数据库双写一致性，业界常见工程方案是？",
+  ["永远只写缓存不写库", "Cache-Aside：写库删缓存（或延迟双删）等", "只写库永不读缓存", "用HashMap代替Redis即可一致"],
+  "B", "与简历方案一致。")
+
+S(RD, "基础·Redis", "Redis过期删除策略常见组合是？",
+  ["仅依赖客户端删除", "惰性删除+定期删除", "永不过期且不能手动删", "只能RDB时删除"],
+  "B", "惰性+定期。")
+
+S(MY, "基础·MySQL", "覆盖索引的含义是？",
+  ["索引包含查询所需全部列，可少回表", "必须覆盖全表所有列", "主键不能覆盖", "只有全文索引能覆盖"],
+  "A", "减少回表提升性能。")
+
+S(MY, "基础·MySQL", "慢SQL优化第一步通常是？",
+  ["直接加机器", "看执行计划EXPLAIN，检查索引与扫描行数", "删库", "改成存储过程必快"],
+  "B", "先诊断再优化。")
+
+S(SP, "基础·Spring/Boot", "Spring MVC处理请求的典型入口前端控制器是？",
+  ["SqlSession", "DispatcherServlet", "Jedis", "Broker"],
+  "B", "统一分发。")
+
+S(SP, "基础·Spring/Boot", "RESTful设计中，用GET /tasks/1 通常表示？",
+  ["删除任务1", "查询id=1的任务资源", "创建任务", "清空全部任务"],
+  "B", "资源+HTTP语义。")
+
+S(MQ, "基础·MQ与中间件", "消息积压时，优先考虑？",
+  ["无视", "扩容消费者、优化消费逻辑、临时限流生产、排查阻塞", "删除Topic数据不看原因", "关闭监控"],
+  "B", "先定位再扩容。")
+
+S(NW, "基础·网络与操作系统", "从浏览器输入URL到展示，下列顺序更合理的开头是？",
+  ["直接渲染HTML，不解析DNS", "DNS解析→建立连接→发HTTP请求→收响应→渲染", "先渲染再请求", "只做ARP无DNS"],
+  "B", "经典链路。")
+
+S(NW, "基础·网络与操作系统", "Cookie与Session的常见关系是？",
+  ["完全无关", "Session常存服务端，Cookie可存SessionId", "Session只能存浏览器LocalStorage", "Cookie不能过期"],
+  "B", "经典会话方案。")
+
+S(AI, "基础·AI/算法入门", "监督学习与无监督学习的区别，正确的是？",
+  ["监督无标签，无监督有标签", "监督用标注数据学习输入到输出映射；无监督发现数据内在结构", "二者都无需数据", "强化学习等于监督学习"],
+  "B", "基础ML概念。")
+
+S(AI, "基础·AI/算法入门", "过拟合通常表现为？",
+  ["训练差测试也好", "训练很好但泛化差（测试差）", "一定是数据越多越过拟合", "与模型复杂度无关"],
+  "B", "需正则、早停、更多数据等。")
+
+# Resume synthesis
+S(RB, "简历·后端高并发", "用一分钟概括智农云眸后端四件事，下列哪项不准确？",
+  ["上下文：改DB删缓存+重试", "跳转：多层缓存+互斥重建", "短链：基因分片+号段发号", "用OpenCV完成所有短链跳转"],
+  "D", "OpenCV属于巡检视觉，不是短链。")
+
+S(RM, "简历·Momenta实习", "DDOD/OCC平台中，Union更合理的理解是？",
+  ["仅监控告警模块", "数据集/批次聚合入口，向下派生workflow与任务", "短链跳转服务", "YOLO模型文件"],
+  "B", "对齐简历对象模型。")
+
+S(RR, "简历·巡检机器人", "RRT*的特点更接近？",
+  ["仅网格离散最优且含运动学", "采样式规划，适合复杂空间，渐近最优", "就是TEB", "只能用于排序"],
+  "B", "与A*/Hybrid A*对比记忆。")
+
+assert qid - 8001 == len(questions)
+print(f"questions={len(questions)} facts={len(facts)} next_id={qid}")
+
+# Emit JS
+def js_str(s):
+    return json.dumps(s, ensure_ascii=False)
+
+lines = []
+lines.append("/* === 技术面试题库：简历项目深挖 + 计算机基础 === */")
+lines.append("/* 科目ID: interview | 生成自 _gen_interview.py */")
+lines.append("")
+lines.append("const INTERVIEW_QUESTIONS = [")
+for i, item in enumerate(questions):
+    comma = "," if i < len(questions) - 1 else ""
+    lines.append("  " + json.dumps(item, ensure_ascii=False) + comma)
+lines.append("];")
+lines.append("")
+lines.append("const INTERVIEW_FACTS = [")
+for i, item in enumerate(facts):
+    comma = "," if i < len(facts) - 1 else ""
+    lines.append("  " + json.dumps(item, ensure_ascii=False) + comma)
+lines.append("];")
+lines.append("")
+lines.append("if (typeof SUBJECT_DATA !== 'undefined') {")
+lines.append("  SUBJECT_DATA.interview = {")
+lines.append('    name: "技术面试",')
+lines.append('    icon: "面",')
+lines.append("    categories: " + json.dumps(categories, ensure_ascii=False) + ",")
+lines.append("    facts: INTERVIEW_FACTS,")
+lines.append("    questions: INTERVIEW_QUESTIONS")
+lines.append("  };")
+lines.append("}")
+lines.append("")
+
+OUT.write_text("\n".join(lines), encoding="utf-8")
+print("Wrote", OUT, "size", OUT.stat().st_size)
