@@ -1968,7 +1968,7 @@ function evaluateAnswer(userAns, clickX, clickY) {
   let resultText = isCorrect ? "<span style='color:var(--success); font-weight:bold;'>回答正确！</span><br/>" : 
                                `<span style='color:var(--error); font-weight:bold;'>回答错误。</span> 正确答案是：<span style='color:var(--success); font-weight:bold;'>${formatCorrectAnswer(q)}</span><br/>`;
   
-  expContent.innerHTML = resultText + q.explanation;
+  expContent.innerHTML = resultText + String(q.explanation || "").replace(/\n/g, "<br>");
   expPanel.classList.add("active", "tappable");
   expPanel.scrollIntoView({ behavior: "smooth", block: "nearest" });
   showQuizSwipeHint();
