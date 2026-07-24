@@ -2090,117 +2090,228 @@ h1, h2, h3, .serif-font {
   text-indent: 28px;
 }
 
-/* 面试口述背诵：放大主阅读区，整页滚动更友好 */
+/* 面试口述背诵：一篇一清，正文/知识点分页 */
 .oral-screen {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
-  padding-bottom: 28px;
+  padding-bottom: 36px;
 }
 .oral-hint-row {
-  margin-top: 10px;
-  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
   justify-content: space-between;
+  gap: 8px;
+  margin: 8px 0 12px;
 }
 .oral-hint-text {
-  font-size: 13px;
+  font-size: 12px;
   color: var(--text-muted);
   line-height: 1.4;
 }
-.oral-select-wrap {
-  margin-bottom: 14px;
-}
-.oral-select-label {
-  font-size: 13px;
-  font-weight: 700;
+.oral-section-label {
+  font-size: 12px;
+  font-weight: 800;
   color: var(--text-muted);
-  display: block;
-  margin-bottom: 8px;
+  letter-spacing: 0.02em;
+  margin: 4px 0 8px;
 }
-.oral-script-selector {
+.oral-chip-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.oral-chip {
+  border: 1px solid var(--border-color);
+  background: var(--bg-card);
+  color: var(--text-main);
+  border-radius: 999px;
+  padding: 8px 12px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.oral-chip.active {
+  background: rgba(14, 102, 85, 0.12);
+  border-color: #0e6655;
+  color: #0e6655;
+}
+.oral-script-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.oral-script-item {
+  text-align: left;
   width: 100%;
-  padding: 14px 16px;
-  min-height: 48px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-card);
   border-radius: 12px;
+  padding: 12px 14px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.oral-script-item.active {
+  border-color: #0e6655;
+  box-shadow: inset 3px 0 0 #0e6655;
+  background: rgba(14, 102, 85, 0.06);
+}
+.oral-script-item-title {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--text-main);
+}
+.oral-script-item-desc {
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.45;
+}
+.oral-panel-tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.oral-panel-tab {
   border: 1px solid var(--border-color);
   background: var(--bg-input);
-  color: var(--text-main);
-  font-size: 15px;
-  font-weight: 600;
-  outline: none;
+  color: var(--text-muted);
+  border-radius: 12px;
+  padding: 12px 10px;
+  font-size: 14px;
+  font-weight: 800;
   cursor: pointer;
+}
+.oral-panel-tab.active {
+  background: #0e6655;
+  border-color: #0e6655;
+  color: #fff;
+}
+.oral-count-pill {
+  display: inline-block;
+  min-width: 18px;
+  padding: 0 6px;
+  border-radius: 999px;
+  font-size: 11px;
+  background: rgba(255, 255, 255, 0.22);
+}
+.oral-panel-tab:not(.active) .oral-count-pill {
+  background: rgba(14, 102, 85, 0.12);
+  color: #0e6655;
+}
+.oral-pane[hidden] {
+  display: none !important;
 }
 .oral-mode-bar {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 8px;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 }
 .oral-mode-bar .limit-btn {
   font-size: 12px;
-  padding: 12px 4px;
-  min-height: 44px;
+  padding: 11px 4px;
+  min-height: 42px;
 }
 .oral-recitation-card {
   margin-top: 0;
-  padding: 22px 20px 26px;
-  min-height: min(62vh, 560px);
-  /* 不再用过矮的 max-height 挤成小框；整页滚动 */
+  padding: 20px 18px 24px;
+  min-height: 48vh;
   max-height: none;
   overflow: visible;
 }
+.oral-project-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 800;
+  color: #0e6655;
+  background: rgba(14, 102, 85, 0.1);
+  padding: 4px 10px;
+  border-radius: 999px;
+  margin-bottom: 10px;
+}
 .oral-title-view {
   font-size: 18px;
-  line-height: 1.45;
-  text-align: center;
-  margin: 0 0 10px;
+  line-height: 1.4;
+  text-align: left;
+  margin: 0 0 6px;
   color: var(--text-main);
   font-weight: 800;
 }
 .oral-meta-view {
   font-size: 13px;
   color: var(--text-muted);
-  text-align: center;
-  margin-bottom: 18px;
-  line-height: 1.55;
+  text-align: left;
+  margin-bottom: 16px;
+  line-height: 1.5;
+  padding-bottom: 12px;
+  border-bottom: 1px dashed var(--border-color);
 }
 .oral-body {
-  font-size: 16px;
-  line-height: 1.95;
+  font-size: 15px;
+  line-height: 1.9;
   color: var(--text-main);
   text-align: justify;
 }
 .oral-para-block {
-  margin-bottom: 20px;
-  padding: 14px 14px 16px;
+  margin-bottom: 14px;
+  padding: 14px;
   border-radius: 12px;
-  background: rgba(14, 102, 85, 0.04);
-  border: 1px solid rgba(14, 102, 85, 0.12);
+  background: var(--bg-input);
+  border: 1px solid var(--border-color);
 }
-.oral-para-label {
-  display: inline-block;
-  font-size: 12px;
+.oral-para-hook {
+  border-left: 3px solid #0e6655;
+}
+.oral-para-body {
+  border-left: 3px solid #1a5276;
+}
+.oral-para-close {
+  border-left: 3px solid #b9770e;
+}
+.oral-para-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.oral-para-step {
+  font-size: 14px;
   font-weight: 800;
   color: #0e6655;
-  background: rgba(14, 102, 85, 0.12);
-  padding: 4px 12px;
-  border-radius: 999px;
-  margin-bottom: 10px;
+}
+.oral-para-label {
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--text-muted);
 }
 .oral-body p {
   margin: 0;
   text-indent: 0;
 }
-.oral-recitation-card .essay-mask-btn,
-.oral-recitation-card .oral-mask-btn {
-  font-size: 14px;
-  padding: 4px 10px;
-  margin: 0 3px;
-  line-height: 1.7;
-}
-.oral-recitation-card .essay-mask-btn.revealed,
-.oral-recitation-card .oral-mask-btn.revealed {
-  font-size: 16px;
+.oral-mask-btn {
+  display: inline;
+  background: var(--bg-card);
+  color: #0e6655;
+  border-bottom: 2px dashed #0e6655;
   padding: 2px 8px;
+  margin: 0 2px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 13px;
+  user-select: none;
+}
+.oral-mask-btn.revealed {
+  background: rgba(46, 204, 113, 0.12);
+  color: #1e8449;
+  border-bottom: 2px solid #27ae60;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
 }
 .oral-mask-btn[data-type="tech"]:not(.revealed) {
   color: #1a5276;
@@ -2211,37 +2322,55 @@ h1, h2, h3, .serif-font {
   color: #1a5276;
   border-bottom-color: #1a5276;
 }
-.oral-knowledge-section {
-  margin-top: 20px;
-  padding-bottom: 12px;
-}
-.oral-knowledge-heading {
-  font-size: 14px;
-  font-weight: 800;
-  color: var(--text-muted);
-  margin-bottom: 12px;
-}
 .oral-knowledge-list {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
+}
+.oral-knowledge-intro {
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.5;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: rgba(14, 102, 85, 0.06);
+  margin-bottom: 4px;
 }
 .oral-knowledge-card {
   border: 1px solid var(--border-color);
   border-radius: 12px;
   background: var(--bg-card);
-  padding: 16px 18px;
-  min-height: 64px;
+  padding: 14px 16px;
 }
 .oral-knowledge-card summary {
   cursor: pointer;
   list-style: none;
   display: flex;
-  flex-direction: column;
-  gap: 6px;
+  gap: 10px;
+  align-items: flex-start;
 }
 .oral-knowledge-card summary::-webkit-details-marker {
   display: none;
+}
+.oral-knowledge-idx {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(14, 102, 85, 0.12);
+  color: #0e6655;
+  font-size: 12px;
+  font-weight: 800;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2px;
+}
+.oral-knowledge-main {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
 }
 .oral-knowledge-title {
   font-size: 15px;
@@ -2249,30 +2378,30 @@ h1, h2, h3, .serif-font {
   color: var(--text-main);
 }
 .oral-knowledge-summary {
-  font-size: 14px;
+  font-size: 13px;
   color: var(--text-muted);
-  line-height: 1.55;
+  line-height: 1.5;
 }
 .oral-knowledge-detail {
   margin-top: 12px;
-  padding-top: 12px;
+  margin-left: 34px;
+  padding-top: 10px;
   border-top: 1px dashed var(--border-color);
   font-size: 14px;
-  line-height: 1.75;
+  line-height: 1.7;
   color: var(--text-main);
+  white-space: pre-wrap;
 }
 .oral-knowledge-empty {
   font-size: 13px;
   color: var(--text-muted);
-  padding: 12px 0;
+  padding: 20px 12px;
+  text-align: center;
 }
 @media (max-width: 480px) {
   .oral-recitation-card {
-    min-height: 52vh;
-    padding: 18px 14px 22px;
-  }
-  .oral-body {
-    font-size: 15px;
+    min-height: 42vh;
+    padding: 16px 14px 20px;
   }
   .oral-mode-bar .limit-btn {
     font-size: 11px;

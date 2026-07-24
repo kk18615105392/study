@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>京通 - 多科目备考刷题宝典</title>
-  <link rel="stylesheet" href="app.css?v=24">
+  <link rel="stylesheet" href="app.css?v=25">
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#c0392b">
 </head>
@@ -848,31 +848,40 @@
           </button>
         </div>
 
-        <div class="quiz-info-row oral-hint-row">
+        <div class="oral-hint-row">
           <div class="quiz-timer" id="oral-timer" style="display:none;">⏱️ <span id="oral-timer-text">00:00</span></div>
-          <div class="oral-hint-text">点击虚线占位可显隐 · 先背关键句再补技术词</div>
+          <div class="oral-hint-text">一次只背一篇 · 正文与知识点分开看</div>
         </div>
 
-        <div class="oral-select-wrap">
-          <label class="oral-select-label">选择口述稿：</label>
-          <select id="oral-script-selector" class="oral-script-selector"></select>
+        <!-- ① 先选项目，避免五篇混在一起 -->
+        <div class="oral-section-label">1. 选择项目</div>
+        <div id="oral-project-chips" class="oral-chip-bar"></div>
+        <div id="oral-script-list" class="oral-script-list"></div>
+
+        <!-- ② 正文 / 知识点分页 -->
+        <div class="oral-section-label">2. 当前篇</div>
+        <div class="oral-panel-tabs">
+          <button type="button" class="oral-panel-tab active" id="oral-tab-script" onclick="setOralPanel('script')">口述正文</button>
+          <button type="button" class="oral-panel-tab" id="oral-tab-knowledge" onclick="setOralPanel('knowledge')">知识点 <span id="oral-panel-know-count" class="oral-count-pill">0</span></button>
         </div>
 
-        <div class="oral-mode-bar">
-          <button class="limit-btn active" id="oral-mode-all-mask" onclick="setOralMaskMode('all-mask')">全部遮蔽</button>
-          <button class="limit-btn" id="oral-mode-key" onclick="setOralMaskMode('key')">仅挖关键句</button>
-          <button class="limit-btn" id="oral-mode-tech" onclick="setOralMaskMode('tech')">仅挖技术词</button>
-          <button class="limit-btn" id="oral-mode-reveal" onclick="setOralMaskMode('reveal')">全部展示</button>
+        <div id="oral-pane-script" class="oral-pane">
+          <div id="oral-mode-bar" class="oral-mode-bar">
+            <button class="limit-btn active" id="oral-mode-all-mask" onclick="setOralMaskMode('all-mask')">全部遮蔽</button>
+            <button class="limit-btn" id="oral-mode-key" onclick="setOralMaskMode('key')">仅挖关键句</button>
+            <button class="limit-btn" id="oral-mode-tech" onclick="setOralMaskMode('tech')">仅挖技术词</button>
+            <button class="limit-btn" id="oral-mode-reveal" onclick="setOralMaskMode('reveal')">全部展示</button>
+          </div>
+
+          <div class="q-card oral-recitation-card">
+            <div id="oral-project-badge" class="oral-project-badge"></div>
+            <h3 id="oral-title-view" class="oral-title-view"></h3>
+            <div id="oral-meta-view" class="oral-meta-view"></div>
+            <div id="oral-body-view" class="oral-body"></div>
+          </div>
         </div>
 
-        <div class="q-card oral-recitation-card">
-          <h3 id="oral-title-view" class="oral-title-view"></h3>
-          <div id="oral-meta-view" class="oral-meta-view"></div>
-          <div id="oral-body-view" class="oral-body"></div>
-        </div>
-
-        <div class="oral-knowledge-section">
-          <div class="oral-knowledge-heading">延伸 · 基础知识点</div>
+        <div id="oral-pane-knowledge" class="oral-pane" hidden>
           <div id="oral-knowledge-view" class="oral-knowledge-list"></div>
         </div>
       </div>
@@ -1242,12 +1251,12 @@
   <script src="essays_data.js?v=15"></script>
   <script src="shenlun_practice_data.js?v=1"></script>
   <script src="interview_questions_data.js?v=4"></script>
-  <script src="resume_projects_data.js?v=3"></script>
+  <script src="resume_projects_data.js?v=4"></script>
   <script src="politics_modes.js?v=20"></script>
   <script src="app.js?v=31"></script>
   <script src="shenlun_practice.js?v=2"></script>
   <script src="theory_drill.js?v=1"></script>
-  <script src="resume_oral.js?v=1"></script>
+  <script src="resume_oral.js?v=2"></script>
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {

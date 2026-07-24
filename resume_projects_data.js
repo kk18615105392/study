@@ -281,21 +281,19 @@ const RESUME_PROJECTS_DATA = {
     { id: "skills", name: "综合串联与技术栈" }
   ],
   oralScripts: RESUME_ORAL_SCRIPTS,
-  // 考点速查：由口述稿一句话 + 知识点摘要生成
-  facts: RESUME_ORAL_SCRIPTS.flatMap((script) => {
-    const base = [
-      {
-        title: `${script.title.replace("｜60秒口述", "")}｜一句话`,
-        cat: script.project,
-        content: script.oneLiner + " " + (script.paragraphs[0] ? script.paragraphs[0].text : "")
-      }
-    ];
-    const know = (script.knowledge || []).map((k) => ({
-      title: `延伸·${k.title}`,
+  // 考点速查：一篇一条，不把知识点与口述正文揉在同一卡片
+  facts: RESUME_ORAL_SCRIPTS.map((script) => {
+    const parts = (script.paragraphs || [])
+      .map((p) => `【${p.label || "段落"}】${p.text}`)
+      .join("\n\n");
+    const know = (script.knowledge || [])
+      .map((k) => `· ${k.title}：${k.summary}`)
+      .join("\n");
+    return {
+      title: script.title,
       cat: script.project,
-      content: `【要点】${k.summary}\n【展开】${k.detail}`
-    }));
-    return base.concat(know);
+      content: `【定位】${script.oneLiner}\n\n${parts}${know ? `\n\n【延伸提纲】\n${know}` : ""}`
+    };
   }),
   questions: [
     {

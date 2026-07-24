@@ -1,6 +1,5 @@
 node_modules/
 admin.secret
-users.json
 sample_output.json
 *.pdf
 *_images/
