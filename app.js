@@ -2951,7 +2951,11 @@ function resetAllData() {
       theory: { answers: {}, mistakes: [], favorites: [] },
       guidebook: { answers: {}, mistakes: [], favorites: [] },
       quant: { answers: {}, mistakes: [], favorites: [] },
+      essays: { answers: {}, mistakes: [], favorites: [] },
+      shenlun_practice: { answers: {}, mistakes: [], favorites: [] },
+      theory_drill: { answers: {}, mistakes: [], favorites: [] },
       interview: { answers: {}, mistakes: [], favorites: [] },
+      resume_projects: { answers: {}, mistakes: [], favorites: [] },
       checkInDays: [getTodayStr()],
       streak: 1
     };
