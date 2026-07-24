@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>京通 - 多科目备考刷题宝典</title>
-  <link rel="stylesheet" href="app.css?v=23">
+  <link rel="stylesheet" href="app.css?v=24">
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#c0392b">
 </head>
@@ -840,7 +840,7 @@
       </div>
 
       <!-- ================= 2.1b 面试口述背诵屏幕 ================= -->
-      <div id="screen-oral-recitation" class="screen">
+      <div id="screen-oral-recitation" class="screen oral-screen">
         <div class="quiz-header">
           <span class="quiz-cat-badge" style="background: #0e6655;">🎙️ 面试口述背诵</span>
           <button class="btn-icon" onclick="quitQuiz()">
@@ -848,32 +848,31 @@
           </button>
         </div>
 
-        <div class="quiz-info-row" style="margin-top: 10px; margin-bottom: 12px; justify-content: space-between;">
+        <div class="quiz-info-row oral-hint-row">
           <div class="quiz-timer" id="oral-timer" style="display:none;">⏱️ <span id="oral-timer-text">00:00</span></div>
-          <div style="font-size: 11px; color: var(--text-muted);">点击虚线占位可显隐 · 先背关键句再补技术词</div>
+          <div class="oral-hint-text">点击虚线占位可显隐 · 先背关键句再补技术词</div>
         </div>
 
-        <div style="margin-bottom: 14px;">
-          <label style="font-size: 12px; font-weight: 700; color: var(--text-muted); display: block; margin-bottom: 6px;">选择口述稿：</label>
-          <select id="oral-script-selector" style="width: 100%; padding: 10px; border-radius: var(--border-radius-sm); border: 1px solid var(--border-color); background: var(--bg-input); color: var(--text-main); font-size: 13px; font-weight: 600; outline: none; cursor: pointer;">
-          </select>
+        <div class="oral-select-wrap">
+          <label class="oral-select-label">选择口述稿：</label>
+          <select id="oral-script-selector" class="oral-script-selector"></select>
         </div>
 
-        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-bottom: 14px;">
-          <button class="limit-btn active" id="oral-mode-all-mask" onclick="setOralMaskMode('all-mask')" style="font-size: 10px; padding: 6px 2px;">全部遮蔽</button>
-          <button class="limit-btn" id="oral-mode-key" onclick="setOralMaskMode('key')" style="font-size: 10px; padding: 6px 2px;">仅挖关键句</button>
-          <button class="limit-btn" id="oral-mode-tech" onclick="setOralMaskMode('tech')" style="font-size: 10px; padding: 6px 2px;">仅挖技术词</button>
-          <button class="limit-btn" id="oral-mode-reveal" onclick="setOralMaskMode('reveal')" style="font-size: 10px; padding: 6px 2px;">全部展示</button>
+        <div class="oral-mode-bar">
+          <button class="limit-btn active" id="oral-mode-all-mask" onclick="setOralMaskMode('all-mask')">全部遮蔽</button>
+          <button class="limit-btn" id="oral-mode-key" onclick="setOralMaskMode('key')">仅挖关键句</button>
+          <button class="limit-btn" id="oral-mode-tech" onclick="setOralMaskMode('tech')">仅挖技术词</button>
+          <button class="limit-btn" id="oral-mode-reveal" onclick="setOralMaskMode('reveal')">全部展示</button>
         </div>
 
-        <div class="q-card oral-recitation-card" style="margin-top:0; padding: 18px; max-height: calc(100vh - 360px); overflow-y: auto;">
-          <h3 id="oral-title-view" style="font-size: 16px; line-height: 1.4; text-align: center; margin-bottom: 6px; color: var(--text-main); font-weight: 800;"></h3>
-          <div id="oral-meta-view" style="font-size: 11px; color: var(--text-muted); text-align: center; margin-bottom: 14px; line-height: 1.5;"></div>
-          <div id="oral-body-view" class="oral-body" style="font-size: 14px; line-height: 1.85; color: var(--text-main); text-align: justify;"></div>
+        <div class="q-card oral-recitation-card">
+          <h3 id="oral-title-view" class="oral-title-view"></h3>
+          <div id="oral-meta-view" class="oral-meta-view"></div>
+          <div id="oral-body-view" class="oral-body"></div>
         </div>
 
-        <div style="margin-top: 14px;">
-          <div style="font-size: 12px; font-weight: 800; color: var(--text-muted); margin-bottom: 8px;">延伸 · 基础知识点</div>
+        <div class="oral-knowledge-section">
+          <div class="oral-knowledge-heading">延伸 · 基础知识点</div>
           <div id="oral-knowledge-view" class="oral-knowledge-list"></div>
         </div>
       </div>
