@@ -588,6 +588,9 @@ function selectSubject(subjectId) {
     } else if (subjectId === "theory_drill") {
       viewport.style.setProperty("--primary", "#1a5276");
       viewport.style.setProperty("--primary-glow", "rgba(26, 82, 118, 0.15)");
+    } else if (subjectId === "resume_projects") {
+      viewport.style.setProperty("--primary", "#0e6655");
+      viewport.style.setProperty("--primary-glow", "rgba(14, 102, 85, 0.15)");
     } else if (subjectId === "essays") {
       viewport.style.setProperty("--primary", "#8a1f1b");
       viewport.style.setProperty("--primary-glow", "rgba(138, 31, 27, 0.15)");
@@ -643,7 +646,8 @@ function ensureProgressFields() {
   if (!userProgress.essays)   userProgress.essays   = { answers: {}, mistakes: [], favorites: [] };
   if (!userProgress.shenlun_practice) userProgress.shenlun_practice = { answers: {}, mistakes: [], favorites: [] };
   if (!userProgress.theory_drill) userProgress.theory_drill = { answers: {}, mistakes: [], favorites: [] };
-  if (!userProgress.interview)userProgress.interview= { answers: {}, mistakes: [], favorites: [] };
+  if (!userProgress.interview) userProgress.interview = { answers: {}, mistakes: [], favorites: [] };
+  if (!userProgress.resume_projects) userProgress.resume_projects = { answers: {}, mistakes: [], favorites: [] };
   if (!userProgress.checkInDays) userProgress.checkInDays = [];
   if (userProgress.streak === undefined) userProgress.streak = 0;
   
@@ -969,6 +973,7 @@ async function handleAuthAction(action) {
           shenlun_practice: {answers:{},mistakes:[],favorites:[]},
           theory_drill: {answers:{},mistakes:[],favorites:[]},
           interview:{answers:{},mistakes:[],favorites:[]},
+          resume_projects: {answers:{},mistakes:[],favorites:[]},
           checkInDays:[getTodayStr()], streak:1
         }
       };
@@ -1173,7 +1178,7 @@ function renderAdminUserList() {
     const trialDaysLeft = user.trialDaysLeft || 0;
     const doneCount = user.doneCount !== undefined ? user.doneCount : (() => {
       let c = 0;
-      if (user.progress) ['beijing','idioms','politics','theory','theory_drill','guidebook','quant','essays','shenlun_practice','interview'].forEach(s => {
+      if (user.progress) ['beijing','idioms','politics','theory','theory_drill','guidebook','quant','essays','shenlun_practice','interview','resume_projects'].forEach(s => {
         if (user.progress[s] && user.progress[s].answers) c += Object.keys(user.progress[s].answers).length;
       });
       return c;
@@ -2765,12 +2770,13 @@ function exportData() {
     quant: "资料·速算",
     shenlun_practice: "申论分项刷题",
     theory_drill: "理论讲练·挖空",
-    interview: "技术面试·后端/AI"
+    interview: "技术面试·后端/AI",
+    resume_projects: "实习与项目·面试口述"
   };
 
   // 统计各科目进度
   let statsRows = "";
-  const subjects = ["beijing", "idioms", "politics", "theory", "theory_drill", "guidebook", "quant", "shenlun_practice", "interview"];
+  const subjects = ["beijing", "idioms", "politics", "theory", "theory_drill", "guidebook", "quant", "shenlun_practice", "interview", "resume_projects"];
   subjects.forEach(sub => {
     const prog = userProgress[sub] || {};
     const answers = prog.answers || {};
@@ -3582,13 +3588,13 @@ const PDF_DATA = {
   verbal: {
     title: "言语理解与表达 - 高频错题集",
     url: "data/言语理解.pdf",
-    totalPages: 60,
+    totalPages: 176,
     color: "#2980b9",
     checklist: [
-      { id: 1, label: "近义成语与高频词语深度辨析 (第 1-15 页)", pages: [1, 14] },
-      { id: 2, label: "片段阅读主旨概括与行文脉络 (第 16-30 页)", pages: [15, 29] },
-      { id: 3, label: "语句表达之排序与衔接技巧 (第 31-45 页)", pages: [30, 44] },
-      { id: 4, label: "篇章阅读快速解题关键点 (第 46-61 页)", pages: [45, 60] }
+      { id: 1, label: "成语辨析与词语积累笔记 (第 1-44 页)", pages: [1, 44] },
+      { id: 2, label: "逻辑填空错题精析（上） (第 45-88 页)", pages: [45, 88] },
+      { id: 3, label: "逻辑填空错题精析（中） (第 89-132 页)", pages: [89, 132] },
+      { id: 4, label: "逻辑填空错题精析（下） (第 133-176 页)", pages: [133, 176] }
     ]
   },
   quant: {

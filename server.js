@@ -149,6 +149,8 @@ function emptyProgress() {
     essays:   { answers: {}, mistakes: [], favorites: [] },
     shenlun_practice: { answers: {}, mistakes: [], favorites: [] },
     theory_drill: { answers: {}, mistakes: [], favorites: [] },
+    interview: { answers: {}, mistakes: [], favorites: [] },
+    resume_projects: { answers: {}, mistakes: [], favorites: [] },
     checkInDays: [],
     streak: 0
   };
