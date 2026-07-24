@@ -2090,36 +2090,50 @@ h1, h2, h3, .serif-font {
   text-indent: 28px;
 }
 
-/* 面试口述背诵：一篇一清，正文/知识点分页 */
-.oral-screen {
+/* 面试口述：两步流，禁止 flex 压缩导致层叠 */
+#screen-oral-recitation.oral-screen {
+  display: block;
+  overflow-x: hidden;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
-  padding-bottom: 36px;
+  padding-bottom: 40px;
+  box-sizing: border-box;
 }
-.oral-hint-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-  margin: 8px 0 12px;
+#screen-oral-recitation.oral-screen:not(.active) {
+  display: none !important;
+}
+.oral-topbar {
+  position: relative;
+  z-index: 2;
+  margin-bottom: 12px;
+}
+.oral-step {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  clear: both;
+}
+.oral-step[hidden] {
+  display: none !important;
 }
 .oral-hint-text {
   font-size: 12px;
   color: var(--text-muted);
-  line-height: 1.4;
+  line-height: 1.5;
+  margin: 0 0 14px;
 }
 .oral-section-label {
   font-size: 12px;
   font-weight: 800;
   color: var(--text-muted);
-  letter-spacing: 0.02em;
-  margin: 4px 0 8px;
+  margin: 12px 0 8px;
 }
 .oral-chip-bar {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 .oral-chip {
   border: 1px solid var(--border-color);
@@ -2139,35 +2153,55 @@ h1, h2, h3, .serif-font {
 .oral-script-list {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  margin-bottom: 16px;
+  gap: 10px;
+  margin-bottom: 8px;
 }
 .oral-script-item {
   text-align: left;
   width: 100%;
+  box-sizing: border-box;
   border: 1px solid var(--border-color);
   background: var(--bg-card);
-  border-radius: 12px;
-  padding: 12px 14px;
+  border-radius: 14px;
+  padding: 14px 16px;
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  gap: 4px;
-}
-.oral-script-item.active {
-  border-color: #0e6655;
-  box-shadow: inset 3px 0 0 #0e6655;
-  background: rgba(14, 102, 85, 0.06);
+  gap: 6px;
+  box-shadow: var(--shadow-sm);
 }
 .oral-script-item-title {
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 800;
   color: var(--text-main);
 }
 .oral-script-item-desc {
   font-size: 12px;
   color: var(--text-muted);
-  line-height: 1.45;
+  line-height: 1.5;
+}
+.oral-script-item-go {
+  font-size: 12px;
+  font-weight: 800;
+  color: #0e6655;
+  margin-top: 2px;
+}
+.oral-recite-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.oral-back-btn {
+  border: 1px solid var(--border-color);
+  background: var(--bg-card);
+  color: var(--text-main);
+  border-radius: 10px;
+  padding: 8px 12px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
 }
 .oral-panel-tabs {
   display: grid;
@@ -2202,7 +2236,13 @@ h1, h2, h3, .serif-font {
   background: rgba(14, 102, 85, 0.12);
   color: #0e6655;
 }
-.oral-pane[hidden] {
+.oral-pane {
+  display: block;
+  width: 100%;
+  position: relative;
+}
+.oral-pane[hidden],
+.oral-mode-bar[hidden] {
   display: none !important;
 }
 .oral-mode-bar {
@@ -2217,11 +2257,20 @@ h1, h2, h3, .serif-font {
   min-height: 42px;
 }
 .oral-recitation-card {
-  margin-top: 0;
-  padding: 20px 18px 24px;
-  min-height: 48vh;
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 18px 16px 22px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  box-shadow: var(--shadow-sm);
+  min-height: 0;
   max-height: none;
   overflow: visible;
+  position: relative;
+  z-index: 1;
 }
 .oral-project-badge {
   display: inline-block;
@@ -2237,7 +2286,7 @@ h1, h2, h3, .serif-font {
   font-size: 18px;
   line-height: 1.4;
   text-align: left;
-  margin: 0 0 6px;
+  margin: 0 0 8px;
   color: var(--text-main);
   font-weight: 800;
 }
@@ -2245,8 +2294,8 @@ h1, h2, h3, .serif-font {
   font-size: 13px;
   color: var(--text-muted);
   text-align: left;
-  margin-bottom: 16px;
-  line-height: 1.5;
+  margin: 0 0 16px;
+  line-height: 1.55;
   padding-bottom: 12px;
   border-bottom: 1px dashed var(--border-color);
 }
@@ -2257,21 +2306,16 @@ h1, h2, h3, .serif-font {
   text-align: justify;
 }
 .oral-para-block {
-  margin-bottom: 14px;
+  display: block;
+  margin: 0 0 12px;
   padding: 14px;
   border-radius: 12px;
   background: var(--bg-input);
   border: 1px solid var(--border-color);
 }
-.oral-para-hook {
-  border-left: 3px solid #0e6655;
-}
-.oral-para-body {
-  border-left: 3px solid #1a5276;
-}
-.oral-para-close {
-  border-left: 3px solid #b9770e;
-}
+.oral-para-hook { border-left: 3px solid #0e6655; }
+.oral-para-body { border-left: 3px solid #1a5276; }
+.oral-para-close { border-left: 3px solid #b9770e; }
 .oral-para-head {
   display: flex;
   align-items: center;
@@ -2291,19 +2335,23 @@ h1, h2, h3, .serif-font {
 .oral-body p {
   margin: 0;
   text-indent: 0;
+  word-break: break-word;
 }
 .oral-mask-btn {
   display: inline;
   background: var(--bg-card);
   color: #0e6655;
   border-bottom: 2px dashed #0e6655;
-  padding: 2px 8px;
+  padding: 1px 6px;
   margin: 0 2px;
   border-radius: 6px;
   cursor: pointer;
   font-weight: 700;
   font-size: 13px;
+  line-height: inherit;
   user-select: none;
+  white-space: normal;
+  vertical-align: baseline;
 }
 .oral-mask-btn.revealed {
   background: rgba(46, 204, 113, 0.12);
@@ -2311,7 +2359,6 @@ h1, h2, h3, .serif-font {
   border-bottom: 2px solid #27ae60;
   font-weight: 600;
   font-size: 15px;
-  cursor: pointer;
 }
 .oral-mask-btn[data-type="tech"]:not(.revealed) {
   color: #1a5276;
@@ -2334,7 +2381,6 @@ h1, h2, h3, .serif-font {
   padding: 10px 12px;
   border-radius: 10px;
   background: rgba(14, 102, 85, 0.06);
-  margin-bottom: 4px;
 }
 .oral-knowledge-card {
   border: 1px solid var(--border-color);
@@ -2349,9 +2395,7 @@ h1, h2, h3, .serif-font {
   gap: 10px;
   align-items: flex-start;
 }
-.oral-knowledge-card summary::-webkit-details-marker {
-  display: none;
-}
+.oral-knowledge-card summary::-webkit-details-marker { display: none; }
 .oral-knowledge-idx {
   flex-shrink: 0;
   width: 24px;
@@ -2364,7 +2408,6 @@ h1, h2, h3, .serif-font {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  margin-top: 2px;
 }
 .oral-knowledge-main {
   display: flex;
@@ -2398,15 +2441,112 @@ h1, h2, h3, .serif-font {
   padding: 20px 12px;
   text-align: center;
 }
-@media (max-width: 480px) {
-  .oral-recitation-card {
-    min-height: 42vh;
-    padding: 16px 14px 20px;
-  }
-  .oral-mode-bar .limit-btn {
-    font-size: 11px;
-    padding: 10px 2px;
-  }
+.oral-term-hint {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin: 0 0 10px;
+  line-height: 1.45;
+}
+.oral-term-btn {
+  display: inline;
+  border: none;
+  background: none;
+  color: #1565c0;
+  font-size: inherit;
+  font-weight: 700;
+  line-height: inherit;
+  padding: 0 2px;
+  margin: 0 1px;
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: 3px;
+  border-radius: 2px;
+}
+.oral-term-btn:hover,
+.oral-term-btn:focus {
+  color: #0d47a1;
+  background: rgba(21, 101, 192, 0.08);
+}
+.oral-term-popup {
+  position: fixed;
+  inset: 0;
+  z-index: 10050;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 16px;
+  box-sizing: border-box;
+}
+.oral-term-popup[hidden] {
+  display: none !important;
+}
+.oral-term-popup-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+}
+.oral-term-popup-card {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 420px;
+  max-height: 70vh;
+  overflow-y: auto;
+  background: var(--bg-card);
+  border-radius: 16px 16px 12px 12px;
+  padding: 18px 18px 22px;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border-color);
+  animation: oralTermSlideUp 0.25s ease;
+}
+@keyframes oralTermSlideUp {
+  from { transform: translateY(24px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+.oral-term-popup-close {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  border: none;
+  background: var(--bg-input);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  color: var(--text-muted);
+}
+.oral-term-popup-label {
+  font-size: 10px;
+  font-weight: 800;
+  color: #1565c0;
+  letter-spacing: 0.05em;
+  margin-bottom: 6px;
+}
+.oral-term-popup-title {
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--text-main);
+  margin: 0 28px 10px 0;
+  line-height: 1.35;
+}
+.oral-term-popup-summary {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-main);
+  margin: 0 0 12px;
+  line-height: 1.55;
+  padding: 10px 12px;
+  background: rgba(21, 101, 192, 0.08);
+  border-radius: 10px;
+}
+.oral-term-popup-detail {
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--text-main);
+  white-space: pre-wrap;
 }
 
 /* 会员状态标签 */

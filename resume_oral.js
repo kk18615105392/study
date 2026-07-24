@@ -1,10 +1,12 @@
 // 实习与项目 · 面试口述背诵
-// 一篇一清：顶部分项目 → 正文/知识点分页 → 挖空用占位符防 HTML 串扰
+// 两步流 + 挖空显隐 + 名词点击释义
 
-let oralMaskMode = "all-mask"; // all-mask | key | tech | reveal
-let oralPanel = "script"; // script | knowledge
+let oralMaskMode = "all-mask";
+let oralPanel = "script";
+let oralStep = "pick";
 let currentOralScript = null;
-let oralProjectFilter = "all";
+let oralProjectFilter = "momenta";
+let oralTermMap = {};
 
 function getOralScripts() {
   if (typeof RESUME_ORAL_SCRIPTS !== "undefined" && Array.isArray(RESUME_ORAL_SCRIPTS)) {
@@ -38,6 +40,65 @@ function escapeHtml(s) {
     .replace(/"/g, "&quot;");
 }
 
+function escapeAttr(s) {
+  return escapeHtml(s).replace(/'/g, "&#39;");
+}
+
+function getScriptTerms(script) {
+  const list = [];
+  const seen = new Set();
+  const add = (t) => {
+    if (!t || !t.term) return;
+    const id = t.id || t.term;
+    if (seen.has(id)) return;
+    seen.add(id);
+    list.push({
+      id,
+      term: t.term,
+      title: t.title || t.term,
+      summary: t.summary || "",
+      detail: t.detail || ""
+    });
+  };
+
+  (script.terms || []).forEach(add);
+  (script.knowledge || []).forEach((k) => {
+    const short = (k.title || "").split(/[（(]/)[0].trim();
+    if (short.length >= 2) add({ id: k.id, term: short, title: k.title, summary: k.summary, detail: k.detail });
+    // 知识标题里斜杠分隔的拆词（如 穿透 / 击穿 / 雪崩）
+    (k.title || "").split(/[/／、]/).forEach((part) => {
+      const p = part.trim();
+      if (p.length >= 2 && p.length <= 12) add({ id: `${k.id}_${p}`, term: p, title: k.title, summary: k.summary, detail: k.detail });
+    });
+  });
+
+  // 综合篇：合并各实习/项目全部名词
+  if (script.id === "oral_combo" || script.project === "skills") {
+    getOralScripts().forEach((s) => {
+      if (s.id === script.id) return;
+      (s.terms || []).forEach(add);
+      (s.knowledge || []).forEach((k) => {
+        const short = (k.title || "").split(/[（(]/)[0].trim();
+        if (short.length >= 2) add({ id: `combo_${k.id}`, term: short, title: k.title, summary: k.summary, detail: k.detail });
+      });
+    });
+  }
+
+  if (typeof RESUME_ORAL_COMMON_TERMS !== "undefined" && Array.isArray(RESUME_ORAL_COMMON_TERMS)) {
+    RESUME_ORAL_COMMON_TERMS.forEach(add);
+  }
+
+  return list.sort((a, b) => b.term.length - a.term.length);
+}
+
+function buildTermMap(script) {
+  const map = {};
+  getScriptTerms(script).forEach((t) => {
+    map[t.id] = t;
+  });
+  return map;
+}
+
 async function startOralRecitation() {
   const scripts = getOralScripts();
   if (!scripts.length) {
@@ -48,17 +109,18 @@ async function startOralRecitation() {
   currentMode = "oral_recitation";
   if (typeof currentSubject !== "undefined") currentSubject = "resume_projects";
 
-  oralProjectFilter = "all";
+  oralProjectFilter = scripts[0].project || "momenta";
+  oralStep = "pick";
   oralPanel = "script";
   oralMaskMode = "all-mask";
+  currentOralScript = null;
+  oralTermMap = {};
 
   bindOralEventsOnce();
+  showOralStep("pick");
   renderOralProjectChips();
-  setOralPanel("script");
-  setOralMaskMode("all-mask");
-
-  const first = scripts[0];
-  loadOralScript(first.id);
+  renderOralScriptList();
+  closeOralTermPopup();
 
   if (typeof startPracticeTimer === "function") {
     startPracticeTimer("oral-timer", "oral-timer-text");
@@ -72,79 +134,104 @@ function bindOralEventsOnce() {
   const bodyView = document.getElementById("oral-body-view");
   if (bodyView && !bodyView.dataset.bound) {
     bodyView.addEventListener("click", (e) => {
-      const btn = e.target.closest(".oral-mask-btn");
-      if (!btn) return;
-      const text = btn.getAttribute("data-text") || "";
-      const type = btn.getAttribute("data-type") || "key";
-      if (btn.classList.contains("revealed")) {
-        btn.classList.remove("revealed");
-        btn.textContent = `🔑 ${oralMaskLabel(type)}`;
+      const termBtn = e.target.closest(".oral-term-btn");
+      if (termBtn) {
+        e.preventDefault();
+        e.stopPropagation();
+        showOralTermPopup(termBtn.getAttribute("data-term-id"));
+        return;
+      }
+      const maskBtn = e.target.closest(".oral-mask-btn");
+      if (!maskBtn) return;
+      const text = maskBtn.getAttribute("data-text") || "";
+      const type = maskBtn.getAttribute("data-type") || "key";
+      if (maskBtn.classList.contains("revealed")) {
+        maskBtn.classList.remove("revealed");
+        maskBtn.innerHTML = `🔑 ${oralMaskLabel(type)}`;
       } else {
-        btn.classList.add("revealed");
-        btn.textContent = text;
+        maskBtn.classList.add("revealed");
+        const terms = getScriptTerms(currentOralScript || {});
+        maskBtn.innerHTML = linkTermsInPlainText(text, terms);
       }
     });
     bodyView.dataset.bound = "true";
   }
+
+  const popup = document.getElementById("oral-term-popup");
+  if (popup && !popup.dataset.bound) {
+    popup.addEventListener("click", (e) => {
+      if (e.target.classList.contains("oral-term-popup-backdrop")) closeOralTermPopup();
+    });
+    popup.dataset.bound = "true";
+  }
+}
+
+function showOralStep(step) {
+  oralStep = step === "recite" ? "recite" : "pick";
+  const pick = document.getElementById("oral-step-pick");
+  const recite = document.getElementById("oral-step-recite");
+  if (pick) pick.hidden = oralStep !== "pick";
+  if (recite) recite.hidden = oralStep !== "recite";
+  const screen = document.getElementById("screen-oral-recitation");
+  if (screen) screen.scrollTop = 0;
+  if (oralStep === "pick") closeOralTermPopup();
 }
 
 function renderOralProjectChips() {
   const bar = document.getElementById("oral-project-chips");
   if (!bar) return;
   const cats = getOralCategories();
-  const chips = [{ id: "all", name: "全部" }].concat(cats);
 
-  bar.innerHTML = chips
-    .map(
-      (c) =>
-        `<button type="button" class="oral-chip${c.id === oralProjectFilter ? " active" : ""}" data-project="${c.id}">${c.name.replace(/^实习·|^项目·/, "")}</button>`
-    )
+  bar.innerHTML = cats
+    .map((c) => {
+      const short = c.name.replace(/^实习·|^项目·/, "");
+      const active = c.id === oralProjectFilter ? " active" : "";
+      return `<button type="button" class="oral-chip${active}" data-project="${c.id}">${escapeHtml(short)}</button>`;
+    })
     .join("");
 
   bar.querySelectorAll(".oral-chip").forEach((btn) => {
     btn.onclick = () => {
-      oralProjectFilter = btn.getAttribute("data-project") || "all";
+      oralProjectFilter = btn.getAttribute("data-project") || oralProjectFilter;
       renderOralProjectChips();
       renderOralScriptList();
-      const list = filteredOralScripts();
-      if (list.length) loadOralScript(list[0].id);
     };
   });
-
-  renderOralScriptList();
 }
 
 function filteredOralScripts() {
-  const all = getOralScripts();
-  if (oralProjectFilter === "all") return all;
-  return all.filter((s) => s.project === oralProjectFilter);
+  return getOralScripts().filter((s) => s.project === oralProjectFilter);
 }
 
 function renderOralScriptList() {
   const listEl = document.getElementById("oral-script-list");
   if (!listEl) return;
-  const scripts = filteredOralScripts();
-  const currentId = currentOralScript && currentOralScript.id;
+  let scripts = filteredOralScripts();
+  if (!scripts.length) scripts = getOralScripts();
 
   listEl.innerHTML = scripts
     .map(
       (s) => `
-    <button type="button" class="oral-script-item${s.id === currentId ? " active" : ""}" data-id="${s.id}">
+    <button type="button" class="oral-script-item" data-id="${escapeHtml(s.id)}">
       <span class="oral-script-item-title">${escapeHtml(s.title)}</span>
       <span class="oral-script-item-desc">${escapeHtml(s.oneLiner || "")}</span>
+      <span class="oral-script-item-go">开始背诵 →</span>
     </button>`
     )
     .join("");
 
   listEl.querySelectorAll(".oral-script-item").forEach((btn) => {
-    btn.onclick = () => loadOralScript(btn.getAttribute("data-id"));
+    btn.onclick = () => openOralRecite(btn.getAttribute("data-id"));
   });
 }
 
-function loadOralScript(scriptId) {
+function openOralRecite(scriptId) {
   const script = getOralScripts().find((s) => s.id === scriptId);
   if (!script) return;
   currentOralScript = script;
+  oralTermMap = buildTermMap(script);
+  oralPanel = "script";
+  oralMaskMode = "all-mask";
 
   const titleEl = document.getElementById("oral-title-view");
   const metaEl = document.getElementById("oral-meta-view");
@@ -153,17 +240,25 @@ function loadOralScript(scriptId) {
   if (metaEl) metaEl.textContent = script.oneLiner || "";
   if (badgeEl) badgeEl.textContent = script.projectName || "";
 
-  renderOralScriptList();
+  setOralPanel("script");
+  setOralMaskMode("all-mask");
   renderOralBody();
   renderOralKnowledge();
   updateOralKnowCount();
+  showOralStep("recite");
+}
+
+function backToOralPick() {
+  closeOralTermPopup();
+  showOralStep("pick");
+  renderOralProjectChips();
+  renderOralScriptList();
 }
 
 function updateOralKnowCount() {
   const el = document.getElementById("oral-panel-know-count");
   if (!el || !currentOralScript) return;
-  const n = (currentOralScript.knowledge || []).length;
-  el.textContent = n ? String(n) : "0";
+  el.textContent = String((currentOralScript.knowledge || []).length);
 }
 
 function setOralPanel(panel) {
@@ -190,38 +285,82 @@ function setOralMaskMode(mode) {
   renderOralBody();
 }
 
-/** 先替换为占位符，再统一插入 HTML，避免挖空互相污染 */
-function applyMasks(text, masks) {
-  const list = (masks || []).slice().sort((a, b) => b.text.length - a.text.length);
-  const applied = [];
-  let work = text;
+function shouldHideMask(type) {
+  if (oralMaskMode === "all-mask") return true;
+  if (oralMaskMode === "key" && type === "key") return true;
+  if (oralMaskMode === "tech" && type === "tech") return true;
+  return false;
+}
 
-  list.forEach((mask) => {
-    if (!mask.text || !work.includes(mask.text)) return;
-    const idx = applied.length;
-    const token = `\uE000${idx}\uE001`;
-    work = work.replace(mask.text, token);
-    applied.push(mask);
+/** 在纯文本段里把名词包成可点击按钮（长词优先） */
+function linkTermsInPlainText(text, terms) {
+  let segments = [{ type: "plain", text }];
+  (terms || []).forEach((term) => {
+    const newSegs = [];
+    segments.forEach((seg) => {
+      if (seg.type !== "plain") {
+        newSegs.push(seg);
+        return;
+      }
+      let remaining = seg.text;
+      let idx;
+      while ((idx = remaining.indexOf(term.term)) !== -1) {
+        if (idx > 0) newSegs.push({ type: "plain", text: remaining.slice(0, idx) });
+        newSegs.push({ type: "term", term });
+        remaining = remaining.slice(idx + term.term.length);
+      }
+      if (remaining) newSegs.push({ type: "plain", text: remaining });
+    });
+    segments = newSegs;
   });
 
-  let html = escapeHtml(work);
-  applied.forEach((mask, idx) => {
-    const token = `\uE000${idx}\uE001`;
-    const tokenEsc = escapeHtml(token);
-    let shouldHide = false;
-    if (oralMaskMode === "all-mask") shouldHide = true;
-    else if (oralMaskMode === "key" && mask.type === "key") shouldHide = true;
-    else if (oralMaskMode === "tech" && mask.type === "tech") shouldHide = true;
+  return segments
+    .map((seg) => {
+      if (seg.type === "term") {
+        const t = seg.term;
+        return `<button type="button" class="oral-term-btn" data-term-id="${escapeAttr(t.id)}">${escapeHtml(t.term)}</button>`;
+      }
+      return escapeHtml(seg.text);
+    })
+    .join("");
+}
 
-    const safeText = escapeHtml(mask.text);
-    const attrText = mask.text.replace(/"/g, "&quot;");
-    const repl = shouldHide
-      ? `<span class="oral-mask-btn" data-text="${attrText}" data-type="${mask.type}">🔑 ${oralMaskLabel(mask.type)}</span>`
-      : `<span class="oral-mask-btn revealed" data-text="${attrText}" data-type="${mask.type}">${safeText}</span>`;
-    html = html.split(tokenEsc).join(repl);
+function buildParagraphHtml(text, masks, terms) {
+  let parts = [{ type: "plain", text }];
+  const sortedMasks = (masks || []).slice().sort((a, b) => b.text.length - a.text.length);
+
+  sortedMasks.forEach((mask) => {
+    const next = [];
+    parts.forEach((part) => {
+      if (part.type !== "plain") {
+        next.push(part);
+        return;
+      }
+      let remaining = part.text;
+      let idx;
+      while ((idx = remaining.indexOf(mask.text)) !== -1) {
+        if (idx > 0) next.push({ type: "plain", text: remaining.slice(0, idx) });
+        next.push({ type: "mask", mask });
+        remaining = remaining.slice(idx + mask.text.length);
+      }
+      if (remaining) next.push({ type: "plain", text: remaining });
+    });
+    parts = next;
   });
 
-  return html;
+  return parts
+    .map((part) => {
+      if (part.type === "mask") {
+        const m = part.mask;
+        const attrText = m.text.replace(/"/g, "&quot;");
+        if (shouldHideMask(m.type)) {
+          return `<span class="oral-mask-btn" data-text="${attrText}" data-type="${m.type}">🔑 ${oralMaskLabel(m.type)}</span>`;
+        }
+        return `<span class="oral-mask-btn revealed" data-text="${attrText}" data-type="${m.type}">${linkTermsInPlainText(m.text, terms)}</span>`;
+      }
+      return linkTermsInPlainText(part.text, terms);
+    })
+    .join("");
 }
 
 function renderOralBody() {
@@ -230,7 +369,9 @@ function renderOralBody() {
   if (!container) return;
   container.innerHTML = "";
 
+  const terms = getScriptTerms(currentOralScript);
   const stepMap = { hook: "①", body: "②", close: "③" };
+
   currentOralScript.paragraphs.forEach((para, i) => {
     const wrap = document.createElement("section");
     wrap.className = `oral-para-block oral-para-${para.type || "body"}`;
@@ -242,7 +383,7 @@ function renderOralBody() {
     wrap.appendChild(head);
 
     const pEl = document.createElement("p");
-    pEl.innerHTML = applyMasks(para.text, para.masks);
+    pEl.innerHTML = buildParagraphHtml(para.text, para.masks, terms);
     wrap.appendChild(pEl);
     container.appendChild(wrap);
   });
@@ -253,12 +394,12 @@ function renderOralKnowledge() {
   if (!box) return;
   const list = (currentOralScript && currentOralScript.knowledge) || [];
   if (!list.length) {
-    box.innerHTML = '<div class="oral-knowledge-empty">本篇暂无延伸知识点，先背完口述正文即可。</div>';
+    box.innerHTML = '<div class="oral-knowledge-empty">本篇暂无延伸知识点。</div>';
     return;
   }
 
   box.innerHTML = `
-    <div class="oral-knowledge-intro">以下知识点只服务当前口述稿「${escapeHtml(currentOralScript.title)}」，与其它项目无关。</div>
+    <div class="oral-knowledge-intro">仅属于「${escapeHtml(currentOralScript.title)}」</div>
     ${list
       .map(
         (k, idx) => `
@@ -276,7 +417,30 @@ function renderOralKnowledge() {
       .join("")}`;
 }
 
+function showOralTermPopup(termId) {
+  const t = oralTermMap[termId];
+  if (!t) return;
+  const popup = document.getElementById("oral-term-popup");
+  const titleEl = document.getElementById("oral-term-popup-title");
+  const sumEl = document.getElementById("oral-term-popup-summary");
+  const detEl = document.getElementById("oral-term-popup-detail");
+  if (!popup || !titleEl) return;
+  titleEl.textContent = t.title || t.term;
+  if (sumEl) sumEl.textContent = t.summary || "";
+  if (detEl) detEl.textContent = t.detail || "";
+  popup.hidden = false;
+  document.body.classList.add("oral-term-open");
+}
+
+function closeOralTermPopup() {
+  const popup = document.getElementById("oral-term-popup");
+  if (popup) popup.hidden = true;
+  document.body.classList.remove("oral-term-open");
+}
+
 window.startOralRecitation = startOralRecitation;
 window.setOralMaskMode = setOralMaskMode;
 window.setOralPanel = setOralPanel;
-window.loadOralScript = loadOralScript;
+window.backToOralPick = backToOralPick;
+window.openOralRecite = openOralRecite;
+window.closeOralTermPopup = closeOralTermPopup;

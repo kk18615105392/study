@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>京通 - 多科目备考刷题宝典</title>
-  <link rel="stylesheet" href="app.css?v=25">
+  <link rel="stylesheet" href="app.css?v=27">
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#c0392b">
 </head>
@@ -34,6 +34,7 @@
         </div>
         
         <div class="q-card" style="padding: 20px; box-shadow: var(--shadow-md); margin-top: 0;">
+          <div id="auth-server-hint" style="display:none; font-size: 11px; line-height: 1.5; padding: 8px 10px; border-radius: 8px; margin-bottom: 12px;"></div>
           <h2 class="serif-font" id="auth-title" style="font-size: 15px; margin-top: 0; margin-bottom: 16px; font-weight: 700; color: var(--primary);">用户登录</h2>
           
           <div style="margin-bottom: 14px;">
@@ -841,48 +842,66 @@
 
       <!-- ================= 2.1b 面试口述背诵屏幕 ================= -->
       <div id="screen-oral-recitation" class="screen oral-screen">
-        <div class="quiz-header">
+        <div class="quiz-header oral-topbar">
           <span class="quiz-cat-badge" style="background: #0e6655;">🎙️ 面试口述背诵</span>
-          <button class="btn-icon" onclick="quitQuiz()">
+          <button class="btn-icon" onclick="quitQuiz()" aria-label="关闭">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
           </button>
         </div>
 
-        <div class="oral-hint-row">
-          <div class="quiz-timer" id="oral-timer" style="display:none;">⏱️ <span id="oral-timer-text">00:00</span></div>
-          <div class="oral-hint-text">一次只背一篇 · 正文与知识点分开看</div>
+        <!-- 步骤①：只选篇，不显示正文 -->
+        <div id="oral-step-pick" class="oral-step">
+          <p class="oral-hint-text">先选一个项目，再点一篇口述稿进入背诵（不会叠在一起）</p>
+          <div class="oral-section-label">选择项目</div>
+          <div id="oral-project-chips" class="oral-chip-bar"></div>
+          <div class="oral-section-label">选择口述稿</div>
+          <div id="oral-script-list" class="oral-script-list"></div>
         </div>
 
-        <!-- ① 先选项目，避免五篇混在一起 -->
-        <div class="oral-section-label">1. 选择项目</div>
-        <div id="oral-project-chips" class="oral-chip-bar"></div>
-        <div id="oral-script-list" class="oral-script-list"></div>
-
-        <!-- ② 正文 / 知识点分页 -->
-        <div class="oral-section-label">2. 当前篇</div>
-        <div class="oral-panel-tabs">
-          <button type="button" class="oral-panel-tab active" id="oral-tab-script" onclick="setOralPanel('script')">口述正文</button>
-          <button type="button" class="oral-panel-tab" id="oral-tab-knowledge" onclick="setOralPanel('knowledge')">知识点 <span id="oral-panel-know-count" class="oral-count-pill">0</span></button>
-        </div>
-
-        <div id="oral-pane-script" class="oral-pane">
-          <div id="oral-mode-bar" class="oral-mode-bar">
-            <button class="limit-btn active" id="oral-mode-all-mask" onclick="setOralMaskMode('all-mask')">全部遮蔽</button>
-            <button class="limit-btn" id="oral-mode-key" onclick="setOralMaskMode('key')">仅挖关键句</button>
-            <button class="limit-btn" id="oral-mode-tech" onclick="setOralMaskMode('tech')">仅挖技术词</button>
-            <button class="limit-btn" id="oral-mode-reveal" onclick="setOralMaskMode('reveal')">全部展示</button>
+        <!-- 步骤②：只背当前这一篇 -->
+        <div id="oral-step-recite" class="oral-step" hidden>
+          <div class="oral-recite-toolbar">
+            <button type="button" class="oral-back-btn" onclick="backToOralPick()">← 换一篇</button>
+            <div class="quiz-timer" id="oral-timer" style="display:none;">⏱️ <span id="oral-timer-text">00:00</span></div>
           </div>
 
-          <div class="q-card oral-recitation-card">
-            <div id="oral-project-badge" class="oral-project-badge"></div>
-            <h3 id="oral-title-view" class="oral-title-view"></h3>
-            <div id="oral-meta-view" class="oral-meta-view"></div>
-            <div id="oral-body-view" class="oral-body"></div>
+          <div class="oral-panel-tabs">
+            <button type="button" class="oral-panel-tab active" id="oral-tab-script" onclick="setOralPanel('script')">口述正文</button>
+            <button type="button" class="oral-panel-tab" id="oral-tab-knowledge" onclick="setOralPanel('knowledge')">知识点 <span id="oral-panel-know-count" class="oral-count-pill">0</span></button>
+          </div>
+
+          <div id="oral-pane-script" class="oral-pane">
+            <div id="oral-mode-bar" class="oral-mode-bar">
+              <button class="limit-btn active" id="oral-mode-all-mask" onclick="setOralMaskMode('all-mask')">全部遮蔽</button>
+              <button class="limit-btn" id="oral-mode-key" onclick="setOralMaskMode('key')">仅挖关键句</button>
+              <button class="limit-btn" id="oral-mode-tech" onclick="setOralMaskMode('tech')">仅挖技术词</button>
+              <button class="limit-btn" id="oral-mode-reveal" onclick="setOralMaskMode('reveal')">全部展示</button>
+            </div>
+            <p class="oral-term-hint">💡 蓝色下划线名词可点开看详解；挖空处点开后名词同样可点</p>
+
+            <article class="oral-recitation-card">
+              <div id="oral-project-badge" class="oral-project-badge"></div>
+              <h3 id="oral-title-view" class="oral-title-view"></h3>
+              <p id="oral-meta-view" class="oral-meta-view"></p>
+              <div id="oral-body-view" class="oral-body"></div>
+            </article>
+          </div>
+
+          <div id="oral-pane-knowledge" class="oral-pane" hidden>
+            <div id="oral-knowledge-view" class="oral-knowledge-list"></div>
           </div>
         </div>
 
-        <div id="oral-pane-knowledge" class="oral-pane" hidden>
-          <div id="oral-knowledge-view" class="oral-knowledge-list"></div>
+        <!-- 名词释义弹层 -->
+        <div id="oral-term-popup" class="oral-term-popup" hidden>
+          <div class="oral-term-popup-backdrop"></div>
+          <div class="oral-term-popup-card" role="dialog" aria-modal="true">
+            <button type="button" class="oral-term-popup-close" onclick="closeOralTermPopup()" aria-label="关闭">×</button>
+            <div class="oral-term-popup-label">名词解释</div>
+            <h4 id="oral-term-popup-title" class="oral-term-popup-title"></h4>
+            <p id="oral-term-popup-summary" class="oral-term-popup-summary"></p>
+            <div id="oral-term-popup-detail" class="oral-term-popup-detail"></div>
+          </div>
         </div>
       </div>
 
@@ -1251,12 +1270,12 @@
   <script src="essays_data.js?v=15"></script>
   <script src="shenlun_practice_data.js?v=1"></script>
   <script src="interview_questions_data.js?v=4"></script>
-  <script src="resume_projects_data.js?v=4"></script>
+  <script src="resume_projects_data.js?v=6"></script>
   <script src="politics_modes.js?v=20"></script>
-  <script src="app.js?v=31"></script>
+  <script src="app.js?v=32"></script>
   <script src="shenlun_practice.js?v=2"></script>
   <script src="theory_drill.js?v=1"></script>
-  <script src="resume_oral.js?v=2"></script>
+  <script src="resume_oral.js?v=5"></script>
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {

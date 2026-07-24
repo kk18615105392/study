@@ -25,13 +25,33 @@ app.use(express.static(__dirname));
 
 // ─── 辅助函数 ─────────────────────────────────────────────
 function loadUsers() {
-  if (!fs.existsSync(USERS_FILE)) return {};
-  try {
-    return JSON.parse(fs.readFileSync(USERS_FILE, 'utf8'));
-  } catch (e) {
-    console.error('[server] users.json 读取失败:', e.message);
+  if (!fs.existsSync(USERS_FILE)) {
+    console.warn('[server] users.json 不存在:', USERS_FILE);
     return {};
   }
+  try {
+    let raw = fs.readFileSync(USERS_FILE, 'utf8');
+    // 去掉 UTF-8 BOM，避免 JSON.parse 失败后读成空用户表
+    if (raw.charCodeAt(0) === 0xfeff) raw = raw.slice(1);
+    const data = JSON.parse(raw);
+    if (!data || typeof data !== 'object' || Array.isArray(data)) {
+      console.error('[server] users.json 格式应为对象 { 用户名: {...} }');
+      return {};
+    }
+    return data;
+  } catch (e) {
+    console.error('[server] users.json 读取失败:', e.message, '→', USERS_FILE);
+    return {};
+  }
+}
+
+function getUsersSnapshot() {
+  const users = loadUsers();
+  return {
+    path: USERS_FILE,
+    count: Object.keys(users).length,
+    usernames: Object.keys(users)
+  };
 }
 
 function saveUsers(users) {
@@ -179,7 +199,24 @@ function getLocalIP() {
 // ─── 用户 API ─────────────────────────────────────────────
 
 app.get('/api/ping', (req, res) => {
-  res.json({ ok: true, mode: 'server' });
+  const snap = getUsersSnapshot();
+  res.json({
+    ok: true,
+    mode: 'server',
+    usersFile: path.basename(snap.path),
+    userCount: snap.count
+  });
+});
+
+/** 调试：确认当前进程读到的账号列表（不含密码） */
+app.get('/api/users-status', (req, res) => {
+  const snap = getUsersSnapshot();
+  res.json({
+    success: true,
+    path: snap.path,
+    count: snap.count,
+    usernames: snap.usernames
+  });
 });
 
 app.post('/api/register', (req, res) => {
@@ -404,11 +441,13 @@ app.post('/api/local-upgrade', (req, res) => {
 // ─── 启动 ────────────────────────────────────────────────
 app.listen(PORT, '0.0.0.0', () => {
   const lanIP = getLocalIP();
+  const snap = getUsersSnapshot();
   console.log('');
   console.log('  ✅  京通备考刷题宝典 本地服务器已启动！');
   console.log(`  🌐  本机访问: http://localhost:${PORT}`);
   if (lanIP) console.log(`  📱  手机同 WiFi 访问: http://${lanIP}:${PORT}`);
   console.log(`  📁  全部账号保存在: ${USERS_FILE}`);
+  console.log(`  👥  已加载用户: ${snap.count} 人 → ${snap.usernames.join(', ') || '(空)'}`);
   console.log(`  🔑  管理员密码文件: ${ADMIN_FILE}（请自行修改，不会对外显示）`);
   console.log('');
 });

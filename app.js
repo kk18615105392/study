@@ -36,11 +36,33 @@ async function detectServerMode() {
   try {
     const res  = await fetch('/api/ping', { signal: controller.signal });
     const data = await res.json();
-    return data.ok === true;
+    if (data && data.ok === true) {
+      window.__serverUserCount = typeof data.userCount === "number" ? data.userCount : null;
+      return true;
+    }
+    return false;
   } catch (e) {
     return false;
   } finally {
     clearTimeout(timer);
+  }
+}
+
+function updateAuthServerHint() {
+  const el = document.getElementById("auth-server-hint");
+  if (!el) return;
+  el.style.display = "block";
+  if (IS_LOCAL_SERVER) {
+    const n = window.__serverUserCount;
+    el.style.background = "rgba(14, 102, 85, 0.1)";
+    el.style.color = "#0e6655";
+    el.textContent = n != null
+      ? `✅ 已连接本地服务器，users.json 中有 ${n} 个账号`
+      : "✅ 已连接本地服务器，将从 users.json 读取账号";
+  } else {
+    el.style.background = "rgba(192, 57, 43, 0.1)";
+    el.style.color = "#a93226";
+    el.textContent = "⚠️ 未连接 node server.js：当前只用浏览器缓存，读不到仓库里的 users.json。请运行 node server.js，再打开 http://localhost:3002";
   }
 }
 
@@ -376,8 +398,10 @@ window.addEventListener("DOMContentLoaded", async () => {
   try {
     IS_LOCAL_SERVER = await detectServerMode();
     console.log(IS_LOCAL_SERVER ? '[app] 本地服务器模式（users.json）' : '[app] 静态模式（localStorage）');
+    updateAuthServerHint();
   } catch (e) {
     IS_LOCAL_SERVER = false;
+    updateAuthServerHint();
   }
 
   // 1. 初始化练习量限制选择器
