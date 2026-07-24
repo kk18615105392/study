@@ -2090,6 +2090,78 @@ h1, h2, h3, .serif-font {
   text-indent: 28px;
 }
 
+/* 面试口述背诵 */
+.oral-para-block {
+  margin-bottom: 14px;
+}
+.oral-para-label {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 800;
+  color: #0e6655;
+  background: rgba(14, 102, 85, 0.1);
+  padding: 2px 8px;
+  border-radius: 10px;
+  margin-bottom: 6px;
+}
+.oral-body p {
+  margin: 0;
+  text-indent: 0;
+}
+.oral-mask-btn[data-type="tech"]:not(.revealed) {
+  color: #1a5276;
+  border-bottom-color: #1a5276;
+}
+.oral-mask-btn[data-type="tech"].revealed {
+  background: rgba(26, 82, 118, 0.1);
+  color: #1a5276;
+  border-bottom-color: #1a5276;
+}
+.oral-knowledge-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.oral-knowledge-card {
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-sm);
+  background: var(--bg-card);
+  padding: 10px 12px;
+}
+.oral-knowledge-card summary {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.oral-knowledge-card summary::-webkit-details-marker {
+  display: none;
+}
+.oral-knowledge-title {
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--text-main);
+}
+.oral-knowledge-summary {
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.45;
+}
+.oral-knowledge-detail {
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px dashed var(--border-color);
+  font-size: 12px;
+  line-height: 1.65;
+  color: var(--text-main);
+}
+.oral-knowledge-empty {
+  font-size: 12px;
+  color: var(--text-muted);
+  padding: 8px 0;
+}
+
 /* 会员状态标签 */
 .membership-badge {
   display: inline-block;

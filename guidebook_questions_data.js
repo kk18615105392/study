@@ -1,2285 +1,3357 @@
 /* === 小黑排坑手册政治理论题库数据 === */
+/* 来源：《【排坑手册】政治理论》※正确答案【√】/【框出修正】；勿臆造答案 */
 
 const GUIDEBOOK_QUESTIONS = [
   {
-    id: 1001,
-    type: "judgement",
-    category: "general",
-    categoryName: "政治理论",
-    question: "【排坑特训】坚持和发展中国特色社会主义，是习近平新时代中国特色社会主义思想的核 心要义。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：坚持和发展中国特色社会主义，是习近平新时代中国特色社会主义思想的核 心要义。。"
-  },
-  {
-    id: 1002,
-    type: "judgement",
-    category: "general",
-    categoryName: "政治理论",
-    question: "【排坑特训】党的十九大以来，开创了中国特色社会主义新时代。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【十八大】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1003,
-    type: "judgement",
-    category: "general",
-    categoryName: "政治理论",
-    question: "【排坑特训】党的十八大，作出中国特色社会主义进入新时代这个重大政治论断。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【十九大】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1004,
-    type: "judgement",
-    category: "general",
-    categoryName: "政治理论",
-    question: "【排坑特训】我国社会主要矛盾的变化是中国特色社会主义进入新时代的基本依据。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：我国社会主要矛盾的变化是中国特色社会主义进入新时代的基本依据。。"
-  },
-  {
-    id: 1005,
-    type: "judgement",
-    category: "general",
-    categoryName: "政治理论",
-    question: "【排坑特训】新时代是我国社会主要矛盾以及国际地位和基本国情新变化的反映。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：新时代是我国社会主要矛盾以及国际地位和基本国情新变化的反映。。"
-  },
-  {
-    id: 1006,
-    type: "judgement",
-    category: "general",
-    categoryName: "政治理论",
-    question: "【排坑特训】“两个结合”是指要把马克思主义基本原理同中国具体实际相结合、同中华 优秀传统文化相结合。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：“两个结合”是指要把马克思主义基本原理同中国具体实际相结合、同中华 优秀传统文化相结合。。"
-  },
-  {
-    id: 1007,
-    type: "judgement",
-    category: "general",
-    categoryName: "政治理论",
-    question: "【排坑特训】“两个结合”是我们取得成功的最大法宝。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：“两个结合”是我们取得成功的最大法宝。。"
-  },
-  {
-    id: 1008,
-    type: "judgement",
-    category: "general",
-    categoryName: "政治理论",
-    question: "【排坑特训】结合是深刻的“物理反应”，造就了新的文化生命体。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【化学反应】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1009,
-    type: "judgement",
-    category: "general",
-    categoryName: "政治理论",
-    question: "【排坑特训】新时代首次提出把马克思主义基本原理同中国具体实际相结合。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【中华优秀传统文化】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1010,
-    type: "judgement",
-    category: "general",
-    categoryName: "政治理论",
-    question: "【排坑特训】要用新时代中国之“矢”去射马克思主义之“的”。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【马克思主义；新时代中国】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1011,
-    type: "judgement",
-    category: "general",
-    categoryName: "政治理论",
-    question: "【排坑特训】马克思主义这个根脉和中华优秀传统文化这个魂脉内在贯通、相互成就。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：马克思主义这个根脉和中华优秀传统文化这个魂脉内在贯通、相互成就。。"
-  },
-  {
-    id: 1012,
-    type: "judgement",
-    category: "general",
-    categoryName: "政治理论",
-    question: "【排坑特训】“十个明确”“十四个坚持”“十三个方面成就”“六个必须坚持”内在贯 通、有机统一，共同构成了习近平新时代中国特色社会主义思想的科学体系。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：“十个明确”“十四个坚持”“十三个方面成就”“六个必须坚持”内在贯 通、有机统一，共同构成了习近平新时代中国特色社会主义思想的科学体系。。"
-  },
-  {
-    id: 1013,
-    type: "judgement",
-    category: "general",
-    categoryName: "政治理论",
-    question: "【排坑特训】“十个明确”是习近平新时代中国特色社会主义思想的主体内容，集中体现 了这一思想体系的主要观点和基本精神，发挥着统摄作用。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：“十个明确”是习近平新时代中国特色社会主义思想的主体内容，集中体现 了这一思想体系的主要观点和基本精神，发挥着统摄作用。。"
-  },
-  {
-    id: 1014,
-    type: "judgement",
-    category: "general",
-    categoryName: "政治理论",
-    question: "【排坑特训】“十四个坚持”是习近平新时代中国特色社会主义思想的世界观、方法论。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【六个必须坚持】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1015,
-    type: "judgement",
-    category: "general",
-    categoryName: "政治理论",
-    question: "【排坑特训】中国特色社会主义最本质的特征是中国共产党领导，中国特色社会主义制度 的最大优势是中国共产党领导。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：中国特色社会主义最本质的特征是中国共产党领导，中国特色社会主义制度 的最大优势是中国共产党领导。。"
-  },
-  {
-    id: 1016,
-    type: "judgement",
-    category: "general",
-    categoryName: "政治理论",
-    question: "【排坑特训】坚持和发展中国特色社会主义，总任务是全面建成小康社会。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【实现社会主义现代化和中华民族伟大复兴】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1017,
-    type: "judgement",
-    category: "general",
-    categoryName: "政治理论",
-    question: "【排坑特训】新时代主要矛盾是人民日益增长的物质需要和落后社会生产之间的矛盾。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【人民日益增长的美好生活需要和不平衡不充分的发展之间】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1018,
-    type: "judgement",
-    category: "general",
-    categoryName: "政治理论",
-    question: "【排坑特训】中国特色社会主义事业战略布局是“五位一体”，总体布局是“四个全面”。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【总体布局；战略布局】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1019,
-    type: "judgement",
-    category: "general",
-    categoryName: "政治理论",
-    question: "【排坑特训】坚持守正创新是重要实践要求，体现了矛盾的普遍性和客观性。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【问题导向】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1020,
-    type: "judgement",
-    category: "general",
-    categoryName: "政治理论",
-    question: "【排坑特训】坚持系统观念，体现了辩证唯物主义普遍联系的原理。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：坚持系统观念，体现了辩证唯物主义普遍联系的原理。。"
-  },
-  {
-    id: 1021,
-    type: "judgement",
-    category: "general",
-    categoryName: "政治理论",
-    question: "【排坑特训】坚持社会主义基本经济制度，使政府在资源配置中起决定性作用。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：坚持社会主义基本经济制度，使政府在资源配置中起决定性作用。。"
-  },
-  {
-    id: 1022,
-    type: "judgement",
-    category: "general",
-    categoryName: "政治理论",
-    question: "【排坑特训】中国共产党的中心任务是团结带领全国各族人民全面建成社会主义现代化强 国，以中国式现代化全面推进中华民族伟大复兴。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：中国共产党的中心任务是团结带领全国各族人民全面建成社会主义现代化强 国，以中国式现代化全面推进中华民族伟大复兴。。"
-  },
-  {
-    id: 1023,
-    type: "judgement",
-    category: "general",
-    categoryName: "政治理论",
-    question: "【排坑特训】中国式现代化是全体人民同等富裕的现代化。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【共同富裕】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1024,
-    type: "judgement",
-    category: "general",
-    categoryName: "政治理论",
-    question: "【排坑特训】中国式现代化是物质文明超越西方国家的现代化。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【物质文明和精神文明相协调】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1025,
-    type: "judgement",
-    category: "general",
-    categoryName: "政治理论",
-    question: "【排坑特训】高质量发展直接关系中国式现代化的根本方向、前途命运、最终成败，决定 中国式现代化的根本性质。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【党的领导】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1026,
-    type: "judgement",
-    category: "general",
-    categoryName: "政治理论",
-    question: "【排坑特训】坚持发扬斗争精神是推进中国式现代化需要牢牢把握的重大原则。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：坚持发扬斗争精神是推进中国式现代化需要牢牢把握的重大原则。。"
-  },
-  {
-    id: 1027,
-    type: "judgement",
-    category: "general",
-    categoryName: "政治理论",
-    question: "【排坑特训】到2035年，我国人均国内生产总值达到中等发达国家水平。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：到2035年，我国人均国内生产总值达到中等发达国家水平。。"
-  },
-  {
-    id: 1028,
-    type: "judgement",
-    category: "general",
-    categoryName: "政治理论",
-    question: "【排坑特训】到2035年，我国建成教育强国、科技强国、人才强国、文化强国、体育强国、 健康中国。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：到2035年，我国建成教育强国、科技强国、人才强国、文化强国、体育强国、 健康中国。。"
-  },
-  {
-    id: 1029,
-    type: "judgement",
-    category: "leadership",
-    categoryName: "党的领导",
-    question: "【排坑特训】中国基本国情是中国共产党的领导。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【最大的国情】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1030,
-    type: "judgement",
-    category: "leadership",
-    categoryName: "党的领导",
-    question: "【排坑特训】中国共产党领导是实现中华民族伟大复兴的根本保证。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：中国共产党领导是实现中华民族伟大复兴的根本保证。。"
-  },
-  {
-    id: 1031,
-    type: "judgement",
-    category: "leadership",
-    categoryName: "党的领导",
-    question: "【排坑特训】党中央集中统一领导是党的领导的最高原则。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：党中央集中统一领导是党的领导的最高原则。。"
-  },
-  {
-    id: 1032,
-    type: "judgement",
-    category: "leadership",
-    categoryName: "党的领导",
-    question: "【排坑特训】党的领导制度是我国的根本政治制度。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【根本领导制度】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1033,
-    type: "judgement",
-    category: "leadership",
-    categoryName: "党的领导",
-    question: "【排坑特训】人民代表大会制度是中国特色社会主义制度体系的核心和关键。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：人民代表大会制度是中国特色社会主义制度体系的核心和关键。。"
-  },
-  {
-    id: 1034,
-    type: "judgement",
-    category: "people",
-    categoryName: "人民中心",
-    question: "【排坑特训】人民立场是党的根本政治立场，是党区别于其他政党的显著标志。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：人民立场是党的根本政治立场，是党区别于其他政党的显著标志。。"
-  },
-  {
-    id: 1035,
-    type: "judgement",
-    category: "people",
-    categoryName: "人民中心",
-    question: "【排坑特训】党的最大政治优势是密切联系群众。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：党的最大政治优势是密切联系群众。。"
-  },
-  {
-    id: 1036,
-    type: "judgement",
-    category: "people",
-    categoryName: "人民中心",
-    question: "【排坑特训】坚持高质量发展，是新时代党治国理政的根本价值取向。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【人民至上】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1037,
-    type: "judgement",
-    category: "people",
-    categoryName: "人民中心",
-    question: "【排坑特训】要把增进民生福祉作为发展的根本保证。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【根本目的】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1038,
-    type: "judgement",
-    category: "people",
-    categoryName: "人民中心",
-    question: "【排坑特训】必须以满足人民日益增长的美好生活需要为出发点和落脚点。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：必须以满足人民日益增长的美好生活需要为出发点和落脚点。。"
-  },
-  {
-    id: 1039,
-    type: "judgement",
-    category: "people",
-    categoryName: "人民中心",
-    question: "【排坑特训】实现共同富裕，首先要把“蛋糕”切好分好，然后把“蛋糕”做大做好。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【做大做好；切好分好】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1040,
-    type: "judgement",
-    category: "people",
-    categoryName: "人民中心",
-    question: "【排坑特训】共同富裕不等于同等富裕，也不等于同步富裕。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：共同富裕不等于同等富裕，也不等于同步富裕。。"
-  },
-  {
-    id: 1041,
-    type: "judgement",
-    category: "people",
-    categoryName: "人民中心",
-    question: "【排坑特训】共同富裕是一个总体概念，是对全社会而言的，不要各提各的指标。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：共同富裕是一个总体概念，是对全社会而言的，不要各提各的指标。。"
-  },
-  {
-    id: 1042,
-    type: "judgement",
-    category: "people",
-    categoryName: "人民中心",
-    question: "【排坑特训】扩大中等收入群体比重，增加低收入群体收入，取缔过高收入。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：扩大中等收入群体比重，增加低收入群体收入，取缔过高收入。。"
-  },
-  {
-    id: 1043,
-    type: "judgement",
-    category: "people",
-    categoryName: "人民中心",
-    question: "【排坑特训】2035年，基本实现共同富裕。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：2035年，基本实现共同富裕。。"
-  },
-  {
-    id: 1044,
-    type: "judgement",
-    category: "development",
-    categoryName: "高质量发展",
-    question: "【排坑特训】高质量发展是中国式现代化的战略性、基础性支撑，是经济社会发展的主线。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【首要任务；主题】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1045,
-    type: "judgement",
-    category: "development",
-    categoryName: "高质量发展",
-    question: "【排坑特训】新发展阶段是全面建设现代化国家、向第二个百年奋斗目标进军的阶段。 4C",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：新发展阶段是全面建设现代化国家、向第二个百年奋斗目标进军的阶段。 4C。"
-  },
-  {
-    id: 1046,
-    type: "judgement",
-    category: "development",
-    categoryName: "高质量发展",
-    question: "【排坑特训】绿色是引领发展的第一动力，解决发展动力问题。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【创新】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1047,
-    type: "judgement",
-    category: "development",
-    categoryName: "高质量发展",
-    question: "【排坑特训】开放是中国特色社会主义的本质要求，解决社会公平正义问题。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【共享】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1048,
-    type: "judgement",
-    category: "development",
-    categoryName: "高质量发展",
-    question: "【排坑特训】构建新发展格局要以国际大循环为主体。 5 6.构建新发展格局要以全国统一大市场为基础，不是各地搞自我小循环。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【国内】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1049,
-    type: "judgement",
-    category: "development",
-    categoryName: "高质量发展",
-    question: "【排坑特训】构建新发展格局最本质特征是实现高水平的自立自强。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：构建新发展格局最本质特征是实现高水平的自立自强。。"
-  },
-  {
-    id: 1050,
-    type: "judgement",
-    category: "development",
-    categoryName: "高质量发展",
-    question: "【排坑特训】公有制经济和非公有制经济都是社会主义市场经济的重要组成部分。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：公有制经济和非公有制经济都是社会主义市场经济的重要组成部分。。"
-  },
-  {
-    id: 1051,
-    type: "judgement",
-    category: "development",
-    categoryName: "高质量发展",
-    question: "【排坑特训】要坚持公有制主体地位不能动摇，国有经济主导作用不能动摇。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：要坚持公有制主体地位不能动摇，国有经济主导作用不能动摇。。"
-  },
-  {
-    id: 1052,
-    type: "judgement",
-    category: "development",
-    categoryName: "高质量发展",
-    question: "【排坑特训】民营企业是中国特色社会主义的重要物质基础和政治基础。 T",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【国有企业】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1053,
-    type: "judgement",
-    category: "development",
-    categoryName: "高质量发展",
-    question: "【排坑特训】非公有制经济是国家税收的重要来源，是技术创新的重要主体。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：非公有制经济是国家税收的重要来源，是技术创新的重要主体。。"
-  },
-  {
-    id: 1054,
-    type: "judgement",
-    category: "development",
-    categoryName: "高质量发展",
-    question: "【排坑特训】民营经济是非公有制经济的主要形式，是推进中国式现代化的生力军。 GiND",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：民营经济是非公有制经济的主要形式，是推进中国式现代化的生力军。 GiND。"
-  },
-  {
-    id: 1055,
-    type: "judgement",
-    category: "development",
-    categoryName: "高质量发展",
-    question: "【排坑特训】十二大明确经济体制改革的目标是建立社会主义市场经济体制。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【十四大】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1056,
-    type: "judgement",
-    category: "development",
-    categoryName: "高质量发展",
-    question: "【排坑特训】构建社会主义市场经济体制，关键是要处理好供给和需求的关系。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【政府和市场】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1057,
-    type: "judgement",
-    category: "development",
-    categoryName: "高质量发展",
-    question: "【排坑特训】要用好看不见的手和看得见的手，推动有效政府和有为市场更好结合。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【市场；政府】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1058,
-    type: "judgement",
-    category: "development",
-    categoryName: "高质量发展",
-    question: "【排坑特训】必须始终把解决好“三农”问题作为全党工作的重中之重。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：必须始终把解决好“三农”问题作为全党工作的重中之重。。"
-  },
-  {
-    id: 1059,
-    type: "judgement",
-    category: "development",
-    categoryName: "高质量发展",
-    question: "【排坑特训】必须把加快建设农业强国作为统领“三农”工作的总抓手。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【战略总纲】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1060,
-    type: "judgement",
-    category: "development",
-    categoryName: "高质量发展",
-    question: "【排坑特训】实施乡村振兴战略，是新时代做好“三农”工作的战略总纲。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【总抓手】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1061,
-    type: "judgement",
-    category: "development",
-    categoryName: "高质量发展",
-    question: "【排坑特训】坚持把增加农民收入，作为“三农”工作的头等大事。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【中心任务】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1062,
-    type: "judgement",
-    category: "development",
-    categoryName: "高质量发展",
-    question: "【排坑特训】要把保障粮食和重要农产品稳定安全供给作为中心任务。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【头等大事】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1063,
-    type: "judgement",
-    category: "development",
-    categoryName: "高质量发展",
-    question: "【排坑特训】以乡镇为重要载体，把公共服务均等化作为推进新型城镇化的首要任务。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：以乡镇为重要载体，把公共服务均等化作为推进新型城镇化的首要任务。。"
-  },
-  {
-    id: 1064,
-    type: "judgement",
-    category: "people",
-    categoryName: "人民中心",
-    question: "【排坑特训】人民代表大会制度是我国的根本政治制度。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：人民代表大会制度是我国的根本政治制度。。"
-  },
-  {
-    id: 1065,
-    type: "judgement",
-    category: "people",
-    categoryName: "人民中心",
-    question: "【排坑特训】中国人民政治协商会议是国务院重要的组成部门，是国家机关之一。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【党的爱国统一战线组织，协商民主的专门机构】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1066,
-    type: "judgement",
-    category: "people",
-    categoryName: "人民中心",
-    question: "【排坑特训】中国人民政治协商会议的职能是政治协商、民主监督、执政议政。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【参政】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1067,
-    type: "judgement",
-    category: "people",
-    categoryName: "人民中心",
-    question: "【排坑特训】保障少数民族当家作主是党的民族工作的主线。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【铸牢中华民族共同体意识】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1068,
-    type: "judgement",
-    category: "people",
-    categoryName: "人民中心",
-    question: "【排坑特训】基层群众自治的主要形式包括总支部委员会、支部委员会等。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【村民委员会、居民委员会】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1069,
-    type: "judgement",
-    category: "people",
-    categoryName: "人民中心",
-    question: "【排坑特训】全过程人民民主是社会主义民主政治的本质属性。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：全过程人民民主是社会主义民主政治的本质属性。。"
-  },
-  {
-    id: 1070,
-    type: "judgement",
-    category: "people",
-    categoryName: "人民中心",
-    question: "【排坑特训】人民代表大会制度是实现我国全过程人民民主的重要制度载体。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：人民代表大会制度是实现我国全过程人民民主的重要制度载体。。"
-  },
-  {
-    id: 1071,
-    type: "judgement",
-    category: "people",
-    categoryName: "人民中心",
-    question: "【排坑特训】协商民主是实践全过程人民民主的重要形式。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：协商民主是实践全过程人民民主的重要形式。。"
-  },
-  {
-    id: 1072,
-    type: "judgement",
-    category: "people",
-    categoryName: "人民中心",
-    question: "【排坑特训】党内民主是全过程人民民主的重要体现。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【基层民主】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1073,
-    type: "judgement",
-    category: "people",
-    categoryName: "人民中心",
-    question: "【排坑特训】统战工作的关键是要坚持求同存异，在尊重一致性中寻求多样性。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【多样性；一致性】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1074,
-    type: "judgement",
-    category: "people",
-    categoryName: "人民中心",
-    question: "【排坑特训】人民至上是统一战线最鲜明的特征。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【党的领导】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1075,
-    type: "judgement",
-    category: "people",
-    categoryName: "人民中心",
-    question: "【排坑特训】党对统一战线的领导主要是组织领导。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：党对统一战线的领导主要是组织领导。。"
-  },
-  {
-    id: 1076,
-    type: "judgement",
-    category: "sub_xisixiang",
-    categoryName: "习思想分论",
-    question: "【排坑特训】中华文明是世界上唯一绵延不断且以国家形态发展至今的伟大文明。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：中华文明是世界上唯一绵延不断且以国家形态发展至今的伟大文明。。"
-  },
-  {
-    id: 1077,
-    type: "judgement",
-    category: "sub_xisixiang",
-    categoryName: "习思想分论",
-    question: "【排坑特训】要坚持社会主义核心价值观在意识形态领域指导地位的根本制度。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【马克思主义】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1078,
-    type: "judgement",
-    category: "sub_xisixiang",
-    categoryName: "习思想分论",
-    question: "【排坑特训】要坚持利用第一、合理保护和最大干预原则，推动文化遗产系统性保护。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【保护；利用；最小】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1079,
-    type: "judgement",
-    category: "sub_xisixiang",
-    categoryName: "习思想分论",
-    question: "【排坑特训】要坚持把经济效益放在首位、经济效益和社会效益相统一。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【社会效益】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1080,
-    type: "judgement",
-    category: "sub_xisixiang",
-    categoryName: "习思想分论",
-    question: "【排坑特训】弘扬以伟大抗战精神为源头的中国共产党人精神谱系。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【建党】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1081,
-    type: "judgement",
-    category: "sub_xisixiang",
-    categoryName: "习思想分论",
-    question: "【排坑特训】文化强国之“强”最终要体现在人民的思想境界、精神状态、文化修养上。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：文化强国之“强”最终要体现在人民的思想境界、精神状态、文化修养上。。"
-  },
-  {
-    id: 1082,
-    type: "judgement",
-    category: "sub_xisixiang",
-    categoryName: "习思想分论",
-    question: "【排坑特训】教育是民生之本，是最基本的民生，是最大的民生工程。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【就业】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1083,
-    type: "judgement",
-    category: "sub_xisixiang",
-    categoryName: "习思想分论",
-    question: "【排坑特训】高质量充分就业要以破解周期性就业矛盾为着力点。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【结构性】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1084,
-    type: "judgement",
-    category: "sub_xisixiang",
-    categoryName: "习思想分论",
-    question: "【排坑特训】全面贯彻劳动者自主就业、政府调节就业、市场促进就业和鼓励创业的方针。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【市场；政府】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1085,
-    type: "judgement",
-    category: "sub_xisixiang",
-    categoryName: "习思想分论",
-    question: "【排坑特训】提高劳动报酬在再分配中的比重。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【初次分配】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1086,
-    type: "judgement",
-    category: "sub_xisixiang",
-    categoryName: "习思想分论",
-    question: "【排坑特训】就业是人民生活的安全网和社会运行的稳定器。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【社会保障体系】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1087,
-    type: "judgement",
-    category: "sub_xisixiang",
-    categoryName: "习思想分论",
-    question: "【排坑特训】社会福利是社会保障制度的核心内容，是社会保障体系中的基本纲领。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【社会保险】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1088,
-    type: "judgement",
-    category: "sub_xisixiang",
-    categoryName: "习思想分论",
-    question: "【排坑特训】坚持治疗为主的方针，深入实施健康中国行动。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：坚持治疗为主的方针，深入实施健康中国行动。。"
-  },
-  {
-    id: 1089,
-    type: "judgement",
-    category: "sub_xisixiang",
-    categoryName: "习思想分论",
-    question: "【排坑特训】生态文明建设是关系中华民族永续发展的根本大计。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：生态文明建设是关系中华民族永续发展的根本大计。。"
-  },
-  {
-    id: 1090,
-    type: "judgement",
-    category: "sub_xisixiang",
-    categoryName: "习思想分论",
-    question: "【排坑特训】坚持节约优先、保护优先、人工修复为主的方针。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【自然恢复】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1091,
-    type: "judgement",
-    category: "sub_xisixiang",
-    categoryName: "习思想分论",
-    question: "【排坑特训】坚持把绿色低碳发展作为解决生态环境问题的治本之策。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：坚持把绿色低碳发展作为解决生态环境问题的治本之策。。"
-  },
-  {
-    id: 1092,
-    type: "judgement",
-    category: "sub_xisixiang",
-    categoryName: "习思想分论",
-    question: "【排坑特训】我国的目标是2035年前实现碳达峰、本世纪中叶前实现碳中和。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【2030年；2060年】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1093,
-    type: "judgement",
-    category: "sub_xisixiang",
-    categoryName: "习思想分论",
-    question: "【排坑特训】构建以自然保护区为主体，各类自然公园为补充的自然保护地体系。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：构建以自然保护区为主体，各类自然公园为补充的自然保护地体系。。"
-  },
-  {
-    id: 1094,
-    type: "judgement",
-    category: "sub_xisixiang",
-    categoryName: "习思想分论",
-    question: "【排坑特训】党的十一届三中全会是划时代的，开创了新时代全面深化改革新局面。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【十八届三中全会】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1095,
-    type: "judgement",
-    category: "sub_xisixiang",
-    categoryName: "习思想分论",
-    question: "【排坑特训】改革开放的性质是社会主义制度的自我完善和发展。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：改革开放的性质是社会主义制度的自我完善和发展。。"
-  },
-  {
-    id: 1096,
-    type: "judgement",
-    category: "sub_xisixiang",
-    categoryName: "习思想分论",
-    question: "【排坑特训】改革开放是决定当代中国命运的关键一招。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：改革开放是决定当代中国命运的关键一招。。"
-  },
-  {
-    id: 1097,
-    type: "judgement",
-    category: "sub_xisixiang",
-    categoryName: "习思想分论",
-    question: "【排坑特训】全面深化改革必须以是否促进经济高质量发展为根本标准。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【有利于坚持和改善党的全面领导、有利于坚持和完善中国特色社会主义制度】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1098,
-    type: "judgement",
-    category: "sub_xisixiang",
-    categoryName: "习思想分论",
-    question: "【排坑特训】全面深化改革以政治体制改革为牵引。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【经济体制】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1099,
-    type: "judgement",
-    category: "sub_xisixiang",
-    categoryName: "习思想分论",
-    question: "【排坑特训】全面深化改革以经济建设为主线。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【制度建设】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1100,
-    type: "judgement",
-    category: "sub_xisixiang",
-    categoryName: "习思想分论",
-    question: "【排坑特训】全面深化改革以促进社会公平正义、增进人民福祉为出发点和落脚点。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：全面深化改革以促进社会公平正义、增进人民福祉为出发点和落脚点。。"
-  },
-  {
-    id: 1101,
-    type: "judgement",
-    category: "sub_xisixiang",
-    categoryName: "习思想分论",
-    question: "【排坑特训】把改善人民生活作为正确处理改革发展稳定关系的结合点。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：把改善人民生活作为正确处理改革发展稳定关系的结合点。。"
-  },
-  {
-    id: 1102,
-    type: "judgement",
-    category: "sub_xisixiang",
-    categoryName: "习思想分论",
-    question: "【排坑特训】改革和开放如鸟之两翼、车之两轮，相辅相成、相伴而生。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：改革和开放如鸟之两翼、车之两轮，相辅相成、相伴而生。。"
-  },
-  {
-    id: 1103,
-    type: "judgement",
-    category: "sub_xisixiang",
-    categoryName: "习思想分论",
-    question: "【排坑特训】全面依法治国是坚持和发展中国特色社会主义的本质要求和重要保障。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：全面依法治国是坚持和发展中国特色社会主义的本质要求和重要保障。。"
-  },
-  {
-    id: 1104,
-    type: "judgement",
-    category: "sub_xisixiang",
-    categoryName: "习思想分论",
-    question: "【排坑特训】中国特色社会主义法治道路的核心要义，就是要坚持党的领导，坚持中国特 色社会主义制度，贯彻中国特色社会主义法治理论。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：中国特色社会主义法治道路的核心要义，就是要坚持党的领导，坚持中国特 色社会主义制度，贯彻中国特色社会主义法治理论。。"
-  },
-  {
-    id: 1105,
-    type: "judgement",
-    category: "sub_xisixiang",
-    categoryName: "习思想分论",
-    question: "【排坑特训】人民民主专政是中国特色社会主义法治之魂，是我们的法治同西方资本主义 I 国家的M法治最大的区别。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【党的领导】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1106,
-    type: "judgement",
-    category: "sub_xisixiang",
-    categoryName: "习思想分论",
-    question: "【排坑特训】推进国家治理体系和治理能力现代化是全面推进依法治国的总抓手。 *",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【建设中国特色社会主义法治体系】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1107,
-    type: "judgement",
-    category: "sub_xisixiang",
-    categoryName: "习思想分论",
-    question: "【排坑特训】坚持依宪治国、依宪执政，必须把宪法监督作为首要任务。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【全面贯彻实施宪法】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1108,
-    type: "judgement",
-    category: "sub_xisixiang",
-    categoryName: "习思想分论",
-    question: "【排坑特训】坚持依宪治国、依宪执政，就必须坚持宪法确定的中国共产党领导地位不动 摇，坚持宪法确定的人民民主专政的政体和人民代表大会制度的国体不动摇。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【国体；政体】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1109,
-    type: "judgement",
-    category: "sub_xisixiang",
-    categoryName: "习思想分论",
-    question: "【排坑特训】法治社会建设是全面依法治国的重点任务和主体工程。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【法治政府】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1110,
-    type: "judgement",
-    category: "sub_xisixiang",
-    categoryName: "习思想分论",
-    question: "【排坑特训】法治政府是构筑法治国家的基础。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【法治社会】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1111,
-    type: "judgement",
-    category: "sub_xisixiang",
-    categoryName: "习思想分论",
-    question: "【排坑特训】严格执法是维护社会公平正义的最后一道防线。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：严格执法是维护社会公平正义的最后一道防线。。"
-  },
-  {
-    id: 1112,
-    type: "judgement",
-    category: "sub_xisixiang",
-    categoryName: "习思想分论",
-    question: "【排坑特训】全面从严治党是新时代党的建设的鲜明主题。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：全面从严治党是新时代党的建设的鲜明主题。。"
-  },
-  {
-    id: 1113,
-    type: "judgement",
-    category: "sub_xisixiang",
-    categoryName: "习思想分论",
-    question: "【排坑特训】新时代党的建设要以供给侧结构性改革为主线。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【加强党的长期执政能力建设、先进性和纯洁性建设】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1114,
-    type: "judgement",
-    category: "sub_xisixiang",
-    categoryName: "习思想分论",
-    question: "【排坑特训】新时代党的建设要以党的制度建设为统领。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【政治】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1115,
-    type: "judgement",
-    category: "sub_xisixiang",
-    categoryName: "习思想分论",
-    question: "【排坑特训】政治建设是党的基础性建设，要摆在首位。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：政治建设是党的基础性建设，要摆在首位。。"
-  },
-  {
-    id: 1116,
-    type: "judgement",
-    category: "sub_xisixiang",
-    categoryName: "习思想分论",
-    question: "【排坑特训】思想建设是党的根本性建设。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【基础性】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1117,
-    type: "judgement",
-    category: "sub_xisixiang",
-    categoryName: "习思想分论",
-    question: "【排坑特训】思想建设的根本任务是用党的创新理论武装全党。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：思想建设的根本任务是用党的创新理论武装全党。。"
-  },
-  {
-    id: 1118,
-    type: "judgement",
-    category: "sub_xisixiang",
-    categoryName: "习思想分论",
-    question: "【排坑特训】从严治党，关键是要抓住高级干部这个“关键少数”。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【领导干部】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1119,
-    type: "judgement",
-    category: "sub_xisixiang",
-    categoryName: "习思想分论",
-    question: "【排坑特训】党执政后的最大危险是腐败。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：党执政后的最大危险是腐败。。"
-  },
-  {
-    id: 1120,
-    type: "judgement",
-    category: "sub_xisixiang",
-    categoryName: "习思想分论",
-    question: "【排坑特训】党的自我革命是跳出历史周期率的唯一答案。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【第二个】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1121,
-    type: "judgement",
-    category: "sub_xisixiang",
-    categoryName: "习思想分论",
-    question: "【排坑特训】勇于自我革命，是我们党最大的优势、最鲜明的品格。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：勇于自我革命，是我们党最大的优势、最鲜明的品格。。"
-  },
-  {
-    id: 1122,
-    type: "judgement",
-    category: "sub_xisixiang",
-    categoryName: "习思想分论",
-    question: "【排坑特训】批评与自我批评是最彻底的自我革命。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【反腐败】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1123,
-    type: "judgement",
-    category: "sub_xisixiang",
-    categoryName: "习思想分论",
-    question: "【排坑特训】把不敢腐的强大震慑效能、不能腐的刚性制度约束、不想腐的思想教育优势 融于一体。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：把不敢腐的强大震慑效能、不能腐的刚性制度约束、不想腐的思想教育优势 融于一体。。"
-  },
-  {
-    id: 1124,
-    type: "judgement",
-    category: "sub_xisixiang",
-    categoryName: "习思想分论",
-    question: "【排坑特训】深入推进党的自我革命以引领伟大社会革命为主攻方向。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【解决大党独有难题】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1125,
-    type: "judgement",
-    category: "modernization",
-    categoryName: "中国式现代化",
-    question: "【排坑特训】必须坚持创新是第一生产力、人才是第一资源、科技是第一动力。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【科技；创新】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1126,
-    type: "judgement",
-    category: "modernization",
-    categoryName: "中国式现代化",
-    question: "【排坑特训】以为党育人、为国育才为根本任务，以立德树人为根本目标。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【根本目标；根本任务】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1127,
-    type: "judgement",
-    category: "modernization",
-    categoryName: "中国式现代化",
-    question: "【排坑特训】要把高等教育作为基点，基础教育作为龙头。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【基础教育；高等教育】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1128,
-    type: "judgement",
-    category: "modernization",
-    categoryName: "中国式现代化",
-    question: "【排坑特训】应用研究是科技创新的源头，要提高有组织的基础研究。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【基础研究】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1129,
-    type: "judgement",
-    category: "modernization",
-    categoryName: "中国式现代化",
-    question: "【排坑特训】高水平研究型大学要成为基础研究的主力军和重大科技突破的生力军。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：高水平研究型大学要成为基础研究的主力军和重大科技突破的生力军。。"
-  },
-  {
-    id: 1130,
-    type: "judgement",
-    category: "modernization",
-    categoryName: "中国式现代化",
-    question: "【排坑特训】政府是科技创新的主体，要牵头组建重大科技攻关。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【企业】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1131,
-    type: "judgement",
-    category: "modernization",
-    categoryName: "中国式现代化",
-    question: "【排坑特训】实施人才强国战略，建设规模宏大、结构合理、素质优良的人才队伍。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：实施人才强国战略，建设规模宏大、结构合理、素质优良的人才队伍。。"
-  },
-  {
-    id: 1132,
-    type: "judgement",
-    category: "modernization",
-    categoryName: "中国式现代化",
-    question: "【排坑特训】建立健全以创新能力、质量、实效、贡献为导向的人才评价体系。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：建立健全以创新能力、质量、实效、贡献为导向的人才评价体系。。"
-  },
-  {
-    id: 1133,
-    type: "judgement",
-    category: "sub_xisixiang",
-    categoryName: "习思想分论",
-    question: "【排坑特训】总体国家安全观的关键和灵魂是“安全”，突出大安全理念。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【总体】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1134,
-    type: "judgement",
-    category: "sub_xisixiang",
-    categoryName: "习思想分论",
-    question: "【排坑特训】总体国家安全观以经济安全为根本，以政治安全为基础，以人民安全为宗旨， 以军事、科技、文化、社会安全为保障，以促进国际安全为依托。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【政治；经济】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1135,
-    type: "judgement",
-    category: "sub_xisixiang",
-    categoryName: "习思想分论",
-    question: "【排坑特训】坚持把经济安全摆在首位，这是新时代中国国家安全的生命线。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【政治】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1136,
-    type: "judgement",
-    category: "sub_xisixiang",
-    categoryName: "习思想分论",
-    question: "【排坑特训】防范化解国家安全风险，这是新时代中国国家安全的中心任务。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：防范化解国家安全风险，这是新时代中国国家安全的中心任务。。"
-  },
-  {
-    id: 1137,
-    type: "judgement",
-    category: "sub_xisixiang",
-    categoryName: "习思想分论",
-    question: "【排坑特训】要完善公共安全体系，推动公共安全治理模式向事后治理转型。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【事前预防】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1138,
-    type: "judgement",
-    category: "people",
-    categoryName: "人民中心",
-    question: "【排坑特训】党在新时代的强军目标是建设一支听党指挥、能打胜仗、作风优良的人民军 队，把人民军队建设成为世界一流军队。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：党在新时代的强军目标是建设一支听党指挥、能打胜仗、作风优良的人民军 队，把人民军队建设成为世界一流军队。。"
-  },
-  {
-    id: 1139,
-    type: "judgement",
-    category: "people",
-    categoryName: "人民中心",
-    question: "【排坑特训】到2035年把人民军队全面建成世界一流军队。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【本世纪中叶】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1140,
-    type: "judgement",
-    category: "people",
-    categoryName: "人民中心",
-    question: "【排坑特训】科技强军是人民军队的立军之本。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【政治建军】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1141,
-    type: "judgement",
-    category: "people",
-    categoryName: "人民中心",
-    question: "【排坑特训】党对人民军队的绝对领导，是建军之本、强军之魂。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：党对人民军队的绝对领导，是建军之本、强军之魂。。"
-  },
-  {
-    id: 1142,
-    type: "judgement",
-    category: "people",
-    categoryName: "人民中心",
-    question: "【排坑特训】党对军队绝对领导的根本原则和制度，发端于三湾改编，奠基于南昌起义， 定型于古田会议，是人民军队完全区别于一切旧军队的政治特质和根本优势。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【南昌起义；三湾改编】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1143,
-    type: "judgement",
-    category: "people",
-    categoryName: "人民中心",
-    question: "【排坑特训】牢固树立战斗力这个唯一的根本的标准。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：牢固树立战斗力这个唯一的根本的标准。。"
-  },
-  {
-    id: 1144,
-    type: "judgement",
-    category: "sub_xisixiang",
-    categoryName: "习思想分论",
-    question: "【排坑特训】“两制”是实行“一国”的前提和基础。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【一国；两制】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1145,
-    type: "judgement",
-    category: "sub_xisixiang",
-    categoryName: "习思想分论",
-    question: "【排坑特训】“一国两制”的最高原则是维护国家主权、安全、发展利益。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：“一国两制”的最高原则是维护国家主权、安全、发展利益。。"
-  },
-  {
-    id: 1146,
-    type: "judgement",
-    category: "sub_xisixiang",
-    categoryName: "习思想分论",
-    question: "【排坑特训】“一国两制”的提出是从解决香港问题开始的。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【台湾】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1147,
-    type: "judgement",
-    category: "sub_xisixiang",
-    categoryName: "习思想分论",
-    question: "【排坑特训】坚持党中央对对台工作的集中统一领导，这是统一的根本保证。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：坚持党中央对对台工作的集中统一领导，这是统一的根本保证。。"
-  },
-  {
-    id: 1148,
-    type: "judgement",
-    category: "sub_xisixiang",
-    categoryName: "习思想分论",
-    question: "【排坑特训】坚持一个中国原则和“九二共识”，这是统一的政治基础。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：坚持一个中国原则和“九二共识”，这是统一的政治基础。。"
-  },
-  {
-    id: 1149,
-    type: "judgement",
-    category: "sub_xisixiang",
-    categoryName: "习思想分论",
-    question: "【排坑特训】坚持亲诚惠容和与邻为善、以邻为伴大国外交方针。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【周边】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1150,
-    type: "judgement",
-    category: "sub_xisixiang",
-    categoryName: "习思想分论",
-    question: "【排坑特训】秉持真实亲诚理念和正确义利观，加强同发展中国家团结合作。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：秉持真实亲诚理念和正确义利观，加强同发展中国家团结合作。。"
-  },
-  {
-    id: 1151,
-    type: "judgement",
-    category: "sub_xisixiang",
-    categoryName: "习思想分论",
-    question: "【排坑特训】构建人类命运共同体，以推动构建新型国际关系为实现路径。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【共商共建共享的全球治理】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1152,
-    type: "judgement",
-    category: "sub_xisixiang",
-    categoryName: "习思想分论",
-    question: "【排坑特训】构建人类命运共同体，以践行社会主义核心价值观为普遍遵循。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【全人类共同价值】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1153,
-    type: "judgement",
-    category: "sub_xisixiang",
-    categoryName: "习思想分论",
-    question: "【排坑特训】构建人类命运共同体，以高质量共建“一带一路”为实践平台。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：构建人类命运共同体，以高质量共建“一带一路”为实践平台。。"
-  },
-  {
-    id: 1154,
-    type: "judgement",
-    category: "mayuan",
-    categoryName: "马原",
-    question: "【排坑特训】1848 年《资本论》的发表，标志着马克思主义的诞生。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【《共产党宣言》】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1155,
-    type: "judgement",
-    category: "mayuan",
-    categoryName: "马原",
-    question: "【排坑特训】马克思主义的直接理论来源是德国古典哲学、英国古典政治经济学、英法空 想社会主义。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：马克思主义的直接理论来源是德国古典哲学、英国古典政治经济学、英法空 想社会主义。。"
-  },
-  {
-    id: 1156,
-    type: "judgement",
-    category: "mayuan",
-    categoryName: "马原",
-    question: "【排坑特训】马克思的两大发现是认识论和唯物史观。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【剩余价值学说】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1157,
-    type: "judgement",
-    category: "mayuan",
-    categoryName: "马原",
-    question: "【排坑特训】马克思主义的理论品质是以实践为基础的科学性和革命性的统一。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：马克思主义的理论品质是以实践为基础的科学性和革命性的统一。。"
-  },
-  {
-    id: 1158,
-    type: "judgement",
-    category: "mayuan",
-    categoryName: "马原",
-    question: "【排坑特训】哲学的基本问题是意识与物质的关系问题。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：哲学的基本问题是意识与物质的关系问题。。"
-  },
-  {
-    id: 1159,
-    type: "judgement",
-    category: "mayuan",
-    categoryName: "马原",
-    question: "【排坑特训】物质和意识是否具有同一性，是唯物主义和唯心主义的根本分歧所在。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【何者为第一性】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1160,
-    type: "judgement",
-    category: "mayuan",
-    categoryName: "马原",
-    question: "【排坑特训】古代朴素唯物主义把物质归结为一种或几种实物。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：古代朴素唯物主义把物质归结为一种或几种实物。。"
-  },
-  {
-    id: 1161,
-    type: "judgement",
-    category: "mayuan",
-    categoryName: "马原",
-    question: "【排坑特训】客观唯心主义主张人的精神是世界的本原。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：客观唯心主义主张人的精神是世界的本原。。"
-  },
-  {
-    id: 1162,
-    type: "judgement",
-    category: "mayuan",
-    categoryName: "马原",
-    question: "【排坑特训】物质的根本属性和存在方式是客观实在性。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【运动】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1163,
-    type: "judgement",
-    category: "mayuan",
-    categoryName: "马原",
-    question: "【排坑特训】意识具有主观能动性，对物质起决定作用。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【能动的反作用】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1164,
-    type: "judgement",
-    category: "mayuan",
-    categoryName: "马原",
-    question: "【排坑特训】人脑是意识的器官，意识是人脑的分泌物。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【人脑对客观存在的主观映象】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1165,
-    type: "judgement",
-    category: "mayuan",
-    categoryName: "马原",
-    question: "【排坑特训】正确发挥主观能动性是尊重客观规律的前提。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【尊重客观规律；正确发挥主观能动性】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1166,
-    type: "judgement",
-    category: "mayuan",
-    categoryName: "马原",
-    question: "【排坑特训】世界上的事物都是相对运动和绝对静止的统一。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：世界上的事物都是相对运动和绝对静止的统一。。"
-  },
-  {
-    id: 1167,
-    type: "judgement",
-    category: "mayuan",
-    categoryName: "马原",
-    question: "【排坑特训】万事万物均处在直接联系之中。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【普遍联系】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1168,
-    type: "judgement",
-    category: "mayuan",
-    categoryName: "马原",
-    question: "【排坑特训】整体居于主导地位，整体统率着部分。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：整体居于主导地位，整体统率着部分。。"
-  },
-  {
-    id: 1169,
-    type: "judgement",
-    category: "mayuan",
-    categoryName: "马原",
-    question: "【排坑特训】部分影响整体，部分的功能及其变化甚至对整体的功能起决定作用。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【关键部分】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1170,
-    type: "judgement",
-    category: "mayuan",
-    categoryName: "马原",
-    question: "【排坑特训】发展的实质是新事物的产生和旧事物的灭亡。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：发展的实质是新事物的产生和旧事物的灭亡。。"
-  },
-  {
-    id: 1171,
-    type: "judgement",
-    category: "mayuan",
-    categoryName: "马原",
-    question: "【排坑特训】对立统一规律揭示了事物发展的形式和状态。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【源泉和动力】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1172,
-    type: "judgement",
-    category: "mayuan",
-    categoryName: "马原",
-    question: "【排坑特训】对立统一规律是唯物辩证法的实质和核心。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：对立统一规律是唯物辩证法的实质和核心。。"
-  },
-  {
-    id: 1173,
-    type: "judgement",
-    category: "mayuan",
-    categoryName: "马原",
-    question: "【排坑特训】矛盾的基本属性是普遍性和特殊性。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【同一性和斗争性】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1174,
-    type: "judgement",
-    category: "mayuan",
-    categoryName: "马原",
-    question: "【排坑特训】矛盾的特殊性要求我们坚持矛盾分析法，全面地看问题。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【普遍性】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1175,
-    type: "judgement",
-    category: "mayuan",
-    categoryName: "马原",
-    question: "【排坑特训】矛盾的普遍性要求我们要做到具体问题具体分析。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【特殊性】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1176,
-    type: "judgement",
-    category: "mayuan",
-    categoryName: "马原",
-    question: "【排坑特训】事物的性质由主要矛盾的主要方面决定。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：事物的性质由主要矛盾的主要方面决定。。"
-  },
-  {
-    id: 1177,
-    type: "judgement",
-    category: "mayuan",
-    categoryName: "马原",
-    question: "【排坑特训】外因是事物发展变化的根据，是第一位的原因。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【内因】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1178,
-    type: "judgement",
-    category: "mayuan",
-    categoryName: "马原",
-    question: "【排坑特训】量变质变规律揭示了事物发展的方向和道路。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【形式和状态】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1179,
-    type: "judgement",
-    category: "mayuan",
-    categoryName: "马原",
-    question: "【排坑特训】区分量变和质变的根本标志，是事物变化是否超出度的范围。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：区分量变和质变的根本标志，是事物变化是否超出度的范围。。"
-  },
-  {
-    id: 1180,
-    type: "judgement",
-    category: "mayuan",
-    categoryName: "马原",
-    question: "【排坑特训】量变是质变的必要准备，量变一定引起质变。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【量变达到一定程度必然引起质变】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1181,
-    type: "judgement",
-    category: "mayuan",
-    categoryName: "马原",
-    question: "【排坑特训】质变比量变更能推动事物的发展。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【量变与质变在推动事物发展中是辩证统一的，没有“谁更重要”的绝对划分】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1182,
-    type: "judgement",
-    category: "mayuan",
-    categoryName: "马原",
-    question: "【排坑特训】否定之否定规律揭示了事物发展的源泉和动力。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【方向和道路】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1183,
-    type: "judgement",
-    category: "mayuan",
-    categoryName: "马原",
-    question: "【排坑特训】辩证的否定是事物联系和发展的环节。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：辩证的否定是事物联系和发展的环节。。"
-  },
-  {
-    id: 1184,
-    type: "judgement",
-    category: "mayuan",
-    categoryName: "马原",
-    question: "【排坑特训】辩证的否定的实质是全盘否定。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【“扬弃”】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1185,
-    type: "judgement",
-    category: "mayuan",
-    categoryName: "马原",
-    question: "【排坑特训】事物的发展表现为螺旋式上升和直线式前进的过程。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：事物的发展表现为螺旋式上升和直线式前进的过程。。"
-  },
-  {
-    id: 1186,
-    type: "judgement",
-    category: "mayuan",
-    categoryName: "马原",
-    question: "【排坑特训】科学文化实践是最基本的、首要的实践活动。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【物质生产】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1187,
-    type: "judgement",
-    category: "mayuan",
-    categoryName: "马原",
-    question: "【排坑特训】认识具有主体差异性。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：认识具有主体差异性。。"
-  },
-  {
-    id: 1188,
-    type: "judgement",
-    category: "mayuan",
-    categoryName: "马原",
-    question: "【排坑特训】直接经验是认识的来源。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【实践】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1189,
-    type: "judgement",
-    category: "mayuan",
-    categoryName: "马原",
-    question: "【排坑特训】实践是认识发展的动力。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：实践是认识发展的动力。。"
-  },
-  {
-    id: 1190,
-    type: "judgement",
-    category: "mayuan",
-    categoryName: "马原",
-    question: "【排坑特训】实践是认识的目的。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：实践是认识的目的。。"
-  },
-  {
-    id: 1191,
-    type: "judgement",
-    category: "mayuan",
-    categoryName: "马原",
-    question: "【排坑特训】是否有用是检验认识真理性的唯一标准。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【实践】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1192,
-    type: "judgement",
-    category: "mayuan",
-    categoryName: "马原",
-    question: "【排坑特训】认识辩证过程的第一次飞跃指的是由实践到感性认识的能动飞跃。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【由感性认识到理性认识】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1193,
-    type: "judgement",
-    category: "mayuan",
-    categoryName: "马原",
-    question: "【排坑特训】理性认识是认识的初级阶段，包括感觉、知觉、表象三种形式。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【感性】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1194,
-    type: "judgement",
-    category: "mayuan",
-    categoryName: "马原",
-    question: "【排坑特训】感性认识有待于发展和深化为理性认识。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：感性认识有待于发展和深化为理性认识。。"
-  },
-  {
-    id: 1195,
-    type: "judgement",
-    category: "mayuan",
-    categoryName: "马原",
-    question: "【排坑特训】真理的内容是主观的，检验真理的标准实践是客观的。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【客观】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1196,
-    type: "judgement",
-    category: "mayuan",
-    categoryName: "马原",
-    question: "【排坑特训】真理的绝对性和相对性是同一客观真理的两种属性，不是两个真理。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：真理的绝对性和相对性是同一客观真理的两种属性，不是两个真理。。"
-  },
-  {
-    id: 1197,
-    type: "judgement",
-    category: "mayuan",
-    categoryName: "马原",
-    question: "【排坑特训】人口因素是社会存在和发展的基础及决定力量。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【物质生产方式】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1198,
-    type: "judgement",
-    category: "mayuan",
-    categoryName: "马原",
-    question: "【排坑特训】意识形态包括政治法律思想、道德、艺术、宗教、哲学和大部分社会科学。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：意识形态包括政治法律思想、道德、艺术、宗教、哲学和大部分社会科学。。"
-  },
-  {
-    id: 1199,
-    type: "judgement",
-    category: "mayuan",
-    categoryName: "马原",
-    question: "【排坑特训】社会意识具有绝对独立性。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【相对】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1200,
-    type: "judgement",
-    category: "mayuan",
-    categoryName: "马原",
-    question: "【排坑特训】社会基本矛盾包括生产力与生产关系的矛盾、经济基础与上层建筑的矛盾。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：社会基本矛盾包括生产力与生产关系的矛盾、经济基础与上层建筑的矛盾。。"
-  },
-  {
-    id: 1201,
-    type: "judgement",
-    category: "mayuan",
-    categoryName: "马原",
-    question: "【排坑特训】劳动资料在生产力基本要素中起主导作用。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【劳动者】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1202,
-    type: "judgement",
-    category: "mayuan",
-    categoryName: "马原",
-    question: "【排坑特训】劳动者是衡量生产力水平的标志。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【生产工具】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1203,
-    type: "judgement",
-    category: "mayuan",
-    categoryName: "马原",
-    question: "【排坑特训】生产关系由生产资料的所有制形式、人们在生产中的地位和相互关系、产品 分配形式等方面构成。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：生产关系由生产资料的所有制形式、人们在生产中的地位和相互关系、产品 分配形式等方面构成。。"
-  },
-  {
-    id: 1204,
-    type: "judgement",
-    category: "mayuan",
-    categoryName: "马原",
-    question: "【排坑特训】产品分配形式是生产关系的基础，是区分社会制度的根本标志。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【生产资料的所有制形式】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1205,
-    type: "judgement",
-    category: "mayuan",
-    categoryName: "马原",
-    question: "【排坑特训】观念上层建筑包括政治法律思想、道德、艺术、宗教、哲学等思想观点。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：观念上层建筑包括政治法律思想、道德、艺术、宗教、哲学等思想观点。。"
-  },
-  {
-    id: 1206,
-    type: "judgement",
-    category: "mayuan",
-    categoryName: "马原",
-    question: "【排坑特训】政治上层建筑包括国家政治制度、立法司法制度和行政制度，以及国家政权 机构、政党、军队、警察、法庭、监狱等政治组织形态和设施。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：政治上层建筑包括国家政治制度、立法司法制度和行政制度，以及国家政权 机构、政党、军队、警察、法庭、监狱等政治组织形态和设施。。"
-  },
-  {
-    id: 1207,
-    type: "judgement",
-    category: "mayuan",
-    categoryName: "马原",
-    question: "【排坑特训】在整个上层建筑中，观念上层建筑居主导地位，政治法律思想是核心。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【政治上层建筑；国家政权】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1208,
-    type: "judgement",
-    category: "mayuan",
-    categoryName: "马原",
-    question: "【排坑特训】社会基本矛盾中经济基础与上层建筑的矛盾是更根本的。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【生产力与生产关系】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1209,
-    type: "judgement",
-    category: "mayuan",
-    categoryName: "马原",
-    question: "【排坑特训】群众史观认为对历史发展起决定作用的是人民群众，同时否认个人尤其是少 数历史人物的作用。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【承认】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1210,
-    type: "judgement",
-    category: "mayuan",
-    categoryName: "马原",
-    question: "【排坑特训】人民群众是社会历史的主体，对社会历史发展起决定性作用。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：人民群众是社会历史的主体，对社会历史发展起决定性作用。。"
-  },
-  {
-    id: 1211,
-    type: "judgement",
-    category: "mayuan",
-    categoryName: "马原",
-    question: "【排坑特训】人民群众是社会物质财富和精神财富的创造者。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：人民群众是社会物质财富和精神财富的创造者。。"
-  },
-  {
-    id: 1212,
-    type: "judgement",
-    category: "mayuan",
-    categoryName: "马原",
-    question: "【排坑特训】人民群众是社会变革的领导力量。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：人民群众是社会变革的领导力量。。"
-  },
-  {
-    id: 1213,
-    type: "judgement",
-    category: "mayuan",
-    categoryName: "马原",
-    question: "【排坑特训】有使用价值的物品就是商品。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【不一定是商品】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1214,
-    type: "judgement",
-    category: "mayuan",
-    categoryName: "马原",
-    question: "【排坑特训】没有合格的使用价值，价值一定不能得到实现。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：没有合格的使用价值，价值一定不能得到实现。。"
-  },
-  {
-    id: 1215,
-    type: "judgement",
-    category: "mayuan",
-    categoryName: "马原",
-    question: "【排坑特训】商品的价值量是由生产该商品所需的个别劳动时间决定的。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【社会必要劳动时间】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1216,
-    type: "judgement",
-    category: "mayuan",
-    categoryName: "马原",
-    question: "【排坑特训】货币履行价值尺度职能时必须是现实的货币。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【不需要是现实的货币】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1217,
-    type: "judgement",
-    category: "mayuan",
-    categoryName: "马原",
-    question: "【排坑特训】具体劳动和抽象劳动是不同商品生产过程中的不同劳动。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【同一劳动过程中不可分割的两个方面】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1218,
-    type: "judgement",
-    category: "mayuan",
-    categoryName: "马原",
-    question: "【排坑特训】具体劳动创造商品的使用价值，抽象劳动形成商品的价值。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：具体劳动创造商品的使用价值，抽象劳动形成商品的价值。。"
-  },
-  {
-    id: 1219,
-    type: "judgement",
-    category: "mayuan",
-    categoryName: "马原",
-    question: "【排坑特训】商品的二因素决定生产商品的劳动二重性。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【生产商品的劳动二重性；商品的二因素】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1220,
-    type: "judgement",
-    category: "mayuan",
-    categoryName: "马原",
-    question: "【排坑特训】价值围绕价格上下波动。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【价格；价值】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1221,
-    type: "judgement",
-    category: "mayuan",
-    categoryName: "马原",
-    question: "【排坑特训】流通手段和支付手段是货币的两个最基本职能。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：流通手段和支付手段是货币的两个最基本职能。。"
-  },
-  {
-    id: 1222,
-    type: "judgement",
-    category: "mayuan",
-    categoryName: "马原",
-    question: "【排坑特训】剩余价值规律是资本主义的基本规律。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：剩余价值规律是资本主义的基本规律。。"
-  },
-  {
-    id: 1223,
-    type: "judgement",
-    category: "mayuan",
-    categoryName: "马原",
-    question: "【排坑特训】榨取绝对剩余价值和相对剩余价值均通过延长剩余劳动时间实现。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：榨取绝对剩余价值和相对剩余价值均通过延长剩余劳动时间实现。。"
-  },
-  {
-    id: 1224,
-    type: "judgement",
-    category: "mayuan",
-    categoryName: "马原",
-    question: "【排坑特训】榨取绝对剩余价值以提高全社会劳动生产率为前提。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【相对剩余价值】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1225,
-    type: "judgement",
-    category: "mayuan",
-    categoryName: "马原",
-    question: "【排坑特训】剩余价值体现了资本家与雇佣工人之间剥削与被剥削的关系。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：剩余价值体现了资本家与雇佣工人之间剥削与被剥削的关系。。"
-  },
-  {
-    id: 1226,
-    type: "judgement",
-    category: "mayuan",
-    categoryName: "马原",
-    question: "【排坑特训】不变资本与可变资本的划分为确定资本家对劳动者的剥削程度提供了科学依 据。",
-    options: ["正确", "错误"],
-    answer: "A",
-    explanation: "正确答案为：A（正确）。【考点精析】此表述完全符合《小黑排坑手册》的标准定义，主角关键词与理论对应完全正确。背诵要点：不变资本与可变资本的划分为确定资本家对劳动者的剥削程度提供了科学依 据。。"
-  },
-  {
-    id: 1227,
-    type: "judgement",
-    category: "mayuan",
-    categoryName: "马原",
-    question: "【排坑特训】不变资本是以劳动力形态存在的那部分资本。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【生产资料】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
-  },
-  {
-    id: 1228,
-    type: "judgement",
-    category: "mayuan",
-    categoryName: "马原",
-    question: "【排坑特训】资本的有机构成是指生产的技术水平所决定的生产资料和劳动力之间的比 例。",
-    options: ["正确", "错误"],
-    answer: "B",
-    explanation: "正确答案为：B（错误）。【排坑解析】此表述存在考点陷阱！该表述与官方标准定义不符。标准修正为：【技术构成】。请在复习时重点识记该核心主角关键词，防止在真实考题中被混淆选项所误导。"
+    "id": 1001,
+    "type": "judgement",
+    "category": "xjp_zonglun",
+    "categoryName": "习思想·总论",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第一章总论 / 一、习近平新时代中国特色社会主义思想的核心要义",
+    "question": "【排坑特训】坚持和发展中国特色社会主义，是习近平新时代中国特色社会主义思想的核心要义。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确答案为：A（正确）。\n【判定】正确（手册标注【√】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第一章总论 / 一、习近平新时代中国特色社会主义思想的核心要义\n【标准表述】坚持和发展中国特色社会主义，是习近平新时代中国特色社会主义思想的核心要义。\n【精析】该句与《排坑手册》正确答案一致，属于可直接识记的规范表述。复习时抓住主角关键词，对照易混近义项（时间节点、布局名称、程度词、主客体），确认没有偷换概念即可快速判对。\n【记忆】整句背诵，并自问：主语是谁？时间是哪次大会？程度词是根本还是基本？"
+  },
+  {
+    "id": 1002,
+    "type": "judgement",
+    "category": "xjp_zonglun",
+    "categoryName": "习思想·总论",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第一章总论 / 一、习近平新时代中国特色社会主义思想的核心要义",
+    "question": "【排坑特训】党的十九大以来，开创了中国特色社会主义新时代。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【十八大】。\n【判定】错误（手册框出修正【十八大】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第一章总论 / 一、习近平新时代中国特色社会主义思想的核心要义\n【题干陷阱】党的十九大以来，开创了中国特色社会主义新时代。\n【手册框出的正确点】十八大\n【改后提示】党的十八大以来，开创了中国特色社会主义新时代。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「十八大」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【十八大】",
+    "fix": "十八大"
+  },
+  {
+    "id": 1003,
+    "type": "judgement",
+    "category": "xjp_zonglun",
+    "categoryName": "习思想·总论",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第一章总论 / 一、习近平新时代中国特色社会主义思想的核心要义",
+    "question": "【排坑特训】党的十八大，作出中国特色社会主义进入新时代这个重大政治论断。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【十九大】。\n【判定】错误（手册框出修正【十九大】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第一章总论 / 一、习近平新时代中国特色社会主义思想的核心要义\n【题干陷阱】党的十八大，作出中国特色社会主义进入新时代这个重大政治论断。\n【手册框出的正确点】十九大\n【改后提示】党的十九大，作出中国特色社会主义进入新时代这个重大政治论断。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「十九大」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【十九大】",
+    "fix": "十九大"
+  },
+  {
+    "id": 1004,
+    "type": "judgement",
+    "category": "xjp_zonglun",
+    "categoryName": "习思想·总论",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第一章总论 / 一、习近平新时代中国特色社会主义思想的核心要义",
+    "question": "【排坑特训】我国社会主要矛盾的变化是中国特色社会主义进入新时代的基本依据。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确答案为：A（正确）。\n【判定】正确（手册标注【√】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第一章总论 / 一、习近平新时代中国特色社会主义思想的核心要义\n【标准表述】我国社会主要矛盾的变化是中国特色社会主义进入新时代的基本依据。\n【精析】该句与《排坑手册》正确答案一致，属于可直接识记的规范表述。复习时抓住主角关键词，对照易混近义项（时间节点、布局名称、程度词、主客体），确认没有偷换概念即可快速判对。\n【记忆】整句背诵，并自问：主语是谁？时间是哪次大会？程度词是根本还是基本？"
+  },
+  {
+    "id": 1005,
+    "type": "judgement",
+    "category": "xjp_zonglun",
+    "categoryName": "习思想·总论",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第一章总论 / 一、习近平新时代中国特色社会主义思想的核心要义",
+    "question": "【排坑特训】新时代是我国社会主要矛盾以及国际地位和基本国情新变化的反映。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【国际地位和基本国情没有变】。\n【判定】错误（手册框出修正【国际地位和基本国情没有变】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第一章总论 / 一、习近平新时代中国特色社会主义思想的核心要义\n【题干陷阱】新时代是我国社会主要矛盾以及国际地位和基本国情新变化的反映。\n【手册框出的正确点】国际地位和基本国情没有变\n【改后提示】新时代是我国社会主要矛盾以及国际地位和基本国情没有变的反映。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「国际地位和基本国情没有变」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【国际地位和基本国情没有变】",
+    "fix": "国际地位和基本国情没有变"
+  },
+  {
+    "id": 1006,
+    "type": "judgement",
+    "category": "xjp_zonglun",
+    "categoryName": "习思想·总论",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第一章总论 / 二、习近平新时代中国特色社会主义思想是两个结合的重大成果",
+    "question": "【排坑特训】“两个结合”是指要把马克思主义基本原理同中国具体实际相结合、同中华优秀传统文化相结合。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确答案为：A（正确）。\n【判定】正确（手册标注【√】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第一章总论 / 二、习近平新时代中国特色社会主义思想是两个结合的重大成果\n【标准表述】“两个结合”是指要把马克思主义基本原理同中国具体实际相结合、同中华优秀传统文化相结合。\n【精析】该句与《排坑手册》正确答案一致，属于可直接识记的规范表述。复习时抓住主角关键词，对照易混近义项（时间节点、布局名称、程度词、主客体），确认没有偷换概念即可快速判对。\n【记忆】整句背诵，并自问：主语是谁？时间是哪次大会？程度词是根本还是基本？"
+  },
+  {
+    "id": 1007,
+    "type": "judgement",
+    "category": "xjp_zonglun",
+    "categoryName": "习思想·总论",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第一章总论 / 二、习近平新时代中国特色社会主义思想是两个结合的重大成果",
+    "question": "【排坑特训】“两个结合”是我们取得成功的最大法宝。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确答案为：A（正确）。\n【判定】正确（手册标注【√】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第一章总论 / 二、习近平新时代中国特色社会主义思想是两个结合的重大成果\n【标准表述】“两个结合”是我们取得成功的最大法宝。\n【精析】该句与《排坑手册》正确答案一致，属于可直接识记的规范表述。复习时抓住主角关键词，对照易混近义项（时间节点、布局名称、程度词、主客体），确认没有偷换概念即可快速判对。\n【记忆】整句背诵，并自问：主语是谁？时间是哪次大会？程度词是根本还是基本？"
+  },
+  {
+    "id": 1008,
+    "type": "judgement",
+    "category": "xjp_zonglun",
+    "categoryName": "习思想·总论",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第一章总论 / 二、习近平新时代中国特色社会主义思想是两个结合的重大成果",
+    "question": "【排坑特训】结合是深刻的“物理反应”，造就了新的文化生命体。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【化学反应】。\n【判定】错误（手册框出修正【化学反应】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第一章总论 / 二、习近平新时代中国特色社会主义思想是两个结合的重大成果\n【题干陷阱】结合是深刻的“物理反应”，造就了新的文化生命体。\n【手册框出的正确点】化学反应\n【改后提示】结合是深刻的“化学反应”，造就了新的文化生命体。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「化学反应」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【化学反应】",
+    "fix": "化学反应"
+  },
+  {
+    "id": 1009,
+    "type": "judgement",
+    "category": "xjp_zonglun",
+    "categoryName": "习思想·总论",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第一章总论 / 二、习近平新时代中国特色社会主义思想是两个结合的重大成果",
+    "question": "【排坑特训】新时代首次提出把马克思主义基本原理同中国具体实际相结合。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【中华优秀传统文化】。\n【判定】错误（手册框出修正【中华优秀传统文化】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第一章总论 / 二、习近平新时代中国特色社会主义思想是两个结合的重大成果\n【题干陷阱】新时代首次提出把马克思主义基本原理同中国具体实际相结合。\n【手册框出的正确点】中华优秀传统文化\n【改后提示】应将相关表述修正为与「中华优秀传统文化」一致。对照题干：新时代首次提出把马克思主义基本原理同中国具体实际相结合。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「中华优秀传统文化」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【中华优秀传统文化】",
+    "fix": "中华优秀传统文化"
+  },
+  {
+    "id": 1010,
+    "type": "judgement",
+    "category": "xjp_zonglun",
+    "categoryName": "习思想·总论",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第一章总论 / 二、习近平新时代中国特色社会主义思想是两个结合的重大成果",
+    "question": "【排坑特训】要用新时代中国之“矢”去射马克思主义之“的”。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【马克思主义；新时代中国】。\n【判定】错误（手册框出修正【马克思主义；新时代中国】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第一章总论 / 二、习近平新时代中国特色社会主义思想是两个结合的重大成果\n【题干陷阱】要用新时代中国之“矢”去射马克思主义之“的”。\n【手册框出的正确点】马克思主义；新时代中国\n【改后提示】要用马克思主义之“矢”去射新时代中国之“的”。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「马克思主义；新时代中国」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【马克思主义；新时代中国】",
+    "fix": "马克思主义；新时代中国"
+  },
+  {
+    "id": 1011,
+    "type": "judgement",
+    "category": "xjp_zonglun",
+    "categoryName": "习思想·总论",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第一章总论 / 二、习近平新时代中国特色社会主义思想是两个结合的重大成果",
+    "question": "【排坑特训】马克思主义这个根脉和中华优秀传统文化这个魂脉内在贯通、相互成就。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【魂脉；根脉】。\n【判定】错误（手册框出修正【魂脉；根脉】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第一章总论 / 二、习近平新时代中国特色社会主义思想是两个结合的重大成果\n【题干陷阱】马克思主义这个根脉和中华优秀传统文化这个魂脉内在贯通、相互成就。\n【手册框出的正确点】魂脉；根脉\n【改后提示】马克思主义这个魂脉和中华优秀传统文化这个根脉内在贯通、相互成就。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「魂脉；根脉」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【魂脉；根脉】",
+    "fix": "魂脉；根脉"
+  },
+  {
+    "id": 1012,
+    "type": "judgement",
+    "category": "xjp_zonglun",
+    "categoryName": "习思想·总论",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第一章总论 / 三、习近平新时代中国特色社会主义思想的科学体系",
+    "question": "【排坑特训】“十个明确”“十四个坚持”“十三个方面成就”“六个必须坚持”内在贯通、有机统一，共同构成了习近平新时代中国特色社会主义思想的科学体系。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确答案为：A（正确）。\n【判定】正确（手册标注【√】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第一章总论 / 三、习近平新时代中国特色社会主义思想的科学体系\n【标准表述】“十个明确”“十四个坚持”“十三个方面成就”“六个必须坚持”内在贯通、有机统一，共同构成了习近平新时代中国特色社会主义思想的科学体系。\n【精析】该句与《排坑手册》正确答案一致，属于可直接识记的规范表述。复习时抓住主角关键词，对照易混近义项（时间节点、布局名称、程度词、主客体），确认没有偷换概念即可快速判对。\n【记忆】整句背诵，并自问：主语是谁？时间是哪次大会？程度词是根本还是基本？"
+  },
+  {
+    "id": 1013,
+    "type": "judgement",
+    "category": "xjp_zonglun",
+    "categoryName": "习思想·总论",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第一章总论 / 三、习近平新时代中国特色社会主义思想的科学体系",
+    "question": "【排坑特训】“十个明确”是习近平新时代中国特色社会主义思想的主体内容，集中体现了这一思想体系的主要观点和基本精神，发挥着统摄作用。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确答案为：A（正确）。\n【判定】正确（手册标注【√】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第一章总论 / 三、习近平新时代中国特色社会主义思想的科学体系\n【标准表述】“十个明确”是习近平新时代中国特色社会主义思想的主体内容，集中体现了这一思想体系的主要观点和基本精神，发挥着统摄作用。\n【精析】该句与《排坑手册》正确答案一致，属于可直接识记的规范表述。复习时抓住主角关键词，对照易混近义项（时间节点、布局名称、程度词、主客体），确认没有偷换概念即可快速判对。\n【记忆】整句背诵，并自问：主语是谁？时间是哪次大会？程度词是根本还是基本？"
+  },
+  {
+    "id": 1014,
+    "type": "judgement",
+    "category": "xjp_zonglun",
+    "categoryName": "习思想·总论",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第一章总论 / 三、习近平新时代中国特色社会主义思想的科学体系",
+    "question": "【排坑特训】“十四个坚持”是习近平新时代中国特色社会主义思想的世界观、方法论。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【六个必须坚持】。\n【判定】错误（手册框出修正【六个必须坚持】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第一章总论 / 三、习近平新时代中国特色社会主义思想的科学体系\n【题干陷阱】“十四个坚持”是习近平新时代中国特色社会主义思想的世界观、方法论。\n【手册框出的正确点】六个必须坚持\n【改后提示】应将相关表述修正为与「六个必须坚持」一致。对照题干：“十四个坚持”是习近平新时代中国特色社会主义思想的世界观、方法论。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「六个必须坚持」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【六个必须坚持】",
+    "fix": "六个必须坚持"
+  },
+  {
+    "id": 1015,
+    "type": "judgement",
+    "category": "xjp_zonglun",
+    "categoryName": "习思想·总论",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第一章总论 / 三、习近平新时代中国特色社会主义思想的科学体系",
+    "question": "【排坑特训】中国特色社会主义最本质的特征是中国共产党领导，中国特色社会主义制度的最大优势是中国共产党领导。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确答案为：A（正确）。\n【判定】正确（手册标注【√】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第一章总论 / 三、习近平新时代中国特色社会主义思想的科学体系\n【标准表述】中国特色社会主义最本质的特征是中国共产党领导，中国特色社会主义制度的最大优势是中国共产党领导。\n【精析】该句与《排坑手册》正确答案一致，属于可直接识记的规范表述。复习时抓住主角关键词，对照易混近义项（时间节点、布局名称、程度词、主客体），确认没有偷换概念即可快速判对。\n【记忆】整句背诵，并自问：主语是谁？时间是哪次大会？程度词是根本还是基本？"
+  },
+  {
+    "id": 1016,
+    "type": "judgement",
+    "category": "xjp_zonglun",
+    "categoryName": "习思想·总论",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第一章总论 / 三、习近平新时代中国特色社会主义思想的科学体系",
+    "question": "【排坑特训】坚持和发展中国特色社会主义，总任务是全面建成小康社会。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【实现社会主义现代化和中华民族伟大复兴】。\n【判定】错误（手册框出修正【实现社会主义现代化和中华民族伟大复兴】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第一章总论 / 三、习近平新时代中国特色社会主义思想的科学体系\n【题干陷阱】坚持和发展中国特色社会主义，总任务是全面建成小康社会。\n【手册框出的正确点】实现社会主义现代化和中华民族伟大复兴\n【改后提示】应将相关表述修正为与「实现社会主义现代化和中华民族伟大复兴」一致。对照题干：坚持和发展中国特色社会主义，总任务是全面建成小康社会。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「实现社会主义现代化和中华民族伟大复兴」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【实现社会主义现代化和中华民族伟大复兴】",
+    "fix": "实现社会主义现代化和中华民族伟大复兴"
+  },
+  {
+    "id": 1017,
+    "type": "judgement",
+    "category": "xjp_zonglun",
+    "categoryName": "习思想·总论",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第一章总论 / 三、习近平新时代中国特色社会主义思想的科学体系",
+    "question": "【排坑特训】新时代主要矛盾是人民日益增长的物质需要和落后社会生产之间的矛盾。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【人民日益增长的美好生活需要和不平衡不充分的发展之间】。\n【判定】错误（手册框出修正【人民日益增长的美好生活需要和不平衡不充分的发展之间】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第一章总论 / 三、习近平新时代中国特色社会主义思想的科学体系\n【题干陷阱】新时代主要矛盾是人民日益增长的物质需要和落后社会生产之间的矛盾。\n【手册框出的正确点】人民日益增长的美好生活需要和不平衡不充分的发展之间\n【改后提示】应将相关表述修正为与「人民日益增长的美好生活需要和不平衡不充分的发展之间」一致。对照题干：新时代主要矛盾是人民日益增长的物质需要和落后社会生产之间的矛盾。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「人民日益增长的美好生活需要和不平衡不充分的发展之间」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【人民日益增长的美好生活需要和不平衡不充分的发展之间】",
+    "fix": "人民日益增长的美好生活需要和不平衡不充分的发展之间"
+  },
+  {
+    "id": 1018,
+    "type": "judgement",
+    "category": "xjp_zonglun",
+    "categoryName": "习思想·总论",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第一章总论 / 三、习近平新时代中国特色社会主义思想的科学体系",
+    "question": "【排坑特训】中国特色社会主义事业战略布局是“五位一体”，总体布局是“四个全面”。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【总体布局；战略布局】。\n【判定】错误（手册框出修正【总体布局；战略布局】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第一章总论 / 三、习近平新时代中国特色社会主义思想的科学体系\n【题干陷阱】中国特色社会主义事业战略布局是“五位一体”，总体布局是“四个全面”。\n【手册框出的正确点】总体布局；战略布局\n【改后提示】中国特色社会主义事业总体布局是“五位一体”，战略布局是“四个全面”。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「总体布局；战略布局」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【总体布局；战略布局】",
+    "fix": "总体布局；战略布局"
+  },
+  {
+    "id": 1019,
+    "type": "judgement",
+    "category": "xjp_zonglun",
+    "categoryName": "习思想·总论",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第一章总论 / 三、习近平新时代中国特色社会主义思想的科学体系",
+    "question": "【排坑特训】坚持守正创新是重要实践要求，体现了矛盾的普遍性和客观性。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【问题导向】。\n【判定】错误（手册框出修正【问题导向】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第一章总论 / 三、习近平新时代中国特色社会主义思想的科学体系\n【题干陷阱】坚持守正创新是重要实践要求，体现了矛盾的普遍性和客观性。\n【手册框出的正确点】问题导向\n【改后提示】应将相关表述修正为与「问题导向」一致。对照题干：坚持守正创新是重要实践要求，体现了矛盾的普遍性和客观性。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「问题导向」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【问题导向】",
+    "fix": "问题导向"
+  },
+  {
+    "id": 1020,
+    "type": "judgement",
+    "category": "xjp_zonglun",
+    "categoryName": "习思想·总论",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第一章总论 / 三、习近平新时代中国特色社会主义思想的科学体系",
+    "question": "【排坑特训】坚持系统观念，体现了辩证唯物主义普遍联系的原理。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确答案为：A（正确）。\n【判定】正确（手册标注【√】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第一章总论 / 三、习近平新时代中国特色社会主义思想的科学体系\n【标准表述】坚持系统观念，体现了辩证唯物主义普遍联系的原理。\n【精析】该句与《排坑手册》正确答案一致，属于可直接识记的规范表述。复习时抓住主角关键词，对照易混近义项（时间节点、布局名称、程度词、主客体），确认没有偷换概念即可快速判对。\n【记忆】整句背诵，并自问：主语是谁？时间是哪次大会？程度词是根本还是基本？"
+  },
+  {
+    "id": 1021,
+    "type": "judgement",
+    "category": "xjp_zonglun",
+    "categoryName": "习思想·总论",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第一章总论 / 三、习近平新时代中国特色社会主义思想的科学体系",
+    "question": "【排坑特训】坚持社会主义基本经济制度，使政府在资源配置中起决定性作用。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【市场】。\n【判定】错误（手册框出修正【市场】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第一章总论 / 三、习近平新时代中国特色社会主义思想的科学体系\n【题干陷阱】坚持社会主义基本经济制度，使政府在资源配置中起决定性作用。\n【手册框出的正确点】市场\n【改后提示】坚持社会主义基本经济制度，使市场在资源配置中起决定性作用。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「市场」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【市场】",
+    "fix": "市场"
+  },
+  {
+    "id": 1022,
+    "type": "judgement",
+    "category": "modernization",
+    "categoryName": "中国式现代化",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第一章总论 / 四、以中国式现代化全面推进中华民族伟大复兴",
+    "question": "【排坑特训】中国共产党的中心任务是团结带领全国各族人民全面建成社会主义现代化强国，以中国式现代化全面推进中华民族伟大复兴。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确答案为：A（正确）。\n【判定】正确（手册标注【√】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第一章总论 / 四、以中国式现代化全面推进中华民族伟大复兴\n【标准表述】中国共产党的中心任务是团结带领全国各族人民全面建成社会主义现代化强国，以中国式现代化全面推进中华民族伟大复兴。\n【精析】该句与《排坑手册》正确答案一致，属于可直接识记的规范表述。复习时抓住主角关键词，对照易混近义项（时间节点、布局名称、程度词、主客体），确认没有偷换概念即可快速判对。\n【记忆】整句背诵，并自问：主语是谁？时间是哪次大会？程度词是根本还是基本？"
+  },
+  {
+    "id": 1023,
+    "type": "judgement",
+    "category": "modernization",
+    "categoryName": "中国式现代化",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第一章总论 / 四、以中国式现代化全面推进中华民族伟大复兴",
+    "question": "【排坑特训】中国式现代化是全体人民同等富裕的现代化。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【共同富裕】。\n【判定】错误（手册框出修正【共同富裕】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第一章总论 / 四、以中国式现代化全面推进中华民族伟大复兴\n【题干陷阱】中国式现代化是全体人民同等富裕的现代化。\n【手册框出的正确点】共同富裕\n【改后提示】中国式现代化是全体人民共同富裕的现代化。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「共同富裕」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【共同富裕】",
+    "fix": "共同富裕"
+  },
+  {
+    "id": 1024,
+    "type": "judgement",
+    "category": "modernization",
+    "categoryName": "中国式现代化",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第一章总论 / 四、以中国式现代化全面推进中华民族伟大复兴",
+    "question": "【排坑特训】中国式现代化是物质文明超越西方国家的现代化。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【物质文明和精神文明相协调】。\n【判定】错误（手册框出修正【物质文明和精神文明相协调】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第一章总论 / 四、以中国式现代化全面推进中华民族伟大复兴\n【题干陷阱】中国式现代化是物质文明超越西方国家的现代化。\n【手册框出的正确点】物质文明和精神文明相协调\n【改后提示】应将相关表述修正为与「物质文明和精神文明相协调」一致。对照题干：中国式现代化是物质文明超越西方国家的现代化。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「物质文明和精神文明相协调」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【物质文明和精神文明相协调】",
+    "fix": "物质文明和精神文明相协调"
+  },
+  {
+    "id": 1025,
+    "type": "judgement",
+    "category": "modernization",
+    "categoryName": "中国式现代化",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第一章总论 / 四、以中国式现代化全面推进中华民族伟大复兴",
+    "question": "【排坑特训】高质量发展直接关系中国式现代化的根本方向、前途命运、最终成败，决定中国式现代化的根本性质。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【党的领导】。\n【判定】错误（手册框出修正【党的领导】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第一章总论 / 四、以中国式现代化全面推进中华民族伟大复兴\n【题干陷阱】高质量发展直接关系中国式现代化的根本方向、前途命运、最终成败，决定中国式现代化的根本性质。\n【手册框出的正确点】党的领导\n【改后提示】应将相关表述修正为与「党的领导」一致。对照题干：高质量发展直接关系中国式现代化的根本方向、前途命运、最终成败，决定中国式现代化的根本性质。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「党的领导」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【党的领导】",
+    "fix": "党的领导"
+  },
+  {
+    "id": 1026,
+    "type": "judgement",
+    "category": "modernization",
+    "categoryName": "中国式现代化",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第一章总论 / 四、以中国式现代化全面推进中华民族伟大复兴",
+    "question": "【排坑特训】坚持发扬斗争精神是推进中国式现代化需要牢牢把握的重大原则。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确答案为：A（正确）。\n【判定】正确（手册标注【√】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第一章总论 / 四、以中国式现代化全面推进中华民族伟大复兴\n【标准表述】坚持发扬斗争精神是推进中国式现代化需要牢牢把握的重大原则。\n【精析】该句与《排坑手册》正确答案一致，属于可直接识记的规范表述。复习时抓住主角关键词，对照易混近义项（时间节点、布局名称、程度词、主客体），确认没有偷换概念即可快速判对。\n【记忆】整句背诵，并自问：主语是谁？时间是哪次大会？程度词是根本还是基本？"
+  },
+  {
+    "id": 1027,
+    "type": "judgement",
+    "category": "modernization",
+    "categoryName": "中国式现代化",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第一章总论 / 四、以中国式现代化全面推进中华民族伟大复兴",
+    "question": "【排坑特训】到2035年，我国人均国内生产总值达到中等发达国家水平。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确答案为：A（正确）。\n【判定】正确（手册标注【√】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第一章总论 / 四、以中国式现代化全面推进中华民族伟大复兴\n【标准表述】到2035年，我国人均国内生产总值达到中等发达国家水平。\n【精析】该句与《排坑手册》正确答案一致，属于可直接识记的规范表述。复习时抓住主角关键词，对照易混近义项（时间节点、布局名称、程度词、主客体），确认没有偷换概念即可快速判对。\n【记忆】整句背诵，并自问：主语是谁？时间是哪次大会？程度词是根本还是基本？"
+  },
+  {
+    "id": 1028,
+    "type": "judgement",
+    "category": "modernization",
+    "categoryName": "中国式现代化",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第一章总论 / 四、以中国式现代化全面推进中华民族伟大复兴",
+    "question": "【排坑特训】到2035年，我国建成教育强国、科技强国、人才强国、文化强国、体育强国、健康中国。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确答案为：A（正确）。\n【判定】正确（手册标注【√】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第一章总论 / 四、以中国式现代化全面推进中华民族伟大复兴\n【标准表述】到2035年，我国建成教育强国、科技强国、人才强国、文化强国、体育强国、健康中国。\n【精析】该句与《排坑手册》正确答案一致，属于可直接识记的规范表述。复习时抓住主角关键词，对照易混近义项（时间节点、布局名称、程度词、主客体），确认没有偷换概念即可快速判对。\n【记忆】整句背诵，并自问：主语是谁？时间是哪次大会？程度词是根本还是基本？"
+  },
+  {
+    "id": 1029,
+    "type": "judgement",
+    "category": "leadership",
+    "categoryName": "党的领导",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 一、党的全面领导",
+    "question": "【排坑特训】中国基本国情是中国共产党的领导。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【最大的国情】。\n【判定】错误（手册框出修正【最大的国情】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 一、党的全面领导\n【题干陷阱】中国基本国情是中国共产党的领导。\n【手册框出的正确点】最大的国情\n【改后提示】应将相关表述修正为与「最大的国情」一致。对照题干：中国基本国情是中国共产党的领导。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「最大的国情」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【最大的国情】",
+    "fix": "最大的国情"
+  },
+  {
+    "id": 1030,
+    "type": "judgement",
+    "category": "leadership",
+    "categoryName": "党的领导",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 一、党的全面领导",
+    "question": "【排坑特训】中国共产党领导是实现中华民族伟大复兴的根本保证。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确答案为：A（正确）。\n【判定】正确（手册标注【√】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 一、党的全面领导\n【标准表述】中国共产党领导是实现中华民族伟大复兴的根本保证。\n【精析】该句与《排坑手册》正确答案一致，属于可直接识记的规范表述。复习时抓住主角关键词，对照易混近义项（时间节点、布局名称、程度词、主客体），确认没有偷换概念即可快速判对。\n【记忆】整句背诵，并自问：主语是谁？时间是哪次大会？程度词是根本还是基本？"
+  },
+  {
+    "id": 1031,
+    "type": "judgement",
+    "category": "leadership",
+    "categoryName": "党的领导",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 一、党的全面领导",
+    "question": "【排坑特训】党中央集中统一领导是党的领导的最高原则。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确答案为：A（正确）。\n【判定】正确（手册标注【√】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 一、党的全面领导\n【标准表述】党中央集中统一领导是党的领导的最高原则。\n【精析】该句与《排坑手册》正确答案一致，属于可直接识记的规范表述。复习时抓住主角关键词，对照易混近义项（时间节点、布局名称、程度词、主客体），确认没有偷换概念即可快速判对。\n【记忆】整句背诵，并自问：主语是谁？时间是哪次大会？程度词是根本还是基本？"
+  },
+  {
+    "id": 1032,
+    "type": "judgement",
+    "category": "leadership",
+    "categoryName": "党的领导",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 一、党的全面领导",
+    "question": "【排坑特训】党的领导制度是我国的根本政治制度。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【根本领导制度】。\n【判定】错误（手册框出修正【根本领导制度】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 一、党的全面领导\n【题干陷阱】党的领导制度是我国的根本政治制度。\n【手册框出的正确点】根本领导制度\n【改后提示】应将相关表述修正为与「根本领导制度」一致。对照题干：党的领导制度是我国的根本政治制度。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「根本领导制度」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【根本领导制度】",
+    "fix": "根本领导制度"
+  },
+  {
+    "id": 1033,
+    "type": "judgement",
+    "category": "leadership",
+    "categoryName": "党的领导",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 一、党的全面领导",
+    "question": "【排坑特训】人民代表大会制度是中国特色社会主义制度体系的核心和关键。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【党的领导制度】。\n【判定】错误（手册框出修正【党的领导制度】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 一、党的全面领导\n【题干陷阱】人民代表大会制度是中国特色社会主义制度体系的核心和关键。\n【手册框出的正确点】党的领导制度\n【改后提示】应将相关表述修正为与「党的领导制度」一致。对照题干：人民代表大会制度是中国特色社会主义制度体系的核心和关键。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「党的领导制度」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【党的领导制度】",
+    "fix": "党的领导制度"
+  },
+  {
+    "id": 1034,
+    "type": "judgement",
+    "category": "people",
+    "categoryName": "人民中心",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 二、以人民为中心",
+    "question": "【排坑特训】人民立场是党的根本政治立场，是党区别于其他政党的显著标志。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确答案为：A（正确）。\n【判定】正确（手册标注【√】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 二、以人民为中心\n【标准表述】人民立场是党的根本政治立场，是党区别于其他政党的显著标志。\n【精析】该句与《排坑手册》正确答案一致，属于可直接识记的规范表述。复习时抓住主角关键词，对照易混近义项（时间节点、布局名称、程度词、主客体），确认没有偷换概念即可快速判对。\n【记忆】整句背诵，并自问：主语是谁？时间是哪次大会？程度词是根本还是基本？"
+  },
+  {
+    "id": 1035,
+    "type": "judgement",
+    "category": "people",
+    "categoryName": "人民中心",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 二、以人民为中心",
+    "question": "【排坑特训】党的最大政治优势是密切联系群众。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确答案为：A（正确）。\n【判定】正确（手册标注【√】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 二、以人民为中心\n【标准表述】党的最大政治优势是密切联系群众。\n【精析】该句与《排坑手册》正确答案一致，属于可直接识记的规范表述。复习时抓住主角关键词，对照易混近义项（时间节点、布局名称、程度词、主客体），确认没有偷换概念即可快速判对。\n【记忆】整句背诵，并自问：主语是谁？时间是哪次大会？程度词是根本还是基本？"
+  },
+  {
+    "id": 1036,
+    "type": "judgement",
+    "category": "people",
+    "categoryName": "人民中心",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 二、以人民为中心",
+    "question": "【排坑特训】坚持高质量发展，是新时代党治国理政的根本价值取向。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【人民至上】。\n【判定】错误（手册框出修正【人民至上】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 二、以人民为中心\n【题干陷阱】坚持高质量发展，是新时代党治国理政的根本价值取向。\n【手册框出的正确点】人民至上\n【改后提示】应将相关表述修正为与「人民至上」一致。对照题干：坚持高质量发展，是新时代党治国理政的根本价值取向。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「人民至上」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【人民至上】",
+    "fix": "人民至上"
+  },
+  {
+    "id": 1037,
+    "type": "judgement",
+    "category": "people",
+    "categoryName": "人民中心",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 二、以人民为中心",
+    "question": "【排坑特训】要把增进民生福祉作为发展的根本保证。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【根本目的】。\n【判定】错误（手册框出修正【根本目的】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 二、以人民为中心\n【题干陷阱】要把增进民生福祉作为发展的根本保证。\n【手册框出的正确点】根本目的\n【改后提示】应将相关表述修正为与「根本目的」一致。对照题干：要把增进民生福祉作为发展的根本保证。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「根本目的」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【根本目的】",
+    "fix": "根本目的"
+  },
+  {
+    "id": 1038,
+    "type": "judgement",
+    "category": "people",
+    "categoryName": "人民中心",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 二、以人民为中心",
+    "question": "【排坑特训】必须以满足人民日益增长的美好生活需要为出发点和落脚点。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确答案为：A（正确）。\n【判定】正确（手册标注【√】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 二、以人民为中心\n【标准表述】必须以满足人民日益增长的美好生活需要为出发点和落脚点。\n【精析】该句与《排坑手册》正确答案一致，属于可直接识记的规范表述。复习时抓住主角关键词，对照易混近义项（时间节点、布局名称、程度词、主客体），确认没有偷换概念即可快速判对。\n【记忆】整句背诵，并自问：主语是谁？时间是哪次大会？程度词是根本还是基本？"
+  },
+  {
+    "id": 1039,
+    "type": "judgement",
+    "category": "people",
+    "categoryName": "人民中心",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 二、以人民为中心",
+    "question": "【排坑特训】实现共同富裕，首先要把“蛋糕”切好分好，然后把“蛋糕”做大做好。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【做大做好；切好分好】。\n【判定】错误（手册框出修正【做大做好；切好分好】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 二、以人民为中心\n【题干陷阱】实现共同富裕，首先要把“蛋糕”切好分好，然后把“蛋糕”做大做好。\n【手册框出的正确点】做大做好；切好分好\n【改后提示】实现共同富裕，首先要把“蛋糕”做大做好，然后把“蛋糕”切好分好。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「做大做好；切好分好」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【做大做好；切好分好】",
+    "fix": "做大做好；切好分好"
+  },
+  {
+    "id": 1040,
+    "type": "judgement",
+    "category": "people",
+    "categoryName": "人民中心",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 二、以人民为中心",
+    "question": "【排坑特训】共同富裕不等于同等富裕，也不等于同步富裕。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确答案为：A（正确）。\n【判定】正确（手册标注【√】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 二、以人民为中心\n【标准表述】共同富裕不等于同等富裕，也不等于同步富裕。\n【精析】该句与《排坑手册》正确答案一致，属于可直接识记的规范表述。复习时抓住主角关键词，对照易混近义项（时间节点、布局名称、程度词、主客体），确认没有偷换概念即可快速判对。\n【记忆】整句背诵，并自问：主语是谁？时间是哪次大会？程度词是根本还是基本？"
+  },
+  {
+    "id": 1041,
+    "type": "judgement",
+    "category": "people",
+    "categoryName": "人民中心",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 二、以人民为中心",
+    "question": "【排坑特训】共同富裕是一个总体概念，是对全社会而言的，不要各提各的指标。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确答案为：A（正确）。\n【判定】正确（手册标注【√】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 二、以人民为中心\n【标准表述】共同富裕是一个总体概念，是对全社会而言的，不要各提各的指标。\n【精析】该句与《排坑手册》正确答案一致，属于可直接识记的规范表述。复习时抓住主角关键词，对照易混近义项（时间节点、布局名称、程度词、主客体），确认没有偷换概念即可快速判对。\n【记忆】整句背诵，并自问：主语是谁？时间是哪次大会？程度词是根本还是基本？"
+  },
+  {
+    "id": 1042,
+    "type": "judgement",
+    "category": "people",
+    "categoryName": "人民中心",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 二、以人民为中心",
+    "question": "【排坑特训】扩大中等收入群体比重，增加低收入群体收入，取缔过高收入。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【调节】。\n【判定】错误（手册框出修正【调节】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 二、以人民为中心\n【题干陷阱】扩大中等收入群体比重，增加低收入群体收入，取缔过高收入。\n【手册框出的正确点】调节\n【改后提示】应将相关表述修正为与「调节」一致。对照题干：扩大中等收入群体比重，增加低收入群体收入，取缔过高收入。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「调节」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【调节】",
+    "fix": "调节"
+  },
+  {
+    "id": 1043,
+    "type": "judgement",
+    "category": "people",
+    "categoryName": "人民中心",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 二、以人民为中心",
+    "question": "【排坑特训】2035年，基本实现共同富裕。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【共同富裕取得明显的实质性进展】。\n【判定】错误（手册框出修正【共同富裕取得明显的实质性进展】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 二、以人民为中心\n【题干陷阱】2035年，基本实现共同富裕。\n【手册框出的正确点】共同富裕取得明显的实质性进展\n【改后提示】应将相关表述修正为与「共同富裕取得明显的实质性进展」一致。对照题干：2035年，基本实现共同富裕。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「共同富裕取得明显的实质性进展」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【共同富裕取得明显的实质性进展】",
+    "fix": "共同富裕取得明显的实质性进展"
+  },
+  {
+    "id": 1044,
+    "type": "judgement",
+    "category": "development",
+    "categoryName": "高质量发展",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 三、推动高质量发展",
+    "question": "【排坑特训】高质量发展是中国式现代化的战略性、基础性支撑，是经济社会发展的主线。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【首要任务；主题】。\n【判定】错误（手册框出修正【首要任务；主题】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 三、推动高质量发展\n【题干陷阱】高质量发展是中国式现代化的战略性、基础性支撑，是经济社会发展的主线。\n【手册框出的正确点】首要任务；主题\n【改后提示】应将相关表述修正为与「首要任务；主题」一致。对照题干：高质量发展是中国式现代化的战略性、基础性支撑，是经济社会发展的主线。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「首要任务；主题」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【首要任务；主题】",
+    "fix": "首要任务；主题"
+  },
+  {
+    "id": 1045,
+    "type": "judgement",
+    "category": "development",
+    "categoryName": "高质量发展",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 三、推动高质量发展",
+    "question": "【排坑特训】新发展阶段是全面建设现代化国家、向第二个百年奋斗目标进军的阶段。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确答案为：A（正确）。\n【判定】正确（手册标注【√】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 三、推动高质量发展\n【标准表述】新发展阶段是全面建设现代化国家、向第二个百年奋斗目标进军的阶段。\n【精析】该句与《排坑手册》正确答案一致，属于可直接识记的规范表述。复习时抓住主角关键词，对照易混近义项（时间节点、布局名称、程度词、主客体），确认没有偷换概念即可快速判对。\n【记忆】整句背诵，并自问：主语是谁？时间是哪次大会？程度词是根本还是基本？"
+  },
+  {
+    "id": 1046,
+    "type": "judgement",
+    "category": "development",
+    "categoryName": "高质量发展",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 三、推动高质量发展",
+    "question": "【排坑特训】绿色是引领发展的第一动力，解决发展动力问题。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【创新】。\n【判定】错误（手册框出修正【创新】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 三、推动高质量发展\n【题干陷阱】绿色是引领发展的第一动力，解决发展动力问题。\n【手册框出的正确点】创新\n【改后提示】应将相关表述修正为与「创新」一致。对照题干：绿色是引领发展的第一动力，解决发展动力问题。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「创新」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【创新】",
+    "fix": "创新"
+  },
+  {
+    "id": 1047,
+    "type": "judgement",
+    "category": "development",
+    "categoryName": "高质量发展",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 三、推动高质量发展",
+    "question": "【排坑特训】开放是中国特色社会主义的本质要求，解决社会公平正义问题。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【共享】。\n【判定】错误（手册框出修正【共享】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 三、推动高质量发展\n【题干陷阱】开放是中国特色社会主义的本质要求，解决社会公平正义问题。\n【手册框出的正确点】共享\n【改后提示】应将相关表述修正为与「共享」一致。对照题干：开放是中国特色社会主义的本质要求，解决社会公平正义问题。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「共享」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【共享】",
+    "fix": "共享"
+  },
+  {
+    "id": 1048,
+    "type": "judgement",
+    "category": "development",
+    "categoryName": "高质量发展",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 三、推动高质量发展",
+    "question": "【排坑特训】构建新发展格局要以国际大循环为主体。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【国内】。\n【判定】错误（手册框出修正【国内】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 三、推动高质量发展\n【题干陷阱】构建新发展格局要以国际大循环为主体。\n【手册框出的正确点】国内\n【改后提示】应将相关表述修正为与「国内」一致。对照题干：构建新发展格局要以国际大循环为主体。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「国内」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【国内】",
+    "fix": "国内"
+  },
+  {
+    "id": 1049,
+    "type": "judgement",
+    "category": "development",
+    "categoryName": "高质量发展",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 三、推动高质量发展",
+    "question": "【排坑特训】构建新发展格局要以全国统一大市场为基础，不是各地搞自我小循环。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确答案为：A（正确）。\n【判定】正确（手册标注【√】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 三、推动高质量发展\n【标准表述】构建新发展格局要以全国统一大市场为基础，不是各地搞自我小循环。\n【精析】该句与《排坑手册》正确答案一致，属于可直接识记的规范表述。复习时抓住主角关键词，对照易混近义项（时间节点、布局名称、程度词、主客体），确认没有偷换概念即可快速判对。\n【记忆】整句背诵，并自问：主语是谁？时间是哪次大会？程度词是根本还是基本？"
+  },
+  {
+    "id": 1050,
+    "type": "judgement",
+    "category": "development",
+    "categoryName": "高质量发展",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 三、推动高质量发展",
+    "question": "【排坑特训】构建新发展格局最本质特征是实现高水平的自立自强。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确答案为：A（正确）。\n【判定】正确（手册标注【√】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 三、推动高质量发展\n【标准表述】构建新发展格局最本质特征是实现高水平的自立自强。\n【精析】该句与《排坑手册》正确答案一致，属于可直接识记的规范表述。复习时抓住主角关键词，对照易混近义项（时间节点、布局名称、程度词、主客体），确认没有偷换概念即可快速判对。\n【记忆】整句背诵，并自问：主语是谁？时间是哪次大会？程度词是根本还是基本？"
+  },
+  {
+    "id": 1051,
+    "type": "judgement",
+    "category": "development",
+    "categoryName": "高质量发展",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 三、推动高质量发展",
+    "question": "【排坑特训】公有制经济和非公有制经济都是社会主义市场经济的重要组成部分。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确答案为：A（正确）。\n【判定】正确（手册标注【√】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 三、推动高质量发展\n【标准表述】公有制经济和非公有制经济都是社会主义市场经济的重要组成部分。\n【精析】该句与《排坑手册》正确答案一致，属于可直接识记的规范表述。复习时抓住主角关键词，对照易混近义项（时间节点、布局名称、程度词、主客体），确认没有偷换概念即可快速判对。\n【记忆】整句背诵，并自问：主语是谁？时间是哪次大会？程度词是根本还是基本？"
+  },
+  {
+    "id": 1052,
+    "type": "judgement",
+    "category": "development",
+    "categoryName": "高质量发展",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 三、推动高质量发展",
+    "question": "【排坑特训】要坚持公有制主体地位不能动摇，国有经济主导作用不能动摇。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确答案为：A（正确）。\n【判定】正确（手册标注【√】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 三、推动高质量发展\n【标准表述】要坚持公有制主体地位不能动摇，国有经济主导作用不能动摇。\n【精析】该句与《排坑手册》正确答案一致，属于可直接识记的规范表述。复习时抓住主角关键词，对照易混近义项（时间节点、布局名称、程度词、主客体），确认没有偷换概念即可快速判对。\n【记忆】整句背诵，并自问：主语是谁？时间是哪次大会？程度词是根本还是基本？"
+  },
+  {
+    "id": 1053,
+    "type": "judgement",
+    "category": "development",
+    "categoryName": "高质量发展",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 三、推动高质量发展",
+    "question": "【排坑特训】民营企业是中国特色社会主义的重要物质基础和政治基础。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【国有企业】。\n【判定】错误（手册框出修正【国有企业】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 三、推动高质量发展\n【题干陷阱】民营企业是中国特色社会主义的重要物质基础和政治基础。\n【手册框出的正确点】国有企业\n【改后提示】应将相关表述修正为与「国有企业」一致。对照题干：民营企业是中国特色社会主义的重要物质基础和政治基础。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「国有企业」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【国有企业】",
+    "fix": "国有企业"
+  },
+  {
+    "id": 1054,
+    "type": "judgement",
+    "category": "development",
+    "categoryName": "高质量发展",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 三、推动高质量发展",
+    "question": "【排坑特训】非公有制经济是国家税收的重要来源，是技术创新的重要主体。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确答案为：A（正确）。\n【判定】正确（手册标注【√】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 三、推动高质量发展\n【标准表述】非公有制经济是国家税收的重要来源，是技术创新的重要主体。\n【精析】该句与《排坑手册》正确答案一致，属于可直接识记的规范表述。复习时抓住主角关键词，对照易混近义项（时间节点、布局名称、程度词、主客体），确认没有偷换概念即可快速判对。\n【记忆】整句背诵，并自问：主语是谁？时间是哪次大会？程度词是根本还是基本？"
+  },
+  {
+    "id": 1055,
+    "type": "judgement",
+    "category": "development",
+    "categoryName": "高质量发展",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 三、推动高质量发展",
+    "question": "【排坑特训】民营经济是非公有制经济的主要形式，是推进中国式现代化的生力军。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确答案为：A（正确）。\n【判定】正确（手册标注【√】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 三、推动高质量发展\n【标准表述】民营经济是非公有制经济的主要形式，是推进中国式现代化的生力军。\n【精析】该句与《排坑手册》正确答案一致，属于可直接识记的规范表述。复习时抓住主角关键词，对照易混近义项（时间节点、布局名称、程度词、主客体），确认没有偷换概念即可快速判对。\n【记忆】整句背诵，并自问：主语是谁？时间是哪次大会？程度词是根本还是基本？"
+  },
+  {
+    "id": 1056,
+    "type": "judgement",
+    "category": "development",
+    "categoryName": "高质量发展",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 三、推动高质量发展",
+    "question": "【排坑特训】十二大明确经济体制改革的目标是建立社会主义市场经济体制。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【十四大】。\n【判定】错误（手册框出修正【十四大】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 三、推动高质量发展\n【题干陷阱】十二大明确经济体制改革的目标是建立社会主义市场经济体制。\n【手册框出的正确点】十四大\n【改后提示】应将相关表述修正为与「十四大」一致。对照题干：十二大明确经济体制改革的目标是建立社会主义市场经济体制。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「十四大」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【十四大】",
+    "fix": "十四大"
+  },
+  {
+    "id": 1057,
+    "type": "judgement",
+    "category": "development",
+    "categoryName": "高质量发展",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 三、推动高质量发展",
+    "question": "【排坑特训】构建社会主义市场经济体制，关键是要处理好供给和需求的关系。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【政府和市场】。\n【判定】错误（手册框出修正【政府和市场】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 三、推动高质量发展\n【题干陷阱】构建社会主义市场经济体制，关键是要处理好供给和需求的关系。\n【手册框出的正确点】政府和市场\n【改后提示】应将相关表述修正为与「政府和市场」一致。对照题干：构建社会主义市场经济体制，关键是要处理好供给和需求的关系。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「政府和市场」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【政府和市场】",
+    "fix": "政府和市场"
+  },
+  {
+    "id": 1058,
+    "type": "judgement",
+    "category": "development",
+    "categoryName": "高质量发展",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 三、推动高质量发展",
+    "question": "【排坑特训】要用好看不见的手和看得见的手，推动有效政府和有为市场更好结合。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【市场；政府】。\n【判定】错误（手册框出修正【市场；政府】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 三、推动高质量发展\n【题干陷阱】要用好看不见的手和看得见的手，推动有效政府和有为市场更好结合。\n【手册框出的正确点】市场；政府\n【改后提示】要用好看不见的手和看得见的手，推动有效市场和有为政府更好结合。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「市场；政府」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【市场；政府】",
+    "fix": "市场；政府"
+  },
+  {
+    "id": 1059,
+    "type": "judgement",
+    "category": "development",
+    "categoryName": "高质量发展",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 三、推动高质量发展",
+    "question": "【排坑特训】必须始终把解决好“三农”问题作为全党工作的重中之重。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确答案为：A（正确）。\n【判定】正确（手册标注【√】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 三、推动高质量发展\n【标准表述】必须始终把解决好“三农”问题作为全党工作的重中之重。\n【精析】该句与《排坑手册》正确答案一致，属于可直接识记的规范表述。复习时抓住主角关键词，对照易混近义项（时间节点、布局名称、程度词、主客体），确认没有偷换概念即可快速判对。\n【记忆】整句背诵，并自问：主语是谁？时间是哪次大会？程度词是根本还是基本？"
+  },
+  {
+    "id": 1060,
+    "type": "judgement",
+    "category": "development",
+    "categoryName": "高质量发展",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 三、推动高质量发展",
+    "question": "【排坑特训】必须把加快建设农业强国作为统领“三农”工作的总抓手。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【战略总纲】。\n【判定】错误（手册框出修正【战略总纲】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 三、推动高质量发展\n【题干陷阱】必须把加快建设农业强国作为统领“三农”工作的总抓手。\n【手册框出的正确点】战略总纲\n【改后提示】应将相关表述修正为与「战略总纲」一致。对照题干：必须把加快建设农业强国作为统领“三农”工作的总抓手。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「战略总纲」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【战略总纲】",
+    "fix": "战略总纲"
+  },
+  {
+    "id": 1061,
+    "type": "judgement",
+    "category": "development",
+    "categoryName": "高质量发展",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 三、推动高质量发展",
+    "question": "【排坑特训】实施乡村振兴战略，是新时代做好“三农”工作的战略总纲。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【总抓手】。\n【判定】错误（手册框出修正【总抓手】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 三、推动高质量发展\n【题干陷阱】实施乡村振兴战略，是新时代做好“三农”工作的战略总纲。\n【手册框出的正确点】总抓手\n【改后提示】应将相关表述修正为与「总抓手」一致。对照题干：实施乡村振兴战略，是新时代做好“三农”工作的战略总纲。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「总抓手」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【总抓手】",
+    "fix": "总抓手"
+  },
+  {
+    "id": 1062,
+    "type": "judgement",
+    "category": "development",
+    "categoryName": "高质量发展",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 三、推动高质量发展",
+    "question": "【排坑特训】坚持把增加农民收入，作为“三农”工作的头等大事。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【中心任务】。\n【判定】错误（手册框出修正【中心任务】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 三、推动高质量发展\n【题干陷阱】坚持把增加农民收入，作为“三农”工作的头等大事。\n【手册框出的正确点】中心任务\n【改后提示】应将相关表述修正为与「中心任务」一致。对照题干：坚持把增加农民收入，作为“三农”工作的头等大事。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「中心任务」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【中心任务】",
+    "fix": "中心任务"
+  },
+  {
+    "id": 1063,
+    "type": "judgement",
+    "category": "development",
+    "categoryName": "高质量发展",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 三、推动高质量发展",
+    "question": "【排坑特训】要把保障粮食和重要农产品稳定安全供给作为中心任务。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【头等大事】。\n【判定】错误（手册框出修正【头等大事】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 三、推动高质量发展\n【题干陷阱】要把保障粮食和重要农产品稳定安全供给作为中心任务。\n【手册框出的正确点】头等大事\n【改后提示】应将相关表述修正为与「头等大事」一致。对照题干：要把保障粮食和重要农产品稳定安全供给作为中心任务。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「头等大事」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【头等大事】",
+    "fix": "头等大事"
+  },
+  {
+    "id": 1064,
+    "type": "judgement",
+    "category": "development",
+    "categoryName": "高质量发展",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 三、推动高质量发展",
+    "question": "【排坑特训】以乡镇为重要载体，把公共服务均等化作为推进新型城镇化的首要任务。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【县城；农业转移人口市民化】。\n【判定】错误（手册框出修正【县城；农业转移人口市民化】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 三、推动高质量发展\n【题干陷阱】以乡镇为重要载体，把公共服务均等化作为推进新型城镇化的首要任务。\n【手册框出的正确点】县城；农业转移人口市民化\n【改后提示】应将相关表述修正为与「县城；农业转移人口市民化」一致。对照题干：以乡镇为重要载体，把公共服务均等化作为推进新型城镇化的首要任务。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「县城；农业转移人口市民化」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【县城；农业转移人口市民化】",
+    "fix": "县城；农业转移人口市民化"
+  },
+  {
+    "id": 1065,
+    "type": "judgement",
+    "category": "democracy",
+    "categoryName": "全过程人民民主",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 四、发展全过程人民民主",
+    "question": "【排坑特训】人民代表大会制度是我国的根本政治制度。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确答案为：A（正确）。\n【判定】正确（手册标注【√】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 四、发展全过程人民民主\n【标准表述】人民代表大会制度是我国的根本政治制度。\n【精析】该句与《排坑手册》正确答案一致，属于可直接识记的规范表述。复习时抓住主角关键词，对照易混近义项（时间节点、布局名称、程度词、主客体），确认没有偷换概念即可快速判对。\n【记忆】整句背诵，并自问：主语是谁？时间是哪次大会？程度词是根本还是基本？"
+  },
+  {
+    "id": 1066,
+    "type": "judgement",
+    "category": "democracy",
+    "categoryName": "全过程人民民主",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 四、发展全过程人民民主",
+    "question": "【排坑特训】中国人民政治协商会议是国务院重要的组成部门，是国家机关之一。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【党的爱国统一战线组织，协商民主的专门机构】。\n【判定】错误（手册框出修正【党的爱国统一战线组织，协商民主的专门机构】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 四、发展全过程人民民主\n【题干陷阱】中国人民政治协商会议是国务院重要的组成部门，是国家机关之一。\n【手册框出的正确点】党的爱国统一战线组织，协商民主的专门机构\n【改后提示】应将相关表述修正为与「党的爱国统一战线组织，协商民主的专门机构」一致。对照题干：中国人民政治协商会议是国务院重要的组成部门，是国家机关之一。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「党的爱国统一战线组织，协商民主的专门机构」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【党的爱国统一战线组织，协商民主的专门机构】",
+    "fix": "党的爱国统一战线组织，协商民主的专门机构"
+  },
+  {
+    "id": 1067,
+    "type": "judgement",
+    "category": "democracy",
+    "categoryName": "全过程人民民主",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 四、发展全过程人民民主",
+    "question": "【排坑特训】中国人民政治协商会议的职能是政治协商、民主监督、执政议政。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【参政】。\n【判定】错误（手册框出修正【参政】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 四、发展全过程人民民主\n【题干陷阱】中国人民政治协商会议的职能是政治协商、民主监督、执政议政。\n【手册框出的正确点】参政\n【改后提示】应将相关表述修正为与「参政」一致。对照题干：中国人民政治协商会议的职能是政治协商、民主监督、执政议政。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「参政」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【参政】",
+    "fix": "参政"
+  },
+  {
+    "id": 1068,
+    "type": "judgement",
+    "category": "democracy",
+    "categoryName": "全过程人民民主",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 四、发展全过程人民民主",
+    "question": "【排坑特训】保障少数民族当家作主是党的民族工作的主线。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【铸牢中华民族共同体意识】。\n【判定】错误（手册框出修正【铸牢中华民族共同体意识】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 四、发展全过程人民民主\n【题干陷阱】保障少数民族当家作主是党的民族工作的主线。\n【手册框出的正确点】铸牢中华民族共同体意识\n【改后提示】应将相关表述修正为与「铸牢中华民族共同体意识」一致。对照题干：保障少数民族当家作主是党的民族工作的主线。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「铸牢中华民族共同体意识」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【铸牢中华民族共同体意识】",
+    "fix": "铸牢中华民族共同体意识"
+  },
+  {
+    "id": 1069,
+    "type": "judgement",
+    "category": "democracy",
+    "categoryName": "全过程人民民主",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 四、发展全过程人民民主",
+    "question": "【排坑特训】基层群众自治的主要形式包括总支部委员会、支部委员会等。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【村民委员会、居民委员会】。\n【判定】错误（手册框出修正【村民委员会、居民委员会】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 四、发展全过程人民民主\n【题干陷阱】基层群众自治的主要形式包括总支部委员会、支部委员会等。\n【手册框出的正确点】村民委员会、居民委员会\n【改后提示】应将相关表述修正为与「村民委员会、居民委员会」一致。对照题干：基层群众自治的主要形式包括总支部委员会、支部委员会等。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「村民委员会、居民委员会」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【村民委员会、居民委员会】",
+    "fix": "村民委员会、居民委员会"
+  },
+  {
+    "id": 1070,
+    "type": "judgement",
+    "category": "democracy",
+    "categoryName": "全过程人民民主",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 四、发展全过程人民民主",
+    "question": "【排坑特训】全过程人民民主是社会主义民主政治的本质属性。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确答案为：A（正确）。\n【判定】正确（手册标注【√】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 四、发展全过程人民民主\n【标准表述】全过程人民民主是社会主义民主政治的本质属性。\n【精析】该句与《排坑手册》正确答案一致，属于可直接识记的规范表述。复习时抓住主角关键词，对照易混近义项（时间节点、布局名称、程度词、主客体），确认没有偷换概念即可快速判对。\n【记忆】整句背诵，并自问：主语是谁？时间是哪次大会？程度词是根本还是基本？"
+  },
+  {
+    "id": 1071,
+    "type": "judgement",
+    "category": "democracy",
+    "categoryName": "全过程人民民主",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 四、发展全过程人民民主",
+    "question": "【排坑特训】人民代表大会制度是实现我国全过程人民民主的重要制度载体。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确答案为：A（正确）。\n【判定】正确（手册标注【√】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 四、发展全过程人民民主\n【标准表述】人民代表大会制度是实现我国全过程人民民主的重要制度载体。\n【精析】该句与《排坑手册》正确答案一致，属于可直接识记的规范表述。复习时抓住主角关键词，对照易混近义项（时间节点、布局名称、程度词、主客体），确认没有偷换概念即可快速判对。\n【记忆】整句背诵，并自问：主语是谁？时间是哪次大会？程度词是根本还是基本？"
+  },
+  {
+    "id": 1072,
+    "type": "judgement",
+    "category": "democracy",
+    "categoryName": "全过程人民民主",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 四、发展全过程人民民主",
+    "question": "【排坑特训】协商民主是实践全过程人民民主的重要形式。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确答案为：A（正确）。\n【判定】正确（手册标注【√】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 四、发展全过程人民民主\n【标准表述】协商民主是实践全过程人民民主的重要形式。\n【精析】该句与《排坑手册》正确答案一致，属于可直接识记的规范表述。复习时抓住主角关键词，对照易混近义项（时间节点、布局名称、程度词、主客体），确认没有偷换概念即可快速判对。\n【记忆】整句背诵，并自问：主语是谁？时间是哪次大会？程度词是根本还是基本？"
+  },
+  {
+    "id": 1073,
+    "type": "judgement",
+    "category": "democracy",
+    "categoryName": "全过程人民民主",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 四、发展全过程人民民主",
+    "question": "【排坑特训】党内民主是全过程人民民主的重要体现。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【基层民主】。\n【判定】错误（手册框出修正【基层民主】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 四、发展全过程人民民主\n【题干陷阱】党内民主是全过程人民民主的重要体现。\n【手册框出的正确点】基层民主\n【改后提示】应将相关表述修正为与「基层民主」一致。对照题干：党内民主是全过程人民民主的重要体现。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「基层民主」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【基层民主】",
+    "fix": "基层民主"
+  },
+  {
+    "id": 1074,
+    "type": "judgement",
+    "category": "democracy",
+    "categoryName": "全过程人民民主",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 四、发展全过程人民民主",
+    "question": "【排坑特训】统战工作的关键是要坚持求同存异，在尊重一致性中寻求多样性。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【多样性；一致性】。\n【判定】错误（手册框出修正【多样性；一致性】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 四、发展全过程人民民主\n【题干陷阱】统战工作的关键是要坚持求同存异，在尊重一致性中寻求多样性。\n【手册框出的正确点】多样性；一致性\n【改后提示】统战工作的关键是要坚持求同存异，在尊重多样性中寻求一致性。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「多样性；一致性」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【多样性；一致性】",
+    "fix": "多样性；一致性"
+  },
+  {
+    "id": 1075,
+    "type": "judgement",
+    "category": "democracy",
+    "categoryName": "全过程人民民主",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 四、发展全过程人民民主",
+    "question": "【排坑特训】人民至上是统一战线最鲜明的特征。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【党的领导】。\n【判定】错误（手册框出修正【党的领导】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 四、发展全过程人民民主\n【题干陷阱】人民至上是统一战线最鲜明的特征。\n【手册框出的正确点】党的领导\n【改后提示】应将相关表述修正为与「党的领导」一致。对照题干：人民至上是统一战线最鲜明的特征。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「党的领导」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【党的领导】",
+    "fix": "党的领导"
+  },
+  {
+    "id": 1076,
+    "type": "judgement",
+    "category": "democracy",
+    "categoryName": "全过程人民民主",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 四、发展全过程人民民主",
+    "question": "【排坑特训】党对统一战线的领导主要是组织领导。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【政治】。\n【判定】错误（手册框出修正【政治】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 四、发展全过程人民民主\n【题干陷阱】党对统一战线的领导主要是组织领导。\n【手册框出的正确点】政治\n【改后提示】应将相关表述修正为与「政治」一致。对照题干：党对统一战线的领导主要是组织领导。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「政治」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【政治】",
+    "fix": "政治"
+  },
+  {
+    "id": 1077,
+    "type": "judgement",
+    "category": "culture",
+    "categoryName": "文化强国",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 五、建设社会主义文化强国",
+    "question": "【排坑特训】中华文明是世界上唯一绵延不断且以国家形态发展至今的伟大文明。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确答案为：A（正确）。\n【判定】正确（手册标注【√】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 五、建设社会主义文化强国\n【标准表述】中华文明是世界上唯一绵延不断且以国家形态发展至今的伟大文明。\n【精析】该句与《排坑手册》正确答案一致，属于可直接识记的规范表述。复习时抓住主角关键词，对照易混近义项（时间节点、布局名称、程度词、主客体），确认没有偷换概念即可快速判对。\n【记忆】整句背诵，并自问：主语是谁？时间是哪次大会？程度词是根本还是基本？"
+  },
+  {
+    "id": 1078,
+    "type": "judgement",
+    "category": "culture",
+    "categoryName": "文化强国",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 五、建设社会主义文化强国",
+    "question": "【排坑特训】要坚持社会主义核心价值观在意识形态领域指导地位的根本制度。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【马克思主义】。\n【判定】错误（手册框出修正【马克思主义】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 五、建设社会主义文化强国\n【题干陷阱】要坚持社会主义核心价值观在意识形态领域指导地位的根本制度。\n【手册框出的正确点】马克思主义\n【改后提示】应将相关表述修正为与「马克思主义」一致。对照题干：要坚持社会主义核心价值观在意识形态领域指导地位的根本制度。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「马克思主义」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【马克思主义】",
+    "fix": "马克思主义"
+  },
+  {
+    "id": 1079,
+    "type": "judgement",
+    "category": "culture",
+    "categoryName": "文化强国",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 五、建设社会主义文化强国",
+    "question": "【排坑特训】要坚持利用第一、合理保护和最大干预原则，推动文化遗产系统性保护。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【保护；利用；最小】。\n【判定】错误（手册框出修正【保护；利用；最小】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 五、建设社会主义文化强国\n【题干陷阱】要坚持利用第一、合理保护和最大干预原则，推动文化遗产系统性保护。\n【手册框出的正确点】保护；利用；最小\n【改后提示】（手册标注应关注：保护）原文：要坚持利用第一、合理保护和最大干预原则，推动文化遗产系统性保护。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「保护；利用；最小」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【保护；利用；最小】",
+    "fix": "保护；利用；最小"
+  },
+  {
+    "id": 1080,
+    "type": "judgement",
+    "category": "culture",
+    "categoryName": "文化强国",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 五、建设社会主义文化强国",
+    "question": "【排坑特训】要坚持把经济效益放在首位、经济效益和社会效益相统一。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【社会效益】。\n【判定】错误（手册框出修正【社会效益】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 五、建设社会主义文化强国\n【题干陷阱】要坚持把经济效益放在首位、经济效益和社会效益相统一。\n【手册框出的正确点】社会效益\n【改后提示】（手册标注应关注：社会效益）原文：要坚持把经济效益放在首位、经济效益和社会效益相统一。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「社会效益」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【社会效益】",
+    "fix": "社会效益"
+  },
+  {
+    "id": 1081,
+    "type": "judgement",
+    "category": "culture",
+    "categoryName": "文化强国",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 五、建设社会主义文化强国",
+    "question": "【排坑特训】弘扬以伟大抗战精神为源头的中国共产党人精神谱系。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【建党】。\n【判定】错误（手册框出修正【建党】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 五、建设社会主义文化强国\n【题干陷阱】弘扬以伟大抗战精神为源头的中国共产党人精神谱系。\n【手册框出的正确点】建党\n【改后提示】应将相关表述修正为与「建党」一致。对照题干：弘扬以伟大抗战精神为源头的中国共产党人精神谱系。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「建党」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【建党】",
+    "fix": "建党"
+  },
+  {
+    "id": 1082,
+    "type": "judgement",
+    "category": "culture",
+    "categoryName": "文化强国",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 五、建设社会主义文化强国",
+    "question": "【排坑特训】文化强国之“强”最终要体现在人民的思想境界、精神状态、文化修养上。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确答案为：A（正确）。\n【判定】正确（手册标注【√】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 五、建设社会主义文化强国\n【标准表述】文化强国之“强”最终要体现在人民的思想境界、精神状态、文化修养上。\n【精析】该句与《排坑手册》正确答案一致，属于可直接识记的规范表述。复习时抓住主角关键词，对照易混近义项（时间节点、布局名称、程度词、主客体），确认没有偷换概念即可快速判对。\n【记忆】整句背诵，并自问：主语是谁？时间是哪次大会？程度词是根本还是基本？"
+  },
+  {
+    "id": 1083,
+    "type": "judgement",
+    "category": "livelihood",
+    "categoryName": "民生保障",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 六、保障和改善民生",
+    "question": "【排坑特训】教育是民生之本，是最基本的民生，是最大的民生工程。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【就业】。\n【判定】错误（手册框出修正【就业】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 六、保障和改善民生\n【题干陷阱】教育是民生之本，是最基本的民生，是最大的民生工程。\n【手册框出的正确点】就业\n【改后提示】应将相关表述修正为与「就业」一致。对照题干：教育是民生之本，是最基本的民生，是最大的民生工程。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「就业」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【就业】",
+    "fix": "就业"
+  },
+  {
+    "id": 1084,
+    "type": "judgement",
+    "category": "livelihood",
+    "categoryName": "民生保障",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 六、保障和改善民生",
+    "question": "【排坑特训】高质量充分就业要以破解周期性就业矛盾为着力点。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【结构性】。\n【判定】错误（手册框出修正【结构性】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 六、保障和改善民生\n【题干陷阱】高质量充分就业要以破解周期性就业矛盾为着力点。\n【手册框出的正确点】结构性\n【改后提示】应将相关表述修正为与「结构性」一致。对照题干：高质量充分就业要以破解周期性就业矛盾为着力点。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「结构性」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【结构性】",
+    "fix": "结构性"
+  },
+  {
+    "id": 1085,
+    "type": "judgement",
+    "category": "livelihood",
+    "categoryName": "民生保障",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 六、保障和改善民生",
+    "question": "【排坑特训】全面贯彻劳动者自主就业、政府调节就业、市场促进就业和鼓励创业的方针。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【市场；政府】。\n【判定】错误（手册框出修正【市场；政府】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 六、保障和改善民生\n【题干陷阱】全面贯彻劳动者自主就业、政府调节就业、市场促进就业和鼓励创业的方针。\n【手册框出的正确点】市场；政府\n【改后提示】全面贯彻劳动者自主就业、市场调节就业、政府促进就业和鼓励创业的方针。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「市场；政府」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【市场；政府】",
+    "fix": "市场；政府"
+  },
+  {
+    "id": 1086,
+    "type": "judgement",
+    "category": "livelihood",
+    "categoryName": "民生保障",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 六、保障和改善民生",
+    "question": "【排坑特训】提高劳动报酬在再分配中的比重。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【初次分配】。\n【判定】错误（手册框出修正【初次分配】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 六、保障和改善民生\n【题干陷阱】提高劳动报酬在再分配中的比重。\n【手册框出的正确点】初次分配\n【改后提示】应将相关表述修正为与「初次分配」一致。对照题干：提高劳动报酬在再分配中的比重。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「初次分配」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【初次分配】",
+    "fix": "初次分配"
+  },
+  {
+    "id": 1087,
+    "type": "judgement",
+    "category": "livelihood",
+    "categoryName": "民生保障",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 六、保障和改善民生",
+    "question": "【排坑特训】就业是人民生活的安全网和社会运行的稳定器。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【社会保障体系】。\n【判定】错误（手册框出修正【社会保障体系】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 六、保障和改善民生\n【题干陷阱】就业是人民生活的安全网和社会运行的稳定器。\n【手册框出的正确点】社会保障体系\n【改后提示】应将相关表述修正为与「社会保障体系」一致。对照题干：就业是人民生活的安全网和社会运行的稳定器。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「社会保障体系」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【社会保障体系】",
+    "fix": "社会保障体系"
+  },
+  {
+    "id": 1088,
+    "type": "judgement",
+    "category": "livelihood",
+    "categoryName": "民生保障",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 六、保障和改善民生",
+    "question": "【排坑特训】社会福利是社会保障制度的核心内容，是社会保障体系中的基本纲领。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【社会保险】。\n【判定】错误（手册框出修正【社会保险】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 六、保障和改善民生\n【题干陷阱】社会福利是社会保障制度的核心内容，是社会保障体系中的基本纲领。\n【手册框出的正确点】社会保险\n【改后提示】应将相关表述修正为与「社会保险」一致。对照题干：社会福利是社会保障制度的核心内容，是社会保障体系中的基本纲领。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「社会保险」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【社会保险】",
+    "fix": "社会保险"
+  },
+  {
+    "id": 1089,
+    "type": "judgement",
+    "category": "livelihood",
+    "categoryName": "民生保障",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 六、保障和改善民生",
+    "question": "【排坑特训】坚持治疗为主的方针，深入实施健康中国行动。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【预防】。\n【判定】错误（手册框出修正【预防】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 六、保障和改善民生\n【题干陷阱】坚持治疗为主的方针，深入实施健康中国行动。\n【手册框出的正确点】预防\n【改后提示】应将相关表述修正为与「预防」一致。对照题干：坚持治疗为主的方针，深入实施健康中国行动。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「预防」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【预防】",
+    "fix": "预防"
+  },
+  {
+    "id": 1090,
+    "type": "judgement",
+    "category": "ecology",
+    "categoryName": "生态文明",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 七、社会主义生态文明",
+    "question": "【排坑特训】生态文明建设是关系中华民族永续发展的根本大计。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确答案为：A（正确）。\n【判定】正确（手册标注【√】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 七、社会主义生态文明\n【标准表述】生态文明建设是关系中华民族永续发展的根本大计。\n【精析】该句与《排坑手册》正确答案一致，属于可直接识记的规范表述。复习时抓住主角关键词，对照易混近义项（时间节点、布局名称、程度词、主客体），确认没有偷换概念即可快速判对。\n【记忆】整句背诵，并自问：主语是谁？时间是哪次大会？程度词是根本还是基本？"
+  },
+  {
+    "id": 1091,
+    "type": "judgement",
+    "category": "ecology",
+    "categoryName": "生态文明",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 七、社会主义生态文明",
+    "question": "【排坑特训】坚持节约优先、保护优先、人工修复为主的方针。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【自然恢复】。\n【判定】错误（手册框出修正【自然恢复】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 七、社会主义生态文明\n【题干陷阱】坚持节约优先、保护优先、人工修复为主的方针。\n【手册框出的正确点】自然恢复\n【改后提示】应将相关表述修正为与「自然恢复」一致。对照题干：坚持节约优先、保护优先、人工修复为主的方针。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「自然恢复」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【自然恢复】",
+    "fix": "自然恢复"
+  },
+  {
+    "id": 1092,
+    "type": "judgement",
+    "category": "ecology",
+    "categoryName": "生态文明",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 七、社会主义生态文明",
+    "question": "【排坑特训】坚持把绿色低碳发展作为解决生态环境问题的治本之策。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确答案为：A（正确）。\n【判定】正确（手册标注【√】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 七、社会主义生态文明\n【标准表述】坚持把绿色低碳发展作为解决生态环境问题的治本之策。\n【精析】该句与《排坑手册》正确答案一致，属于可直接识记的规范表述。复习时抓住主角关键词，对照易混近义项（时间节点、布局名称、程度词、主客体），确认没有偷换概念即可快速判对。\n【记忆】整句背诵，并自问：主语是谁？时间是哪次大会？程度词是根本还是基本？"
+  },
+  {
+    "id": 1093,
+    "type": "judgement",
+    "category": "ecology",
+    "categoryName": "生态文明",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 七、社会主义生态文明",
+    "question": "【排坑特训】我国的目标是2035年前实现碳达峰、本世纪中叶前实现碳中和。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【2030年；2060年】。\n【判定】错误（手册框出修正【2030年；2060年】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 七、社会主义生态文明\n【题干陷阱】我国的目标是2035年前实现碳达峰、本世纪中叶前实现碳中和。\n【手册框出的正确点】2030年；2060年\n【改后提示】应将相关表述修正为与「2030年；2060年」一致。对照题干：我国的目标是2035年前实现碳达峰、本世纪中叶前实现碳中和。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「2030年；2060年」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【2030年；2060年】",
+    "fix": "2030年；2060年"
+  },
+  {
+    "id": 1094,
+    "type": "judgement",
+    "category": "ecology",
+    "categoryName": "生态文明",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 七、社会主义生态文明",
+    "question": "【排坑特训】构建以自然保护区为主体，各类自然公园为补充的自然保护地体系。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【国家公园】。\n【判定】错误（手册框出修正【国家公园】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 七、社会主义生态文明\n【题干陷阱】构建以自然保护区为主体，各类自然公园为补充的自然保护地体系。\n【手册框出的正确点】国家公园\n【改后提示】应将相关表述修正为与「国家公园」一致。对照题干：构建以自然保护区为主体，各类自然公园为补充的自然保护地体系。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「国家公园」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【国家公园】",
+    "fix": "国家公园"
+  },
+  {
+    "id": 1095,
+    "type": "judgement",
+    "category": "reform",
+    "categoryName": "全面深化改革",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 八、全面深化改革",
+    "question": "【排坑特训】党的十一届三中全会是划时代的，开创了新时代全面深化改革新局面。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【十八届三中全会】。\n【判定】错误（手册框出修正【十八届三中全会】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 八、全面深化改革\n【题干陷阱】党的十一届三中全会是划时代的，开创了新时代全面深化改革新局面。\n【手册框出的正确点】十八届三中全会\n【改后提示】应将相关表述修正为与「十八届三中全会」一致。对照题干：党的十一届三中全会是划时代的，开创了新时代全面深化改革新局面。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「十八届三中全会」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【十八届三中全会】",
+    "fix": "十八届三中全会"
+  },
+  {
+    "id": 1096,
+    "type": "judgement",
+    "category": "reform",
+    "categoryName": "全面深化改革",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 八、全面深化改革",
+    "question": "【排坑特训】改革开放的性质是社会主义制度的自我完善和发展。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确答案为：A（正确）。\n【判定】正确（手册标注【√】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 八、全面深化改革\n【标准表述】改革开放的性质是社会主义制度的自我完善和发展。\n【精析】该句与《排坑手册》正确答案一致，属于可直接识记的规范表述。复习时抓住主角关键词，对照易混近义项（时间节点、布局名称、程度词、主客体），确认没有偷换概念即可快速判对。\n【记忆】整句背诵，并自问：主语是谁？时间是哪次大会？程度词是根本还是基本？"
+  },
+  {
+    "id": 1097,
+    "type": "judgement",
+    "category": "reform",
+    "categoryName": "全面深化改革",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 八、全面深化改革",
+    "question": "【排坑特训】改革开放是决定当代中国命运的关键一招。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确答案为：A（正确）。\n【判定】正确（手册标注【√】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 八、全面深化改革\n【标准表述】改革开放是决定当代中国命运的关键一招。\n【精析】该句与《排坑手册》正确答案一致，属于可直接识记的规范表述。复习时抓住主角关键词，对照易混近义项（时间节点、布局名称、程度词、主客体），确认没有偷换概念即可快速判对。\n【记忆】整句背诵，并自问：主语是谁？时间是哪次大会？程度词是根本还是基本？"
+  },
+  {
+    "id": 1098,
+    "type": "judgement",
+    "category": "reform",
+    "categoryName": "全面深化改革",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 八、全面深化改革",
+    "question": "【排坑特训】全面深化改革必须以是否促进经济高质量发展为根本标准。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【有利于坚持和改善党的全面领导、有利于坚持和完善中国特色社会主义制度】。\n【判定】错误（手册框出修正【有利于坚持和改善党的全面领导、有利于坚持和完善中国特色社会主义制度】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 八、全面深化改革\n【题干陷阱】全面深化改革必须以是否促进经济高质量发展为根本标准。\n【手册框出的正确点】有利于坚持和改善党的全面领导、有利于坚持和完善中国特色社会主义制度\n【改后提示】应将相关表述修正为与「有利于坚持和改善党的全面领导、有利于坚持和完善中国特色社会主义制度」一致。对照题干：全面深化改革必须以是否促进经济高质量发展为根本标准。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「有利于坚持和改善党的全面领导、有利于坚持和完善中国特色社会主义制度」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【有利于坚持和改善党的全面领导、有利于坚持和完善中国特色社会主义制度】",
+    "fix": "有利于坚持和改善党的全面领导、有利于坚持和完善中国特色社会主义制度"
+  },
+  {
+    "id": 1099,
+    "type": "judgement",
+    "category": "reform",
+    "categoryName": "全面深化改革",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 八、全面深化改革",
+    "question": "【排坑特训】全面深化改革以政治体制改革为牵引。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【经济体制】。\n【判定】错误（手册框出修正【经济体制】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 八、全面深化改革\n【题干陷阱】全面深化改革以政治体制改革为牵引。\n【手册框出的正确点】经济体制\n【改后提示】应将相关表述修正为与「经济体制」一致。对照题干：全面深化改革以政治体制改革为牵引。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「经济体制」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【经济体制】",
+    "fix": "经济体制"
+  },
+  {
+    "id": 1100,
+    "type": "judgement",
+    "category": "reform",
+    "categoryName": "全面深化改革",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 八、全面深化改革",
+    "question": "【排坑特训】全面深化改革以经济建设为主线。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【制度建设】。\n【判定】错误（手册框出修正【制度建设】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 八、全面深化改革\n【题干陷阱】全面深化改革以经济建设为主线。\n【手册框出的正确点】制度建设\n【改后提示】应将相关表述修正为与「制度建设」一致。对照题干：全面深化改革以经济建设为主线。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「制度建设」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【制度建设】",
+    "fix": "制度建设"
+  },
+  {
+    "id": 1101,
+    "type": "judgement",
+    "category": "reform",
+    "categoryName": "全面深化改革",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 八、全面深化改革",
+    "question": "【排坑特训】全面深化改革以促进社会公平正义、增进人民福祉为出发点和落脚点。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确答案为：A（正确）。\n【判定】正确（手册标注【√】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 八、全面深化改革\n【标准表述】全面深化改革以促进社会公平正义、增进人民福祉为出发点和落脚点。\n【精析】该句与《排坑手册》正确答案一致，属于可直接识记的规范表述。复习时抓住主角关键词，对照易混近义项（时间节点、布局名称、程度词、主客体），确认没有偷换概念即可快速判对。\n【记忆】整句背诵，并自问：主语是谁？时间是哪次大会？程度词是根本还是基本？"
+  },
+  {
+    "id": 1102,
+    "type": "judgement",
+    "category": "reform",
+    "categoryName": "全面深化改革",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 八、全面深化改革",
+    "question": "【排坑特训】把改善人民生活作为正确处理改革发展稳定关系的结合点。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确答案为：A（正确）。\n【判定】正确（手册标注【√】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 八、全面深化改革\n【标准表述】把改善人民生活作为正确处理改革发展稳定关系的结合点。\n【精析】该句与《排坑手册》正确答案一致，属于可直接识记的规范表述。复习时抓住主角关键词，对照易混近义项（时间节点、布局名称、程度词、主客体），确认没有偷换概念即可快速判对。\n【记忆】整句背诵，并自问：主语是谁？时间是哪次大会？程度词是根本还是基本？"
+  },
+  {
+    "id": 1103,
+    "type": "judgement",
+    "category": "reform",
+    "categoryName": "全面深化改革",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 八、全面深化改革",
+    "question": "【排坑特训】改革和开放如鸟之两翼、车之两轮，相辅相成、相伴而生。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【法治】。\n【判定】错误（手册框出修正【法治】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 八、全面深化改革\n【题干陷阱】改革和开放如鸟之两翼、车之两轮，相辅相成、相伴而生。\n【手册框出的正确点】法治\n【改后提示】应将相关表述修正为与「法治」一致。对照题干：改革和开放如鸟之两翼、车之两轮，相辅相成、相伴而生。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「法治」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【法治】",
+    "fix": "法治"
+  },
+  {
+    "id": 1104,
+    "type": "judgement",
+    "category": "rule_of_law",
+    "categoryName": "全面依法治国",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 九、全面依法治国",
+    "question": "【排坑特训】全面依法治国是坚持和发展中国特色社会主义的本质要求和重要保障。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确答案为：A（正确）。\n【判定】正确（手册标注【√】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 九、全面依法治国\n【标准表述】全面依法治国是坚持和发展中国特色社会主义的本质要求和重要保障。\n【精析】该句与《排坑手册》正确答案一致，属于可直接识记的规范表述。复习时抓住主角关键词，对照易混近义项（时间节点、布局名称、程度词、主客体），确认没有偷换概念即可快速判对。\n【记忆】整句背诵，并自问：主语是谁？时间是哪次大会？程度词是根本还是基本？"
+  },
+  {
+    "id": 1105,
+    "type": "judgement",
+    "category": "rule_of_law",
+    "categoryName": "全面依法治国",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 九、全面依法治国",
+    "question": "【排坑特训】中国特色社会主义法治道路的核心要义，就是要坚持党的领导，坚持中国特色社会主义制度，贯彻中国特色社会主义法治理论。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确答案为：A（正确）。\n【判定】正确（手册标注【√】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 九、全面依法治国\n【标准表述】中国特色社会主义法治道路的核心要义，就是要坚持党的领导，坚持中国特色社会主义制度，贯彻中国特色社会主义法治理论。\n【精析】该句与《排坑手册》正确答案一致，属于可直接识记的规范表述。复习时抓住主角关键词，对照易混近义项（时间节点、布局名称、程度词、主客体），确认没有偷换概念即可快速判对。\n【记忆】整句背诵，并自问：主语是谁？时间是哪次大会？程度词是根本还是基本？"
+  },
+  {
+    "id": 1106,
+    "type": "judgement",
+    "category": "rule_of_law",
+    "categoryName": "全面依法治国",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 九、全面依法治国",
+    "question": "【排坑特训】人民民主专政是中国特色社会主义法治之魂，是我们的法治同西方资本主义国家的法治最大的区别。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【党的领导】。\n【判定】错误（手册框出修正【党的领导】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 九、全面依法治国\n【题干陷阱】人民民主专政是中国特色社会主义法治之魂，是我们的法治同西方资本主义国家的法治最大的区别。\n【手册框出的正确点】党的领导\n【改后提示】应将相关表述修正为与「党的领导」一致。对照题干：人民民主专政是中国特色社会主义法治之魂，是我们的法治同西方资本主义国家的法治最大的区别。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「党的领导」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【党的领导】",
+    "fix": "党的领导"
+  },
+  {
+    "id": 1107,
+    "type": "judgement",
+    "category": "rule_of_law",
+    "categoryName": "全面依法治国",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 九、全面依法治国",
+    "question": "【排坑特训】推进国家治理体系和治理能力现代化是全面推进依法治国的总抓手。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【建设中国特色社会主义法治体系】。\n【判定】错误（手册框出修正【建设中国特色社会主义法治体系】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 九、全面依法治国\n【题干陷阱】推进国家治理体系和治理能力现代化是全面推进依法治国的总抓手。\n【手册框出的正确点】建设中国特色社会主义法治体系\n【改后提示】应将相关表述修正为与「建设中国特色社会主义法治体系」一致。对照题干：推进国家治理体系和治理能力现代化是全面推进依法治国的总抓手。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「建设中国特色社会主义法治体系」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【建设中国特色社会主义法治体系】",
+    "fix": "建设中国特色社会主义法治体系"
+  },
+  {
+    "id": 1108,
+    "type": "judgement",
+    "category": "rule_of_law",
+    "categoryName": "全面依法治国",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 九、全面依法治国",
+    "question": "【排坑特训】坚持依宪治国、依宪执政，必须把宪法监督作为首要任务。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【全面贯彻实施宪法】。\n【判定】错误（手册框出修正【全面贯彻实施宪法】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 九、全面依法治国\n【题干陷阱】坚持依宪治国、依宪执政，必须把宪法监督作为首要任务。\n【手册框出的正确点】全面贯彻实施宪法\n【改后提示】应将相关表述修正为与「全面贯彻实施宪法」一致。对照题干：坚持依宪治国、依宪执政，必须把宪法监督作为首要任务。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「全面贯彻实施宪法」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【全面贯彻实施宪法】",
+    "fix": "全面贯彻实施宪法"
+  },
+  {
+    "id": 1109,
+    "type": "judgement",
+    "category": "rule_of_law",
+    "categoryName": "全面依法治国",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 九、全面依法治国",
+    "question": "【排坑特训】坚持依宪治国、依宪执政，就必须坚持宪法确定的中国共产党领导地位不动摇，坚持宪法确定的人民民主专政的政体和人民代表大会制度的国体不动摇。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【国体；政体】。\n【判定】错误（手册框出修正【国体；政体】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 九、全面依法治国\n【题干陷阱】坚持依宪治国、依宪执政，就必须坚持宪法确定的中国共产党领导地位不动摇，坚持宪法确定的人民民主专政的政体和人民代表大会制度的国体不动摇。\n【手册框出的正确点】国体；政体\n【改后提示】坚持依宪治国、依宪执政，就必须坚持宪法确定的中国共产党领导地位不动摇，坚持宪法确定的人民民主专政的国体和人民代表大会制度的政体不动摇。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「国体；政体」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【国体；政体】",
+    "fix": "国体；政体"
+  },
+  {
+    "id": 1110,
+    "type": "judgement",
+    "category": "rule_of_law",
+    "categoryName": "全面依法治国",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 九、全面依法治国",
+    "question": "【排坑特训】法治社会建设是全面依法治国的重点任务和主体工程。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【法治政府】。\n【判定】错误（手册框出修正【法治政府】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 九、全面依法治国\n【题干陷阱】法治社会建设是全面依法治国的重点任务和主体工程。\n【手册框出的正确点】法治政府\n【改后提示】应将相关表述修正为与「法治政府」一致。对照题干：法治社会建设是全面依法治国的重点任务和主体工程。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「法治政府」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【法治政府】",
+    "fix": "法治政府"
+  },
+  {
+    "id": 1111,
+    "type": "judgement",
+    "category": "rule_of_law",
+    "categoryName": "全面依法治国",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 九、全面依法治国",
+    "question": "【排坑特训】法治政府是构筑法治国家的基础。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【法治社会】。\n【判定】错误（手册框出修正【法治社会】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 九、全面依法治国\n【题干陷阱】法治政府是构筑法治国家的基础。\n【手册框出的正确点】法治社会\n【改后提示】应将相关表述修正为与「法治社会」一致。对照题干：法治政府是构筑法治国家的基础。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「法治社会」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【法治社会】",
+    "fix": "法治社会"
+  },
+  {
+    "id": 1112,
+    "type": "judgement",
+    "category": "rule_of_law",
+    "categoryName": "全面依法治国",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 九、全面依法治国",
+    "question": "【排坑特训】严格执法是维护社会公平正义的最后一道防线。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【公正司法】。\n【判定】错误（手册框出修正【公正司法】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 九、全面依法治国\n【题干陷阱】严格执法是维护社会公平正义的最后一道防线。\n【手册框出的正确点】公正司法\n【改后提示】应将相关表述修正为与「公正司法」一致。对照题干：严格执法是维护社会公平正义的最后一道防线。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「公正司法」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【公正司法】",
+    "fix": "公正司法"
+  },
+  {
+    "id": 1113,
+    "type": "judgement",
+    "category": "party_discipline",
+    "categoryName": "全面从严治党",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 十、全面从严治党",
+    "question": "【排坑特训】全面从严治党是新时代党的建设的鲜明主题。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确答案为：A（正确）。\n【判定】正确（手册标注【√】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 十、全面从严治党\n【标准表述】全面从严治党是新时代党的建设的鲜明主题。\n【精析】该句与《排坑手册》正确答案一致，属于可直接识记的规范表述。复习时抓住主角关键词，对照易混近义项（时间节点、布局名称、程度词、主客体），确认没有偷换概念即可快速判对。\n【记忆】整句背诵，并自问：主语是谁？时间是哪次大会？程度词是根本还是基本？"
+  },
+  {
+    "id": 1114,
+    "type": "judgement",
+    "category": "party_discipline",
+    "categoryName": "全面从严治党",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 十、全面从严治党",
+    "question": "【排坑特训】新时代党的建设要以供给侧结构性改革为主线。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【加强党的长期执政能力建设、先进性和纯洁性建设】。\n【判定】错误（手册框出修正【加强党的长期执政能力建设、先进性和纯洁性建设】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 十、全面从严治党\n【题干陷阱】新时代党的建设要以供给侧结构性改革为主线。\n【手册框出的正确点】加强党的长期执政能力建设、先进性和纯洁性建设\n【改后提示】应将相关表述修正为与「加强党的长期执政能力建设、先进性和纯洁性建设」一致。对照题干：新时代党的建设要以供给侧结构性改革为主线。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「加强党的长期执政能力建设、先进性和纯洁性建设」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【加强党的长期执政能力建设、先进性和纯洁性建设】",
+    "fix": "加强党的长期执政能力建设、先进性和纯洁性建设"
+  },
+  {
+    "id": 1115,
+    "type": "judgement",
+    "category": "party_discipline",
+    "categoryName": "全面从严治党",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 十、全面从严治党",
+    "question": "【排坑特训】新时代党的建设要以党的制度建设为统领。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【政治】。\n【判定】错误（手册框出修正【政治】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 十、全面从严治党\n【题干陷阱】新时代党的建设要以党的制度建设为统领。\n【手册框出的正确点】政治\n【改后提示】应将相关表述修正为与「政治」一致。对照题干：新时代党的建设要以党的制度建设为统领。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「政治」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【政治】",
+    "fix": "政治"
+  },
+  {
+    "id": 1116,
+    "type": "judgement",
+    "category": "party_discipline",
+    "categoryName": "全面从严治党",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 十、全面从严治党",
+    "question": "【排坑特训】政治建设是党的基础性建设，要摆在首位。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【根本性】。\n【判定】错误（手册框出修正【根本性】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 十、全面从严治党\n【题干陷阱】政治建设是党的基础性建设，要摆在首位。\n【手册框出的正确点】根本性\n【改后提示】应将相关表述修正为与「根本性」一致。对照题干：政治建设是党的基础性建设，要摆在首位。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「根本性」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【根本性】",
+    "fix": "根本性"
+  },
+  {
+    "id": 1117,
+    "type": "judgement",
+    "category": "party_discipline",
+    "categoryName": "全面从严治党",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 十、全面从严治党",
+    "question": "【排坑特训】思想建设是党的根本性建设。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【基础性】。\n【判定】错误（手册框出修正【基础性】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 十、全面从严治党\n【题干陷阱】思想建设是党的根本性建设。\n【手册框出的正确点】基础性\n【改后提示】应将相关表述修正为与「基础性」一致。对照题干：思想建设是党的根本性建设。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「基础性」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【基础性】",
+    "fix": "基础性"
+  },
+  {
+    "id": 1118,
+    "type": "judgement",
+    "category": "party_discipline",
+    "categoryName": "全面从严治党",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 十、全面从严治党",
+    "question": "【排坑特训】思想建设的根本任务是用党的创新理论武装全党。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确答案为：A（正确）。\n【判定】正确（手册标注【√】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 十、全面从严治党\n【标准表述】思想建设的根本任务是用党的创新理论武装全党。\n【精析】该句与《排坑手册》正确答案一致，属于可直接识记的规范表述。复习时抓住主角关键词，对照易混近义项（时间节点、布局名称、程度词、主客体），确认没有偷换概念即可快速判对。\n【记忆】整句背诵，并自问：主语是谁？时间是哪次大会？程度词是根本还是基本？"
+  },
+  {
+    "id": 1119,
+    "type": "judgement",
+    "category": "party_discipline",
+    "categoryName": "全面从严治党",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 十、全面从严治党",
+    "question": "【排坑特训】从严治党，关键是要抓住高级干部这个“关键少数”。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【领导干部】。\n【判定】错误（手册框出修正【领导干部】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 十、全面从严治党\n【题干陷阱】从严治党，关键是要抓住高级干部这个“关键少数”。\n【手册框出的正确点】领导干部\n【改后提示】应将相关表述修正为与「领导干部」一致。对照题干：从严治党，关键是要抓住高级干部这个“关键少数”。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「领导干部」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【领导干部】",
+    "fix": "领导干部"
+  },
+  {
+    "id": 1120,
+    "type": "judgement",
+    "category": "party_discipline",
+    "categoryName": "全面从严治党",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 十、全面从严治党",
+    "question": "【排坑特训】党执政后的最大危险是腐败。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【脱离群众】。\n【判定】错误（手册框出修正【脱离群众】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 十、全面从严治党\n【题干陷阱】党执政后的最大危险是腐败。\n【手册框出的正确点】脱离群众\n【改后提示】应将相关表述修正为与「脱离群众」一致。对照题干：党执政后的最大危险是腐败。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「脱离群众」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【脱离群众】",
+    "fix": "脱离群众"
+  },
+  {
+    "id": 1121,
+    "type": "judgement",
+    "category": "party_discipline",
+    "categoryName": "全面从严治党",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 十、全面从严治党",
+    "question": "【排坑特训】党的自我革命是跳出历史周期率的唯一答案。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【第二个】。\n【判定】错误（手册框出修正【第二个】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 十、全面从严治党\n【题干陷阱】党的自我革命是跳出历史周期率的唯一答案。\n【手册框出的正确点】第二个\n【改后提示】应将相关表述修正为与「第二个」一致。对照题干：党的自我革命是跳出历史周期率的唯一答案。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「第二个」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【第二个】",
+    "fix": "第二个"
+  },
+  {
+    "id": 1122,
+    "type": "judgement",
+    "category": "party_discipline",
+    "categoryName": "全面从严治党",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 十、全面从严治党",
+    "question": "【排坑特训】勇于自我革命，是我们党最大的优势、最鲜明的品格。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确答案为：A（正确）。\n【判定】正确（手册标注【√】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 十、全面从严治党\n【标准表述】勇于自我革命，是我们党最大的优势、最鲜明的品格。\n【精析】该句与《排坑手册》正确答案一致，属于可直接识记的规范表述。复习时抓住主角关键词，对照易混近义项（时间节点、布局名称、程度词、主客体），确认没有偷换概念即可快速判对。\n【记忆】整句背诵，并自问：主语是谁？时间是哪次大会？程度词是根本还是基本？"
+  },
+  {
+    "id": 1123,
+    "type": "judgement",
+    "category": "party_discipline",
+    "categoryName": "全面从严治党",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 十、全面从严治党",
+    "question": "【排坑特训】批评与自我批评是最彻底的自我革命。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【反腐败】。\n【判定】错误（手册框出修正【反腐败】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 十、全面从严治党\n【题干陷阱】批评与自我批评是最彻底的自我革命。\n【手册框出的正确点】反腐败\n【改后提示】应将相关表述修正为与「反腐败」一致。对照题干：批评与自我批评是最彻底的自我革命。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「反腐败」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【反腐败】",
+    "fix": "反腐败"
+  },
+  {
+    "id": 1124,
+    "type": "judgement",
+    "category": "party_discipline",
+    "categoryName": "全面从严治党",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 十、全面从严治党",
+    "question": "【排坑特训】把不敢腐的强大震慑效能、不能腐的刚性制度约束、不想腐的思想教育优势融于一体。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确答案为：A（正确）。\n【判定】正确（手册标注【√】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 十、全面从严治党\n【标准表述】把不敢腐的强大震慑效能、不能腐的刚性制度约束、不想腐的思想教育优势融于一体。\n【精析】该句与《排坑手册》正确答案一致，属于可直接识记的规范表述。复习时抓住主角关键词，对照易混近义项（时间节点、布局名称、程度词、主客体），确认没有偷换概念即可快速判对。\n【记忆】整句背诵，并自问：主语是谁？时间是哪次大会？程度词是根本还是基本？"
+  },
+  {
+    "id": 1125,
+    "type": "judgement",
+    "category": "party_discipline",
+    "categoryName": "全面从严治党",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 十、全面从严治党",
+    "question": "【排坑特训】深入推进党的自我革命以引领伟大社会革命为主攻方向。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【解决大党独有难题】。\n【判定】错误（手册框出修正【解决大党独有难题】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 十、全面从严治党\n【题干陷阱】深入推进党的自我革命以引领伟大社会革命为主攻方向。\n【手册框出的正确点】解决大党独有难题\n【改后提示】应将相关表述修正为与「解决大党独有难题」一致。对照题干：深入推进党的自我革命以引领伟大社会革命为主攻方向。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「解决大党独有难题」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【解决大党独有难题】",
+    "fix": "解决大党独有难题"
+  },
+  {
+    "id": 1126,
+    "type": "judgement",
+    "category": "edu_tech",
+    "categoryName": "教育科技人才",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 十一、社会主义现代化建设的教育、科技、人才战略",
+    "question": "【排坑特训】必须坚持创新是第一生产力、人才是第一资源、科技是第一动力。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【科技；创新】。\n【判定】错误（手册框出修正【科技；创新】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 十一、社会主义现代化建设的教育、科技、人才战略\n【题干陷阱】必须坚持创新是第一生产力、人才是第一资源、科技是第一动力。\n【手册框出的正确点】科技；创新\n【改后提示】必须坚持科技是第一生产力、人才是第一资源、创新是第一动力。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「科技；创新」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【科技；创新】",
+    "fix": "科技；创新"
+  },
+  {
+    "id": 1127,
+    "type": "judgement",
+    "category": "edu_tech",
+    "categoryName": "教育科技人才",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 十一、社会主义现代化建设的教育、科技、人才战略",
+    "question": "【排坑特训】以为党育人、为国育才为根本任务，以立德树人为根本目标。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【根本目标；根本任务】。\n【判定】错误（手册框出修正【根本目标；根本任务】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 十一、社会主义现代化建设的教育、科技、人才战略\n【题干陷阱】以为党育人、为国育才为根本任务，以立德树人为根本目标。\n【手册框出的正确点】根本目标；根本任务\n【改后提示】以为党育人、为国育才为根本目标，以立德树人为根本任务。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「根本目标；根本任务」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【根本目标；根本任务】",
+    "fix": "根本目标；根本任务"
+  },
+  {
+    "id": 1128,
+    "type": "judgement",
+    "category": "edu_tech",
+    "categoryName": "教育科技人才",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 十一、社会主义现代化建设的教育、科技、人才战略",
+    "question": "【排坑特训】要把高等教育作为基点，基础教育作为龙头。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【基础教育；高等教育】。\n【判定】错误（手册框出修正【基础教育；高等教育】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 十一、社会主义现代化建设的教育、科技、人才战略\n【题干陷阱】要把高等教育作为基点，基础教育作为龙头。\n【手册框出的正确点】基础教育；高等教育\n【改后提示】要把基础教育作为基点，高等教育作为龙头。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「基础教育；高等教育」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【基础教育；高等教育】",
+    "fix": "基础教育；高等教育"
+  },
+  {
+    "id": 1129,
+    "type": "judgement",
+    "category": "edu_tech",
+    "categoryName": "教育科技人才",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 十一、社会主义现代化建设的教育、科技、人才战略",
+    "question": "【排坑特训】应用研究是科技创新的源头，要提高有组织的基础研究。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【基础研究】。\n【判定】错误（手册框出修正【基础研究】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 十一、社会主义现代化建设的教育、科技、人才战略\n【题干陷阱】应用研究是科技创新的源头，要提高有组织的基础研究。\n【手册框出的正确点】基础研究\n【改后提示】（手册标注应关注：基础研究）原文：应用研究是科技创新的源头，要提高有组织的基础研究。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「基础研究」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【基础研究】",
+    "fix": "基础研究"
+  },
+  {
+    "id": 1130,
+    "type": "judgement",
+    "category": "edu_tech",
+    "categoryName": "教育科技人才",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 十一、社会主义现代化建设的教育、科技、人才战略",
+    "question": "【排坑特训】高水平研究型大学要成为基础研究的主力军和重大科技突破的生力军。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确答案为：A（正确）。\n【判定】正确（手册标注【√】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 十一、社会主义现代化建设的教育、科技、人才战略\n【标准表述】高水平研究型大学要成为基础研究的主力军和重大科技突破的生力军。\n【精析】该句与《排坑手册》正确答案一致，属于可直接识记的规范表述。复习时抓住主角关键词，对照易混近义项（时间节点、布局名称、程度词、主客体），确认没有偷换概念即可快速判对。\n【记忆】整句背诵，并自问：主语是谁？时间是哪次大会？程度词是根本还是基本？"
+  },
+  {
+    "id": 1131,
+    "type": "judgement",
+    "category": "edu_tech",
+    "categoryName": "教育科技人才",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 十一、社会主义现代化建设的教育、科技、人才战略",
+    "question": "【排坑特训】政府是科技创新的主体，要牵头组建重大科技攻关。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【企业】。\n【判定】错误（手册框出修正【企业】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 十一、社会主义现代化建设的教育、科技、人才战略\n【题干陷阱】政府是科技创新的主体，要牵头组建重大科技攻关。\n【手册框出的正确点】企业\n【改后提示】应将相关表述修正为与「企业」一致。对照题干：政府是科技创新的主体，要牵头组建重大科技攻关。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「企业」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【企业】",
+    "fix": "企业"
+  },
+  {
+    "id": 1132,
+    "type": "judgement",
+    "category": "edu_tech",
+    "categoryName": "教育科技人才",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 十一、社会主义现代化建设的教育、科技、人才战略",
+    "question": "【排坑特训】实施人才强国战略，建设规模宏大、结构合理、素质优良的人才队伍。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确答案为：A（正确）。\n【判定】正确（手册标注【√】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 十一、社会主义现代化建设的教育、科技、人才战略\n【标准表述】实施人才强国战略，建设规模宏大、结构合理、素质优良的人才队伍。\n【精析】该句与《排坑手册》正确答案一致，属于可直接识记的规范表述。复习时抓住主角关键词，对照易混近义项（时间节点、布局名称、程度词、主客体），确认没有偷换概念即可快速判对。\n【记忆】整句背诵，并自问：主语是谁？时间是哪次大会？程度词是根本还是基本？"
+  },
+  {
+    "id": 1133,
+    "type": "judgement",
+    "category": "edu_tech",
+    "categoryName": "教育科技人才",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 十一、社会主义现代化建设的教育、科技、人才战略",
+    "question": "【排坑特训】建立健全以创新能力、质量、实效、贡献为导向的人才评价体系。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确答案为：A（正确）。\n【判定】正确（手册标注【√】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 十一、社会主义现代化建设的教育、科技、人才战略\n【标准表述】建立健全以创新能力、质量、实效、贡献为导向的人才评价体系。\n【精析】该句与《排坑手册》正确答案一致，属于可直接识记的规范表述。复习时抓住主角关键词，对照易混近义项（时间节点、布局名称、程度词、主客体），确认没有偷换概念即可快速判对。\n【记忆】整句背诵，并自问：主语是谁？时间是哪次大会？程度词是根本还是基本？"
+  },
+  {
+    "id": 1134,
+    "type": "judgement",
+    "category": "security",
+    "categoryName": "总体国家安全观",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 十二、总体国家安全观",
+    "question": "【排坑特训】总体国家安全观的关键和灵魂是“安全”，突出大安全理念。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【总体】。\n【判定】错误（手册框出修正【总体】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 十二、总体国家安全观\n【题干陷阱】总体国家安全观的关键和灵魂是“安全”，突出大安全理念。\n【手册框出的正确点】总体\n【改后提示】（手册标注应关注：总体）原文：总体国家安全观的关键和灵魂是“安全”，突出大安全理念。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「总体」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【总体】",
+    "fix": "总体"
+  },
+  {
+    "id": 1135,
+    "type": "judgement",
+    "category": "security",
+    "categoryName": "总体国家安全观",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 十二、总体国家安全观",
+    "question": "【排坑特训】总体国家安全观以经济安全为根本，以政治安全为基础，以人民安全为宗旨，以军事、科技、文化、社会安全为保障，以促进国际安全为依托。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【政治；经济】。\n【判定】错误（手册框出修正【政治；经济】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 十二、总体国家安全观\n【题干陷阱】总体国家安全观以经济安全为根本，以政治安全为基础，以人民安全为宗旨，以军事、科技、文化、社会安全为保障，以促进国际安全为依托。\n【手册框出的正确点】政治；经济\n【改后提示】总体国家安全观以政治安全为根本，以经济安全为基础，以人民安全为宗旨，以军事、科技、文化、社会安全为保障，以促进国际安全为依托。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「政治；经济」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【政治；经济】",
+    "fix": "政治；经济"
+  },
+  {
+    "id": 1136,
+    "type": "judgement",
+    "category": "security",
+    "categoryName": "总体国家安全观",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 十二、总体国家安全观",
+    "question": "【排坑特训】坚持把经济安全摆在首位，这是新时代中国国家安全的生命线。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【政治】。\n【判定】错误（手册框出修正【政治】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 十二、总体国家安全观\n【题干陷阱】坚持把经济安全摆在首位，这是新时代中国国家安全的生命线。\n【手册框出的正确点】政治\n【改后提示】应将相关表述修正为与「政治」一致。对照题干：坚持把经济安全摆在首位，这是新时代中国国家安全的生命线。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「政治」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【政治】",
+    "fix": "政治"
+  },
+  {
+    "id": 1137,
+    "type": "judgement",
+    "category": "security",
+    "categoryName": "总体国家安全观",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 十二、总体国家安全观",
+    "question": "【排坑特训】防范化解国家安全风险，这是新时代中国国家安全的中心任务。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确答案为：A（正确）。\n【判定】正确（手册标注【√】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 十二、总体国家安全观\n【标准表述】防范化解国家安全风险，这是新时代中国国家安全的中心任务。\n【精析】该句与《排坑手册》正确答案一致，属于可直接识记的规范表述。复习时抓住主角关键词，对照易混近义项（时间节点、布局名称、程度词、主客体），确认没有偷换概念即可快速判对。\n【记忆】整句背诵，并自问：主语是谁？时间是哪次大会？程度词是根本还是基本？"
+  },
+  {
+    "id": 1138,
+    "type": "judgement",
+    "category": "security",
+    "categoryName": "总体国家安全观",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 十二、总体国家安全观",
+    "question": "【排坑特训】要完善公共安全体系，推动公共安全治理模式向事后治理转型。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【事前预防】。\n【判定】错误（手册框出修正【事前预防】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 十二、总体国家安全观\n【题干陷阱】要完善公共安全体系，推动公共安全治理模式向事后治理转型。\n【手册框出的正确点】事前预防\n【改后提示】应将相关表述修正为与「事前预防」一致。对照题干：要完善公共安全体系，推动公共安全治理模式向事后治理转型。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「事前预防」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【事前预防】",
+    "fix": "事前预防"
+  },
+  {
+    "id": 1139,
+    "type": "judgement",
+    "category": "military",
+    "categoryName": "国防和军队",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 十三、巩固国防和强大人民军队",
+    "question": "【排坑特训】党在新时代的强军目标是建设一支听党指挥、能打胜仗、作风优良的人民军队，把人民军队建设成为世界一流军队。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确答案为：A（正确）。\n【判定】正确（手册标注【√】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 十三、巩固国防和强大人民军队\n【标准表述】党在新时代的强军目标是建设一支听党指挥、能打胜仗、作风优良的人民军队，把人民军队建设成为世界一流军队。\n【精析】该句与《排坑手册》正确答案一致，属于可直接识记的规范表述。复习时抓住主角关键词，对照易混近义项（时间节点、布局名称、程度词、主客体），确认没有偷换概念即可快速判对。\n【记忆】整句背诵，并自问：主语是谁？时间是哪次大会？程度词是根本还是基本？"
+  },
+  {
+    "id": 1140,
+    "type": "judgement",
+    "category": "military",
+    "categoryName": "国防和军队",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 十三、巩固国防和强大人民军队",
+    "question": "【排坑特训】到2035年把人民军队全面建成世界一流军队。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【本世纪中叶】。\n【判定】错误（手册框出修正【本世纪中叶】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 十三、巩固国防和强大人民军队\n【题干陷阱】到2035年把人民军队全面建成世界一流军队。\n【手册框出的正确点】本世纪中叶\n【改后提示】应将相关表述修正为与「本世纪中叶」一致。对照题干：到2035年把人民军队全面建成世界一流军队。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「本世纪中叶」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【本世纪中叶】",
+    "fix": "本世纪中叶"
+  },
+  {
+    "id": 1141,
+    "type": "judgement",
+    "category": "military",
+    "categoryName": "国防和军队",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 十三、巩固国防和强大人民军队",
+    "question": "【排坑特训】科技强军是人民军队的立军之本。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【政治建军】。\n【判定】错误（手册框出修正【政治建军】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 十三、巩固国防和强大人民军队\n【题干陷阱】科技强军是人民军队的立军之本。\n【手册框出的正确点】政治建军\n【改后提示】应将相关表述修正为与「政治建军」一致。对照题干：科技强军是人民军队的立军之本。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「政治建军」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【政治建军】",
+    "fix": "政治建军"
+  },
+  {
+    "id": 1142,
+    "type": "judgement",
+    "category": "military",
+    "categoryName": "国防和军队",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 十三、巩固国防和强大人民军队",
+    "question": "【排坑特训】党对人民军队的绝对领导，是建军之本、强军之魂。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确答案为：A（正确）。\n【判定】正确（手册标注【√】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 十三、巩固国防和强大人民军队\n【标准表述】党对人民军队的绝对领导，是建军之本、强军之魂。\n【精析】该句与《排坑手册》正确答案一致，属于可直接识记的规范表述。复习时抓住主角关键词，对照易混近义项（时间节点、布局名称、程度词、主客体），确认没有偷换概念即可快速判对。\n【记忆】整句背诵，并自问：主语是谁？时间是哪次大会？程度词是根本还是基本？"
+  },
+  {
+    "id": 1143,
+    "type": "judgement",
+    "category": "military",
+    "categoryName": "国防和军队",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 十三、巩固国防和强大人民军队",
+    "question": "【排坑特训】党对军队绝对领导的根本原则和制度，发端于三湾改编，奠基于南昌起义，定型于古田会议，是人民军队完全区别于一切旧军队的政治特质和根本优势。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【南昌起义；三湾改编】。\n【判定】错误（手册框出修正【南昌起义；三湾改编】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 十三、巩固国防和强大人民军队\n【题干陷阱】党对军队绝对领导的根本原则和制度，发端于三湾改编，奠基于南昌起义，定型于古田会议，是人民军队完全区别于一切旧军队的政治特质和根本优势。\n【手册框出的正确点】南昌起义；三湾改编\n【改后提示】党对军队绝对领导的根本原则和制度，发端于南昌起义，奠基于三湾改编，定型于古田会议，是人民军队完全区别于一切旧军队的政治特质和根本优势。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「南昌起义；三湾改编」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【南昌起义；三湾改编】",
+    "fix": "南昌起义；三湾改编"
+  },
+  {
+    "id": 1144,
+    "type": "judgement",
+    "category": "military",
+    "categoryName": "国防和军队",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 十三、巩固国防和强大人民军队",
+    "question": "【排坑特训】牢固树立战斗力这个唯一的根本的标准。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确答案为：A（正确）。\n【判定】正确（手册标注【√】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 十三、巩固国防和强大人民军队\n【标准表述】牢固树立战斗力这个唯一的根本的标准。\n【精析】该句与《排坑手册》正确答案一致，属于可直接识记的规范表述。复习时抓住主角关键词，对照易混近义项（时间节点、布局名称、程度词、主客体），确认没有偷换概念即可快速判对。\n【记忆】整句背诵，并自问：主语是谁？时间是哪次大会？程度词是根本还是基本？"
+  },
+  {
+    "id": 1145,
+    "type": "judgement",
+    "category": "reunification",
+    "categoryName": "一国两制与统一",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 十四、坚持“一国两制”和推进祖国完全统一",
+    "question": "【排坑特训】“两制”是实行“一国”的前提和基础。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【一国；两制】。\n【判定】错误（手册框出修正【一国；两制】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 十四、坚持“一国两制”和推进祖国完全统一\n【题干陷阱】“两制”是实行“一国”的前提和基础。\n【手册框出的正确点】一国；两制\n【改后提示】“一国”是实行“两制”的前提和基础。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「一国；两制」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【一国；两制】",
+    "fix": "一国；两制"
+  },
+  {
+    "id": 1146,
+    "type": "judgement",
+    "category": "reunification",
+    "categoryName": "一国两制与统一",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 十四、坚持“一国两制”和推进祖国完全统一",
+    "question": "【排坑特训】“一国两制”的最高原则是维护国家主权、安全、发展利益。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确答案为：A（正确）。\n【判定】正确（手册标注【√】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 十四、坚持“一国两制”和推进祖国完全统一\n【标准表述】“一国两制”的最高原则是维护国家主权、安全、发展利益。\n【精析】该句与《排坑手册》正确答案一致，属于可直接识记的规范表述。复习时抓住主角关键词，对照易混近义项（时间节点、布局名称、程度词、主客体），确认没有偷换概念即可快速判对。\n【记忆】整句背诵，并自问：主语是谁？时间是哪次大会？程度词是根本还是基本？"
+  },
+  {
+    "id": 1147,
+    "type": "judgement",
+    "category": "reunification",
+    "categoryName": "一国两制与统一",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 十四、坚持“一国两制”和推进祖国完全统一",
+    "question": "【排坑特训】“一国两制”的提出是从解决香港问题开始的。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【台湾】。\n【判定】错误（手册框出修正【台湾】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 十四、坚持“一国两制”和推进祖国完全统一\n【题干陷阱】“一国两制”的提出是从解决香港问题开始的。\n【手册框出的正确点】台湾\n【改后提示】应将相关表述修正为与「台湾」一致。对照题干：“一国两制”的提出是从解决香港问题开始的。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「台湾」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【台湾】",
+    "fix": "台湾"
+  },
+  {
+    "id": 1148,
+    "type": "judgement",
+    "category": "reunification",
+    "categoryName": "一国两制与统一",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 十四、坚持“一国两制”和推进祖国完全统一",
+    "question": "【排坑特训】坚持党中央对对台工作的集中统一领导，这是统一的根本保证。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确答案为：A（正确）。\n【判定】正确（手册标注【√】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 十四、坚持“一国两制”和推进祖国完全统一\n【标准表述】坚持党中央对对台工作的集中统一领导，这是统一的根本保证。\n【精析】该句与《排坑手册》正确答案一致，属于可直接识记的规范表述。复习时抓住主角关键词，对照易混近义项（时间节点、布局名称、程度词、主客体），确认没有偷换概念即可快速判对。\n【记忆】整句背诵，并自问：主语是谁？时间是哪次大会？程度词是根本还是基本？"
+  },
+  {
+    "id": 1149,
+    "type": "judgement",
+    "category": "reunification",
+    "categoryName": "一国两制与统一",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 十四、坚持“一国两制”和推进祖国完全统一",
+    "question": "【排坑特训】坚持一个中国原则和“九二共识”，这是统一的政治基础。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确答案为：A（正确）。\n【判定】正确（手册标注【√】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 十四、坚持“一国两制”和推进祖国完全统一\n【标准表述】坚持一个中国原则和“九二共识”，这是统一的政治基础。\n【精析】该句与《排坑手册》正确答案一致，属于可直接识记的规范表述。复习时抓住主角关键词，对照易混近义项（时间节点、布局名称、程度词、主客体），确认没有偷换概念即可快速判对。\n【记忆】整句背诵，并自问：主语是谁？时间是哪次大会？程度词是根本还是基本？"
+  },
+  {
+    "id": 1150,
+    "type": "judgement",
+    "category": "diplomacy",
+    "categoryName": "大国外交",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 十五、中国特色大国外交",
+    "question": "【排坑特训】坚持亲诚惠容和与邻为善、以邻为伴大国外交方针。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【周边】。\n【判定】错误（手册框出修正【周边】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 十五、中国特色大国外交\n【题干陷阱】坚持亲诚惠容和与邻为善、以邻为伴大国外交方针。\n【手册框出的正确点】周边\n【改后提示】应将相关表述修正为与「周边」一致。对照题干：坚持亲诚惠容和与邻为善、以邻为伴大国外交方针。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「周边」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【周边】",
+    "fix": "周边"
+  },
+  {
+    "id": 1151,
+    "type": "judgement",
+    "category": "diplomacy",
+    "categoryName": "大国外交",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 十五、中国特色大国外交",
+    "question": "【排坑特训】秉持真实亲诚理念和正确义利观，加强同发展中国家团结合作。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确答案为：A（正确）。\n【判定】正确（手册标注【√】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 十五、中国特色大国外交\n【标准表述】秉持真实亲诚理念和正确义利观，加强同发展中国家团结合作。\n【精析】该句与《排坑手册》正确答案一致，属于可直接识记的规范表述。复习时抓住主角关键词，对照易混近义项（时间节点、布局名称、程度词、主客体），确认没有偷换概念即可快速判对。\n【记忆】整句背诵，并自问：主语是谁？时间是哪次大会？程度词是根本还是基本？"
+  },
+  {
+    "id": 1152,
+    "type": "judgement",
+    "category": "diplomacy",
+    "categoryName": "大国外交",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 十五、中国特色大国外交",
+    "question": "【排坑特训】构建人类命运共同体，以推动构建新型国际关系为实现路径。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【共商共建共享的全球治理】。\n【判定】错误（手册框出修正【共商共建共享的全球治理】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 十五、中国特色大国外交\n【题干陷阱】构建人类命运共同体，以推动构建新型国际关系为实现路径。\n【手册框出的正确点】共商共建共享的全球治理\n【改后提示】应将相关表述修正为与「共商共建共享的全球治理」一致。对照题干：构建人类命运共同体，以推动构建新型国际关系为实现路径。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「共商共建共享的全球治理」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【共商共建共享的全球治理】",
+    "fix": "共商共建共享的全球治理"
+  },
+  {
+    "id": 1153,
+    "type": "judgement",
+    "category": "diplomacy",
+    "categoryName": "大国外交",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 十五、中国特色大国外交",
+    "question": "【排坑特训】构建人类命运共同体，以践行社会主义核心价值观为普遍遵循。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【全人类共同价值】。\n【判定】错误（手册框出修正【全人类共同价值】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 十五、中国特色大国外交\n【题干陷阱】构建人类命运共同体，以践行社会主义核心价值观为普遍遵循。\n【手册框出的正确点】全人类共同价值\n【改后提示】应将相关表述修正为与「全人类共同价值」一致。对照题干：构建人类命运共同体，以践行社会主义核心价值观为普遍遵循。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「全人类共同价值」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【全人类共同价值】",
+    "fix": "全人类共同价值"
+  },
+  {
+    "id": 1154,
+    "type": "judgement",
+    "category": "diplomacy",
+    "categoryName": "大国外交",
+    "source": "第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 十五、中国特色大国外交",
+    "question": "【排坑特训】构建人类命运共同体，以高质量共建“一带一路”为实践平台。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确答案为：A（正确）。\n【判定】正确（手册标注【√】）\n【章节】第一篇《习近平新时代中国特色社会主义思想》 / 第二章 / 十五、中国特色大国外交\n【标准表述】构建人类命运共同体，以高质量共建“一带一路”为实践平台。\n【精析】该句与《排坑手册》正确答案一致，属于可直接识记的规范表述。复习时抓住主角关键词，对照易混近义项（时间节点、布局名称、程度词、主客体），确认没有偷换概念即可快速判对。\n【记忆】整句背诵，并自问：主语是谁？时间是哪次大会？程度词是根本还是基本？"
+  },
+  {
+    "id": 1155,
+    "type": "judgement",
+    "category": "mayuan",
+    "categoryName": "马原",
+    "source": "第二篇《马克思主义基本原理》 / 第二章 / 知识点1 马克思主义概述",
+    "question": "【排坑特训】1848年《资本论》的发表，标志着马克思主义的诞生。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【《共产党宣言》】。\n【判定】错误（手册框出修正【《共产党宣言》】）\n【章节】第二篇《马克思主义基本原理》 / 第二章 / 知识点1 马克思主义概述\n【题干陷阱】1848年《资本论》的发表，标志着马克思主义的诞生。\n【手册框出的正确点】《共产党宣言》\n【改后提示】应将相关表述修正为与「《共产党宣言》」一致。对照题干：1848年《资本论》的发表，标志着马克思主义的诞生。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「《共产党宣言》」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【《共产党宣言》】",
+    "fix": "《共产党宣言》"
+  },
+  {
+    "id": 1156,
+    "type": "judgement",
+    "category": "mayuan",
+    "categoryName": "马原",
+    "source": "第二篇《马克思主义基本原理》 / 第二章 / 知识点1 马克思主义概述",
+    "question": "【排坑特训】马克思主义的直接理论来源是德国古典哲学、英国古典政治经济学、英法空想社会主义。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确答案为：A（正确）。\n【判定】正确（手册标注【√】）\n【章节】第二篇《马克思主义基本原理》 / 第二章 / 知识点1 马克思主义概述\n【标准表述】马克思主义的直接理论来源是德国古典哲学、英国古典政治经济学、英法空想社会主义。\n【精析】该句与《排坑手册》正确答案一致，属于可直接识记的规范表述。复习时抓住主角关键词，对照易混近义项（时间节点、布局名称、程度词、主客体），确认没有偷换概念即可快速判对。\n【记忆】整句背诵，并自问：主语是谁？时间是哪次大会？程度词是根本还是基本？"
+  },
+  {
+    "id": 1157,
+    "type": "judgement",
+    "category": "mayuan",
+    "categoryName": "马原",
+    "source": "第二篇《马克思主义基本原理》 / 第二章 / 知识点1 马克思主义概述",
+    "question": "【排坑特训】马克思的两大发现是认识论和唯物史观。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【剩余价值学说】。\n【判定】错误（手册框出修正【剩余价值学说】）\n【章节】第二篇《马克思主义基本原理》 / 第二章 / 知识点1 马克思主义概述\n【题干陷阱】马克思的两大发现是认识论和唯物史观。\n【手册框出的正确点】剩余价值学说\n【改后提示】应将相关表述修正为与「剩余价值学说」一致。对照题干：马克思的两大发现是认识论和唯物史观。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「剩余价值学说」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【剩余价值学说】",
+    "fix": "剩余价值学说"
+  },
+  {
+    "id": 1158,
+    "type": "judgement",
+    "category": "mayuan",
+    "categoryName": "马原",
+    "source": "第二篇《马克思主义基本原理》 / 第二章 / 知识点1 马克思主义概述",
+    "question": "【排坑特训】马克思主义的理论品质是以实践为基础的科学性和革命性的统一。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【特征】。\n【判定】错误（手册框出修正【特征】）\n【章节】第二篇《马克思主义基本原理》 / 第二章 / 知识点1 马克思主义概述\n【题干陷阱】马克思主义的理论品质是以实践为基础的科学性和革命性的统一。\n【手册框出的正确点】特征\n【改后提示】应将相关表述修正为与「特征」一致。对照题干：马克思主义的理论品质是以实践为基础的科学性和革命性的统一。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「特征」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【特征】",
+    "fix": "特征"
+  },
+  {
+    "id": 1159,
+    "type": "judgement",
+    "category": "mayuan",
+    "categoryName": "马原",
+    "source": "第二篇《马克思主义基本原理》 / 第二章 / 知识点2 两大哲学派别",
+    "question": "【排坑特训】哲学的基本问题是意识与物质的关系问题。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确答案为：A（正确）。\n【判定】正确（手册标注【√】）\n【章节】第二篇《马克思主义基本原理》 / 第二章 / 知识点2 两大哲学派别\n【标准表述】哲学的基本问题是意识与物质的关系问题。\n【精析】该句与《排坑手册》正确答案一致，属于可直接识记的规范表述。复习时抓住主角关键词，对照易混近义项（时间节点、布局名称、程度词、主客体），确认没有偷换概念即可快速判对。\n【记忆】整句背诵，并自问：主语是谁？时间是哪次大会？程度词是根本还是基本？"
+  },
+  {
+    "id": 1160,
+    "type": "judgement",
+    "category": "mayuan",
+    "categoryName": "马原",
+    "source": "第二篇《马克思主义基本原理》 / 第二章 / 知识点2 两大哲学派别",
+    "question": "【排坑特训】物质和意识是否具有同一性，是唯物主义和唯心主义的根本分歧所在。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【何者为第一性】。\n【判定】错误（手册框出修正【何者为第一性】）\n【章节】第二篇《马克思主义基本原理》 / 第二章 / 知识点2 两大哲学派别\n【题干陷阱】物质和意识是否具有同一性，是唯物主义和唯心主义的根本分歧所在。\n【手册框出的正确点】何者为第一性\n【改后提示】应将相关表述修正为与「何者为第一性」一致。对照题干：物质和意识是否具有同一性，是唯物主义和唯心主义的根本分歧所在。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「何者为第一性」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【何者为第一性】",
+    "fix": "何者为第一性"
+  },
+  {
+    "id": 1161,
+    "type": "judgement",
+    "category": "mayuan",
+    "categoryName": "马原",
+    "source": "第二篇《马克思主义基本原理》 / 第二章 / 知识点2 两大哲学派别",
+    "question": "【排坑特训】古代朴素唯物主义把物质归结为一种或几种实物。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确答案为：A（正确）。\n【判定】正确（手册标注【√】）\n【章节】第二篇《马克思主义基本原理》 / 第二章 / 知识点2 两大哲学派别\n【标准表述】古代朴素唯物主义把物质归结为一种或几种实物。\n【精析】该句与《排坑手册》正确答案一致，属于可直接识记的规范表述。复习时抓住主角关键词，对照易混近义项（时间节点、布局名称、程度词、主客体），确认没有偷换概念即可快速判对。\n【记忆】整句背诵，并自问：主语是谁？时间是哪次大会？程度词是根本还是基本？"
+  },
+  {
+    "id": 1162,
+    "type": "judgement",
+    "category": "mayuan",
+    "categoryName": "马原",
+    "source": "第二篇《马克思主义基本原理》 / 第二章 / 知识点2 两大哲学派别",
+    "question": "【排坑特训】客观唯心主义主张人的精神是世界的本原。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【主观】。\n【判定】错误（手册框出修正【主观】）\n【章节】第二篇《马克思主义基本原理》 / 第二章 / 知识点2 两大哲学派别\n【题干陷阱】客观唯心主义主张人的精神是世界的本原。\n【手册框出的正确点】主观\n【改后提示】应将相关表述修正为与「主观」一致。对照题干：客观唯心主义主张人的精神是世界的本原。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「主观」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【主观】",
+    "fix": "主观"
+  },
+  {
+    "id": 1163,
+    "type": "judgement",
+    "category": "mayuan",
+    "categoryName": "马原",
+    "source": "第二篇《马克思主义基本原理》 / 第二章 / 知识点3 物质与意识",
+    "question": "【排坑特训】物质的根本属性和存在方式是客观实在性。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【运动】。\n【判定】错误（手册框出修正【运动】）\n【章节】第二篇《马克思主义基本原理》 / 第二章 / 知识点3 物质与意识\n【题干陷阱】物质的根本属性和存在方式是客观实在性。\n【手册框出的正确点】运动\n【改后提示】应将相关表述修正为与「运动」一致。对照题干：物质的根本属性和存在方式是客观实在性。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「运动」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【运动】",
+    "fix": "运动"
+  },
+  {
+    "id": 1164,
+    "type": "judgement",
+    "category": "mayuan",
+    "categoryName": "马原",
+    "source": "第二篇《马克思主义基本原理》 / 第二章 / 知识点3 物质与意识",
+    "question": "【排坑特训】意识具有主观能动性，对物质起决定作用。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【能动的反作用】。\n【判定】错误（手册框出修正【能动的反作用】）\n【章节】第二篇《马克思主义基本原理》 / 第二章 / 知识点3 物质与意识\n【题干陷阱】意识具有主观能动性，对物质起决定作用。\n【手册框出的正确点】能动的反作用\n【改后提示】应将相关表述修正为与「能动的反作用」一致。对照题干：意识具有主观能动性，对物质起决定作用。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「能动的反作用」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【能动的反作用】",
+    "fix": "能动的反作用"
+  },
+  {
+    "id": 1165,
+    "type": "judgement",
+    "category": "mayuan",
+    "categoryName": "马原",
+    "source": "第二篇《马克思主义基本原理》 / 第二章 / 知识点3 物质与意识",
+    "question": "【排坑特训】人脑是意识的器官，意识是人脑的分泌物。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【人脑对客观存在的主观映象】。\n【判定】错误（手册框出修正【人脑对客观存在的主观映象】）\n【章节】第二篇《马克思主义基本原理》 / 第二章 / 知识点3 物质与意识\n【题干陷阱】人脑是意识的器官，意识是人脑的分泌物。\n【手册框出的正确点】人脑对客观存在的主观映象\n【改后提示】应将相关表述修正为与「人脑对客观存在的主观映象」一致。对照题干：人脑是意识的器官，意识是人脑的分泌物。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「人脑对客观存在的主观映象」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【人脑对客观存在的主观映象】",
+    "fix": "人脑对客观存在的主观映象"
+  },
+  {
+    "id": 1166,
+    "type": "judgement",
+    "category": "mayuan",
+    "categoryName": "马原",
+    "source": "第二篇《马克思主义基本原理》 / 第二章 / 知识点3 物质与意识",
+    "question": "【排坑特训】正确发挥主观能动性是尊重客观规律的前提。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【尊重客观规律；正确发挥主观能动性】。\n【判定】错误（手册框出修正【尊重客观规律；正确发挥主观能动性】）\n【章节】第二篇《马克思主义基本原理》 / 第二章 / 知识点3 物质与意识\n【题干陷阱】正确发挥主观能动性是尊重客观规律的前提。\n【手册框出的正确点】尊重客观规律；正确发挥主观能动性\n【改后提示】尊重客观规律是正确发挥主观能动性的前提。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「尊重客观规律；正确发挥主观能动性」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【尊重客观规律；正确发挥主观能动性】",
+    "fix": "尊重客观规律；正确发挥主观能动性"
+  },
+  {
+    "id": 1167,
+    "type": "judgement",
+    "category": "mayuan",
+    "categoryName": "马原",
+    "source": "第二篇《马克思主义基本原理》 / 第二章 / 知识点3 物质与意识",
+    "question": "【排坑特训】世界上的事物都是相对运动和绝对静止的统一。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【绝对运动；相对静止】。\n【判定】错误（手册框出修正【绝对运动；相对静止】）\n【章节】第二篇《马克思主义基本原理》 / 第二章 / 知识点3 物质与意识\n【题干陷阱】世界上的事物都是相对运动和绝对静止的统一。\n【手册框出的正确点】绝对运动；相对静止\n【改后提示】应将相关表述修正为与「绝对运动；相对静止」一致。对照题干：世界上的事物都是相对运动和绝对静止的统一。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「绝对运动；相对静止」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【绝对运动；相对静止】",
+    "fix": "绝对运动；相对静止"
+  },
+  {
+    "id": 1168,
+    "type": "judgement",
+    "category": "mayuan",
+    "categoryName": "马原",
+    "source": "第二篇《马克思主义基本原理》 / 第二章 / 知识点4 唯物辩证法的总特征",
+    "question": "【排坑特训】万事万物均处在直接联系之中。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【普遍联系】。\n【判定】错误（手册框出修正【普遍联系】）\n【章节】第二篇《马克思主义基本原理》 / 第二章 / 知识点4 唯物辩证法的总特征\n【题干陷阱】万事万物均处在直接联系之中。\n【手册框出的正确点】普遍联系\n【改后提示】应将相关表述修正为与「普遍联系」一致。对照题干：万事万物均处在直接联系之中。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「普遍联系」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【普遍联系】",
+    "fix": "普遍联系"
+  },
+  {
+    "id": 1169,
+    "type": "judgement",
+    "category": "mayuan",
+    "categoryName": "马原",
+    "source": "第二篇《马克思主义基本原理》 / 第二章 / 知识点4 唯物辩证法的总特征",
+    "question": "【排坑特训】整体居于主导地位，整体统率着部分。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确答案为：A（正确）。\n【判定】正确（手册标注【√】）\n【章节】第二篇《马克思主义基本原理》 / 第二章 / 知识点4 唯物辩证法的总特征\n【标准表述】整体居于主导地位，整体统率着部分。\n【精析】该句与《排坑手册》正确答案一致，属于可直接识记的规范表述。复习时抓住主角关键词，对照易混近义项（时间节点、布局名称、程度词、主客体），确认没有偷换概念即可快速判对。\n【记忆】整句背诵，并自问：主语是谁？时间是哪次大会？程度词是根本还是基本？"
+  },
+  {
+    "id": 1170,
+    "type": "judgement",
+    "category": "mayuan",
+    "categoryName": "马原",
+    "source": "第二篇《马克思主义基本原理》 / 第二章 / 知识点4 唯物辩证法的总特征",
+    "question": "【排坑特训】部分影响整体，部分的功能及其变化甚至对整体的功能起决定作用。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【关键部分】。\n【判定】错误（手册框出修正【关键部分】）\n【章节】第二篇《马克思主义基本原理》 / 第二章 / 知识点4 唯物辩证法的总特征\n【题干陷阱】部分影响整体，部分的功能及其变化甚至对整体的功能起决定作用。\n【手册框出的正确点】关键部分\n【改后提示】应将相关表述修正为与「关键部分」一致。对照题干：部分影响整体，部分的功能及其变化甚至对整体的功能起决定作用。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「关键部分」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【关键部分】",
+    "fix": "关键部分"
+  },
+  {
+    "id": 1171,
+    "type": "judgement",
+    "category": "mayuan",
+    "categoryName": "马原",
+    "source": "第二篇《马克思主义基本原理》 / 第二章 / 知识点4 唯物辩证法的总特征",
+    "question": "【排坑特训】发展的实质是新事物的产生和旧事物的灭亡。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确答案为：A（正确）。\n【判定】正确（手册标注【√】）\n【章节】第二篇《马克思主义基本原理》 / 第二章 / 知识点4 唯物辩证法的总特征\n【标准表述】发展的实质是新事物的产生和旧事物的灭亡。\n【精析】该句与《排坑手册》正确答案一致，属于可直接识记的规范表述。复习时抓住主角关键词，对照易混近义项（时间节点、布局名称、程度词、主客体），确认没有偷换概念即可快速判对。\n【记忆】整句背诵，并自问：主语是谁？时间是哪次大会？程度词是根本还是基本？"
+  },
+  {
+    "id": 1172,
+    "type": "judgement",
+    "category": "mayuan",
+    "categoryName": "马原",
+    "source": "第二篇《马克思主义基本原理》 / 第二章 / 知识点5、6、7 唯物辩证法的基本规律",
+    "question": "【排坑特训】对立统一规律揭示了事物发展的形式和状态。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【源泉和动力】。\n【判定】错误（手册框出修正【源泉和动力】）\n【章节】第二篇《马克思主义基本原理》 / 第二章 / 知识点5、6、7 唯物辩证法的基本规律\n【题干陷阱】对立统一规律揭示了事物发展的形式和状态。\n【手册框出的正确点】源泉和动力\n【改后提示】应将相关表述修正为与「源泉和动力」一致。对照题干：对立统一规律揭示了事物发展的形式和状态。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「源泉和动力」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【源泉和动力】",
+    "fix": "源泉和动力"
+  },
+  {
+    "id": 1173,
+    "type": "judgement",
+    "category": "mayuan",
+    "categoryName": "马原",
+    "source": "第二篇《马克思主义基本原理》 / 第二章 / 知识点5、6、7 唯物辩证法的基本规律",
+    "question": "【排坑特训】对立统一规律是唯物辩证法的实质和核心。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确答案为：A（正确）。\n【判定】正确（手册标注【√】）\n【章节】第二篇《马克思主义基本原理》 / 第二章 / 知识点5、6、7 唯物辩证法的基本规律\n【标准表述】对立统一规律是唯物辩证法的实质和核心。\n【精析】该句与《排坑手册》正确答案一致，属于可直接识记的规范表述。复习时抓住主角关键词，对照易混近义项（时间节点、布局名称、程度词、主客体），确认没有偷换概念即可快速判对。\n【记忆】整句背诵，并自问：主语是谁？时间是哪次大会？程度词是根本还是基本？"
+  },
+  {
+    "id": 1174,
+    "type": "judgement",
+    "category": "mayuan",
+    "categoryName": "马原",
+    "source": "第二篇《马克思主义基本原理》 / 第二章 / 知识点5、6、7 唯物辩证法的基本规律",
+    "question": "【排坑特训】矛盾的基本属性是普遍性和特殊性。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【同一性和斗争性】。\n【判定】错误（手册框出修正【同一性和斗争性】）\n【章节】第二篇《马克思主义基本原理》 / 第二章 / 知识点5、6、7 唯物辩证法的基本规律\n【题干陷阱】矛盾的基本属性是普遍性和特殊性。\n【手册框出的正确点】同一性和斗争性\n【改后提示】应将相关表述修正为与「同一性和斗争性」一致。对照题干：矛盾的基本属性是普遍性和特殊性。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「同一性和斗争性」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【同一性和斗争性】",
+    "fix": "同一性和斗争性"
+  },
+  {
+    "id": 1175,
+    "type": "judgement",
+    "category": "mayuan",
+    "categoryName": "马原",
+    "source": "第二篇《马克思主义基本原理》 / 第二章 / 知识点5、6、7 唯物辩证法的基本规律",
+    "question": "【排坑特训】矛盾的特殊性要求我们坚持矛盾分析法，全面地看问题。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【普遍性】。\n【判定】错误（手册框出修正【普遍性】）\n【章节】第二篇《马克思主义基本原理》 / 第二章 / 知识点5、6、7 唯物辩证法的基本规律\n【题干陷阱】矛盾的特殊性要求我们坚持矛盾分析法，全面地看问题。\n【手册框出的正确点】普遍性\n【改后提示】应将相关表述修正为与「普遍性」一致。对照题干：矛盾的特殊性要求我们坚持矛盾分析法，全面地看问题。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「普遍性」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【普遍性】",
+    "fix": "普遍性"
+  },
+  {
+    "id": 1176,
+    "type": "judgement",
+    "category": "mayuan",
+    "categoryName": "马原",
+    "source": "第二篇《马克思主义基本原理》 / 第二章 / 知识点5、6、7 唯物辩证法的基本规律",
+    "question": "【排坑特训】矛盾的普遍性要求我们要做到具体问题具体分析。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【特殊性】。\n【判定】错误（手册框出修正【特殊性】）\n【章节】第二篇《马克思主义基本原理》 / 第二章 / 知识点5、6、7 唯物辩证法的基本规律\n【题干陷阱】矛盾的普遍性要求我们要做到具体问题具体分析。\n【手册框出的正确点】特殊性\n【改后提示】应将相关表述修正为与「特殊性」一致。对照题干：矛盾的普遍性要求我们要做到具体问题具体分析。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「特殊性」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【特殊性】",
+    "fix": "特殊性"
+  },
+  {
+    "id": 1177,
+    "type": "judgement",
+    "category": "mayuan",
+    "categoryName": "马原",
+    "source": "第二篇《马克思主义基本原理》 / 第二章 / 知识点5、6、7 唯物辩证法的基本规律",
+    "question": "【排坑特训】事物的性质由主要矛盾的主要方面决定。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确答案为：A（正确）。\n【判定】正确（手册标注【√】）\n【章节】第二篇《马克思主义基本原理》 / 第二章 / 知识点5、6、7 唯物辩证法的基本规律\n【标准表述】事物的性质由主要矛盾的主要方面决定。\n【精析】该句与《排坑手册》正确答案一致，属于可直接识记的规范表述。复习时抓住主角关键词，对照易混近义项（时间节点、布局名称、程度词、主客体），确认没有偷换概念即可快速判对。\n【记忆】整句背诵，并自问：主语是谁？时间是哪次大会？程度词是根本还是基本？"
+  },
+  {
+    "id": 1178,
+    "type": "judgement",
+    "category": "mayuan",
+    "categoryName": "马原",
+    "source": "第二篇《马克思主义基本原理》 / 第二章 / 知识点5、6、7 唯物辩证法的基本规律",
+    "question": "【排坑特训】外因是事物发展变化的根据，是第一位的原因。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【内因】。\n【判定】错误（手册框出修正【内因】）\n【章节】第二篇《马克思主义基本原理》 / 第二章 / 知识点5、6、7 唯物辩证法的基本规律\n【题干陷阱】外因是事物发展变化的根据，是第一位的原因。\n【手册框出的正确点】内因\n【改后提示】应将相关表述修正为与「内因」一致。对照题干：外因是事物发展变化的根据，是第一位的原因。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「内因」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【内因】",
+    "fix": "内因"
+  },
+  {
+    "id": 1179,
+    "type": "judgement",
+    "category": "mayuan",
+    "categoryName": "马原",
+    "source": "第二篇《马克思主义基本原理》 / 第二章 / 知识点5、6、7 唯物辩证法的基本规律",
+    "question": "【排坑特训】量变质变规律揭示了事物发展的方向和道路。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【形式和状态】。\n【判定】错误（手册框出修正【形式和状态】）\n【章节】第二篇《马克思主义基本原理》 / 第二章 / 知识点5、6、7 唯物辩证法的基本规律\n【题干陷阱】量变质变规律揭示了事物发展的方向和道路。\n【手册框出的正确点】形式和状态\n【改后提示】应将相关表述修正为与「形式和状态」一致。对照题干：量变质变规律揭示了事物发展的方向和道路。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「形式和状态」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【形式和状态】",
+    "fix": "形式和状态"
+  },
+  {
+    "id": 1180,
+    "type": "judgement",
+    "category": "mayuan",
+    "categoryName": "马原",
+    "source": "第二篇《马克思主义基本原理》 / 第二章 / 知识点5、6、7 唯物辩证法的基本规律",
+    "question": "【排坑特训】区分量变和质变的根本标志，是事物变化是否超出度的范围。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确答案为：A（正确）。\n【判定】正确（手册标注【√】）\n【章节】第二篇《马克思主义基本原理》 / 第二章 / 知识点5、6、7 唯物辩证法的基本规律\n【标准表述】区分量变和质变的根本标志，是事物变化是否超出度的范围。\n【精析】该句与《排坑手册》正确答案一致，属于可直接识记的规范表述。复习时抓住主角关键词，对照易混近义项（时间节点、布局名称、程度词、主客体），确认没有偷换概念即可快速判对。\n【记忆】整句背诵，并自问：主语是谁？时间是哪次大会？程度词是根本还是基本？"
+  },
+  {
+    "id": 1181,
+    "type": "judgement",
+    "category": "mayuan",
+    "categoryName": "马原",
+    "source": "第二篇《马克思主义基本原理》 / 第二章 / 知识点5、6、7 唯物辩证法的基本规律",
+    "question": "【排坑特训】量变是质变的必要准备，量变一定引起质变。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【量变达到一定程度必然引起质变】。\n【判定】错误（手册框出修正【量变达到一定程度必然引起质变】）\n【章节】第二篇《马克思主义基本原理》 / 第二章 / 知识点5、6、7 唯物辩证法的基本规律\n【题干陷阱】量变是质变的必要准备，量变一定引起质变。\n【手册框出的正确点】量变达到一定程度必然引起质变\n【改后提示】应将相关表述修正为与「量变达到一定程度必然引起质变」一致。对照题干：量变是质变的必要准备，量变一定引起质变。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「量变达到一定程度必然引起质变」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【量变达到一定程度必然引起质变】",
+    "fix": "量变达到一定程度必然引起质变"
+  },
+  {
+    "id": 1182,
+    "type": "judgement",
+    "category": "mayuan",
+    "categoryName": "马原",
+    "source": "第二篇《马克思主义基本原理》 / 第二章 / 知识点5、6、7 唯物辩证法的基本规律",
+    "question": "【排坑特训】质变比量变更能推动事物的发展。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【量变与质变在推动事物发展中是辩证统一的，没有“谁更重要”的绝对划分】。\n【判定】错误（手册框出修正【量变与质变在推动事物发展中是辩证统一的，没有“谁更重要”的绝对划分】）\n【章节】第二篇《马克思主义基本原理》 / 第二章 / 知识点5、6、7 唯物辩证法的基本规律\n【题干陷阱】质变比量变更能推动事物的发展。\n【手册框出的正确点】量变与质变在推动事物发展中是辩证统一的，没有“谁更重要”的绝对划分\n【改后提示】应将相关表述修正为与「量变与质变在推动事物发展中是辩证统一的，没有“谁更重要”的绝对划分」一致。对照题干：质变比量变更能推动事物的发展。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「量变与质变在推动事物发展中是辩证统一的，没有“谁更重要”的绝对划分」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【量变与质变在推动事物发展中是辩证统一的，没有“谁更重要”的绝对划分】",
+    "fix": "量变与质变在推动事物发展中是辩证统一的，没有“谁更重要”的绝对划分"
+  },
+  {
+    "id": 1183,
+    "type": "judgement",
+    "category": "mayuan",
+    "categoryName": "马原",
+    "source": "第二篇《马克思主义基本原理》 / 第二章 / 知识点5、6、7 唯物辩证法的基本规律",
+    "question": "【排坑特训】否定之否定规律揭示了事物发展的源泉和动力。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【方向和道路】。\n【判定】错误（手册框出修正【方向和道路】）\n【章节】第二篇《马克思主义基本原理》 / 第二章 / 知识点5、6、7 唯物辩证法的基本规律\n【题干陷阱】否定之否定规律揭示了事物发展的源泉和动力。\n【手册框出的正确点】方向和道路\n【改后提示】应将相关表述修正为与「方向和道路」一致。对照题干：否定之否定规律揭示了事物发展的源泉和动力。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「方向和道路」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【方向和道路】",
+    "fix": "方向和道路"
+  },
+  {
+    "id": 1184,
+    "type": "judgement",
+    "category": "mayuan",
+    "categoryName": "马原",
+    "source": "第二篇《马克思主义基本原理》 / 第二章 / 知识点5、6、7 唯物辩证法的基本规律",
+    "question": "【排坑特训】辩证的否定是事物联系和发展的环节。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确答案为：A（正确）。\n【判定】正确（手册标注【√】）\n【章节】第二篇《马克思主义基本原理》 / 第二章 / 知识点5、6、7 唯物辩证法的基本规律\n【标准表述】辩证的否定是事物联系和发展的环节。\n【精析】该句与《排坑手册》正确答案一致，属于可直接识记的规范表述。复习时抓住主角关键词，对照易混近义项（时间节点、布局名称、程度词、主客体），确认没有偷换概念即可快速判对。\n【记忆】整句背诵，并自问：主语是谁？时间是哪次大会？程度词是根本还是基本？"
+  },
+  {
+    "id": 1185,
+    "type": "judgement",
+    "category": "mayuan",
+    "categoryName": "马原",
+    "source": "第二篇《马克思主义基本原理》 / 第二章 / 知识点5、6、7 唯物辩证法的基本规律",
+    "question": "【排坑特训】辩证的否定的实质是全盘否定。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【“扬弃”】。\n【判定】错误（手册框出修正【“扬弃”】）\n【章节】第二篇《马克思主义基本原理》 / 第二章 / 知识点5、6、7 唯物辩证法的基本规律\n【题干陷阱】辩证的否定的实质是全盘否定。\n【手册框出的正确点】“扬弃”\n【改后提示】应将相关表述修正为与「“扬弃”」一致。对照题干：辩证的否定的实质是全盘否定。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「“扬弃”」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【“扬弃”】",
+    "fix": "“扬弃”"
+  },
+  {
+    "id": 1186,
+    "type": "judgement",
+    "category": "mayuan",
+    "categoryName": "马原",
+    "source": "第二篇《马克思主义基本原理》 / 第二章 / 知识点5、6、7 唯物辩证法的基本规律",
+    "question": "【排坑特训】事物的发展表现为螺旋式上升和直线式前进的过程。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【波浪式】。\n【判定】错误（手册框出修正【波浪式】）\n【章节】第二篇《马克思主义基本原理》 / 第二章 / 知识点5、6、7 唯物辩证法的基本规律\n【题干陷阱】事物的发展表现为螺旋式上升和直线式前进的过程。\n【手册框出的正确点】波浪式\n【改后提示】应将相关表述修正为与「波浪式」一致。对照题干：事物的发展表现为螺旋式上升和直线式前进的过程。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「波浪式」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【波浪式】",
+    "fix": "波浪式"
+  },
+  {
+    "id": 1187,
+    "type": "judgement",
+    "category": "mayuan",
+    "categoryName": "马原",
+    "source": "第二篇《马克思主义基本原理》 / 第二章 / 知识点8、9、10 认识论",
+    "question": "【排坑特训】科学文化实践是最基本的、首要的实践活动。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【物质生产】。\n【判定】错误（手册框出修正【物质生产】）\n【章节】第二篇《马克思主义基本原理》 / 第二章 / 知识点8、9、10 认识论\n【题干陷阱】科学文化实践是最基本的、首要的实践活动。\n【手册框出的正确点】物质生产\n【改后提示】应将相关表述修正为与「物质生产」一致。对照题干：科学文化实践是最基本的、首要的实践活动。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「物质生产」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【物质生产】",
+    "fix": "物质生产"
+  },
+  {
+    "id": 1188,
+    "type": "judgement",
+    "category": "mayuan",
+    "categoryName": "马原",
+    "source": "第二篇《马克思主义基本原理》 / 第二章 / 知识点8、9、10 认识论",
+    "question": "【排坑特训】认识具有主体差异性。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确答案为：A（正确）。\n【判定】正确（手册标注【√】）\n【章节】第二篇《马克思主义基本原理》 / 第二章 / 知识点8、9、10 认识论\n【标准表述】认识具有主体差异性。\n【精析】该句与《排坑手册》正确答案一致，属于可直接识记的规范表述。复习时抓住主角关键词，对照易混近义项（时间节点、布局名称、程度词、主客体），确认没有偷换概念即可快速判对。\n【记忆】整句背诵，并自问：主语是谁？时间是哪次大会？程度词是根本还是基本？"
+  },
+  {
+    "id": 1189,
+    "type": "judgement",
+    "category": "mayuan",
+    "categoryName": "马原",
+    "source": "第二篇《马克思主义基本原理》 / 第二章 / 知识点8、9、10 认识论",
+    "question": "【排坑特训】直接经验是认识的来源。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【实践】。\n【判定】错误（手册框出修正【实践】）\n【章节】第二篇《马克思主义基本原理》 / 第二章 / 知识点8、9、10 认识论\n【题干陷阱】直接经验是认识的来源。\n【手册框出的正确点】实践\n【改后提示】应将相关表述修正为与「实践」一致。对照题干：直接经验是认识的来源。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「实践」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【实践】",
+    "fix": "实践"
+  },
+  {
+    "id": 1190,
+    "type": "judgement",
+    "category": "mayuan",
+    "categoryName": "马原",
+    "source": "第二篇《马克思主义基本原理》 / 第二章 / 知识点8、9、10 认识论",
+    "question": "【排坑特训】实践是认识发展的动力。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确答案为：A（正确）。\n【判定】正确（手册标注【√】）\n【章节】第二篇《马克思主义基本原理》 / 第二章 / 知识点8、9、10 认识论\n【标准表述】实践是认识发展的动力。\n【精析】该句与《排坑手册》正确答案一致，属于可直接识记的规范表述。复习时抓住主角关键词，对照易混近义项（时间节点、布局名称、程度词、主客体），确认没有偷换概念即可快速判对。\n【记忆】整句背诵，并自问：主语是谁？时间是哪次大会？程度词是根本还是基本？"
+  },
+  {
+    "id": 1191,
+    "type": "judgement",
+    "category": "mayuan",
+    "categoryName": "马原",
+    "source": "第二篇《马克思主义基本原理》 / 第二章 / 知识点8、9、10 认识论",
+    "question": "【排坑特训】实践是认识的目的。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确答案为：A（正确）。\n【判定】正确（手册标注【√】）\n【章节】第二篇《马克思主义基本原理》 / 第二章 / 知识点8、9、10 认识论\n【标准表述】实践是认识的目的。\n【精析】该句与《排坑手册》正确答案一致，属于可直接识记的规范表述。复习时抓住主角关键词，对照易混近义项（时间节点、布局名称、程度词、主客体），确认没有偷换概念即可快速判对。\n【记忆】整句背诵，并自问：主语是谁？时间是哪次大会？程度词是根本还是基本？"
+  },
+  {
+    "id": 1192,
+    "type": "judgement",
+    "category": "mayuan",
+    "categoryName": "马原",
+    "source": "第二篇《马克思主义基本原理》 / 第二章 / 知识点8、9、10 认识论",
+    "question": "【排坑特训】是否有用是检验认识真理性的唯一标准。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【实践】。\n【判定】错误（手册框出修正【实践】）\n【章节】第二篇《马克思主义基本原理》 / 第二章 / 知识点8、9、10 认识论\n【题干陷阱】是否有用是检验认识真理性的唯一标准。\n【手册框出的正确点】实践\n【改后提示】应将相关表述修正为与「实践」一致。对照题干：是否有用是检验认识真理性的唯一标准。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「实践」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【实践】",
+    "fix": "实践"
+  },
+  {
+    "id": 1193,
+    "type": "judgement",
+    "category": "mayuan",
+    "categoryName": "马原",
+    "source": "第二篇《马克思主义基本原理》 / 第二章 / 知识点8、9、10 认识论",
+    "question": "【排坑特训】认识辩证过程的第一次飞跃指的是由实践到感性认识的能动飞跃。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【由感性认识到理性认识】。\n【判定】错误（手册框出修正【由感性认识到理性认识】）\n【章节】第二篇《马克思主义基本原理》 / 第二章 / 知识点8、9、10 认识论\n【题干陷阱】认识辩证过程的第一次飞跃指的是由实践到感性认识的能动飞跃。\n【手册框出的正确点】由感性认识到理性认识\n【改后提示】应将相关表述修正为与「由感性认识到理性认识」一致。对照题干：认识辩证过程的第一次飞跃指的是由实践到感性认识的能动飞跃。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「由感性认识到理性认识」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【由感性认识到理性认识】",
+    "fix": "由感性认识到理性认识"
+  },
+  {
+    "id": 1194,
+    "type": "judgement",
+    "category": "mayuan",
+    "categoryName": "马原",
+    "source": "第二篇《马克思主义基本原理》 / 第二章 / 知识点8、9、10 认识论",
+    "question": "【排坑特训】理性认识是认识的初级阶段，包括感觉、知觉、表象三种形式。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【感性】。\n【判定】错误（手册框出修正【感性】）\n【章节】第二篇《马克思主义基本原理》 / 第二章 / 知识点8、9、10 认识论\n【题干陷阱】理性认识是认识的初级阶段，包括感觉、知觉、表象三种形式。\n【手册框出的正确点】感性\n【改后提示】应将相关表述修正为与「感性」一致。对照题干：理性认识是认识的初级阶段，包括感觉、知觉、表象三种形式。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「感性」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【感性】",
+    "fix": "感性"
+  },
+  {
+    "id": 1195,
+    "type": "judgement",
+    "category": "mayuan",
+    "categoryName": "马原",
+    "source": "第二篇《马克思主义基本原理》 / 第二章 / 知识点8、9、10 认识论",
+    "question": "【排坑特训】感性认识有待于发展和深化为理性认识。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确答案为：A（正确）。\n【判定】正确（手册标注【√】）\n【章节】第二篇《马克思主义基本原理》 / 第二章 / 知识点8、9、10 认识论\n【标准表述】感性认识有待于发展和深化为理性认识。\n【精析】该句与《排坑手册》正确答案一致，属于可直接识记的规范表述。复习时抓住主角关键词，对照易混近义项（时间节点、布局名称、程度词、主客体），确认没有偷换概念即可快速判对。\n【记忆】整句背诵，并自问：主语是谁？时间是哪次大会？程度词是根本还是基本？"
+  },
+  {
+    "id": 1196,
+    "type": "judgement",
+    "category": "mayuan",
+    "categoryName": "马原",
+    "source": "第二篇《马克思主义基本原理》 / 第二章 / 知识点8、9、10 认识论",
+    "question": "【排坑特训】真理的内容是主观的，检验真理的标准实践是客观的。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【客观】。\n【判定】错误（手册框出修正【客观】）\n【章节】第二篇《马克思主义基本原理》 / 第二章 / 知识点8、9、10 认识论\n【题干陷阱】真理的内容是主观的，检验真理的标准实践是客观的。\n【手册框出的正确点】客观\n【改后提示】（手册标注应关注：客观）原文：真理的内容是主观的，检验真理的标准实践是客观的。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「客观」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【客观】",
+    "fix": "客观"
+  },
+  {
+    "id": 1197,
+    "type": "judgement",
+    "category": "mayuan",
+    "categoryName": "马原",
+    "source": "第二篇《马克思主义基本原理》 / 第二章 / 知识点8、9、10 认识论",
+    "question": "【排坑特训】真理的绝对性和相对性是同一客观真理的两种属性，不是两个真理。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确答案为：A（正确）。\n【判定】正确（手册标注【√】）\n【章节】第二篇《马克思主义基本原理》 / 第二章 / 知识点8、9、10 认识论\n【标准表述】真理的绝对性和相对性是同一客观真理的两种属性，不是两个真理。\n【精析】该句与《排坑手册》正确答案一致，属于可直接识记的规范表述。复习时抓住主角关键词，对照易混近义项（时间节点、布局名称、程度词、主客体），确认没有偷换概念即可快速判对。\n【记忆】整句背诵，并自问：主语是谁？时间是哪次大会？程度词是根本还是基本？"
+  },
+  {
+    "id": 1198,
+    "type": "judgement",
+    "category": "mayuan",
+    "categoryName": "马原",
+    "source": "第二篇《马克思主义基本原理》 / 第二章 / 知识点11、12、13 唯物史观",
+    "question": "【排坑特训】人口因素是社会存在和发展的基础及决定力量。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【物质生产方式】。\n【判定】错误（手册框出修正【物质生产方式】）\n【章节】第二篇《马克思主义基本原理》 / 第二章 / 知识点11、12、13 唯物史观\n【题干陷阱】人口因素是社会存在和发展的基础及决定力量。\n【手册框出的正确点】物质生产方式\n【改后提示】应将相关表述修正为与「物质生产方式」一致。对照题干：人口因素是社会存在和发展的基础及决定力量。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「物质生产方式」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【物质生产方式】",
+    "fix": "物质生产方式"
+  },
+  {
+    "id": 1199,
+    "type": "judgement",
+    "category": "mayuan",
+    "categoryName": "马原",
+    "source": "第二篇《马克思主义基本原理》 / 第二章 / 知识点11、12、13 唯物史观",
+    "question": "【排坑特训】意识形态包括政治法律思想、道德、艺术、宗教、哲学和大部分社会科学。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确答案为：A（正确）。\n【判定】正确（手册标注【√】）\n【章节】第二篇《马克思主义基本原理》 / 第二章 / 知识点11、12、13 唯物史观\n【标准表述】意识形态包括政治法律思想、道德、艺术、宗教、哲学和大部分社会科学。\n【精析】该句与《排坑手册》正确答案一致，属于可直接识记的规范表述。复习时抓住主角关键词，对照易混近义项（时间节点、布局名称、程度词、主客体），确认没有偷换概念即可快速判对。\n【记忆】整句背诵，并自问：主语是谁？时间是哪次大会？程度词是根本还是基本？"
+  },
+  {
+    "id": 1200,
+    "type": "judgement",
+    "category": "mayuan",
+    "categoryName": "马原",
+    "source": "第二篇《马克思主义基本原理》 / 第二章 / 知识点11、12、13 唯物史观",
+    "question": "【排坑特训】社会意识具有绝对独立性。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【相对】。\n【判定】错误（手册框出修正【相对】）\n【章节】第二篇《马克思主义基本原理》 / 第二章 / 知识点11、12、13 唯物史观\n【题干陷阱】社会意识具有绝对独立性。\n【手册框出的正确点】相对\n【改后提示】应将相关表述修正为与「相对」一致。对照题干：社会意识具有绝对独立性。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「相对」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【相对】",
+    "fix": "相对"
+  },
+  {
+    "id": 1201,
+    "type": "judgement",
+    "category": "mayuan",
+    "categoryName": "马原",
+    "source": "第二篇《马克思主义基本原理》 / 第二章 / 知识点11、12、13 唯物史观",
+    "question": "【排坑特训】社会基本矛盾包括生产力与生产关系的矛盾、经济基础与上层建筑的矛盾。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确答案为：A（正确）。\n【判定】正确（手册标注【√】）\n【章节】第二篇《马克思主义基本原理》 / 第二章 / 知识点11、12、13 唯物史观\n【标准表述】社会基本矛盾包括生产力与生产关系的矛盾、经济基础与上层建筑的矛盾。\n【精析】该句与《排坑手册》正确答案一致，属于可直接识记的规范表述。复习时抓住主角关键词，对照易混近义项（时间节点、布局名称、程度词、主客体），确认没有偷换概念即可快速判对。\n【记忆】整句背诵，并自问：主语是谁？时间是哪次大会？程度词是根本还是基本？"
+  },
+  {
+    "id": 1202,
+    "type": "judgement",
+    "category": "mayuan",
+    "categoryName": "马原",
+    "source": "第二篇《马克思主义基本原理》 / 第二章 / 知识点11、12、13 唯物史观",
+    "question": "【排坑特训】劳动资料在生产力基本要素中起主导作用。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【劳动者】。\n【判定】错误（手册框出修正【劳动者】）\n【章节】第二篇《马克思主义基本原理》 / 第二章 / 知识点11、12、13 唯物史观\n【题干陷阱】劳动资料在生产力基本要素中起主导作用。\n【手册框出的正确点】劳动者\n【改后提示】应将相关表述修正为与「劳动者」一致。对照题干：劳动资料在生产力基本要素中起主导作用。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「劳动者」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【劳动者】",
+    "fix": "劳动者"
+  },
+  {
+    "id": 1203,
+    "type": "judgement",
+    "category": "mayuan",
+    "categoryName": "马原",
+    "source": "第二篇《马克思主义基本原理》 / 第二章 / 知识点11、12、13 唯物史观",
+    "question": "【排坑特训】劳动者是衡量生产力水平的标志。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【生产工具】。\n【判定】错误（手册框出修正【生产工具】）\n【章节】第二篇《马克思主义基本原理》 / 第二章 / 知识点11、12、13 唯物史观\n【题干陷阱】劳动者是衡量生产力水平的标志。\n【手册框出的正确点】生产工具\n【改后提示】应将相关表述修正为与「生产工具」一致。对照题干：劳动者是衡量生产力水平的标志。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「生产工具」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【生产工具】",
+    "fix": "生产工具"
+  },
+  {
+    "id": 1204,
+    "type": "judgement",
+    "category": "mayuan",
+    "categoryName": "马原",
+    "source": "第二篇《马克思主义基本原理》 / 第二章 / 知识点11、12、13 唯物史观",
+    "question": "【排坑特训】生产关系由生产资料的所有制形式、人们在生产中的地位和相互关系、产品分配形式等方面构成。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确答案为：A（正确）。\n【判定】正确（手册标注【√】）\n【章节】第二篇《马克思主义基本原理》 / 第二章 / 知识点11、12、13 唯物史观\n【标准表述】生产关系由生产资料的所有制形式、人们在生产中的地位和相互关系、产品分配形式等方面构成。\n【精析】该句与《排坑手册》正确答案一致，属于可直接识记的规范表述。复习时抓住主角关键词，对照易混近义项（时间节点、布局名称、程度词、主客体），确认没有偷换概念即可快速判对。\n【记忆】整句背诵，并自问：主语是谁？时间是哪次大会？程度词是根本还是基本？"
+  },
+  {
+    "id": 1205,
+    "type": "judgement",
+    "category": "mayuan",
+    "categoryName": "马原",
+    "source": "第二篇《马克思主义基本原理》 / 第二章 / 知识点11、12、13 唯物史观",
+    "question": "【排坑特训】产品分配形式是生产关系的基础，是区分社会制度的根本标志。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【生产资料的所有制形式】。\n【判定】错误（手册框出修正【生产资料的所有制形式】）\n【章节】第二篇《马克思主义基本原理》 / 第二章 / 知识点11、12、13 唯物史观\n【题干陷阱】产品分配形式是生产关系的基础，是区分社会制度的根本标志。\n【手册框出的正确点】生产资料的所有制形式\n【改后提示】应将相关表述修正为与「生产资料的所有制形式」一致。对照题干：产品分配形式是生产关系的基础，是区分社会制度的根本标志。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「生产资料的所有制形式」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【生产资料的所有制形式】",
+    "fix": "生产资料的所有制形式"
+  },
+  {
+    "id": 1206,
+    "type": "judgement",
+    "category": "mayuan",
+    "categoryName": "马原",
+    "source": "第二篇《马克思主义基本原理》 / 第二章 / 知识点11、12、13 唯物史观",
+    "question": "【排坑特训】观念上层建筑包括政治法律思想、道德、艺术、宗教、哲学等思想观点。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确答案为：A（正确）。\n【判定】正确（手册标注【√】）\n【章节】第二篇《马克思主义基本原理》 / 第二章 / 知识点11、12、13 唯物史观\n【标准表述】观念上层建筑包括政治法律思想、道德、艺术、宗教、哲学等思想观点。\n【精析】该句与《排坑手册》正确答案一致，属于可直接识记的规范表述。复习时抓住主角关键词，对照易混近义项（时间节点、布局名称、程度词、主客体），确认没有偷换概念即可快速判对。\n【记忆】整句背诵，并自问：主语是谁？时间是哪次大会？程度词是根本还是基本？"
+  },
+  {
+    "id": 1207,
+    "type": "judgement",
+    "category": "mayuan",
+    "categoryName": "马原",
+    "source": "第二篇《马克思主义基本原理》 / 第二章 / 知识点11、12、13 唯物史观",
+    "question": "【排坑特训】政治上层建筑包括国家政治制度、立法司法制度和行政制度，以及国家政权机构、政党、军队、警察、法庭、监狱等政治组织形态和设施。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确答案为：A（正确）。\n【判定】正确（手册标注【√】）\n【章节】第二篇《马克思主义基本原理》 / 第二章 / 知识点11、12、13 唯物史观\n【标准表述】政治上层建筑包括国家政治制度、立法司法制度和行政制度，以及国家政权机构、政党、军队、警察、法庭、监狱等政治组织形态和设施。\n【精析】该句与《排坑手册》正确答案一致，属于可直接识记的规范表述。复习时抓住主角关键词，对照易混近义项（时间节点、布局名称、程度词、主客体），确认没有偷换概念即可快速判对。\n【记忆】整句背诵，并自问：主语是谁？时间是哪次大会？程度词是根本还是基本？"
+  },
+  {
+    "id": 1208,
+    "type": "judgement",
+    "category": "mayuan",
+    "categoryName": "马原",
+    "source": "第二篇《马克思主义基本原理》 / 第二章 / 知识点11、12、13 唯物史观",
+    "question": "【排坑特训】在整个上层建筑中，观念上层建筑居主导地位，政治法律思想是核心。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【政治上层建筑；国家政权】。\n【判定】错误（手册框出修正【政治上层建筑；国家政权】）\n【章节】第二篇《马克思主义基本原理》 / 第二章 / 知识点11、12、13 唯物史观\n【题干陷阱】在整个上层建筑中，观念上层建筑居主导地位，政治法律思想是核心。\n【手册框出的正确点】政治上层建筑；国家政权\n【改后提示】应将相关表述修正为与「政治上层建筑；国家政权」一致。对照题干：在整个上层建筑中，观念上层建筑居主导地位，政治法律思想是核心。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「政治上层建筑；国家政权」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【政治上层建筑；国家政权】",
+    "fix": "政治上层建筑；国家政权"
+  },
+  {
+    "id": 1209,
+    "type": "judgement",
+    "category": "mayuan",
+    "categoryName": "马原",
+    "source": "第二篇《马克思主义基本原理》 / 第二章 / 知识点11、12、13 唯物史观",
+    "question": "【排坑特训】社会基本矛盾中经济基础与上层建筑的矛盾是更根本的。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【生产力与生产关系】。\n【判定】错误（手册框出修正【生产力与生产关系】）\n【章节】第二篇《马克思主义基本原理》 / 第二章 / 知识点11、12、13 唯物史观\n【题干陷阱】社会基本矛盾中经济基础与上层建筑的矛盾是更根本的。\n【手册框出的正确点】生产力与生产关系\n【改后提示】应将相关表述修正为与「生产力与生产关系」一致。对照题干：社会基本矛盾中经济基础与上层建筑的矛盾是更根本的。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「生产力与生产关系」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【生产力与生产关系】",
+    "fix": "生产力与生产关系"
+  },
+  {
+    "id": 1210,
+    "type": "judgement",
+    "category": "mayuan",
+    "categoryName": "马原",
+    "source": "第二篇《马克思主义基本原理》 / 第二章 / 知识点11、12、13 唯物史观",
+    "question": "【排坑特训】群众史观认为对历史发展起决定作用的是人民群众，同时否认个人尤其是少数历史人物的作用。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【承认】。\n【判定】错误（手册框出修正【承认】）\n【章节】第二篇《马克思主义基本原理》 / 第二章 / 知识点11、12、13 唯物史观\n【题干陷阱】群众史观认为对历史发展起决定作用的是人民群众，同时否认个人尤其是少数历史人物的作用。\n【手册框出的正确点】承认\n【改后提示】应将相关表述修正为与「承认」一致。对照题干：群众史观认为对历史发展起决定作用的是人民群众，同时否认个人尤其是少数历史人物的作用。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「承认」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【承认】",
+    "fix": "承认"
+  },
+  {
+    "id": 1211,
+    "type": "judgement",
+    "category": "mayuan",
+    "categoryName": "马原",
+    "source": "第二篇《马克思主义基本原理》 / 第二章 / 知识点11、12、13 唯物史观",
+    "question": "【排坑特训】人民群众是社会历史的主体，对社会历史发展起决定性作用。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确答案为：A（正确）。\n【判定】正确（手册标注【√】）\n【章节】第二篇《马克思主义基本原理》 / 第二章 / 知识点11、12、13 唯物史观\n【标准表述】人民群众是社会历史的主体，对社会历史发展起决定性作用。\n【精析】该句与《排坑手册》正确答案一致，属于可直接识记的规范表述。复习时抓住主角关键词，对照易混近义项（时间节点、布局名称、程度词、主客体），确认没有偷换概念即可快速判对。\n【记忆】整句背诵，并自问：主语是谁？时间是哪次大会？程度词是根本还是基本？"
+  },
+  {
+    "id": 1212,
+    "type": "judgement",
+    "category": "mayuan",
+    "categoryName": "马原",
+    "source": "第二篇《马克思主义基本原理》 / 第二章 / 知识点11、12、13 唯物史观",
+    "question": "【排坑特训】人民群众是社会物质财富和精神财富的创造者。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确答案为：A（正确）。\n【判定】正确（手册标注【√】）\n【章节】第二篇《马克思主义基本原理》 / 第二章 / 知识点11、12、13 唯物史观\n【标准表述】人民群众是社会物质财富和精神财富的创造者。\n【精析】该句与《排坑手册》正确答案一致，属于可直接识记的规范表述。复习时抓住主角关键词，对照易混近义项（时间节点、布局名称、程度词、主客体），确认没有偷换概念即可快速判对。\n【记忆】整句背诵，并自问：主语是谁？时间是哪次大会？程度词是根本还是基本？"
+  },
+  {
+    "id": 1213,
+    "type": "judgement",
+    "category": "mayuan",
+    "categoryName": "马原",
+    "source": "第二篇《马克思主义基本原理》 / 第二章 / 知识点11、12、13 唯物史观",
+    "question": "【排坑特训】人民群众是社会变革的领导力量。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【决定】。\n【判定】错误（手册框出修正【决定】）\n【章节】第二篇《马克思主义基本原理》 / 第二章 / 知识点11、12、13 唯物史观\n【题干陷阱】人民群众是社会变革的领导力量。\n【手册框出的正确点】决定\n【改后提示】应将相关表述修正为与「决定」一致。对照题干：人民群众是社会变革的领导力量。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「决定」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【决定】",
+    "fix": "决定"
+  },
+  {
+    "id": 1214,
+    "type": "judgement",
+    "category": "mayuan",
+    "categoryName": "马原",
+    "source": "第二篇《马克思主义基本原理》 / 第二章 / 知识点14、15、16、17 商品经济",
+    "question": "【排坑特训】有使用价值的物品就是商品。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【不一定是商品】。\n【判定】错误（手册框出修正【不一定是商品】）\n【章节】第二篇《马克思主义基本原理》 / 第二章 / 知识点14、15、16、17 商品经济\n【题干陷阱】有使用价值的物品就是商品。\n【手册框出的正确点】不一定是商品\n【改后提示】应将相关表述修正为与「不一定是商品」一致。对照题干：有使用价值的物品就是商品。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「不一定是商品」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【不一定是商品】",
+    "fix": "不一定是商品"
+  },
+  {
+    "id": 1215,
+    "type": "judgement",
+    "category": "mayuan",
+    "categoryName": "马原",
+    "source": "第二篇《马克思主义基本原理》 / 第二章 / 知识点14、15、16、17 商品经济",
+    "question": "【排坑特训】没有合格的使用价值，价值一定不能得到实现。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确答案为：A（正确）。\n【判定】正确（手册标注【√】）\n【章节】第二篇《马克思主义基本原理》 / 第二章 / 知识点14、15、16、17 商品经济\n【标准表述】没有合格的使用价值，价值一定不能得到实现。\n【精析】该句与《排坑手册》正确答案一致，属于可直接识记的规范表述。复习时抓住主角关键词，对照易混近义项（时间节点、布局名称、程度词、主客体），确认没有偷换概念即可快速判对。\n【记忆】整句背诵，并自问：主语是谁？时间是哪次大会？程度词是根本还是基本？"
+  },
+  {
+    "id": 1216,
+    "type": "judgement",
+    "category": "mayuan",
+    "categoryName": "马原",
+    "source": "第二篇《马克思主义基本原理》 / 第二章 / 知识点14、15、16、17 商品经济",
+    "question": "【排坑特训】商品的价值量是由生产该商品所需的个别劳动时间决定的。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【社会必要劳动时间】。\n【判定】错误（手册框出修正【社会必要劳动时间】）\n【章节】第二篇《马克思主义基本原理》 / 第二章 / 知识点14、15、16、17 商品经济\n【题干陷阱】商品的价值量是由生产该商品所需的个别劳动时间决定的。\n【手册框出的正确点】社会必要劳动时间\n【改后提示】应将相关表述修正为与「社会必要劳动时间」一致。对照题干：商品的价值量是由生产该商品所需的个别劳动时间决定的。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「社会必要劳动时间」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【社会必要劳动时间】",
+    "fix": "社会必要劳动时间"
+  },
+  {
+    "id": 1217,
+    "type": "judgement",
+    "category": "mayuan",
+    "categoryName": "马原",
+    "source": "第二篇《马克思主义基本原理》 / 第二章 / 知识点14、15、16、17 商品经济",
+    "question": "【排坑特训】货币履行价值尺度职能时必须是现实的货币。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【不需要是现实的货币】。\n【判定】错误（手册框出修正【不需要是现实的货币】）\n【章节】第二篇《马克思主义基本原理》 / 第二章 / 知识点14、15、16、17 商品经济\n【题干陷阱】货币履行价值尺度职能时必须是现实的货币。\n【手册框出的正确点】不需要是现实的货币\n【改后提示】应将相关表述修正为与「不需要是现实的货币」一致。对照题干：货币履行价值尺度职能时必须是现实的货币。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「不需要是现实的货币」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【不需要是现实的货币】",
+    "fix": "不需要是现实的货币"
+  },
+  {
+    "id": 1218,
+    "type": "judgement",
+    "category": "mayuan",
+    "categoryName": "马原",
+    "source": "第二篇《马克思主义基本原理》 / 第二章 / 知识点14、15、16、17 商品经济",
+    "question": "【排坑特训】具体劳动和抽象劳动是不同商品生产过程中的不同劳动。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【同一劳动过程中不可分割的两个方面】。\n【判定】错误（手册框出修正【同一劳动过程中不可分割的两个方面】）\n【章节】第二篇《马克思主义基本原理》 / 第二章 / 知识点14、15、16、17 商品经济\n【题干陷阱】具体劳动和抽象劳动是不同商品生产过程中的不同劳动。\n【手册框出的正确点】同一劳动过程中不可分割的两个方面\n【改后提示】应将相关表述修正为与「同一劳动过程中不可分割的两个方面」一致。对照题干：具体劳动和抽象劳动是不同商品生产过程中的不同劳动。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「同一劳动过程中不可分割的两个方面」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【同一劳动过程中不可分割的两个方面】",
+    "fix": "同一劳动过程中不可分割的两个方面"
+  },
+  {
+    "id": 1219,
+    "type": "judgement",
+    "category": "mayuan",
+    "categoryName": "马原",
+    "source": "第二篇《马克思主义基本原理》 / 第二章 / 知识点14、15、16、17 商品经济",
+    "question": "【排坑特训】具体劳动创造商品的使用价值，抽象劳动形成商品的价值。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确答案为：A（正确）。\n【判定】正确（手册标注【√】）\n【章节】第二篇《马克思主义基本原理》 / 第二章 / 知识点14、15、16、17 商品经济\n【标准表述】具体劳动创造商品的使用价值，抽象劳动形成商品的价值。\n【精析】该句与《排坑手册》正确答案一致，属于可直接识记的规范表述。复习时抓住主角关键词，对照易混近义项（时间节点、布局名称、程度词、主客体），确认没有偷换概念即可快速判对。\n【记忆】整句背诵，并自问：主语是谁？时间是哪次大会？程度词是根本还是基本？"
+  },
+  {
+    "id": 1220,
+    "type": "judgement",
+    "category": "mayuan",
+    "categoryName": "马原",
+    "source": "第二篇《马克思主义基本原理》 / 第二章 / 知识点14、15、16、17 商品经济",
+    "question": "【排坑特训】商品的二因素决定生产商品的劳动二重性。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【生产商品的劳动二重性；商品的二因素】。\n【判定】错误（手册框出修正【生产商品的劳动二重性；商品的二因素】）\n【章节】第二篇《马克思主义基本原理》 / 第二章 / 知识点14、15、16、17 商品经济\n【题干陷阱】商品的二因素决定生产商品的劳动二重性。\n【手册框出的正确点】生产商品的劳动二重性；商品的二因素\n【改后提示】生产商品的劳动二重性决定商品的二因素。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「生产商品的劳动二重性；商品的二因素」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【生产商品的劳动二重性；商品的二因素】",
+    "fix": "生产商品的劳动二重性；商品的二因素"
+  },
+  {
+    "id": 1221,
+    "type": "judgement",
+    "category": "mayuan",
+    "categoryName": "马原",
+    "source": "第二篇《马克思主义基本原理》 / 第二章 / 知识点14、15、16、17 商品经济",
+    "question": "【排坑特训】价值围绕价格上下波动。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【价格；价值】。\n【判定】错误（手册框出修正【价格；价值】）\n【章节】第二篇《马克思主义基本原理》 / 第二章 / 知识点14、15、16、17 商品经济\n【题干陷阱】价值围绕价格上下波动。\n【手册框出的正确点】价格；价值\n【改后提示】价格围绕价值上下波动。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「价格；价值」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【价格；价值】",
+    "fix": "价格；价值"
+  },
+  {
+    "id": 1222,
+    "type": "judgement",
+    "category": "mayuan",
+    "categoryName": "马原",
+    "source": "第二篇《马克思主义基本原理》 / 第二章 / 知识点14、15、16、17 商品经济",
+    "question": "【排坑特训】流通手段和支付手段是货币的两个最基本职能。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【价值尺度】。\n【判定】错误（手册框出修正【价值尺度】）\n【章节】第二篇《马克思主义基本原理》 / 第二章 / 知识点14、15、16、17 商品经济\n【题干陷阱】流通手段和支付手段是货币的两个最基本职能。\n【手册框出的正确点】价值尺度\n【改后提示】应将相关表述修正为与「价值尺度」一致。对照题干：流通手段和支付手段是货币的两个最基本职能。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「价值尺度」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【价值尺度】",
+    "fix": "价值尺度"
+  },
+  {
+    "id": 1223,
+    "type": "judgement",
+    "category": "mayuan",
+    "categoryName": "马原",
+    "source": "第二篇《马克思主义基本原理》 / 第二章 / 知识点18 剩余价值理论",
+    "question": "【排坑特训】剩余价值规律是资本主义的基本规律。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确答案为：A（正确）。\n【判定】正确（手册标注【√】）\n【章节】第二篇《马克思主义基本原理》 / 第二章 / 知识点18 剩余价值理论\n【标准表述】剩余价值规律是资本主义的基本规律。\n【精析】该句与《排坑手册》正确答案一致，属于可直接识记的规范表述。复习时抓住主角关键词，对照易混近义项（时间节点、布局名称、程度词、主客体），确认没有偷换概念即可快速判对。\n【记忆】整句背诵，并自问：主语是谁？时间是哪次大会？程度词是根本还是基本？"
+  },
+  {
+    "id": 1224,
+    "type": "judgement",
+    "category": "mayuan",
+    "categoryName": "马原",
+    "source": "第二篇《马克思主义基本原理》 / 第二章 / 知识点18 剩余价值理论",
+    "question": "【排坑特训】榨取绝对剩余价值和相对剩余价值均通过延长剩余劳动时间实现。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确答案为：A（正确）。\n【判定】正确（手册标注【√】）\n【章节】第二篇《马克思主义基本原理》 / 第二章 / 知识点18 剩余价值理论\n【标准表述】榨取绝对剩余价值和相对剩余价值均通过延长剩余劳动时间实现。\n【精析】该句与《排坑手册》正确答案一致，属于可直接识记的规范表述。复习时抓住主角关键词，对照易混近义项（时间节点、布局名称、程度词、主客体），确认没有偷换概念即可快速判对。\n【记忆】整句背诵，并自问：主语是谁？时间是哪次大会？程度词是根本还是基本？"
+  },
+  {
+    "id": 1225,
+    "type": "judgement",
+    "category": "mayuan",
+    "categoryName": "马原",
+    "source": "第二篇《马克思主义基本原理》 / 第二章 / 知识点18 剩余价值理论",
+    "question": "【排坑特训】榨取绝对剩余价值以提高全社会劳动生产率为前提。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【相对剩余价值】。\n【判定】错误（手册框出修正【相对剩余价值】）\n【章节】第二篇《马克思主义基本原理》 / 第二章 / 知识点18 剩余价值理论\n【题干陷阱】榨取绝对剩余价值以提高全社会劳动生产率为前提。\n【手册框出的正确点】相对剩余价值\n【改后提示】应将相关表述修正为与「相对剩余价值」一致。对照题干：榨取绝对剩余价值以提高全社会劳动生产率为前提。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「相对剩余价值」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【相对剩余价值】",
+    "fix": "相对剩余价值"
+  },
+  {
+    "id": 1226,
+    "type": "judgement",
+    "category": "mayuan",
+    "categoryName": "马原",
+    "source": "第二篇《马克思主义基本原理》 / 第二章 / 知识点18 剩余价值理论",
+    "question": "【排坑特训】剩余价值体现了资本家与雇佣工人之间剥削与被剥削的关系。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确答案为：A（正确）。\n【判定】正确（手册标注【√】）\n【章节】第二篇《马克思主义基本原理》 / 第二章 / 知识点18 剩余价值理论\n【标准表述】剩余价值体现了资本家与雇佣工人之间剥削与被剥削的关系。\n【精析】该句与《排坑手册》正确答案一致，属于可直接识记的规范表述。复习时抓住主角关键词，对照易混近义项（时间节点、布局名称、程度词、主客体），确认没有偷换概念即可快速判对。\n【记忆】整句背诵，并自问：主语是谁？时间是哪次大会？程度词是根本还是基本？"
+  },
+  {
+    "id": 1227,
+    "type": "judgement",
+    "category": "mayuan",
+    "categoryName": "马原",
+    "source": "第二篇《马克思主义基本原理》 / 第二章 / 知识点18 剩余价值理论",
+    "question": "【排坑特训】不变资本与可变资本的划分为确定资本家对劳动者的剥削程度提供了科学依据。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确答案为：A（正确）。\n【判定】正确（手册标注【√】）\n【章节】第二篇《马克思主义基本原理》 / 第二章 / 知识点18 剩余价值理论\n【标准表述】不变资本与可变资本的划分为确定资本家对劳动者的剥削程度提供了科学依据。\n【精析】该句与《排坑手册》正确答案一致，属于可直接识记的规范表述。复习时抓住主角关键词，对照易混近义项（时间节点、布局名称、程度词、主客体），确认没有偷换概念即可快速判对。\n【记忆】整句背诵，并自问：主语是谁？时间是哪次大会？程度词是根本还是基本？"
+  },
+  {
+    "id": 1228,
+    "type": "judgement",
+    "category": "mayuan",
+    "categoryName": "马原",
+    "source": "第二篇《马克思主义基本原理》 / 第二章 / 知识点18 剩余价值理论",
+    "question": "【排坑特训】不变资本是以劳动力形态存在的那部分资本。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【生产资料】。\n【判定】错误（手册框出修正【生产资料】）\n【章节】第二篇《马克思主义基本原理》 / 第二章 / 知识点18 剩余价值理论\n【题干陷阱】不变资本是以劳动力形态存在的那部分资本。\n【手册框出的正确点】生产资料\n【改后提示】应将相关表述修正为与「生产资料」一致。对照题干：不变资本是以劳动力形态存在的那部分资本。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「生产资料」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【生产资料】",
+    "fix": "生产资料"
+  },
+  {
+    "id": 1229,
+    "type": "judgement",
+    "category": "mayuan",
+    "categoryName": "马原",
+    "source": "第二篇《马克思主义基本原理》 / 第二章 / 知识点18 剩余价值理论",
+    "question": "【排坑特训】资本的有机构成是指生产的技术水平所决定的生产资料和劳动力之间的比例。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "正确答案为：B（错误）。手册框出修正：【技术构成】。\n【判定】错误（手册框出修正【技术构成】）\n【章节】第二篇《马克思主义基本原理》 / 第二章 / 知识点18 剩余价值理论\n【题干陷阱】资本的有机构成是指生产的技术水平所决定的生产资料和劳动力之间的比例。\n【手册框出的正确点】技术构成\n【改后提示】应将相关表述修正为与「技术构成」一致。对照题干：资本的有机构成是指生产的技术水平所决定的生产资料和劳动力之间的比例。\n【精析】本题是典型「换词坑」：题干读起来通顺，但关键词被替换。做题时先圈出时间/主体/布局/程度词，再与标准表述逐词比对。手册在正确答案中用方框标出的「技术构成」即本题唯一标准修正依据，必须以该框为准，不可按语感判断。\n【对照记忆】错 → 正：题干错误关键词 ⇒ 【技术构成】",
+    "fix": "技术构成"
   }
 ];
 
@@ -2289,8 +3361,8 @@ const GUIDEBOOK_MATCH_QUESTIONS = [
   {
     id: 1951,
     type: "match",
-    category: "general",
-    categoryName: "政治理论",
+    category: "xjp_zonglun",
+    categoryName: "习思想·总论",
     title: "第一组：核心要义与两个结合",
     pairs: [
       { left: "习近平思想核心要义", right: "坚持和发展中国特色社会主义" },
@@ -2300,13 +3372,13 @@ const GUIDEBOOK_MATCH_QUESTIONS = [
       { left: "科学体系“魂脉”", right: "马克思主义" },
       { left: "科学体系“根脉”", right: "中华优秀传统文化" }
     ],
-    explanation: "坚持和发展中国特色社会主义是核心要义；社会主要矛盾的变化是新时代基本依据；“两个结合”是取得成功的最大法宝；结合是化学反应而非物理反应；马克思主义是魂脉，中华优秀传统文化是根脉。"
+    explanation: "坚持和发展中国特色社会主义是核心要义；社会主要矛盾的变化是新时代基本依据；“两个结合”是取得成功的最大法宝；结合是化学反应而非物理反应；马克思主义是魂脉，中华优秀传统文化是根脉。国际地位和基本国情没有变。"
   },
   {
     id: 1952,
     type: "match",
-    category: "sub_xisixiang",
-    categoryName: "习思想分论",
+    category: "modernization",
+    categoryName: "中国式现代化",
     title: "第二组：科学体系与中国式现代化",
     pairs: [
       { left: "“十个明确”地位", right: "四梁八柱起统摄作用" },
@@ -2316,7 +3388,7 @@ const GUIDEBOOK_MATCH_QUESTIONS = [
       { left: "现代化推进重大原则", right: "坚持发扬斗争精神" },
       { left: "高质量发展战略地位", right: "全面建设现代化国家首要任务" }
     ],
-    explanation: "十个明确是四梁八柱（主体内容）；十四个坚持是基本方略（实践层面）；六个必须坚持是世界观方法论；中国式现代化的本质要求第一条是坚持共产党领导；重大原则包括发扬斗争精神；首要任务是高质量发展。"
+    explanation: "十个明确是四梁八柱（主体内容）；十四个坚持是基本方略；六个必须坚持是世界观方法论；中国式现代化的本质要求第一条是坚持共产党领导；重大原则包括发扬斗争精神；首要任务是高质量发展。"
   },
   {
     id: 1953,
@@ -2332,7 +3404,7 @@ const GUIDEBOOK_MATCH_QUESTIONS = [
       { left: "党的根本政治立场", right: "人民立场" },
       { left: "区别其他政党显著标志", right: "密切联系群众" }
     ],
-    explanation: "最大的国情是中国共产党的领导；最高原则是党中央集中统一领导；根本领导制度是党的领导制度；根本政治制度是人代会；根本政治立场是人民立场；显著标志是密切联系群众。"
+    explanation: "最大的国情是中国共产党的领导；最高原则是党中央集中统一领导；根本领导制度是党的领导制度；根本政治制度是人民代表大会制度；根本政治立场是人民立场；显著标志是密切联系群众。"
   },
   {
     id: 1954,
@@ -2389,21 +3461,35 @@ if (typeof SUBJECT_DATA !== 'undefined') {
     name: "小黑排坑手册",
     icon: "坑",
     categories: [
-      { id: "general", name: "政治理论" },
-      { id: "sub_xisixiang", name: "习思想分论" },
+      { id: "xjp_zonglun", name: "习思想·总论" },
+      { id: "modernization", name: "中国式现代化" },
       { id: "leadership", name: "党的领导" },
       { id: "people", name: "人民中心" },
       { id: "development", name: "高质量发展" },
-      { id: "modernization", name: "中国式现代化" },
+      { id: "democracy", name: "全过程人民民主" },
+      { id: "culture", name: "文化强国" },
+      { id: "livelihood", name: "民生保障" },
+      { id: "ecology", name: "生态文明" },
+      { id: "reform", name: "全面深化改革" },
+      { id: "rule_of_law", name: "全面依法治国" },
+      { id: "party_discipline", name: "全面从严治党" },
+      { id: "edu_tech", name: "教育科技人才" },
+      { id: "security", name: "总体国家安全观" },
+      { id: "military", name: "国防和军队" },
+      { id: "reunification", name: "一国两制与统一" },
+      { id: "diplomacy", name: "大国外交" },
       { id: "mayuan", name: "马原" }
     ],
     facts: [
-      { title: "排坑核心逻辑", cat: "general", content: "找准主角关键词，辨清主体与客体、物理反应与化学反应、绝对与相对的表述差异。" },
-      { title: "核心要义考点", cat: "general", content: "坚持和发展中国特色社会主义是核心要义；党的十八大开创新时代，十九大作出新时代政治论断。" },
-      { title: "两个结合考点", cat: "general", content: "结合是深刻的“化学反应”，造就新文化生命体；魂脉是马克思主义，根脉是中华优秀传统文化。" },
-      { title: "科学体系考点", cat: "general", content: "“十个明确”是四梁八柱起统摄作用，“十四个坚持”是基本方略，“六个必须坚持”是世界观方法论。" },
-      { title: "中国式现代化", cat: "modernization", content: "党的领导直接关系中国式现代化的根本方向、前途命运和最终成败，是本质要求的第一条。" },
-      { title: "高质量发展", cat: "development", content: "高质量发展是全面建设现代化国家的首要任务；新发展理念中创新是动力、共享是本质。" }
+      { title: "排坑核心方法", cat: "xjp_zonglun", content: "只认手册「※正确答案」中的【√】与框出修正；找准主角关键词，辨清时间节点、布局名称、程度词、主客体是否被偷换。" },
+      { title: "核心要义与新时代", cat: "xjp_zonglun", content: "核心要义是坚持和发展中国特色社会主义；十八大以来开创新时代，十九大作出进入新时代的重大政治论断；国际地位和基本国情没有变。" },
+      { title: "两个结合", cat: "xjp_zonglun", content: "结合是深刻的“化学反应”；马克思主义是魂脉，中华优秀传统文化是根脉；矢是马克思主义，的是新时代中国。" },
+      { title: "科学体系", cat: "xjp_zonglun", content: "“十个明确”统摄主体内容；“十四个坚持”是基本方略；“六个必须坚持”是世界观方法论；总任务是实现社会主义现代化和中华民族伟大复兴。" },
+      { title: "中国式现代化", cat: "modernization", content: "党的领导直接关系根本方向、前途命运、最终成败；是共同富裕而非同等富裕；物质文明和精神文明相协调。" },
+      { title: "党的领导", cat: "leadership", content: "最大的国情是中国共产党领导；最高原则是党中央集中统一领导；党的领导制度是根本领导制度；人民代表大会制度是根本政治制度。" },
+      { title: "人民中心", cat: "people", content: "人民立场是根本政治立场；最大政治优势是密切联系群众；最大危险是脱离群众；根本价值取向是人民至上。" },
+      { title: "高质量发展", cat: "development", content: "全面建设社会主义现代化国家的首要任务；市场在资源配置中起决定性作用，政府更好发挥作用。" },
+      { title: "马原排坑", cat: "mayuan", content: "物质唯一特性是客观实在性；精髓是实事求是；价格围绕价值波动；劳动二重性决定商品二因素。" }
     ],
     questions: GUIDEBOOK_QUESTIONS,
     matchQuestions: GUIDEBOOK_MATCH_QUESTIONS

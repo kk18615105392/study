@@ -1,48 +1,27 @@
 // ================= 1. 状态管理 =================
-let userProgress = {
-  beijing: {
-    answers: {},     // qId -> { correct: boolean, count: number }
-    mistakes: [],    // 错题ID列表
-    favorites: []    // 收藏题ID列表
-  },
-  logic_600: {
-    answers: {},
-    mistakes: [],
-    favorites: []
-  },
-  passage_600: {
-    answers: {},
-    mistakes: [],
-    favorites: []
-  },
-  idioms: {
-    answers: {},
-    mistakes: [],
-    favorites: []
-  },
-  politics: {
-    answers: {},
-    mistakes: [],
-    favorites: []
-  },
-  theory: {
-    answers: {},
-    mistakes: [],
-    favorites: []
-  },
-  interview: {
-    answers: {},
-    mistakes: [],
-    favorites: []
-  },
-  quant: {
-    answers: {},
-    mistakes: [],
-    favorites: []
-  },
-  checkInDays: [], // 签到日期列表 "YYYY-MM-DD"
-  streak: 0        // 连续签到天数
-};
+// 登录/加载成功前必须为 null，禁止把空壳进度写回服务器
+let userProgress = null;
+let progressHydrated = false; // 仅在进度成功灌入后才允许 saveProgress
+
+function createEmptyProgress() {
+  return {
+    beijing: { answers: {}, mistakes: [], favorites: [] },
+    logic_600: { answers: {}, mistakes: [], favorites: [] },
+    passage_600: { answers: {}, mistakes: [], favorites: [] },
+    idioms: { answers: {}, mistakes: [], favorites: [] },
+    politics: { answers: {}, mistakes: [], favorites: [] },
+    theory: { answers: {}, mistakes: [], favorites: [] },
+    interview: { answers: {}, mistakes: [], favorites: [] },
+    quant: { answers: {}, mistakes: [], favorites: [] },
+    essays: { answers: {}, mistakes: [], favorites: [] },
+    shenlun_practice: { answers: {}, mistakes: [], favorites: [] },
+    theory_drill: { answers: {}, mistakes: [], favorites: [] },
+    resume_projects: { answers: {}, mistakes: [], favorites: [] },
+    guidebook: { answers: {}, mistakes: [], favorites: [] },
+    checkInDays: [],
+    streak: 0
+  };
+}
 
 // 账号系统状态
 let currentUser = null;
@@ -328,16 +307,18 @@ function getProgressFilterEmptyMessage() {
 
 function recordAnswerProgress(q, isCorrect, { removeMistakeOnCorrect = false } = {}) {
   const progress = getActiveProgress();
+  const sameId = (a, b) => a === b || String(a) === String(b);
   if (isCorrect && removeMistakeOnCorrect) {
-    progress.mistakes = progress.mistakes.filter(id => id !== q.id);
-  } else if (!isCorrect && !progress.mistakes.includes(q.id)) {
+    progress.mistakes = progress.mistakes.filter(id => !sameId(id, q.id));
+  } else if (!isCorrect && !progress.mistakes.some(id => sameId(id, q.id))) {
     progress.mistakes.push(q.id);
   }
-  if (!progress.answers[q.id]) {
+  const ansKey = Object.keys(progress.answers).find(k => sameId(k, q.id)) || q.id;
+  if (!progress.answers[ansKey]) {
     progress.answers[q.id] = { correct: isCorrect, count: 1 };
   } else {
-    progress.answers[q.id].correct = isCorrect;
-    progress.answers[q.id].count += 1;
+    progress.answers[ansKey].correct = isCorrect;
+    progress.answers[ansKey].count += 1;
   }
   saveProgress();
 }
@@ -635,6 +616,36 @@ function selectSubject(subjectId) {
 // ================= 4. 账号数据存取 =================
 // 当运行在本地服务器时走 API，部署到 Netlify 时走 localStorage
 
+function hydrateUserProgress(progress) {
+  userProgress = progress && typeof progress === "object"
+    ? progress
+    : createEmptyProgress();
+  ensureProgressFields();
+  progressHydrated = true;
+}
+
+function countProgressAnswers(progress) {
+  if (!progress || typeof progress !== "object") return 0;
+  let n = 0;
+  Object.keys(progress).forEach((k) => {
+    const block = progress[k];
+    if (block && block.answers && typeof block.answers === "object") {
+      n += Object.keys(block.answers).length;
+    }
+  });
+  return n;
+}
+
+function countProgressMistakes(progress) {
+  if (!progress || typeof progress !== "object") return 0;
+  let n = 0;
+  Object.keys(progress).forEach((k) => {
+    const block = progress[k];
+    if (block && Array.isArray(block.mistakes)) n += block.mistakes.length;
+  });
+  return n;
+}
+
 function ensureProgressFields() {
   if (!userProgress) return;
   if (!userProgress.beijing)  userProgress.beijing  = { answers: {}, mistakes: [], favorites: [] };
@@ -788,8 +799,7 @@ async function loadProgress() {
         if (data.success) {
           currentUser = savedUser;
           syncUserMembership(savedUser, data);
-          userProgress = data.progress;
-          ensureProgressFields();
+          hydrateUserProgress(data.progress);
           notifyTrialExpiredIfNeeded(!!data.membershipChanged);
           updateUserBanner();
           switchScreen("home");
@@ -804,6 +814,7 @@ async function loadProgress() {
     // 未登录或 session 失效
     currentUser = null;
     userProgress = null;
+    progressHydrated = false;
     updateUserBanner();
     switchScreen("auth");
   } else {
@@ -814,13 +825,13 @@ async function loadProgress() {
       const expired = refreshLocalMembership(currentUser);
       if (expired) saveAllUsers();
       notifyTrialExpiredIfNeeded(expired);
-      userProgress = allUsers[currentUser].progress;
-      ensureProgressFields();
+      hydrateUserProgress(allUsers[currentUser].progress);
       updateUserBanner();
       switchScreen("home");
     } else {
       currentUser  = null;
       userProgress = null;
+      progressHydrated = false;
       updateUserBanner();
       switchScreen("auth");
     }
@@ -828,19 +839,29 @@ async function loadProgress() {
 }
 
 // ── 统一入口：saveProgress（fire-and-forget） ───────────────
-function saveProgress() {
-  if (!currentUser || !userProgress) return;
+function saveProgress(options = {}) {
+  if (!currentUser || !userProgress || !progressHydrated) return;
   if (IS_LOCAL_SERVER) {
     fetch('/api/save-progress', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ username: currentUser, progress: userProgress })
+      body: JSON.stringify({
+        username: currentUser,
+        progress: userProgress,
+        force: !!options.force
+      })
     })
       .then(r => r.json())
       .then(data => {
-        if (!data.success || !allUsers[currentUser]) return;
+        if (!data.success) {
+          if (data.error) console.warn("[app] save-progress 被拒绝:", data.error);
+          return;
+        }
+        if (!allUsers[currentUser]) return;
         const wasSuper = allUsers[currentUser].membership === "super";
         syncUserMembership(currentUser, data);
+        // 保留内存中的完整 progress，避免被摘要对象冲掉
+        allUsers[currentUser].progress = userProgress;
         updateUserBanner();
         if (data.membershipChanged && wasSuper && data.membership === "normal")
           notifyTrialExpiredIfNeeded(true);
@@ -941,8 +962,7 @@ async function handleAuthAction(action) {
       currentUser = username;
       localStorage.setItem("beijing_quiz_current_user", username);
       syncUserMembership(username, data);
-      userProgress = data.progress;
-      ensureProgressFields();
+      hydrateUserProgress(data.progress);
     } catch(e) {
       alert("无法连接到本地服务器，请确认 server.js 已运行！\n（命令：node server.js）");
       return;
@@ -962,21 +982,10 @@ async function handleAuthAction(action) {
         isTrial: !isAdminPass,
         trialDaysLeft: isAdminPass ? 0 : TRIAL_DAYS,
         lastLoginAt: new Date().toISOString(),
-        progress: {
-          beijing: {answers:{},mistakes:[],favorites:[]},
-          idioms:  {answers:{},mistakes:[],favorites:[]},
-          politics:{answers:{},mistakes:[],favorites:[]},
-          theory:  {answers:{},mistakes:[],favorites:[]},
-          guidebook:{answers:{},mistakes:[],favorites:[]},
-          quant:   {answers:{},mistakes:[],favorites:[]},
-          essays:  {answers:{},mistakes:[],favorites:[]},
-          shenlun_practice: {answers:{},mistakes:[],favorites:[]},
-          theory_drill: {answers:{},mistakes:[],favorites:[]},
-          interview:{answers:{},mistakes:[],favorites:[]},
-          resume_projects: {answers:{},mistakes:[],favorites:[]},
-          checkInDays:[getTodayStr()], streak:1
-        }
+        progress: createEmptyProgress()
       };
+      allUsers[username].progress.checkInDays = [getTodayStr()];
+      allUsers[username].progress.streak = 1;
       saveAllUsers();
       if (isAdminPass) {
         alert("注册成功！检测到管理员密码，已为您直接开通永久超级会员！");
@@ -1011,13 +1020,13 @@ async function handleAuthAction(action) {
     currentUser  = username;
     localStorage.setItem("beijing_quiz_current_user", username);
     refreshLocalMembership(username);
-    userProgress = allUsers[username].progress;
-    ensureProgressFields();
+    hydrateUserProgress(allUsers[username].progress);
   }
 
   usernameInput.value = "";
   passwordInput.value = "";
   updateUserBanner();
+  if (userProgress) handleDailyCheckIn();
   selectSubject(currentSubject);
   switchScreen("home");
 }
@@ -1046,6 +1055,7 @@ function toggleAuthMode() {
 function handleLogout() {
   currentUser  = null;
   userProgress = null;
+  progressHydrated = false;
   localStorage.removeItem("beijing_quiz_current_user");
   document.getElementById("auth-username").value = "";
   document.getElementById("auth-password").value = "";
@@ -1112,8 +1122,20 @@ async function showAdminPanel() {
         if (!(await ensureAdminLogin())) return;
         return showAdminPanel();
       }
-      allUsers = {};
-      Object.keys(data.users).forEach(u => { allUsers[u] = data.users[u]; });
+      // 只更新管理摘要字段，绝不能丢掉当前登录用户的完整 progress
+      Object.keys(data.users).forEach(u => {
+        const prev = allUsers[u] || {};
+        allUsers[u] = {
+          ...prev,
+          ...data.users[u],
+          progress: prev.progress
+        };
+      });
+      // 当前登录账号以内存进度为准
+      if (currentUser && userProgress) {
+        allUsers[currentUser] = allUsers[currentUser] || {};
+        allUsers[currentUser].progress = userProgress;
+      }
       const summaryEl = document.getElementById("admin-user-summary");
       const hintEl = document.getElementById("admin-panel-hint");
       if (summaryEl) summaryEl.textContent = `共 ${data.total} 个注册用户（数据来自服务器 users.json，所有设备共享）`;
@@ -2396,15 +2418,43 @@ function renderMistakes() {
     `;
     return;
   }
+
+  // 错题按科目隔离：切换科目才能看到对应错题。顺带做 id 宽松匹配，避免 number/string 导致“全丢”
+  const findQuestionById = (qId) => {
+    let q = QUESTIONS.find(item => item.id === qId || String(item.id) === String(qId));
+    if (q) return q;
+    // 跨科目兜底查找（题库改版后仍能看见记录）
+    for (const sid of Object.keys(SUBJECT_DATA || {})) {
+      const qs = (SUBJECT_DATA[sid] && SUBJECT_DATA[sid].questions) || [];
+      q = qs.find(item => item.id === qId || String(item.id) === String(qId));
+      if (q) return q;
+    }
+    return null;
+  };
   
+  let rendered = 0;
   targetIds.forEach(qId => {
-    const q = QUESTIONS.find(item => item.id === qId);
-    if (!q) return;
-    
+    const q = findQuestionById(qId);
     const card = document.createElement("div");
     card.className = "mistake-card";
     
-    const ansLog = progress.answers[q.id];
+    if (!q) {
+      card.innerHTML = `
+        <div class="mistake-card-header">
+          <span class="mistake-tag">题目已变更</span>
+          <span style="font-size:11px; color:var(--text-muted);">ID: ${qId}</span>
+        </div>
+        <div class="mistake-q">原题可能已更新或换科目，记录仍保留。可点「已记牢」清除。</div>
+        <div class="mistake-actions">
+          <button class="btn-action" onclick='removeQuestionState(${JSON.stringify(currentMistakeTab)}, ${JSON.stringify(qId)})'>已记牢</button>
+        </div>
+      `;
+      container.appendChild(card);
+      rendered++;
+      return;
+    }
+
+    const ansLog = progress.answers[q.id] || progress.answers[qId];
     const logText = ansLog ? `作答 ${ansLog.count} 次` : "未作答";
     
     const qIdAttr = JSON.stringify(q.id);
@@ -2424,7 +2474,17 @@ function renderMistakes() {
       </div>
     `;
     container.appendChild(card);
+    rendered++;
   });
+
+  if (rendered === 0) {
+    container.innerHTML = `
+      <div class="empty-state">
+        <div class="empty-icon">📭</div>
+        <p>错题记录存在，但当前题库无法匹配。请切换科目查看，或联系更新后保留的错题 ID。</p>
+      </div>
+    `;
+  }
 }
 
 function removeQuestionState(tab, qId) {
@@ -2927,7 +2987,7 @@ function handleImportData(e) {
     try {
       const parsed = JSON.parse(evt.target.result);
       if (parsed && typeof parsed === "object") {
-        userProgress = parsed;
+        hydrateUserProgress(parsed);
         saveProgress();
         selectSubject(currentSubject);
         alert("备考数据导入成功！已成功还原学习记录。");
@@ -2944,7 +3004,7 @@ function handleImportData(e) {
 
 function resetAllData() {
   if (confirm("🚨 警告：此操作将永久清空您在此应用中的所有答题记录、错题本与签到记录，且不可恢复！\n\n确定要继续重置吗？")) {
-    userProgress = {
+    hydrateUserProgress({
       beijing: { answers: {}, mistakes: [], favorites: [] },
       idioms: { answers: {}, mistakes: [], favorites: [] },
       politics: { answers: {}, mistakes: [], favorites: [] },
@@ -2958,8 +3018,8 @@ function resetAllData() {
       resume_projects: { answers: {}, mistakes: [], favorites: [] },
       checkInDays: [getTodayStr()],
       streak: 1
-    };
-    saveProgress();
+    });
+    saveProgress({ force: true });
     selectSubject(currentSubject);
     alert("您的学习记录已全部归零。");
     switchScreen("home");

@@ -1,6 +1,274 @@
-// 简历「实习经历 + 项目经历」合一模块 · 面试口述题库
-// （基于《崔泽坤_央国企简历》）
-// 统一结构：背景 → 模块 → 技术栈 → 实现要点 → 核心理念
+// 简历「实习经历 + 项目经历」合一 · 面试口述背诵
+// 交互对齐申论范文：关键句 / 技术词可隐藏展示；文下附基础知识点延伸
+
+const RESUME_ORAL_SCRIPTS = [
+  {
+    id: "oral_momenta",
+    title: "Momenta｜60秒口述",
+    project: "momenta",
+    projectName: "实习·Momenta后端",
+    oneLiner: "工业级数据生产平台上的工作流后端负责人之一。",
+    paragraphs: [
+      {
+        type: "hook",
+        label: "开场",
+        text: "Momenta 实习期间，我参与建设自动驾驶场景下的 DDOD 数据生产流水线平台：面向内部数据生产与标注业务，支撑多类型任务的创建、编排、调度与监控。我主要负责 OCC 工作流与任务管理模块后端。",
+        masks: [
+          { text: "DDOD 数据生产流水线平台", type: "key" },
+          { text: "OCC 工作流与任务管理模块后端", type: "key" }
+        ]
+      },
+      {
+        type: "body",
+        label: "模块",
+        text: "模块可以拆成四块：Union/Occ/Task 核心 REST API；UnionOccTaskService 核心链路，做数据集解析、批量 MD5、并发创建 workflow、任务落库与状态刷新；monitor 监控子系统，覆盖进度同步、部署状态、成本计算与告警前置判断；ORMMethodService 统一数据访问门面。整体把「任务提交→解析→落库→状态流转→外部对接→监控告警」做成可追溯、可观测的闭环。",
+        masks: [
+          { text: "数据集解析、批量 MD5、并发创建 workflow", type: "tech" },
+          { text: "进度同步、部署状态、成本计算与告警前置判断", type: "tech" },
+          { text: "任务提交→解析→落库→状态流转→外部对接→监控告警", type: "key" }
+        ]
+      },
+      {
+        type: "close",
+        label: "收束",
+        text: "技术栈是 Spring Boot、MyBatis、多数据源、RESTful API 与外部系统集成。面试关键词：工作流编排、任务状态机、批量与并发、可观测性。",
+        masks: [
+          { text: "Spring Boot、MyBatis、多数据源", type: "tech" },
+          { text: "工作流编排、任务状态机、批量与并发、可观测性", type: "key" }
+        ]
+      }
+    ],
+    knowledge: [
+      {
+        id: "k_workflow",
+        title: "工作流 / 任务状态机",
+        summary: "把任务生命周期建模成状态流转，而不是散落的 if-else。",
+        detail: "常见状态：CREATED → RUNNING → SUCCESS/FAILED（可加 CANCELLED、RETRY）。每次流转写清触发条件与副作用（落库、回调、告警）。面试可补一句：幂等与可重入——同一任务重复提交不应产生脏数据。"
+      },
+      {
+        id: "k_observability",
+        title: "可观测性三件套",
+        summary: "Metrics / Logging / Tracing，支撑进度、成本、告警。",
+        detail: "监控子系统本质是可观测：进度同步看运行态，成本计算看资源账，告警前置判断避免事后救火。基础点：指标要能下钻到任务维度，日志带 traceId，外部对接失败要有明确错误码。"
+      }
+    ]
+  },
+  {
+    id: "oral_farm",
+    title: "银黄农场｜60秒口述",
+    project: "farm_robot",
+    projectName: "实习·银黄农场巡检",
+    oneLiner: "智慧农业具身智能的田间落地实践。",
+    paragraphs: [
+      {
+        type: "hook",
+        label: "开场",
+        text: "银黄农场专业实践针对温室大棚人工巡检效率低、成本高的痛点，参与智能巡检机器人系统研发与联调，覆盖外壳结构、巡检方案对比、路径规划集成与田间实测。",
+        masks: [
+          { text: "温室大棚人工巡检效率低、成本高", type: "key" },
+          { text: "外壳结构、巡检方案对比、路径规划集成与田间实测", type: "key" }
+        ]
+      },
+      {
+        type: "body",
+        label: "模块",
+        text: "四块工作：数据采集与视觉定位，视觉 SLAM 精度约从 25% 提升到 70%；巡检感知方案对比，覆盖 OpenCV 巡线、YOLO 路面分割、视觉/激光 SLAM；路径规划对比 A*/RRT*/Hybrid A*，局部 TEB 并保留作物安全距离，集成 ROS Navigation；SOLIDWORKS 外壳与 10m 行间实测，跟踪误差小于 15cm。",
+        masks: [
+          { text: "视觉 SLAM 精度约从 25% 提升到 70%", type: "key" },
+          { text: "OpenCV 巡线、YOLO 路面分割、视觉/激光 SLAM", type: "tech" },
+          { text: "Hybrid A*", type: "tech" },
+          { text: "跟踪误差小于 15cm", type: "key" }
+        ]
+      },
+      {
+        type: "close",
+        label: "收束",
+        text: "口述三段论：视觉 SLAM 解决「我在哪」，YOLO/分割解决「路在哪」，Hybrid A*+TEB 解决「怎么走且不伤作物」。核心理念是「算法对比选边界 + 田间实测定指标」。",
+        masks: [
+          { text: "视觉 SLAM 解决「我在哪」", type: "key" },
+          { text: "YOLO/分割解决「路在哪」", type: "key" },
+          { text: "Hybrid A*+TEB 解决「怎么走且不伤作物」", type: "key" }
+        ]
+      }
+    ],
+    knowledge: [
+      {
+        id: "k_slam",
+        title: "SLAM 一句话",
+        summary: "同时估计自身位姿与环境地图。",
+        detail: "视觉 SLAM 靠相机特征，激光 SLAM 靠点云；温棚无轨、纹理重复时视觉更易漂。你项目里用精度提升讲清「为什么做方案对比」，比只报模型名更有说服力。"
+      },
+      {
+        id: "k_teb",
+        title: "全局规划 vs 局部规划",
+        summary: "Hybrid A* 管全局可行性，TEB 管局部避障与平滑。",
+        detail: "全局规划给参考路径；局部规划（如 TEB）根据实时障碍与运动学约束微调。作物安全距离是业务约束，要写进代价函数或膨胀半径，面试官爱听「约束如何落到参数」。"
+      }
+    ]
+  },
+  {
+    id: "oral_zhinnong",
+    title: "智农云眸｜60秒口述",
+    project: "zhinnong",
+    projectName: "项目·智农云眸",
+    oneLiner: "农业 AI 业务下的高并发后端攻坚。",
+    paragraphs: [
+      {
+        type: "hook",
+        label: "开场",
+        text: "智农云眸是面向 C 端与 B 端的智慧农业全栈平台，集成多模态病虫害识别、RAG 专家问答与 Multi-Agent 调度。我重点负责高并发链路、缓存一致性治理与短链接系统优化。",
+        masks: [
+          { text: "多模态病虫害识别、RAG 专家问答与 Multi-Agent 调度", type: "tech" },
+          { text: "高并发链路、缓存一致性治理与短链接系统优化", type: "key" }
+        ]
+      },
+      {
+        type: "body",
+        label: "模块",
+        text: "四条线：大模型对话上下文采用先更新 DB 再删缓存，并加分布式重试；高并发网址跳转做缓存多层判断与 synchronized，治理击穿/穿透，避免大 Key；短链接用 ShardingSphere 基因法分表，分表信息嵌入短链；发号用 Redis 批量号段 + AtomicLong 自增与越界校验。",
+        masks: [
+          { text: "先更新 DB 再删缓存", type: "key" },
+          { text: "击穿/穿透", type: "tech" },
+          { text: "ShardingSphere 基因法分表", type: "tech" },
+          { text: "Redis 批量号段 + AtomicLong", type: "tech" }
+        ]
+      },
+      {
+        type: "close",
+        label: "收束",
+        text: "技术栈：Spring Boot、RocketMQ、ShardingSphere、Redis、MySQL、Sentinel。核心理念是「业务可用 + 高并发稳定」——对话要最终一致，短链要抗击穿并可分片扩展。",
+        masks: [
+          { text: "业务可用 + 高并发稳定", type: "key" },
+          { text: "对话要最终一致，短链要抗击穿并可分片扩展", type: "key" }
+        ]
+      }
+    ],
+    knowledge: [
+      {
+        id: "k_cache_aside",
+        title: "Cache-Aside（旁路缓存）",
+        summary: "读：先缓存，miss 再 DB 回填；写：通常改 DB 再删缓存。",
+        detail: "为什么删缓存而不是更新缓存？避免并发写导致缓存脏数据。主从延迟场景可配合延迟双删或订阅 binlog。你项目里的「先更 DB 再删缓存 + 重试」就是在保证最终一致。"
+      },
+      {
+        id: "k_cache_three",
+        title: "穿透 / 击穿 / 雪崩",
+        summary: "穿透=查不存在；击穿=热点 key 过期；雪崩=大量 key 同时过期。",
+        detail: "穿透：布隆过滤器或缓存空值。击穿：互斥锁 / 逻辑过期，你用的 synchronized 属于互斥回源。雪崩：过期时间加随机抖动 + 集群高可用。面试再补一句大 Key 危害：阻塞网络与慢查询。"
+      },
+      {
+        id: "k_shard_gene",
+        title: "基因法分片",
+        summary: "把分片信息编码进业务 ID，路由无需二次查表。",
+        detail: "短链里嵌入分表位，解析短链即可定位分片，避免「先查路由表再查数据」。号段发号则是用 Redis 一次取一段，本地 AtomicLong 消耗，降低 Redis 往返。"
+      }
+    ]
+  },
+  {
+    id: "oral_fruit",
+    title: "水果病害小程序｜60秒口述",
+    project: "fruit_mp",
+    projectName: "项目·水果病害小程序",
+    oneLiner: "数据集工具链的端侧独立交付。",
+    paragraphs: [
+      {
+        type: "hook",
+        label: "开场",
+        text: "水果病害小程序是我独立开发的采集标注工具，面向智慧农业研究与机器学习数据集建设：多维属性采集、可视化画框标注、端侧 AI 辅助识别、JSON/CSV 导出。已开源。",
+        masks: [
+          { text: "多维属性采集、可视化画框标注、端侧 AI 辅助识别、JSON/CSV 导出", type: "key" },
+          { text: "已开源", type: "key" }
+        ]
+      },
+      {
+        type: "body",
+        label: "模块",
+        text: "核心能力：Canvas 画框标注（YOLO/XML）；端侧 ONNX/YOLOv8 推理，含预处理、NMS、结果回填；双推理引擎——InferenceSession 失败则降级到 Canvas+HSV 规则引擎；模型策略是轻量本地打包 + CDN 远程按需缓存，突破小程序包体积限制。",
+        masks: [
+          { text: "预处理、NMS、结果回填", type: "tech" },
+          { text: "InferenceSession 失败则降级到 Canvas+HSV", type: "key" },
+          { text: "轻量本地打包 + CDN 远程按需缓存", type: "key" }
+        ]
+      },
+      {
+        type: "close",
+        label: "收束",
+        text: "核心理念：端侧要「能跑还要兜底」。主路径 createInferenceSession，失败降级 HSV；大模型走 CDN 静默缓存，小模型内置。定位：采集—标注—推理—导出闭环。",
+        masks: [
+          { text: "能跑还要兜底", type: "key" },
+          { text: "采集—标注—推理—导出闭环", type: "key" }
+        ]
+      }
+    ],
+    knowledge: [
+      {
+        id: "k_nms",
+        title: "NMS（非极大值抑制）",
+        summary: "同一目标多个框时，保留置信度最高并抑制重叠框。",
+        detail: "按置信度排序，计算 IoU，超过阈值则丢弃。端侧还要注意预处理：letterbox 缩放、归一化、输出坐标映射回原图。面试可对比 Soft-NMS。"
+      },
+      {
+        id: "k_onnx_fallback",
+        title: "端侧推理兜底",
+        summary: "主模型失败时用规则引擎保底，保证产品可用。",
+        detail: "小程序 createInferenceSession 受机型/内存影响可能失败。HSV 颜色分割是弱监督兜底：精度不如深度学习，但能演示闭环。CDN 缓存模型解决主包 2MB 级限制。"
+      }
+    ]
+  },
+  {
+    id: "oral_combo",
+    title: "综合｜60秒串联开场",
+    project: "skills",
+    projectName: "综合串联与技术栈",
+    oneLiner: "实习偏真实业务落地，项目偏完整闭环与技术深度。",
+    paragraphs: [
+      {
+        type: "hook",
+        label: "开场",
+        text: "我的实践主线是智慧农业与工程落地：专业实践在银黄农场把 SLAM/规划做到田间指标；项目上参与智农云眸，负责缓存一致性与短链高并发；实习在 Momenta 做自动驾驶 DDOD/OCC 工作流后端；另外独立完成水果病害采集小程序并开源。",
+        masks: [
+          { text: "智慧农业与工程落地", type: "key" },
+          { text: "缓存一致性与短链高并发", type: "key" },
+          { text: "DDOD/OCC 工作流后端", type: "tech" }
+        ]
+      },
+      {
+        type: "body",
+        label: "怎么开口",
+        text: "简历两大块可以这样说：实习两条——Momenta（工业级数据流水线后端）、银黄农场（农业巡检机器人实地验证）；项目两条——智农云眸（农业 AI 全栈高并发）、水果病害小程序（端侧采集标注独立开发）。一句话收束：实习偏真实业务与联调落地，项目偏完整闭环与技术深度，主线都是智慧农业 + 工程能力。",
+        masks: [
+          { text: "实习偏真实业务与联调落地", type: "key" },
+          { text: "项目偏完整闭环与技术深度", type: "key" },
+          { text: "智慧农业 + 工程能力", type: "key" }
+        ]
+      },
+      {
+        type: "close",
+        label: "技术栈",
+        text: "后端：Java/Spring Boot/MyBatis、Redis 一致性与穿透击穿雪崩、RocketMQ、ShardingSphere、Sentinel。AI 与具身：RAG/Tool Calling/Multi-Agent，OpenCV/YOLO/SLAM/ROS，小程序端侧 ONNX。",
+        masks: [
+          { text: "Redis 一致性与穿透击穿雪崩", type: "tech" },
+          { text: "RAG/Tool Calling/Multi-Agent", type: "tech" },
+          { text: "小程序端侧 ONNX", type: "tech" }
+        ]
+      }
+    ],
+    knowledge: [
+      {
+        id: "k_star",
+        title: "口述结构建议（STAR）",
+        summary: "Situation → Task → Action → Result，每段 15–20 秒。",
+        detail: "开场给背景与职责（S/T），中间讲 2–3 个可验证动作（A），收束给指标或定位句（R）。关键句挖空就是为了让你在 A/R 上不卡壳。"
+      },
+      {
+        id: "k_depth",
+        title: "实习 vs 项目怎么对比",
+        summary: "实习强调约束与联调；项目强调闭环与取舍。",
+        detail: "面试官常问「你独立负责什么」。实习用「模块边界 + 协作接口」答；项目用「从 0 到 1 的决策」答。两条线都落到智慧农业，故事更顺。"
+      }
+    ]
+  }
+];
 
 const RESUME_PROJECTS_DATA = {
   name: "实习与项目·面试口述",
@@ -12,99 +280,24 @@ const RESUME_PROJECTS_DATA = {
     { id: "fruit_mp", name: "项目·水果病害小程序" },
     { id: "skills", name: "综合串联与技术栈" }
   ],
-  facts: [
-    // ========== 实习① Momenta ==========
-    {
-      title: "【实习】Momenta｜一句话总述",
-      cat: "momenta",
-      content: "【类型：实习经历｜后端开发实习生｜2025.12–2026.02｜北京】Momenta 期间参与建设自动驾驶场景下的 DDOD 数据生产流水线平台：面向内部数据生产与标注业务，支撑多类型任务的创建、编排、调度与监控。我主要负责 OCC 工作流与任务管理模块后端。技术栈：Spring Boot、MyBatis、多数据源、RESTful API、外部系统集成。核心理念：把「任务提交→解析→落库→状态流转→外部对接→监控告警」做成可追溯、可观测的闭环。"
-    },
-    {
-      title: "【实习】Momenta｜模块拆解",
-      cat: "momenta",
-      content: "模块四块：① Union/Occ/Task 核心 REST API（创建、查询、状态流转）；② UnionOccTaskService 核心链路（数据集解析、批量 MD5、并发创建 workflow、任务落库与状态刷新）；③ monitor 监控子系统（进度同步、部署状态、成本计算、告警前置判断）；④ ORMMethodService 数据访问门面（统一 DPL 相关表 upsert/查询）。整体支撑数据任务全生命周期运营，并在多数据源场景下完成联调排障。"
-    },
-    {
-      title: "【实习】Momenta｜技术与理念",
-      cat: "momenta",
-      content: "工程抓手三条：多数据源稳定性、批量并发提交与可追溯（MD5/状态刷新）、运行态可观测（进度/成本/告警）。面试关键词：工作流编排、任务状态机、外部系统集成、批量与并发、可观测性。定位一句话：工业级数据生产平台上的工作流后端负责人之一。"
-    },
-
-    // ========== 实习② 银黄农场 ==========
-    {
-      title: "【实习】银黄农场｜一句话总述",
-      cat: "farm_robot",
-      content: "【类型：实习/专业实践｜智能巡检算法研发与实地验证｜2024.10–2025.06｜北京昌平银黄农场】针对温室大棚人工巡检效率低、成本高的痛点，参与智能巡检机器人系统研发与联调，覆盖外壳结构设计、巡检方案对比、路径规划集成与田间实测。技术栈：Python、OpenCV、YOLO、视觉/激光 SLAM、ROS Navigation、Hybrid A*/TEB、SOLIDWORKS。核心理念：「算法对比选边界 + 田间实测定指标」，把定位与规划落到无轨温棚。"
-    },
-    {
-      title: "【实习】银黄农场｜模块拆解",
-      cat: "farm_robot",
-      content: "模块四块：① 数据采集与视觉定位（连续田间采集，视觉 SLAM 精度约 25%→70%）；② 巡检感知方案对比（OpenCV 巡线、YOLO 路面分割、视觉 SLAM、激光 SLAM，分析无轨温棚鲁棒性）；③ 路径规划与导航（对比 A*/RRT*/Hybrid A*，局部 TEB + 作物安全距离，集成 ROS Navigation）；④ 结构与落地验证（SOLIDWORKS 外壳，10m 行间实测，跟踪误差 <15cm）。成果支撑怀柔顶秀展示、青创北京/强农杯及专利。"
-    },
-    {
-      title: "【实习】银黄农场｜技术与理念",
-      cat: "farm_robot",
-      content: "三段论口述：视觉 SLAM 解决「我在哪」，YOLO/分割解决「路在哪」，Hybrid A*+TEB 解决「怎么走且不伤作物」。强调指标量化、方案取舍、ROS 工程集成与实地验证闭环。定位一句话：智慧农业具身智能的田间落地实践。"
-    },
-
-    // ========== 项目① 智农云眸 ==========
-    {
-      title: "【项目】智农云眸｜一句话总述",
-      cat: "zhinnong",
-      content: "【类型：项目经历｜智慧农业全栈服务平台｜2025.09–2025.11】面向 C 端与 B 端，打造集多模态大模型病虫害图像识别、RAG 智能专家问答、Multi-Agent 自主调度于一体的全栈平台。本人重点：高并发链路、缓存一致性治理与短链接系统优化。技术栈：Spring Boot、RocketMQ、ShardingSphere、Redis、MySQL、Sentinel、Swagger。核心理念：「业务可用 + 高并发稳定」——对话要最终一致，短链要抗击穿并可分片扩展。"
-    },
-    {
-      title: "【项目】智农云眸｜模块拆解",
-      cat: "zhinnong",
-      content: "本人相关模块：① 大模型对话上下文缓存一致性（先更新 DB 再删缓存 + 分布式重试）；② 高并发网址跳转（缓存多层判断 + synchronized，治理击穿/穿透，避免大 Key）；③ 短链接分表（ShardingSphere 基因法，分表信息嵌入短链，查询性能近翻倍）；④ 短链发号（Redis 批量号段 + AtomicLong 自增 + 越界校验）。平台上层另有识别、RAG、多智能体调度能力。"
-    },
-    {
-      title: "【项目】智农云眸｜技术与理念",
-      cat: "zhinnong",
-      content: "深挖三条：缓存一致性策略、穿透/击穿/雪崩治理、基因分片 + 号段发号。体现「会用中间件」升级为「能设计一致性与容量路径」。定位一句话：农业 AI 业务下的高并发后端攻坚。"
-    },
-
-    // ========== 项目② 水果小程序 ==========
-    {
-      title: "【项目】水果病害小程序｜一句话总述",
-      cat: "fruit_mp",
-      content: "【类型：项目经历｜独立开发｜2026.06–2026.07】面向智慧农业研究与机器学习数据集建设，独立开发热带水果及叶部病害采集标注微信小程序：多维属性采集、可视化画框标注、端侧 AI 辅助识别、JSON/CSV 导出。技术栈：微信小程序、JavaScript、ONNX、YOLOv8、Canvas、wx.createInferenceSession、HSV、本地存储。核心理念：「采集—标注—推理—导出」闭环 + 双引擎兜底。开源：github.com/kk18615105392/fruit_miniprogram。"
-    },
-    {
-      title: "【项目】水果病害小程序｜模块拆解",
-      cat: "fruit_mp",
-      content: "模块七块：① 首页统计与采集录入；② 可视化画框标注（YOLO/XML）；③ 历史检索与详情编辑；④ JSON/CSV 导出与微信分享；⑤ 端侧 ONNX/YOLOv8 推理（芒果/香蕉/石榴/番茄等，含预处理、NMS、回填）；⑥ 双推理引擎（InferenceSession 失败 → Canvas+HSV 规则引擎）；⑦ 模型加载（轻量本地打包 + CDN 远程按需缓存，突破包体积限制）。"
-    },
-    {
-      title: "【项目】水果病害小程序｜技术与理念",
-      cat: "fruit_mp",
-      content: "核心理念：端侧要「能跑还要兜底」。主路径 createInferenceSession，失败降级 HSV；大模型 CDN 静默缓存，小模型内置。面试可讲：预处理与 NMS、双引擎、包体积策略、标注导出格式。定位一句话：数据集工具链的端侧独立交付。"
-    },
-
-    // ========== 综合 ==========
-    {
-      title: "【综合】实习 vs 项目｜怎么开口",
-      cat: "skills",
-      content: "简历两大块合一叙述：实习两条——Momenta（工业级数据流水线后端）、银黄农场（农业巡检机器人实地验证）；项目两条——智农云眸（农业 AI 全栈高并发）、水果病害小程序（端侧采集标注独立开发）。面试时可说：「实习偏真实业务与联调落地，项目偏完整闭环与技术深度，主线都是智慧农业 + 工程能力。」"
-    },
-    {
-      title: "【综合】60 秒串联开场",
-      cat: "skills",
-      content: "我的实践主线是智慧农业与工程落地：专业实践在银黄农场把 SLAM/规划做到田间指标；项目上参与智农云眸，负责缓存一致性与短链高并发；实习在 Momenta 做自动驾驶 DDOD/OCC 工作流后端；另外独立完成水果病害采集小程序并开源。覆盖具身智能、大模型应用、高并发后端与端侧工具。"
-    },
-    {
-      title: "【综合】技术栈总览｜后端与并发",
-      cat: "skills",
-      content: "Java/Spring Boot/MyBatis、MySQL、多数据源、RESTful 与外部集成；Redis 一致性与穿透/击穿/雪崩；RocketMQ、ShardingSphere、Sentinel；Maven、Git。"
-    },
-    {
-      title: "【综合】技术栈总览｜AI与具身",
-      cat: "skills",
-      content: "LangChain/Prompt/RAG/Tool Calling/Multi-Agent；OpenCV、YOLO、SLAM、ROS Navigation、Hybrid A*/TEB；微信小程序端侧 ONNX 推理与采集标注系统。"
-    }
-  ],
+  oralScripts: RESUME_ORAL_SCRIPTS,
+  // 考点速查：由口述稿一句话 + 知识点摘要生成
+  facts: RESUME_ORAL_SCRIPTS.flatMap((script) => {
+    const base = [
+      {
+        title: `${script.title.replace("｜60秒口述", "")}｜一句话`,
+        cat: script.project,
+        content: script.oneLiner + " " + (script.paragraphs[0] ? script.paragraphs[0].text : "")
+      }
+    ];
+    const know = (script.knowledge || []).map((k) => ({
+      title: `延伸·${k.title}`,
+      cat: script.project,
+      content: `【要点】${k.summary}\n【展开】${k.detail}`
+    }));
+    return base.concat(know);
+  }),
   questions: [
-    // —— 实习 Momenta ——
     {
       id: "rp_m_01",
       type: "fill",
@@ -113,335 +306,72 @@ const RESUME_PROJECTS_DATA = {
       question: "【实习】Momenta 参与建设自动驾驶场景下的______数据生产流水线平台，本人负责 OCC 工作流与任务管理后端。",
       options: [],
       answer: ["DDOD", "ddod"],
-      explanation: "实习项目关键词：DDOD 平台 + OCC 工作流。"
+      explanation: "关键词：DDOD 平台 + OCC 工作流。建议回口述稿把「任务提交→…→监控告警」整句背熟。"
     },
     {
       id: "rp_m_02",
       type: "single",
       category: "momenta",
       categoryName: "实习·Momenta后端",
-      question: "【实习】UnionOccTaskService 核心链路不包含？",
-      options: ["数据集解析与批量 MD5", "并发创建 workflow 并落库", "前端可视化拖拽编排", "任务状态刷新与可追溯"],
+      question: "【实习】UnionOccTaskService 核心链路主要不包含哪一项？",
+      options: ["数据集解析与批量 MD5", "并发创建 workflow", "前端页面像素级还原", "任务落库与状态刷新"],
       answer: "C",
-      explanation: "实习职责在后端链路，不是前端编排。"
+      explanation: "后端链路侧重解析、并发提交、落库与状态；不是 UI 还原。"
     },
-    {
-      id: "rp_m_03",
-      type: "fill",
-      category: "momenta",
-      categoryName: "实习·Momenta后端",
-      question: "【实习】monitor 子系统强调为运营提供运行态______能力。",
-      options: [],
-      answer: ["可观测", "可观测性", "观测"],
-      explanation: "进度/成本/告警 → 可观测性。"
-    },
-    {
-      id: "rp_m_04",
-      type: "single",
-      category: "momenta",
-      categoryName: "实习·Momenta后端",
-      question: "【实习】ORMMethodService 更接近？",
-      options: ["消息中间件", "多表 upsert/查询的数据访问门面", "前端状态库", "训练调度器"],
-      answer: "B",
-      explanation: "数据访问门面，统一 DPL 表操作。"
-    },
-    {
-      id: "rp_m_05",
-      type: "fill",
-      category: "momenta",
-      categoryName: "实习·Momenta后端",
-      question: "【实习】Momenta 技术栈除 SpringBoot、MyBatis 外，还强调______联调排障。",
-      options: [],
-      answer: ["多数据源", "多数据源场景"],
-      explanation: "多数据源 + 外部系统集成。"
-    },
-    {
-      id: "rp_m_06",
-      type: "single",
-      category: "momenta",
-      categoryName: "实习·Momenta后端",
-      question: "【实习】Momenta 核心理念最贴切的是？",
-      options: ["只追求页面美观", "任务全生命周期可追溯、可观测闭环", "一次性脚本导入", "不做外部对接"],
-      answer: "B",
-      explanation: "提交到监控告警的闭环。"
-    },
-
-    // —— 实习 银黄农场 ——
     {
       id: "rp_f_01",
-      type: "single",
-      category: "farm_robot",
-      categoryName: "实习·银黄农场巡检",
-      question: "【实习】银黄农场要解决的痛点是？",
-      options: ["电商峰值", "温室大棚人工巡检效率低、成本高", "短链高并发", "小程序包体积"],
-      answer: "B",
-      explanation: "专业实践一线痛点：人工巡检。"
-    },
-    {
-      id: "rp_f_02",
       type: "fill",
       category: "farm_robot",
       categoryName: "实习·银黄农场巡检",
-      question: "【实习】视觉 SLAM 定位精度由约 25% 提升至约______。",
+      question: "【实习】银黄农场视觉 SLAM 精度约从______提升到______；行间实测跟踪误差小于______。",
       options: [],
-      answer: ["70%", "70"],
-      explanation: "实习量化指标。"
+      answer: ["25%", "70%", "15cm", "15 cm"],
+      explanation: "指标句是收分点：25%→70%，误差<15cm。"
     },
-    {
-      id: "rp_f_03",
-      type: "single",
-      category: "farm_robot",
-      categoryName: "实习·银黄农场巡检",
-      question: "【实习】局部规划器采用？",
-      options: ["DWA", "TEB（含作物安全距离）", "仅开环 Pure Pursuit", "只用 RRT*"],
-      answer: "B",
-      explanation: "TEB + 安全距离 + ROS Navigation。"
-    },
-    {
-      id: "rp_f_04",
-      type: "fill",
-      category: "farm_robot",
-      categoryName: "实习·银黄农场巡检",
-      question: "【实习】10m 行间实测，路径跟踪误差小于______cm。",
-      options: [],
-      answer: ["15", "15cm", "15厘米"],
-      explanation: "误差 <15cm。"
-    },
-    {
-      id: "rp_f_05",
-      type: "single",
-      category: "farm_robot",
-      categoryName: "实习·银黄农场巡检",
-      question: "【实习】技术栈概括最完整的是？",
-      options: [
-        "SpringBoot / Redis / RocketMQ",
-        "Python / OpenCV / YOLO / SLAM / ROS / Hybrid A*·TEB",
-        "仅 SOLIDWORKS",
-        "仅小程序"
-      ],
-      answer: "B",
-      explanation: "具身与视觉栈。"
-    },
-    {
-      id: "rp_f_06",
-      type: "single",
-      category: "farm_robot",
-      categoryName: "实习·银黄农场巡检",
-      question: "【实习】SLAM / YOLO / Hybrid A*+TEB 分别解决？",
-      options: [
-        "我在哪 / 路在哪 / 怎么走且不伤作物",
-        "下单 / 支付 / 物流",
-        "缓存 / 分表 / 发号",
-        "登录 / 权限 / 审计"
-      ],
-      answer: "A",
-      explanation: "具身导航三段论。"
-    },
-
-    // —— 项目 智农云眸 ——
     {
       id: "rp_z_01",
       type: "single",
       category: "zhinnong",
       categoryName: "项目·智农云眸",
-      question: "【项目】智农云眸能力组合是？",
-      options: [
-        "仅 CRUD",
-        "多模态病虫害识别 + RAG + Multi-Agent",
-        "仅自动驾驶标注",
-        "仅机械臂"
-      ],
+      question: "【项目】对话上下文缓存一致性，更稳妥的常见写法是？",
+      options: ["只更新缓存不改 DB", "先更新 DB 再删缓存", "同时强行双写且不等待", "永不过期不做失效"],
       answer: "B",
-      explanation: "识别 + RAG + 多智能体。"
+      explanation: "Cache-Aside 常见写路径：改 DB 再删缓存，配合重试保证最终一致。"
     },
     {
       id: "rp_z_02",
       type: "fill",
       category: "zhinnong",
       categoryName: "项目·智农云眸",
-      question: "【项目】缓存一致性：先更新数据库再______缓存，配合分布式重试。",
+      question: "【项目】短链接分表采用 ShardingSphere______，发号采用 Redis______。",
       options: [],
-      answer: ["删除", "删", "del"],
-      explanation: "先写库再删缓存。"
+      answer: ["基因法", "批量号段", "号段"],
+      explanation: "基因法分片 + 号段发号，是短链高并发的两个抓手。"
     },
-    {
-      id: "rp_z_03",
-      type: "single",
-      category: "zhinnong",
-      categoryName: "项目·智农云眸",
-      question: "【项目】短链分表关键思路？",
-      options: ["随机分表无法反查", "ShardingSphere 基因法，分表信息嵌入短链", "只靠单表索引", "一个 Redis 大 Key"],
-      answer: "B",
-      explanation: "基因法分片。"
-    },
-    {
-      id: "rp_z_04",
-      type: "fill",
-      category: "zhinnong",
-      categoryName: "项目·智农云眸",
-      question: "【项目】短链发号：Redis 批量号段 + ______ 内存自增。",
-      options: [],
-      answer: ["AtomicLong", "atomiclong"],
-      explanation: "号段 + AtomicLong。"
-    },
-    {
-      id: "rp_z_05",
-      type: "single",
-      category: "zhinnong",
-      categoryName: "项目·智农云眸",
-      question: "【项目】高并发跳转要治理？",
-      options: ["仅 SQL 注入", "大 Key、击穿与穿透", "仅前端路由", "仅证书过期"],
-      answer: "B",
-      explanation: "缓存三大问题 + 大 Key。"
-    },
-    {
-      id: "rp_z_06",
-      type: "fill",
-      category: "zhinnong",
-      categoryName: "项目·智农云眸",
-      question: "【项目】本人重点三条线：缓存一致性、高并发跳转、______优化。",
-      options: [],
-      answer: ["短链接", "短链", "短网址"],
-      explanation: "短链接系统。"
-    },
-
-    // —— 项目 小程序 ——
     {
       id: "rp_p_01",
-      type: "fill",
-      category: "fruit_mp",
-      categoryName: "项目·水果病害小程序",
-      question: "【项目】端侧推理 API：______；失败回退 HSV 规则引擎。",
-      options: [],
-      answer: ["wx.createInferenceSession", "createInferenceSession"],
-      explanation: "双引擎主路径。"
-    },
-    {
-      id: "rp_p_02",
       type: "single",
       category: "fruit_mp",
       categoryName: "项目·水果病害小程序",
-      question: "【项目】突破包体积的模型策略？",
-      options: [
-        "全部进主包",
-        "轻量本地打包 + 大模型 CDN 按需缓存",
-        "每次重新训练",
-        "仅云端阻塞推理"
-      ],
+      question: "【项目】端侧推理主路径失败时的兜底是？",
+      options: ["直接崩溃提示重装", "Canvas+HSV 规则引擎", "强制下载 100MB 模型", "改为纯服务端且无离线"],
       answer: "B",
-      explanation: "本地轻量 + CDN。"
+      explanation: "双引擎：InferenceSession → HSV 兜底，体现「能跑还要兜底」。"
     },
-    {
-      id: "rp_p_03",
-      type: "single",
-      category: "fruit_mp",
-      categoryName: "项目·水果病害小程序",
-      question: "【项目】业务闭环？",
-      options: [
-        "只拍照",
-        "采集 → 标注 → 端侧识别 → 编辑 → JSON/CSV 导出",
-        "只商城",
-        "只权限"
-      ],
-      answer: "B",
-      explanation: "采集标注推理导出。"
-    },
-    {
-      id: "rp_p_04",
-      type: "fill",
-      category: "fruit_mp",
-      categoryName: "项目·水果病害小程序",
-      question: "【项目】检测后处理需______解码再回填。",
-      options: [],
-      answer: ["NMS", "nms", "非极大值抑制"],
-      explanation: "NMS。"
-    },
-    {
-      id: "rp_p_05",
-      type: "single",
-      category: "fruit_mp",
-      categoryName: "项目·水果病害小程序",
-      question: "【项目】双引擎理念？",
-      options: [
-        "只追精度不顾可用性",
-        "主路径深度学习，失败降级规则引擎，保障低端机",
-        "不做端侧推理",
-        "只用云端无兜底"
-      ],
-      answer: "B",
-      explanation: "能跑还要兜底。"
-    },
-
-    // —— 综合：实习+项目一个模块 ——
     {
       id: "rp_s_01",
       type: "single",
       category: "skills",
       categoryName: "综合串联与技术栈",
-      question: "简历里「实习经历」与「项目经历」在本模块中的关系是？",
+      question: "【综合】面试开场更合适的定位是？",
       options: [
-        "分成两个无关科目",
-        "合并为同一科目：实习两条 + 项目两条，结构统一口述",
-        "只保留实习",
-        "只保留项目"
+        "只讲课程作业",
+        "实习偏业务落地、项目偏闭环深度，主线智慧农业+工程能力",
+        "只报框架名词堆叠",
+        "回避所有指标"
       ],
       answer: "B",
-      explanation: "Momenta、银黄农场（实习）+ 智农云眸、水果小程序（项目）= 一个面试口述模块。"
-    },
-    {
-      id: "rp_s_02",
-      type: "single",
-      category: "skills",
-      categoryName: "综合串联与技术栈",
-      question: "较合理的四段串联顺序？",
-      options: [
-        "银黄农场（具身）→ 智农云眸（农业AI高并发）→ Momenta（数据流水线后端）→ 小程序（端侧工具）",
-        "只讲奖学金",
-        "只讲社团",
-        "四条毫无关联"
-      ],
-      answer: "A",
-      explanation: "智慧农业 + 工程能力主线。"
-    },
-    {
-      id: "rp_s_03",
-      type: "fill",
-      category: "skills",
-      categoryName: "综合串联与技术栈",
-      question: "高并发口诀：Redis 防穿透/击穿/雪崩；分表用______基因法；发号用 Redis 号段。",
-      options: [],
-      answer: ["ShardingSphere", "shardingsphere"],
-      explanation: "来自智农云眸，可迁移到综合技术问答。"
-    },
-    {
-      id: "rp_s_04",
-      type: "single",
-      category: "skills",
-      categoryName: "综合串联与技术栈",
-      question: "若问「实习和项目有何区别」，较贴切？",
-      options: [
-        "实习无技术含量",
-        "实习更偏真实业务联调与指标落地；项目更偏完整闭环与可深挖技术点；二者同一主线",
-        "项目都是抄的",
-        "没有任何区别也无需解释"
-      ],
-      answer: "B",
-      explanation: "帮助面试官理解简历结构，同时强调统一主线。"
-    },
-    {
-      id: "rp_s_05",
-      type: "single",
-      category: "skills",
-      categoryName: "综合串联与技术栈",
-      question: "后端深挖优先选哪条？",
-      options: [
-        "智农云眸：缓存一致性 + 短链基因分片与号段发号",
-        "只会打印日志",
-        "只会改 CSS",
-        "没有后端"
-      ],
-      answer: "A",
-      explanation: "有策略、中间件与量化效果。"
+      explanation: "用主线把四段经历串起来，比堆技术词更清晰。"
     }
   ]
 };

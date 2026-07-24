@@ -113,7 +113,7 @@ function summarizeUser(user) {
   const prog = user.progress || {};
   let doneCount = 0;
   let mistakeCount = 0;
-  ['beijing', 'idioms', 'politics', 'theory', 'guidebook', 'quant', 'essays'].forEach(sub => {
+  ['beijing', 'idioms', 'politics', 'theory', 'guidebook', 'quant', 'essays', 'shenlun_practice', 'theory_drill', 'interview', 'resume_projects'].forEach(sub => {
     if (prog[sub]) {
       if (prog[sub].answers) doneCount += Object.keys(prog[sub].answers).length;
       if (prog[sub].mistakes) mistakeCount += prog[sub].mistakes.length;
@@ -266,12 +266,52 @@ app.post('/api/save-progress', (req, res) => {
   const users = loadUsers();
   if (!users[username]) return res.json({ success: false, error: '用户不存在' });
 
+  const existing = users[username].progress || {};
+  const oldAns = countAnswers(existing);
+  const newAns = countAnswers(progress);
+  const oldMis = countMistakes(existing);
+  const newMis = countMistakes(progress);
+
+  // 防护：禁止用「几乎空进度」覆盖已有大量答题/错题记录（常见于未加载完成就写入）
+  // 显式 force=true 时允许（用于用户主动「重置全部数据」）
+  const force = !!(req.body && req.body.force);
+  if (!force && (oldAns >= 5 || oldMis >= 3) && newAns === 0 && newMis === 0) {
+    console.warn(`[server] 拒绝空进度覆盖 ${username}：已有 answers=${oldAns} mistakes=${oldMis}`);
+    return res.json({
+      success: false,
+      error: '拒绝用空进度覆盖已有学习记录',
+      ...getMembershipPayload(users[username])
+    });
+  }
+
   users[username].progress = progress;
   users[username].lastActiveAt = new Date().toISOString();
   const changed = applyMembershipExpiry(users[username]);
   saveUsers(users);
   res.json({ success: true, membershipChanged: changed, ...getMembershipPayload(users[username]) });
 });
+
+function countAnswers(progress) {
+  if (!progress || typeof progress !== 'object') return 0;
+  let n = 0;
+  Object.keys(progress).forEach((k) => {
+    const block = progress[k];
+    if (block && block.answers && typeof block.answers === 'object') {
+      n += Object.keys(block.answers).length;
+    }
+  });
+  return n;
+}
+
+function countMistakes(progress) {
+  if (!progress || typeof progress !== 'object') return 0;
+  let n = 0;
+  Object.keys(progress).forEach((k) => {
+    const block = progress[k];
+    if (block && Array.isArray(block.mistakes)) n += block.mistakes.length;
+  });
+  return n;
+}
 
 // ─── 后台管理 API（密码仅存服务端，前端只持会话 token）────
 
